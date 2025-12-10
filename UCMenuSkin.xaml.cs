@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,6 +30,8 @@ namespace PaniqueEnCuisine
 
         private void B_Retour_Click(object sender, RoutedEventArgs e)
         {
+            SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
+            player.Play(); 
             main.ChangeScreen(new UCParametres(main));
         }
     }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,17 +34,25 @@ namespace PaniqueEnCuisine
 
         private void B_Regles_Click(object sender, RoutedEventArgs e)
         {
+            SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
+            player.Play();
             main.ChangeScreen(new UCRegles(main));
 
         }
 
         private void B_Parametre_Click(object sender, RoutedEventArgs e)
         {
+            //Jouer son clic
+            SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
+            player.Play();
+
             main.ChangeScreen(new UCParametres(main));
         }
 
         private void B_Jouer_Click(object sender, RoutedEventArgs e)
         {
+            SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
+            player.Play(); 
             main.ChangeScreen(new UCJeu(main));
             
 
@@ -51,6 +60,8 @@ namespace PaniqueEnCuisine
 
         private void B_Quitter_Click(object sender, RoutedEventArgs e)
         {
+            SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
+            player.Play(); 
             Application.Current.Shutdown();
 
         }
