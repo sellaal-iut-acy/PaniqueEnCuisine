@@ -13,33 +13,41 @@ using System.Windows.Threading;
 
 namespace PaniqueEnCuisine
 {
-   
+     
+
     public partial class MainWindow : Window
     {
-      
        
+
         private readonly DispatcherTimer timer;
+        public UCMenu uc = new UCMenu();
+        
+
 
         public MainWindow()
         {
             InitializeComponent();
-
-            // Place la boule au départ
-            Canvas.SetLeft(Ball, x);
-            Canvas.SetTop(Ball, y);
-
-            // Timer 60 FPS
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(16);
-            timer.Tick += MoveBall;
-            timer.Start();
-
-            // Lire les touches
-            this.Focusable = true;
-            this.Focus();
+            AfficheDemarrage();
+           
         }
+
+        
+        private void AfficheDemarrage()
+        {
+            // crée et charge l'écran de démarrage
+            UCMenu uc = new UCMenu();
+
+            // associe l'écran au 
+            ZoneJeu.Content = uc;
+
+            
+
        
+        }
+
     }
+
+
 
 
 }

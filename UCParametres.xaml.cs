@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,17 +13,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PaniqueEnCuisine;
 
 namespace PaniqueEnCuisine
 {
     /// <summary>
-    /// Logique d'interaction pour UCCJeux.xaml
+    /// Logique d'interaction pour UCParametres.xaml
     /// </summary>
-    public partial class UCCJeux : Page
+    public partial class UCParametres : UserControl
     {
-        public UCCJeux()
+        public UCParametres()
         {
             InitializeComponent();
+        }
+
+        private void ButtonSettingsSon_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonSettingsSkin_Click(object sender, RoutedEventArgs e)
+        {
+            UCParametres uc = new UCParametres();
+            
         }
     }
 }

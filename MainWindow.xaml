@@ -5,14 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PaniqueEnCuisine"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        KeyDown="Window_KeyDown"
-        KeyUp="Window_KeyUp">
-    <Grid>
-
+        Title="MainWindow" Height="450" Width="800">
     <ContentControl x:Name="ZoneJeu"/>
-            <Ellipse x:Name="Ball" Width="30" Height="30" Fill="Red"/>
-        </Canvas>
-    </Grid>
-    
+
 </Window>

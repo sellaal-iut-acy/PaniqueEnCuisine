@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace PaniqueEnCuisine
 {
     /// <summary>
-    /// Logique d'interaction pour UCCMenu.xaml
+    /// Logique d'interaction pour UCRegles.xaml
     /// </summary>
-    public partial class UCCMenu : Page
+    public partial class UCRegles : UserControl
     {
-        public UCCMenu()
+        public UCRegles()
         {
             InitializeComponent();
         }
