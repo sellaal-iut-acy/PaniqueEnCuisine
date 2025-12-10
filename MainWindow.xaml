@@ -10,7 +10,7 @@
         KeyUp="Window_KeyUp">
     <Grid>
 
-        <Canvas x:Name="GameCanvas">
+    <ContentControl x:Name="ZoneJeu"/>
             <Ellipse x:Name="Ball" Width="30" Height="30" Fill="Red"/>
         </Canvas>
     </Grid>
