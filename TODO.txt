@@ -5,9 +5,27 @@ Fenetre != preview
 Son musique jeu qui se relance
 
 A AJOUTER :
-- menu regles
-- sprite skin
-- Animation iddle main menu
+- Le gameplay :
+	- déplacements
+	- système de course
+	- inventaire
+	- améliorations du perso (vitesse de déplacement, endurance, rapiditée d'exécution(coupe plus vite)
+	- menu des niveaux dans le menu des paramètres
+	- les items
+	- les clients
+	- les recettes
+	- les commandes (apparition sur l'écran, temps limite, satisfaction client))
+	- le scoring (argent gagné, pts d'amélioration)
+	- les niveaux (difficultée croissante, nouveaux clients, nouvelles recettes, nouveaux items))
+
+- Les items : (fours, planche à découper, ect...)
+	- sprite
+	- interaction (ramassage, utilisation))
+	- 2 types (type coffre, type machine (il faut rester a coté pour l'utiliser))))
+
+- Le personage :
+	- sprite skin
+	- Animation iddle main menu
 
 ____________________________________________________________________________________________________________________________________________________________________________
 TODO BASILE :
