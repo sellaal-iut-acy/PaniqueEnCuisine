@@ -25,11 +25,16 @@ namespace PaniqueEnCuisine
     public partial class UCMenu : UserControl
     {
         private MainWindow main;
+        private MediaPlayer musicPlayer = new MediaPlayer();
+
 
         public UCMenu(MainWindow mw)
         {
             InitializeComponent();
             main = mw;
+
+            PlayMenuMusic();
+
         }
 
         private void B_Regles_Click(object sender, RoutedEventArgs e)
@@ -52,7 +57,8 @@ namespace PaniqueEnCuisine
         private void B_Jouer_Click(object sender, RoutedEventArgs e)
         {
             SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
-            player.Play(); 
+            player.Play();
+            musicPlayer.Stop();
             main.ChangeScreen(new UCJeu(main));
             
 
@@ -61,9 +67,22 @@ namespace PaniqueEnCuisine
         private void B_Quitter_Click(object sender, RoutedEventArgs e)
         {
             SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
-            player.Play(); 
+            player.Play();
+            musicPlayer.Stop();
             Application.Current.Shutdown();
 
+        }
+        private void PlayMenuMusic()
+        {
+            musicPlayer.Open(new Uri("Sons/son_music_loop.wav", UriKind.Relative));
+
+            musicPlayer.MediaEnded += (s, e) =>
+            {
+                musicPlayer.Position = TimeSpan.Zero;
+                musicPlayer.Play();
+            };
+
+            musicPlayer.Play();
         }
     }
 

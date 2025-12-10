@@ -19,10 +19,14 @@
     <None Remove="Sons\Mouse Click 1.wav" />
     <None Remove="Sons\son_clic.mp3" />
     <None Remove="Sons\son_clic.wav" />
+    <None Remove="Sons\son_music_loop.wav" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Sons\son_clic.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sons\son_music_loop.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
