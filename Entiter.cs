@@ -131,7 +131,7 @@ namespace PaniqueEnCuisine
 
         public override bool Equals(object? obj)
         {
-            return obj is Entiter entiter &&
+            return obj is EntiterMobile entiter &&
                    this.nom == entiter.nom &&
                    this.x == entiter.x &&
                    this.y == entiter.y &&
@@ -160,12 +160,12 @@ namespace PaniqueEnCuisine
             return hash.ToHashCode();
         }
 
-        public static bool operator ==(Entiter? left, Entiter? right)
+        public static bool operator ==(EntiterMobile? left, EntiterMobile? right)
         {
-            return EqualityComparer<Entiter>.Default.Equals(left, right);
+            return EqualityComparer<EntiterMobile>.Default.Equals(left, right);
         }
 
-        public static bool operator !=(Entiter? left, Entiter? right)
+        public static bool operator !=(EntiterMobile? left, EntiterMobile? right)
         {
             return !(left == right);
         }
