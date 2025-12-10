@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace PaniqueEnCuisine
 {
     /// <summary>
@@ -33,6 +34,7 @@ namespace PaniqueEnCuisine
         private void B_Regles_Click(object sender, RoutedEventArgs e)
         {
             main.ChangeScreen(new UCRegles(main));
+
         }
 
         private void B_Parametre_Click(object sender, RoutedEventArgs e)
@@ -43,11 +45,14 @@ namespace PaniqueEnCuisine
         private void B_Jouer_Click(object sender, RoutedEventArgs e)
         {
             main.ChangeScreen(new UCJeu(main));
+            
+
         }
 
         private void B_Quitter_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+
         }
     }
 

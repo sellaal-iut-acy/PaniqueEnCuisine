@@ -32,11 +32,13 @@ namespace PaniqueEnCuisine
         private void ButtonSettingsSon_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Réglages son");
+            main.ChangeScreen(new UCMenuSon(main));
         }
 
         private void ButtonSettingsSkin_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Réglages skins");
+            main.ChangeScreen(new UCMenuSkin(main));
         }
 
         private void B_Retour_Click(object sender, RoutedEventArgs e)
