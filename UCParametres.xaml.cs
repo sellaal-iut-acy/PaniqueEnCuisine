@@ -22,20 +22,27 @@ namespace PaniqueEnCuisine
     /// </summary>
     public partial class UCParametres : UserControl
     {
-        public UCParametres()
+        private MainWindow main;
+
+        public UCParametres(MainWindow mw)
         {
             InitializeComponent();
+            main = mw;
         }
-
         private void ButtonSettingsSon_Click(object sender, RoutedEventArgs e)
         {
-
+            Console.WriteLine("Réglages son");
         }
 
         private void ButtonSettingsSkin_Click(object sender, RoutedEventArgs e)
         {
-            UCParametres uc = new UCParametres();
-            
+            Console.WriteLine("Réglages skins");
+        }
+
+        private void B_Retour_Click(object sender, RoutedEventArgs e)
+        {
+            main.ChangeScreen(new UCMenu(main));
         }
     }
+
 }

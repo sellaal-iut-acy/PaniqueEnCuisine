@@ -10,7 +10,7 @@
         <Image x:Name="Image_Background" Source="/Images/Image_Fond_MainMenu.png" Stretch="Fill"/>
 
         <Button x:Name="B_Jouer" Content="Jouer" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Jouer_Click"/>
-        <Button x:Name="B_Obtion" Content="Obtion" HorizontalAlignment="Center" Margin="0,225,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Obtion_Click"/>
+        <Button x:Name="B_Paramètre" Content="Paramètres" HorizontalAlignment="Center" Margin="0,225,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Parametre_Click"/>
         <Button x:Name="B_Regles" Content="Règles" HorizontalAlignment="Center" Margin="0,280,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Regles_Click"/>
         <Button x:Name="B_Quitter" Content="Quitter" HorizontalAlignment="Center" Margin="0,335,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Quitter_Click"/>
 

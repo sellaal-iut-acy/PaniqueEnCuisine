@@ -13,41 +13,35 @@ using System.Windows.Threading;
 
 namespace PaniqueEnCuisine
 {
-     
+    //public partial class MainWindow : Window
+    //{
+    //    private readonly DispatcherTimer timer;
+    //    public UCMenu uc = new UCMenu();
+
+    //    public MainWindow()
+    //    {
+    //        InitializeComponent();
+    //        AfficheDemarrage();
+
+    //    }
+    //    private void AfficheDemarrage() 
+    //    {
+    //        ZoneJeu.Content = new UCMenu(this); // Passe l'instance de MainWindow à UCMenu
+    //    }
+    //}
 
     public partial class MainWindow : Window
     {
-       
-
-        private readonly DispatcherTimer timer;
-        public UCMenu uc = new UCMenu();
-        
-
-
         public MainWindow()
         {
             InitializeComponent();
-            AfficheDemarrage();
-           
+            ChangeScreen(new UCMenu(this));
         }
 
-        
-        private void AfficheDemarrage()
+        public void ChangeScreen(UserControl newScreen)
         {
-            // crée et charge l'écran de démarrage
-            UCMenu uc = new UCMenu();
-
-            // associe l'écran au 
-            ZoneJeu.Content = uc;
-
-            
-
-       
+            ZoneJeu.Content = newScreen;
         }
-
     }
-
-
-
 
 }

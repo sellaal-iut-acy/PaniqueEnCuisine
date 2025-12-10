@@ -20,9 +20,13 @@ namespace PaniqueEnCuisine
     /// </summary>
     public partial class UCJeu : UserControl
     {
-        public UCJeu()
+        private MainWindow main;
+
+        public UCJeu(MainWindow mw)
         {
             InitializeComponent();
+            main = mw;
         }
     }
+
 }

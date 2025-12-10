@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.FileIO;
+using System;
 using System.Collections.Generic;
+using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,31 +22,34 @@ namespace PaniqueEnCuisine
     /// </summary>
     public partial class UCMenu : UserControl
     {
-        public UCMenu()
+        private MainWindow main;
+
+        public UCMenu(MainWindow mw)
         {
             InitializeComponent();
-        }
-
-        private void B_Jouer_Click(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("Jouer");
-
-        }
-        private void B_Obtion_Click(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("Option");
+            main = mw;
         }
 
         private void B_Regles_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Regles");
+            main.ChangeScreen(new UCRegles(main));
+        }
 
+        private void B_Parametre_Click(object sender, RoutedEventArgs e)
+        {
+            main.ChangeScreen(new UCParametres(main));
+        }
+
+        private void B_Jouer_Click(object sender, RoutedEventArgs e)
+        {
+            main.ChangeScreen(new UCJeu(main));
         }
 
         private void B_Quitter_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Quitter");
-
+            Application.Current.Shutdown();
         }
     }
+
+
 }

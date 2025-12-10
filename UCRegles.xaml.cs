@@ -20,9 +20,13 @@ namespace PaniqueEnCuisine
     /// </summary>
     public partial class UCRegles : UserControl
     {
-        public UCRegles()
+        private MainWindow main;
+
+        public UCRegles(MainWindow mw)
         {
             InitializeComponent();
+            main = mw;
         }
     }
+
 }

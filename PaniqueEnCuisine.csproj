@@ -11,12 +11,14 @@
   <ItemGroup>
     <None Remove="Images\Image_Fond_MainMenu.png" />
     <None Remove="Images\Image_fond_parametres.png" />
+    <None Remove="Images\image_logo_settings_skin.png" />
     <None Remove="Images\image_logo_settings_son.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Images\Image_Fond_MainMenu.png" />
     <Resource Include="Images\Image_fond_parametres.png" />
+    <Resource Include="Images\image_logo_settings_skin.png" />
     <Resource Include="Images\image_logo_settings_son.png" />
   </ItemGroup>
 
