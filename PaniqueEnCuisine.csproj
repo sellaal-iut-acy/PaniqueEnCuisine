@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Remove="Images\Image_Fond_MainMenu.png" />
+    <None Remove="Images\image_fond_MenuRegles.png" />
     <None Remove="Images\image_fond_MenuSkin.png" />
     <None Remove="Images\image_fond_MenuSkin1.png" />
     <None Remove="Images\image_fond_MenuSon.jpg" />
@@ -33,6 +34,7 @@
 
   <ItemGroup>
     <Resource Include="Images\Image_Fond_MainMenu.png" />
+    <Resource Include="Images\image_fond_MenuRegles.png" />
     <Resource Include="Images\image_fond_MenuSkin1.png" />
     <Resource Include="Images\image_fond_MenuSon.jpg" />
     <Resource Include="Images\Image_fond_parametres.png" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,17 +17,22 @@ using System.Windows.Shapes;
 namespace PaniqueEnCuisine
 {
     /// <summary>
-    /// Logique d'interaction pour UCRegles.xaml
+    /// Logique d'interaction pour UCMenuRegles.xaml
     /// </summary>
-    public partial class UCRegles : UserControl
+    public partial class UCMenuRegles : UserControl
     {
         private MainWindow main;
-
-        public UCRegles(MainWindow mw)
+        public UCMenuRegles(MainWindow mw)
         {
             InitializeComponent();
             main = mw;
         }
-    }
 
+        private void B_Retour_Click(object sender, RoutedEventArgs e)
+        {
+            SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
+            player.Play();
+            main.ChangeScreen(new UCMenu(main));
+        }
+    }
 }

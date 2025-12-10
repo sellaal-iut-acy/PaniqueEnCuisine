@@ -41,7 +41,9 @@ namespace PaniqueEnCuisine
         {
             SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
             player.Play();
-            main.ChangeScreen(new UCRegles(main));
+            musicPlayer.Stop();
+
+            main.ChangeScreen(new UCMenuRegles(main));
 
         }
 
@@ -50,6 +52,7 @@ namespace PaniqueEnCuisine
             //Jouer son clic
             SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
             player.Play();
+            musicPlayer.Stop();
 
             main.ChangeScreen(new UCParametres(main));
         }
