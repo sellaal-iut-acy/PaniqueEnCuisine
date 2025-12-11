@@ -36,10 +36,10 @@ namespace PaniqueEnCuisine
         {
 
         }
-        public void move_joueur(Key key)
-        {
+        //public void move_joueur(Key key)
+        //{
 
-            if (key.ToString() == );
-        }   
+        //    if (key.ToString() == );
+        //}
     }
 }
