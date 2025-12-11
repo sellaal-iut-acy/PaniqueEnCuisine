@@ -30,8 +30,7 @@ namespace PaniqueEnCuisine
 
         private void B_Retour_Click(object sender, RoutedEventArgs e)
         {
-            SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
-            player.Play(); 
+            Audio.PlaySFX("Sons/son_clic.wav");
             main.ChangeScreen(new UCParametres(main));
         }
     }

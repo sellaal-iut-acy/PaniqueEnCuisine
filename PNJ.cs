@@ -62,19 +62,24 @@ namespace PaniqueEnCuisine
             }
         }
 
-        public string Nom1
-        {
-            get
-            {
-                return this.Nom;
-            }
-
-            set
-            {
-                this.Nom = value;
-            }
-        }
-
+        //public override bool Equals(object? obj)
+        //{
+        //    return obj is PNJ pNJ &&
+        //           base.Equals(obj) &&
+        //           this.nom == pNJ.nom &&
+        //           this.Nom == pNJ.Nom &&
+        //           this.Vitesse == pNJ.Vitesse &&
+        //           this.X == pNJ.X &&
+        //           this.Y == pNJ.Y &&
+        //           this.VitesseCourse == pNJ.VitesseCourse &&
+        //           EqualityComparer<Image[,]>.Default.Equals(this.Images, pNJ.Images) &&
+        //           EqualityComparer<List<Nouriture>>.Default.Equals(this._Comande, pNJ._Comande) &&
+        //           this._satisfaction == pNJ._satisfaction &&
+        //           this._exigence == pNJ._exigence &&
+        //           this.Satisfaction == pNJ.Satisfaction &&
+        //           this.Exigence == pNJ.Exigence &&
+        //           EqualityComparer<List<Nouriture>>.Default.Equals(this.Comande, pNJ.Comande);
+        //}
         private bool Servi
         {
             get 

@@ -48,7 +48,8 @@ namespace PaniqueEnCuisine
             if (key.ToString() == ManagerSettings.KeyHaut.ToString());
                 this.playeur.Right();
 
-        }
+        //    if (key.ToString() == );
+        //}
     }
 }
 
