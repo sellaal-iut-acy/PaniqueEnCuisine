@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:PaniqueEnCuisine"
         mc:Ignorable="d"
         Title="MainWindow" Height="490" Width="830" ResizeMode="NoResize">
-    <ContentControl x:Name="ZoneJeu"/>
+    <ContentControl x:Name="ZoneJeu">
+        <Canvas x:Name="grille"/>
+    </ContentControl>
 
 </Window>

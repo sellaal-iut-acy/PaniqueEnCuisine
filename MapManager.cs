@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 
 namespace PaniqueEnCuisine
@@ -13,15 +15,17 @@ namespace PaniqueEnCuisine
     {
        public Joueur playeur;
         private List<PNJ> pnjs;
-        public Image fond = new Image();
+        public ImageBrush fond ;
         private ManagerSettings managerSettings;
+        
+       
+        
 
-        public MapManager(Joueur playeur, Image fond, int nb_PNJs)
+        public MapManager(Joueur playeur, int nb_PNJs)
         {
             this.playeur = playeur;
-            this.fond = fond;
             Liste_PNJs(nb_PNJs);
-            this.fond.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"/Images/Map/fond_map.png", UriKind.Relative));
+            this.fond = new ImageBrush(new BitmapImage(new Uri("D:\\SAE\\Images\\Image_Fond_MainMenu.png", UriKind.Relative)));
         }
 
         private void Liste_PNJs( int nb_PNJs)
@@ -29,7 +33,7 @@ namespace PaniqueEnCuisine
             this.pnjs = new List<PNJ>();
             for (int i = 0; i < nb_PNJs; i++)
             {
-                PNJ pnj = new PNJ("PNJ" + i, 100 * i, 100, 2, 100, 1);
+                PNJ pnj = new PNJ("PNJ" + i, 100 * i, 100, 2, 100, 1,50,100);
                 this.pnjs.Add(pnj);
             }
         }
@@ -37,19 +41,8 @@ namespace PaniqueEnCuisine
         {
 
         }
-        public void move_joueur(Key key)
-        {
-            if (key.ToString() == ManagerSettings.KeyDroite.ToString());
-                this.playeur.UP();
-            if (key.ToString() == ManagerSettings.KeyGauche.ToString());
-                this.playeur.Left();
-            if (key.ToString() == ManagerSettings.KeyBas.ToString());
-                this.playeur.Down();
-            if (key.ToString() == ManagerSettings.KeyHaut.ToString());
-                this.playeur.Right();
-
-        //    if (key.ToString() == );
-        }
+        
+ 
     }
 }
 

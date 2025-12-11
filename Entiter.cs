@@ -19,16 +19,18 @@ namespace PaniqueEnCuisine
     {
         /* Attributs */
         private string nom;
-        private int x;
-        private int y;
+        private double x;
+        private double y;
         private int vitesse;
         private int vitesseCourse;
         private string direction;
         public Image current_Image;
+        private int height;
+        private int width;
 
 
         /* Constructeur */
-        public EntiterMobile(int x, int y,int vitesse, string nom)
+        public EntiterMobile(double x, double y,int vitesse, string nom, int Height, int Widht)
         {
             this.X = x;
             this.nom = nom;
@@ -37,6 +39,8 @@ namespace PaniqueEnCuisine
             this.VitesseCourse = vitesse * 2;
             this.direction = "Aucun";
             this.Charger_images();
+            this.height = Height ;
+            this.width = Widht ;
         }
 
         private void Charger_images()
@@ -62,7 +66,7 @@ namespace PaniqueEnCuisine
             }
         }
       
-        public int X
+        public double X
         {
             set
             {
@@ -74,7 +78,7 @@ namespace PaniqueEnCuisine
                 return this.x;
             }
         }
-        public int Y
+        public double Y
         {
             set
             {
@@ -115,7 +119,31 @@ namespace PaniqueEnCuisine
             }
         }
 
-  
+        public int Height
+        {
+            get
+            {
+                return this.height;
+            }
+
+            set
+            {
+                this.height = value;
+            }
+        }
+
+        public int Width
+        {
+            get
+            {
+                return this.width;
+            }
+
+            set
+            {
+                this.width = value;
+            }
+        }
 
         public override bool Equals(object? obj)
         {

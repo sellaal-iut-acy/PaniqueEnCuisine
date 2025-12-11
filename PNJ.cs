@@ -16,7 +16,7 @@ namespace PaniqueEnCuisine
         private bool _servi;
         private string Nom;
 
-        public PNJ(string nom , int x  , int y , int vitesse, int satisfaction, int exigence) : base( x, y,vitesse,nom)
+        public PNJ(string nom , int x  , int y , int vitesse, int satisfaction, int exigence, int Widht,int Height) : base( x, y,vitesse,nom, Height,Widht)
         {
             this._satisfaction = satisfaction;
             this._exigence = exigence;
