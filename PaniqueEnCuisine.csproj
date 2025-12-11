@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Entiter\player_Aucun_1.jpg" />
     <None Remove="Images\Image_Fond_MainMenu.png" />
     <None Remove="Images\image_fond_MenuRegles.png" />
     <None Remove="Images\image_fond_MenuSkin.png" />
@@ -20,6 +21,7 @@
     <None Remove="Images\image_logo_settings_skin.png" />
     <None Remove="Images\image_logo_settings_son.png" />
     <None Remove="Images\image_logo_settings_touches.png" />
+    <None Remove="player_Aucun_1.jpg" />
     <None Remove="Sons\Mouse Click 1.wav" />
     <None Remove="Sons\son_clic.mp3" />
     <None Remove="Sons\son_clic.wav" />
@@ -36,6 +38,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Entiter\player_Aucun_1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Image_Fond_MainMenu.png" />
     <Resource Include="Images\image_fond_MenuRegles.png" />
     <Resource Include="Images\image_fond_MenuSkin1.png" />
@@ -46,6 +51,7 @@
     <Resource Include="Images\image_logo_settings_skin.png" />
     <Resource Include="Images\image_logo_settings_son.png" />
     <Resource Include="Images\image_logo_settings_touches.png" />
+    <Resource Include="player_Aucun_1.jpg" />
   </ItemGroup>
 
 </Project>

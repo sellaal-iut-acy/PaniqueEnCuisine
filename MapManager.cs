@@ -11,9 +11,10 @@ namespace PaniqueEnCuisine
 {
     public class MapManager
     {
-        private Joueur playeur;
+       public Joueur playeur;
         private List<PNJ> pnjs;
-        private Image fond = new Image();
+        public Image fond = new Image();
+        private ManagerSettings managerSettings;
 
         public MapManager(Joueur playeur, Image fond, int nb_PNJs)
         {
@@ -38,8 +39,17 @@ namespace PaniqueEnCuisine
         }
         public void move_joueur(Key key)
         {
+            if (key.ToString() == ManagerSettings.KeyDroite.ToString());
+                this.playeur.UP();
+            if (key.ToString() == ManagerSettings.KeyGauche.ToString());
+                this.playeur.Left();
+            if (key.ToString() == ManagerSettings.KeyBas.ToString());
+                this.playeur.Down();
+            if (key.ToString() == ManagerSettings.KeyHaut.ToString());
+                this.playeur.Right();
 
-            if (key.ToString() == );
-        }   
+        }
     }
 }
+
+// benoit.dirad@univ-smb.fr

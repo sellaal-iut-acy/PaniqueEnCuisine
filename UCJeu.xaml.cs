@@ -21,11 +21,15 @@ namespace PaniqueEnCuisine
     public partial class UCJeu : UserControl
     {
         private MainWindow main;
+        public MapManager mapManager = new MapManager(new Joueur("player",100, 100, 2, 2), new Image(), 3);
+        private Image playeur;
 
         public UCJeu(MainWindow mw)
         {
             InitializeComponent();
             main = mw;
+
+         
         }
     }
 

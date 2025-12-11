@@ -15,6 +15,7 @@ namespace PaniqueEnCuisine
 {
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -25,6 +26,9 @@ namespace PaniqueEnCuisine
         {
             ZoneJeu.Content = newScreen;
         }
+        
+
+        
     }
 
 }

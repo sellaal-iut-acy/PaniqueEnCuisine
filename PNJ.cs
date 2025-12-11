@@ -14,11 +14,13 @@ namespace PaniqueEnCuisine
         private int _satisfaction;
         private int _exigence;
         private bool _servi;
+        private string Nom;
 
-        public PNJ(string nom , int x  , int y , int vitesse, int satisfaction, int exigence) : base(nom, x, y,vitesse)
+        public PNJ(string nom , int x  , int y , int vitesse, int satisfaction, int exigence) : base( x, y,vitesse,nom)
         {
             this._satisfaction = satisfaction;
             this._exigence = exigence;
+            this.Nom1 = nom;
         }
 
         public int Satisfaction
@@ -60,24 +62,19 @@ namespace PaniqueEnCuisine
             }
         }
 
-        public override bool Equals(object? obj)
+        public string Nom1
         {
-            return obj is PNJ pNJ &&
-                   base.Equals(obj) &&
-                   this.nom == pNJ.nom &&
-                   this.Nom == pNJ.Nom &&
-                   this.Vitesse == pNJ.Vitesse &&
-                   this.X == pNJ.X &&
-                   this.Y == pNJ.Y &&
-                   this.VitesseCourse == pNJ.VitesseCourse &&
-                   EqualityComparer<Image[,]>.Default.Equals(this.Images, pNJ.Images) &&
-                   EqualityComparer<List<Nouriture>>.Default.Equals(this._Comande, pNJ._Comande) &&
-                   this._satisfaction == pNJ._satisfaction &&
-                   this._exigence == pNJ._exigence &&
-                   this.Satisfaction == pNJ.Satisfaction &&
-                   this.Exigence == pNJ.Exigence &&
-                   EqualityComparer<List<Nouriture>>.Default.Equals(this.Comande, pNJ.Comande);
+            get
+            {
+                return this.Nom;
+            }
+
+            set
+            {
+                this.Nom = value;
+            }
         }
+
         private bool Servi
         {
             get 

@@ -11,7 +11,7 @@ namespace PaniqueEnCuisine
         private int _score;
         private Inventaire inventaire;
         private int _main;
-        public Joueur(string nom, int x, int y, int vitesse, int score) : base(nom, x, y, vitesse)
+        public Joueur(string nom, int x, int y, int vitesse, int score ) : base(x, y, vitesse,nom)
         {
             this._score = score;
         }

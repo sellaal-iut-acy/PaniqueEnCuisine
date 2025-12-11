@@ -18,40 +18,34 @@ namespace PaniqueEnCuisine
      */
     {
         /* Attributs */
-        public string nom;
+        private string nom;
         private int x;
         private int y;
         private int vitesse;
         private int vitesseCourse;
         private string direction;
-        private Image crenent_Image;
+        public Image current_Image;
 
 
         /* Constructeur */
-        public EntiterMobile(string nom, int x, int y,int vitesse)
+        public EntiterMobile(int x, int y,int vitesse, string nom)
         {
-            this.Nom = nom;
             this.X = x;
+            this.nom = nom;
             this.Y = y;
             this.Vitesse = vitesse;
             this.VitesseCourse = vitesse * 2;
-            this .direction = "Aucun";
+            this.direction = "Aucun";
+            this.Charger_images();
         }
-        public void Charger_images()
+
+        private void Charger_images()
         {
-            this.crenent_Image = new Image();
-            this.crenent_Image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"/Images/Entiter/{this.nom}_down_1.png", UriKind.Relative));
+            this.current_Image = new Image();
+            this.current_Image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"/Images/Entiter/{this.nom}_{this.direction}_1.jpg", UriKind.Relative));
 
         }
-        public string Nom 
-        { 
-            set { 
-                this.nom = value;
-            }
-            get {
-                return this.nom; 
-            }  
-        }
+        
         public int Vitesse
         {
             set
@@ -112,12 +106,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.crenent_Image;
+                return this.current_Image;
             }
 
             set
             {
-                this.crenent_Image = value;
+                this.current_Image = value;
             }
         }
 
@@ -131,7 +125,6 @@ namespace PaniqueEnCuisine
                    this.y == entiter.y &&
                    this.vitesse == entiter.vitesse &&
                    this.vitesseCourse == entiter.vitesseCourse &&
-                   this.Nom == entiter.Nom &&
                    this.Vitesse == entiter.Vitesse &&
                    this.X == entiter.X &&
                    this.Y == entiter.Y &&

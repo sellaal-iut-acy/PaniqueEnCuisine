@@ -47,7 +47,6 @@ namespace PaniqueEnCuisine
 
         }
 
-        
 
         private void B_Jouer_Click(object sender, RoutedEventArgs e)
         {
@@ -56,7 +55,7 @@ namespace PaniqueEnCuisine
             musicPlayer.Stop();
             main.ChangeScreen(new UCJeu(main));
             
-
+   
         }
 
         private void B_Quitter_Click(object sender, RoutedEventArgs e)

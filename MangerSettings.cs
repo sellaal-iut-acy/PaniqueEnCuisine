@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-public static class ManagerSettings
+public class ManagerSettings
 {
     public static Key KeyHaut = Key.Z;
     public static Key KeyBas = Key.S;
