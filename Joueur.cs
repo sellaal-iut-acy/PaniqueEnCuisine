@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PaniqueEnCuisine
 {
-    class Joueur : EntiterMobile
+    public class Joueur : EntiterMobile
     {
         private int _score;
         private Inventaire inventaire;
@@ -38,6 +38,43 @@ namespace PaniqueEnCuisine
             {
                 this._main = value;
             }
+        }
+
+        public void UP()
+        {
+            this.Y -= this.Vitesse;
+        }
+        public void Down()
+        {
+            this.Y += this.Vitesse;
+        }
+        public void Left()
+        {
+            this.X -= this.Vitesse;
+        }
+        public void Right()
+        {
+            this.X += this.Vitesse;
+        }
+        public void UP_Right()
+        {
+            this.X += this.Vitesse / 2;
+            this.Y -= this.Vitesse / 2;
+        }
+        public void UP_Left()
+        {
+            this.X -= this.Vitesse / 2;
+            this.Y -= this.Vitesse / 2;
+        }
+        public void Down_Left()
+        {
+            this.X -= this.Vitesse / 2;
+            this.Y += this.Vitesse / 2;
+        }
+        public void Down_Rigth()
+        {
+            this.X += this.Vitesse / 2;
+            this.Y += this.Vitesse / 2;
         }
     }
 }

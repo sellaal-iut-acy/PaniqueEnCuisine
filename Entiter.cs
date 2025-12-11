@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ using System.Windows.Controls;
 
 namespace PaniqueEnCuisine
 {
-    internal class EntiterMobile
+    public class EntiterMobile
     /*  
      * Classe Entiter
      * _nom : string -> _nom de l'entité
@@ -22,9 +23,10 @@ namespace PaniqueEnCuisine
         private int y;
         private int vitesse;
         private int vitesseCourse;
-        private Image[,] images;
+        private string direction;
+        private Image crenent_Image;
 
-       
+
         /* Constructeur */
         public EntiterMobile(string nom, int x, int y,int vitesse)
         {
@@ -33,23 +35,14 @@ namespace PaniqueEnCuisine
             this.Y = y;
             this.Vitesse = vitesse;
             this.VitesseCourse = vitesse * 2;
-            this.Images = Charger_images(nom);
+            this .direction = "Aucun";
         }
+        public void Charger_images()
+        {
+            this.crenent_Image = new Image();
+            this.crenent_Image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"/Images/Entiter/{this.nom}_down_1.png", UriKind.Relative));
 
-        private static Image[,] Charger_images(string non)
-            {
-                Image[,] imgs = new Image[4, 4];
-                for (int i = 0; i < 4; i++)
-                {
-                    for (int j = 0; j < 4; j++)
-                    {
-                        imgs[i, j] = new Image();
-                        imgs[i, j].Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"/Images/{non}_{i}_{j}.png", UriKind.Relative));
-                    }
-                }
-                return imgs;
         }
-
         public string Nom 
         { 
             set { 
@@ -115,19 +108,20 @@ namespace PaniqueEnCuisine
             }
         }
 
-        public Image[,] Images
+        public Image Curenent_Image
         {
             get
             {
-                return this.images;
+                return this.crenent_Image;
             }
 
             set
             {
-                this.images = value;
+                this.crenent_Image = value;
             }
         }
 
+  
 
         public override bool Equals(object? obj)
         {
@@ -143,23 +137,6 @@ namespace PaniqueEnCuisine
                    this.Y == entiter.Y &&
                    this.VitesseCourse == entiter.VitesseCourse;
         }
-
-        public override int GetHashCode()
-        {
-            HashCode hash = new HashCode();
-            hash.Add(this.nom);
-            hash.Add(this.x);
-            hash.Add(this.y);
-            hash.Add(this.vitesse);
-            hash.Add(this.vitesseCourse);
-            hash.Add(this.Nom);
-            hash.Add(this.Vitesse);
-            hash.Add(this.X);
-            hash.Add(this.Y);
-            hash.Add(this.VitesseCourse);
-            return hash.ToHashCode();
-        }
-
         public static bool operator ==(EntiterMobile? left, EntiterMobile? right)
         {
             return EqualityComparer<EntiterMobile>.Default.Equals(left, right);

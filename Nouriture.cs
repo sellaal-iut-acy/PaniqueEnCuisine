@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace PaniqueEnCuisine
 {
-    class Nouriture
+    public class Nouriture
     {
         private string _nom;
         private Image _image;
@@ -48,5 +48,19 @@ namespace PaniqueEnCuisine
                 this._temps_cuisson = value;
             }
         }
+
+       public bool Est_cuit()
+        {
+            if (this._temps_cuisson <= 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+
     }
 }

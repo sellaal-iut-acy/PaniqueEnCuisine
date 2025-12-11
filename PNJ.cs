@@ -8,11 +8,12 @@ using System.Windows.Xps;
 
 namespace PaniqueEnCuisine
 {
-    class PNJ : EntiterMobile
+    public class PNJ : EntiterMobile
     {
         private List<Nouriture> _Comande = new List<Nouriture>();
         private int _satisfaction;
         private int _exigence;
+        private bool _servi;
 
         public PNJ(string nom , int x  , int y , int vitesse, int satisfaction, int exigence) : base(nom, x, y,vitesse)
         {
@@ -77,25 +78,20 @@ namespace PaniqueEnCuisine
                    this.Exigence == pNJ.Exigence &&
                    EqualityComparer<List<Nouriture>>.Default.Equals(this.Comande, pNJ.Comande);
         }
-
-        public override int GetHashCode()
+        private bool Servi
         {
-            HashCode hash = new HashCode();
-            hash.Add(base.GetHashCode());
-            hash.Add(this.nom);
-            hash.Add(this.Nom);
-            hash.Add(this.Vitesse);
-            hash.Add(this.X);
-            hash.Add(this.Y);
-            hash.Add(this.VitesseCourse);
-            hash.Add(this.Images);
-            hash.Add(this._Comande);
-            hash.Add(this._satisfaction);
-            hash.Add(this._exigence);
-            hash.Add(this.Satisfaction);
-            hash.Add(this.Exigence);
-            hash.Add(this.Comande);
-            return hash.ToHashCode();
+            get 
+            { 
+                return _servi; 
+            }
+            set 
+            { 
+                _servi = value; 
+            }
+        }
+        private bool Est_Servi()
+        {
+            return this._servi;
         }
     }
 }

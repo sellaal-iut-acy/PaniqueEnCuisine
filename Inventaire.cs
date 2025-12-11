@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PaniqueEnCuisine
 {
-    class Inventaire
+    public  class Inventaire
     {
         private List<Nouriture> _liste_nourriture;
 
