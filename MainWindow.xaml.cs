@@ -19,6 +19,7 @@ namespace PaniqueEnCuisine
         {
             InitializeComponent();
             ChangeScreen(new UCMenu(this));
+            Audio.PlayMusic("Sons/son_music_loop.wav", true);
         }
 
         public void ChangeScreen(UserControl newScreen)

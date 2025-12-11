@@ -1,0 +1,27 @@
+﻿<Window x:Class="PaniqueEnCuisine.FenetreParametreSon"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Paramètres Audio" Height="300" Width="400">
+
+    <StackPanel Margin="20">
+
+        <!-- Volume général -->
+        <TextBlock Text="Volume général" FontSize="18"/>
+        <Slider x:Name="Sl_General" Minimum="0" Maximum="1" TickFrequency="0.1"
+                ValueChanged="Sl_General_ValueChanged"/>
+
+        <!-- Volume musique -->
+        <TextBlock Text="Volume musique" FontSize="18" Margin="0,15,0,0"/>
+        <Slider x:Name="Sl_Music" Minimum="0" Maximum="1" TickFrequency="0.1"
+                ValueChanged="Sl_Music_ValueChanged"/>
+
+        <!-- Volume effets -->
+        <TextBlock Text="Volume effets" FontSize="18" Margin="0,15,0,0"/>
+        <Slider x:Name="Sl_SFX" Minimum="0" Maximum="1" TickFrequency="0.1"
+                ValueChanged="Sl_SFX_ValueChanged"/>
+
+        <!-- Bouton fermer -->
+        <Button Content="Fermer" Click="ButtonFermer_Click" 
+                Margin="0,20,0,0" Padding="5" Width="100" HorizontalAlignment="Center"/>
+    </StackPanel>
+</Window>

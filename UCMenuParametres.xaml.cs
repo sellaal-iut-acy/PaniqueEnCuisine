@@ -31,23 +31,22 @@ namespace PaniqueEnCuisine
 
         private void B_Retour_Click(object sender, RoutedEventArgs e)
         {
-            SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
-            player.Play(); 
+            Audio.PlaySFX("Sons/son_clic.wav");
             main.ChangeScreen(new UCParametres(main));
         }
 
         private void B_Touches_Click(object sender, RoutedEventArgs e)
         {
-            SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
-            player.Play();
+            Audio.PlaySFX("Sons/son_clic.wav");
             FenetreConfigTouches fen = new FenetreConfigTouches();
             fen.ShowDialog();
         }
 
         private void B_Son_Click(object sender, RoutedEventArgs e)
         {
-            SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
-            player.Play();
+            Audio.PlaySFX("Sons/son_clic.wav");
+            var fen = new FenetreParametreSon();
+            fen.ShowDialog();
         }
     }
 }
