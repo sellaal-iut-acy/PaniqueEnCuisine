@@ -47,15 +47,7 @@ namespace PaniqueEnCuisine
 
         }
 
-        private void B_Parametre_Click(object sender, RoutedEventArgs e)
-        {
-            //Jouer son clic
-            SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
-            player.Play();
-            musicPlayer.Stop();
-
-            main.ChangeScreen(new UCParametres(main));
-        }
+        
 
         private void B_Jouer_Click(object sender, RoutedEventArgs e)
         {
@@ -86,6 +78,15 @@ namespace PaniqueEnCuisine
             };
 
             musicPlayer.Play();
+        }
+
+        private void B_Plus_Click(object sender, RoutedEventArgs e)
+        {
+            SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
+            player.Play();
+            musicPlayer.Stop();
+
+            main.ChangeScreen(new UCParametres(main));
         }
     }
 

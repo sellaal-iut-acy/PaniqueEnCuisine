@@ -1,0 +1,48 @@
+﻿<Window x:Class="PaniqueEnCuisine.FenetreConfigTouches"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Configuration des touches" 
+        Height="300" Width="400">
+
+    <StackPanel Margin="20" Orientation="Vertical">
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Haut :" Width="150" FontSize="18"/>
+            <TextBox x:Name="TB_Haut" Width="150"
+                     PreviewKeyDown="TB_Haut_KeyDown"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Bas :" Width="150" FontSize="18"/>
+            <TextBox x:Name="TB_Bas" Width="150"
+                     PreviewKeyDown="TB_Bas_KeyDown"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Gauche :" Width="150" FontSize="18"/>
+            <TextBox x:Name="TB_Gauche" Width="150"
+                     PreviewKeyDown="TB_Gauche_KeyDown"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Droite :" Width="150" FontSize="18"/>
+            <TextBox x:Name="TB_Droite" Width="150"
+                     PreviewKeyDown="TB_Droite_KeyDown"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Sprint :" Width="150" FontSize="18"/>
+            <TextBox x:Name="TB_Sprint" Width="150"
+                     PreviewKeyDown="TB_Sprint_KeyDown"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Prendre/Lâcher :" Width="150" FontSize="18"/>
+            <TextBox x:Name="TB_Action" Width="150"
+                     PreviewKeyDown="TB_Action_KeyDown"/>
+        </StackPanel>
+
+        <Button Content="Fermer" Margin="10" Click="ButtonFermer_Click"/>
+
+    </StackPanel>
+</Window>

@@ -15,8 +15,11 @@
     <None Remove="Images\image_fond_MenuSkin1.png" />
     <None Remove="Images\image_fond_MenuSon.jpg" />
     <None Remove="Images\Image_fond_parametres.png" />
+    <None Remove="Images\image_logo_settings.png" />
+    <None Remove="Images\image_logo_settings_niveau.png" />
     <None Remove="Images\image_logo_settings_skin.png" />
     <None Remove="Images\image_logo_settings_son.png" />
+    <None Remove="Images\image_logo_settings_touches.png" />
     <None Remove="Sons\Mouse Click 1.wav" />
     <None Remove="Sons\son_clic.mp3" />
     <None Remove="Sons\son_clic.wav" />
@@ -38,8 +41,11 @@
     <Resource Include="Images\image_fond_MenuSkin1.png" />
     <Resource Include="Images\image_fond_MenuSon.jpg" />
     <Resource Include="Images\Image_fond_parametres.png" />
+    <Resource Include="Images\image_logo_settings.png" />
+    <Resource Include="Images\image_logo_settings_niveau.png" />
     <Resource Include="Images\image_logo_settings_skin.png" />
     <Resource Include="Images\image_logo_settings_son.png" />
+    <Resource Include="Images\image_logo_settings_touches.png" />
   </ItemGroup>
 
 </Project>

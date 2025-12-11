@@ -112,7 +112,7 @@
         <Button x:Name="B_Retour"
                 Content="X"
                 HorizontalAlignment="Left"
-                Margin="727,31,0,0"
+                Margin="726,60,0,0"
                 VerticalAlignment="Top"
                 Height="45"
                 Width="45"
