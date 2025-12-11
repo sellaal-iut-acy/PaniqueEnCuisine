@@ -8,11 +8,13 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Image x:Name="Image_Background" Source="/Images/Image_Fond_MainMenu.png" Stretch="Fill"/>
+        <Rectangle HorizontalAlignment="Center" Height="78" Margin="0,41,0,0" Stroke="#FF39150B" VerticalAlignment="Top" Width="654" Fill="#FF894218" StrokeThickness="5"/>
 
         <Button x:Name="B_Jouer" Content="Jouer" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Jouer_Click"/>
-        <Button x:Name="B_Paramètre" Content="Paramètres" HorizontalAlignment="Center" Margin="0,225,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Parametre_Click"/>
-        <Button x:Name="B_Regles" Content="Règles" HorizontalAlignment="Center" Margin="0,280,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Regles_Click"/>
+        <Button x:Name="B_Plus" Content=". . ." HorizontalAlignment="Center" Margin="0,282,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Plus_Click"/>
+        <Button x:Name="B_Regles" Content="Règles" HorizontalAlignment="Center" Margin="0,225,0,0" VerticalAlignment="Top" Height="36" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Regles_Click"/>
         <Button x:Name="B_Quitter" Content="Quitter" HorizontalAlignment="Center" Margin="0,335,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Quitter_Click"/>
+        <Label Content="Panique En Cuisine !" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" FontFamily="OCR A Extended" FontSize="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="654"/>
 
 
     </Grid>

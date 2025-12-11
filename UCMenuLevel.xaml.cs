@@ -14,16 +14,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 namespace PaniqueEnCuisine
 {
     /// <summary>
-    /// Logique d'interaction pour UCMenuSon.xaml
+    /// Logique d'interaction pour UCMenuLevel.xaml
     /// </summary>
-    public partial class UCMenuSon : UserControl
+    public partial class UCMenuLevel : UserControl
     {
         private MainWindow main;
-        public UCMenuSon(MainWindow mw)
+
+        public UCMenuLevel(MainWindow mw)
         {
             InitializeComponent();
             main = mw;
@@ -32,7 +32,7 @@ namespace PaniqueEnCuisine
         private void B_Retour_Click(object sender, RoutedEventArgs e)
         {
             SoundPlayer player = new SoundPlayer("Sons/son_clic.wav");
-            player.Play(); 
+            player.Play();
             main.ChangeScreen(new UCParametres(main));
         }
     }
