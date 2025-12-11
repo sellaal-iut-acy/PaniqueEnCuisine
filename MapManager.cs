@@ -49,7 +49,7 @@ namespace PaniqueEnCuisine
                 this.playeur.Right();
 
         //    if (key.ToString() == );
-        //}
+        }
     }
 }
 

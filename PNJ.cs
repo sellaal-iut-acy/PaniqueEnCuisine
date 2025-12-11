@@ -20,7 +20,7 @@ namespace PaniqueEnCuisine
         {
             this._satisfaction = satisfaction;
             this._exigence = exigence;
-            this.Nom1 = nom;
+            this.Nom = nom;
         }
 
         public int Satisfaction
