@@ -33,6 +33,7 @@ namespace PaniqueEnCuisine
 
 
 
+
         /* Constructeur */
         public EntiterMobile(double x, double y,int vitesse, string nom, int Height, int Widht)
         {

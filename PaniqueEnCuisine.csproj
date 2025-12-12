@@ -20,7 +20,6 @@
     <None Remove="Images\Entiter\image_fleche_droite_rouge.png" />
     <None Remove="Images\Entiter\image_fleche_droite_vert.png" />
     <None Remove="Images\Entiter\image_fleche_droite_violet.png" />
-    <None Remove="Images\Entiter\image_fleche_gauchebleu.png" />
     <None Remove="Images\Entiter\image_fleche_gauche_orange.png" />
     <None Remove="Images\Entiter\image_fleche_gauche_rouge.png" />
     <None Remove="Images\Entiter\image_fleche_gauche_vert.png" />
@@ -74,7 +73,7 @@
     <Resource Include="Images\Entiter\image_fleche_droite_rouge.png" />
     <Resource Include="Images\Entiter\image_fleche_droite_vert.png" />
     <Resource Include="Images\Entiter\image_fleche_droite_violet.png" />
-    <Resource Include="Images\Entiter\image_fleche_gauchebleu.png" />
+    <Resource Include="Images\Entiter\image_fleche_gauche_bleu.png" />
     <Resource Include="Images\Entiter\image_fleche_gauche_orange.png" />
     <Resource Include="Images\Entiter\image_fleche_gauche_rouge.png" />
     <Resource Include="Images\Entiter\image_fleche_gauche_vert.png" />

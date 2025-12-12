@@ -132,7 +132,7 @@ namespace PaniqueEnCuisine
             if (e.Key == ManagerSettings.KeyBas) down = false;
             if (e.Key == ManagerSettings.KeyHaut) up = false;
 
-            // 👉 PLUS AUCUNE TOUCHE = IDLE
+            // PLUS AUCUNE TOUCHE = IDLE
             if (!up && !down && !left && !right)
             {
                 p.Direction = 4; // idle
