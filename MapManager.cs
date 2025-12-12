@@ -25,7 +25,7 @@ namespace PaniqueEnCuisine
         {
             this.playeur = playeur;
             Liste_PNJs(nb_PNJs);
-            this.fond = new ImageBrush(new BitmapImage(new Uri("P:\\P Perso\\SAE 101 102\\WPF\\Images\\Image_Fond_MainMenu.png", UriKind.Relative)));
+            this.fond = new ImageBrush(new BitmapImage(new Uri("D:\\SAE\\Images\\Image_Fond_MainMenu.png", UriKind.Relative)));
         }
 
         private void Liste_PNJs( int nb_PNJs)

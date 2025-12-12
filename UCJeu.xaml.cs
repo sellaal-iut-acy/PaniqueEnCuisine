@@ -25,7 +25,9 @@ namespace PaniqueEnCuisine
         private MainWindow main;
         public Image joueur = new Image();
         private DispatcherTimer colorTimer;
-        bool up, down, left, right;
+        bool right , left , up , down ;
+        public int dx = 0, dy = 0;
+
 
         public UCJeu(MainWindow mw)
         {
@@ -38,8 +40,15 @@ namespace PaniqueEnCuisine
             colorTimer = new DispatcherTimer();
             colorTimer.Interval = TimeSpan.FromMilliseconds(400); // vitesse changement couleur
             colorTimer.Tick += ChangeColor;
+            colorTimer.Tick += direction;
             colorTimer.Start();
         }
+
+        private void direction(object? sender, EventArgs e)
+        {
+            
+        }
+
         private void ChangeColor(object sender, EventArgs e)
         {
             var p = main.mapManager.playeur;
@@ -85,58 +94,73 @@ namespace PaniqueEnCuisine
         {
             Application.Current.MainWindow.KeyDown += move_joueur;
             Application.Current.MainWindow.KeyUp += stop_joueur;
-
+            
 
         }
 
         public void move_joueur(object sender, KeyEventArgs e)
         {
             var p = main.mapManager.playeur;
+            
 
-            if (e.Key == ManagerSettings.KeyDroite)
+            if ((e.Key == ManagerSettings.KeyDroite || e.Key == Key.Right) )
             {
+                Console.WriteLine("droite");
                 right = true;
+                dx += main.mapManager.playeur.Vitesse;
                 p.Direction = 1;
-                Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) + p.Vitesse);
+                
             }
 
-            if (e.Key == ManagerSettings.KeyGauche)
+            if ((e.Key == ManagerSettings.KeyGauche || e.Key == Key.Left))
             {
+                Console.WriteLine("gauche");
                 left = true;
+                dx -= main.mapManager.playeur.Vitesse;
                 p.Direction = 3;
-                Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) - p.Vitesse);
+               
             }
 
-            if (e.Key == ManagerSettings.KeyBas)
+            if ((e.Key == ManagerSettings.KeyBas || e.Key == Key.Down))
             {
+                Console.WriteLine("bas");
                 down = true;
+                dy += main.mapManager.playeur.Vitesse;
                 p.Direction = 2;
-                Canvas.SetTop(joueur, Canvas.GetTop(joueur) + p.Vitesse);
+                
             }
 
-            if (e.Key == ManagerSettings.KeyHaut)
+            if ((e.Key == ManagerSettings.KeyHaut || e.Key == Key.Up))
             {
+                Console.WriteLine("haut");
                 up = true;
+                dy -= main.mapManager.playeur.Vitesse;
                 p.Direction = 0;
-                Canvas.SetTop(joueur, Canvas.GetTop(joueur) - p.Vitesse);
+                
             }
-
+            Canvas.SetTop(joueur, Canvas.GetTop(joueur) + dy);
+            Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) + dx);
             joueur.Source = p.GetImageJoueur();
+            
         }
         public void stop_joueur(object sender, KeyEventArgs e)
         {
             var p = main.mapManager.playeur;
 
-            if (e.Key == ManagerSettings.KeyDroite) right = false;
-            if (e.Key == ManagerSettings.KeyGauche) left = false;
-            if (e.Key == ManagerSettings.KeyBas) down = false;
-            if (e.Key == ManagerSettings.KeyHaut) up = false;
+            if (e.Key == ManagerSettings.KeyDroite || e.Key == Key.Right) right = false;
+            if (e.Key == ManagerSettings.KeyGauche || e.Key == Key.Left) left = false;
+            if (e.Key == ManagerSettings.KeyBas || e.Key == Key.Down) down = false;
+            if (e.Key == ManagerSettings.KeyHaut || e.Key == Key.Up) up = false;
+            Console.WriteLine("dx: " + dx + " dy: " + dy);
 
             // PLUS AUCUNE TOUCHE = IDLE
             if (!up && !down && !left && !right)
             {
                 p.Direction = 4; // idle
                 joueur.Source = p.GetImageJoueur();
+                Console.WriteLine("idle");
+                dx = 0;
+                dy = 0;
             }
         }
 
