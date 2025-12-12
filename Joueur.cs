@@ -51,7 +51,10 @@ namespace PaniqueEnCuisine
             imagesPerso[4, 3] = new BitmapImage(new Uri("Images/Entiter/image_rond_violet.jpg", UriKind.Relative));
             imagesPerso[4, 4] = new BitmapImage(new Uri("Images/Entiter/image_rond_orange.jpg", UriKind.Relative));
         }
-
+        public void ajouter_objet_inventaire(Nouriture nouriture)
+        {
+            this.inventaire.
+        }
         public int Score
         {
             get
@@ -74,6 +77,19 @@ namespace PaniqueEnCuisine
             set
             {
                 this._main = value;
+            }
+        }
+
+        public Inventaire Inventaire
+        {
+            get
+            {
+                return this.inventaire;
+            }
+
+            set
+            {
+                this.inventaire = value;
             }
         }
 

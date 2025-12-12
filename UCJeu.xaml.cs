@@ -29,6 +29,7 @@ namespace PaniqueEnCuisine
         public int dx = 0, dy = 0;
 
 
+
         public UCJeu(MainWindow mw)
         {
             InitializeComponent();
@@ -75,9 +76,9 @@ namespace PaniqueEnCuisine
             Set_Tail_Paler();
             Set_Coordoner_Player();
             grille.Children.Add(joueur);
+            Inventaire_player();
+
         }
-
-
         private void Set_Coordoner_Player()
         {
             Canvas.SetTop(joueur, main.mapManager.playeur.Y);
@@ -143,6 +144,8 @@ namespace PaniqueEnCuisine
             joueur.Source = p.GetImageJoueur();
             
         }
+
+
         public void stop_joueur(object sender, KeyEventArgs e)
         {
             var p = main.mapManager.playeur;
@@ -164,7 +167,82 @@ namespace PaniqueEnCuisine
             }
         }
 
+        public void Inventaire_player()
+        {
+            Cree_inventaire();
+            cree_slot_inventaire();
 
+        }
+        public void Cree_inventaire()
+        {
+            Rectangle inventaire = new Rectangle();
+            inventaire.Width = 460;
+            inventaire.Height = 250;
+            inventaire.Fill = Brushes.Gray;
+            Canvas.SetTop(inventaire, 237);
+            Canvas.SetLeft(inventaire, 165);
+            grille.Children.Add(inventaire);
+            Button page_suivante = new Button();
+            page_suivante.Content = ">";
+            page_suivante.Width = 30;
+            page_suivante.Height = 50;
+            page_suivante.Click += Page_suivante_Click;
+            Canvas.SetTop(page_suivante, 386);
+            Canvas.SetLeft(page_suivante, 586);
+            grille.Children.Add(page_suivante);
+            Button page_arriere = new Button();
+            page_arriere.Content = "<";
+            page_arriere.Width = 30;
+            page_arriere.Height = 50;
+            page_arriere.Click += Page_arriere_Click;
+            Canvas.SetTop(page_arriere,386);
+            Canvas.SetLeft(page_arriere, 176);
+            grille.Children.Add(page_arriere);
+        }
+
+        private void Page_suivante_Click(object sender, RoutedEventArgs e)
+        {
+            main.mapManager.playeur.Inventaire.Current_page += 1;
+            afficher_objet_inventaire(main.mapManager.playeur.Inventaire, main.mapManager.playeur.Inventaire.Current_page);
+        }
+
+        private void Page_arriere_Click(object sender, RoutedEventArgs e)
+        {
+            main.mapManager.playeur.Inventaire.Current_page -= 1;
+            afficher_objet_inventaire(main.mapManager.playeur.Inventaire, main.mapManager.playeur.Inventaire.Current_page);
+        }
+
+        public void afficher_objet_inventaire(Inventaire inventaire, int page)
+        {
+            for (int l = 0; l < 3; l++)
+            {
+                for (int c = 6*page; c < 6*page+6; c++)
+                {
+                    if (c >= inventaire.Liste_nourriture.Count)
+                        break;
+                    grille.Children.Add(inventaire.Liste_nourriture[c].Image);
+                    Canvas.SetLeft(inventaire.Liste_nourriture[c].Image, 260 + (l * 63));
+                    Canvas.SetLeft(inventaire.Liste_nourriture[c].Image, 213 + ((c%6+1) * 63));
+                }
+            }
+        }
+
+        public void cree_slot_inventaire()
+        {
+            for (int l=0; l < 3; l++)
+            {
+                for (int c=0; c < 6; c++)
+                {
+                    Rectangle slot = new Rectangle();
+                    slot.Width = 50;
+                    slot.Height = 50;
+                    Canvas.SetTop(slot, 260 +(l*63));
+                    Canvas.SetLeft(slot, 213 + (c*63));
+                    slot.Fill = Brushes.LightGray;
+                    grille.Children.Add(slot);
+                }
+            }
+        }
 
 
     }

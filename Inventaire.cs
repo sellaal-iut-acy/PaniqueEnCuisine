@@ -9,6 +9,7 @@ namespace PaniqueEnCuisine
     public  class Inventaire
     {
         private List<Nouriture> _liste_nourriture;
+        private int current_page = 0;
 
         public Inventaire(List<Nouriture> liste_nourriture)
         {
@@ -26,6 +27,19 @@ namespace PaniqueEnCuisine
             set
             {
                 this._liste_nourriture = value;
+            }
+        }
+
+        public int Current_page
+        {
+            get
+            {
+                return this.current_page;
+            }
+
+            set
+            {
+                this.current_page = value;
             }
         }
     }
