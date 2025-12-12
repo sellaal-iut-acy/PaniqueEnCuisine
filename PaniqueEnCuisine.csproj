@@ -9,6 +9,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Entiter\haut.png" />
+    <None Remove="Images\Entiter\image_fleche_bas_bleu.png" />
+    <None Remove="Images\Entiter\image_fleche_bas_orange.png" />
+    <None Remove="Images\Entiter\image_fleche_bas_rouge.png" />
+    <None Remove="Images\Entiter\image_fleche_bas_vert.png" />
+    <None Remove="Images\Entiter\image_fleche_bas_violet.png" />
+    <None Remove="Images\Entiter\image_fleche_droite_bleu.png" />
+    <None Remove="Images\Entiter\image_fleche_droite_orange.png" />
+    <None Remove="Images\Entiter\image_fleche_droite_rouge.png" />
+    <None Remove="Images\Entiter\image_fleche_droite_vert.png" />
+    <None Remove="Images\Entiter\image_fleche_droite_violet.png" />
+    <None Remove="Images\Entiter\image_fleche_gauchebleu.png" />
+    <None Remove="Images\Entiter\image_fleche_gauche_orange.png" />
+    <None Remove="Images\Entiter\image_fleche_gauche_rouge.png" />
+    <None Remove="Images\Entiter\image_fleche_gauche_vert.png" />
+    <None Remove="Images\Entiter\image_fleche_gauche_violet.png" />
+    <None Remove="Images\Entiter\image_fleche_haut_bleu.png" />
+    <None Remove="Images\Entiter\image_fleche_haut_orange.png" />
+    <None Remove="Images\Entiter\image_fleche_haut_rouge.png" />
+    <None Remove="Images\Entiter\image_fleche_haut_vert.png" />
+    <None Remove="Images\Entiter\image_fleche_haut_violet.png" />
+    <None Remove="Images\Entiter\image_rond_bleu.jpg" />
+    <None Remove="Images\Entiter\image_rond_orange.jpg" />
+    <None Remove="Images\Entiter\image_rond_rouge.jpg" />
+    <None Remove="Images\Entiter\image_rond_vert.jpg" />
+    <None Remove="Images\Entiter\image_rond_violet.jpg" />
     <None Remove="Images\Entiter\player_Aucun_1.jpg" />
     <None Remove="Images\Image_Fond_MainMenu.png" />
     <None Remove="Images\image_fond_MenuRegles.png" />
@@ -38,6 +64,31 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Entiter\image_fleche_bas_bleu.png" />
+    <Resource Include="Images\Entiter\image_fleche_bas_orange.png" />
+    <Resource Include="Images\Entiter\image_fleche_bas_rouge.png" />
+    <Resource Include="Images\Entiter\image_fleche_bas_vert.png" />
+    <Resource Include="Images\Entiter\image_fleche_bas_violet.png" />
+    <Resource Include="Images\Entiter\image_fleche_droite_bleu.png" />
+    <Resource Include="Images\Entiter\image_fleche_droite_orange.png" />
+    <Resource Include="Images\Entiter\image_fleche_droite_rouge.png" />
+    <Resource Include="Images\Entiter\image_fleche_droite_vert.png" />
+    <Resource Include="Images\Entiter\image_fleche_droite_violet.png" />
+    <Resource Include="Images\Entiter\image_fleche_gauchebleu.png" />
+    <Resource Include="Images\Entiter\image_fleche_gauche_orange.png" />
+    <Resource Include="Images\Entiter\image_fleche_gauche_rouge.png" />
+    <Resource Include="Images\Entiter\image_fleche_gauche_vert.png" />
+    <Resource Include="Images\Entiter\image_fleche_gauche_violet.png" />
+    <Resource Include="Images\Entiter\image_fleche_haut_bleu.png" />
+    <Resource Include="Images\Entiter\image_fleche_haut_orange.png" />
+    <Resource Include="Images\Entiter\image_fleche_haut_rouge.png" />
+    <Resource Include="Images\Entiter\image_fleche_haut_vert.png" />
+    <Resource Include="Images\Entiter\image_fleche_haut_violet.png" />
+    <Resource Include="Images\Entiter\image_rond_bleu.jpg" />
+    <Resource Include="Images\Entiter\image_rond_orange.jpg" />
+    <Resource Include="Images\Entiter\image_rond_rouge.jpg" />
+    <Resource Include="Images\Entiter\image_rond_vert.jpg" />
+    <Resource Include="Images\Entiter\image_rond_violet.jpg" />
     <Resource Include="Images\Entiter\player_Aucun_1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

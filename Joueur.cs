@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
+
 
 namespace PaniqueEnCuisine
 {
@@ -11,10 +13,45 @@ namespace PaniqueEnCuisine
         private int _score;
         private Inventaire inventaire;
         private int _main;
+        public BitmapImage[,] imagesPerso;
+
+        public int Direction { get; set; } = 4; // 0=Haut,1=Droite,2=Bas,3=Gauche,4=Idle
+        public int Frame { get; set; } = 0;     // 0..4 (bleu → orange)
+
         public Joueur(string nom, double x,double y, int vitesse, int score , int Height, int Widht) : base(x, y, vitesse,nom,Height,Widht)
         {
             this._score = score;
+            Charger_images();
         }
+        public BitmapImage GetImageJoueur()
+        {
+            return imagesPerso[Direction, Frame];
+        }
+        public void Charger_images()
+        {
+            imagesPerso = new BitmapImage[5, 5];
+
+            string[] directions = { "haut", "droite", "bas", "gauche" };
+            string[] couleurs = { "bleu", "rouge", "vert", "violet", "orange" };
+
+            // Mouvements
+            for (int dir = 0; dir < 4; dir++)
+            {
+                for (int frame = 0; frame < 5; frame++)
+                {
+                    string path = $"Images/Entiter/image_fleche_{directions[dir]}_{couleurs[frame]}.png";
+                    imagesPerso[dir, frame] = new BitmapImage(new Uri(path, UriKind.Relative));
+                }
+            }
+
+            // Idle (ronds)
+            imagesPerso[4, 0] = new BitmapImage(new Uri("Images/Entiter/image_rond_bleu.jpg", UriKind.Relative));
+            imagesPerso[4, 1] = new BitmapImage(new Uri("Images/Entiter/image_rond_rouge.jpg", UriKind.Relative));
+            imagesPerso[4, 2] = new BitmapImage(new Uri("Images/Entiter/image_rond_vert.jpg", UriKind.Relative));
+            imagesPerso[4, 3] = new BitmapImage(new Uri("Images/Entiter/image_rond_violet.jpg", UriKind.Relative));
+            imagesPerso[4, 4] = new BitmapImage(new Uri("Images/Entiter/image_rond_orange.jpg", UriKind.Relative));
+        }
+
         public int Score
         {
             get

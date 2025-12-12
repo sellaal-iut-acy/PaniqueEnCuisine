@@ -6,6 +6,8 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace PaniqueEnCuisine
 {
@@ -27,6 +29,8 @@ namespace PaniqueEnCuisine
         public Image current_Image;
         private int height;
         private int width;
+        BitmapImage[,] imagesPerso;
+
 
 
         /* Constructeur */
@@ -45,11 +49,50 @@ namespace PaniqueEnCuisine
 
         private void Charger_images()
         {
-            this.current_Image = new Image();
-            this.current_Image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"/Images/Entiter/{this.nom}_{this.direction}_1.jpg", UriKind.Relative));
+            imagesPerso = new BitmapImage[5, 5];
 
+            // ===== HAUT =====
+            imagesPerso[0, 0] = LoadImage("Images/Entiter/image_fleche_haut_bleu.png");
+            imagesPerso[0, 1] = LoadImage("Images/Entiter/image_fleche_haut_rouge.png");
+            imagesPerso[0, 2] = LoadImage("Images/Entiter/image_fleche_haut_vert.png");
+            imagesPerso[0, 3] = LoadImage("Images/Entiter/image_fleche_haut_violet.png");
+            imagesPerso[0, 4] = LoadImage("Images/Entiter/image_fleche_haut_orange.png");
+
+            // ===== DROITE =====
+            imagesPerso[1, 0] = LoadImage("Images/Entiter/image_fleche_droite_bleu.png");
+            imagesPerso[1, 1] = LoadImage("Images/Entiter/image_fleche_droite_rouge.png");
+            imagesPerso[1, 2] = LoadImage("Images/Entiter/image_fleche_droite_vert.png");
+            imagesPerso[1, 3] = LoadImage("Images/Entiter/image_fleche_droite_violet.png");
+            imagesPerso[1, 4] = LoadImage("Images/Entiter/image_fleche_droite_orange.png");
+
+            // ===== BAS =====
+            imagesPerso[2, 0] = LoadImage("Images/Entiter/image_fleche_bas_bleu.png");
+            imagesPerso[2, 1] = LoadImage("Images/Entiter/image_fleche_bas_rouge.png");
+            imagesPerso[2, 2] = LoadImage("Images/Entiter/image_fleche_bas_vert.png");
+            imagesPerso[2, 3] = LoadImage("Images/Entiter/image_fleche_bas_violet.png");
+            imagesPerso[2, 4] = LoadImage("Images/Entiter/image_fleche_bas_orange.png");
+
+            // ===== GAUCHE =====
+            imagesPerso[3, 0] = LoadImage("Images/Entiter/image_fleche_gauche_bleu.png");
+            imagesPerso[3, 1] = LoadImage("Images/Entiter/image_fleche_gauche_rouge.png");
+            imagesPerso[3, 2] = LoadImage("Images/Entiter/image_fleche_gauche_vert.png");
+            imagesPerso[3, 3] = LoadImage("Images/Entiter/image_fleche_gauche_violet.png");
+            imagesPerso[3, 4] = LoadImage("Images/Entiter/image_fleche_gauche_orange.png");
+
+            // === IDLE (RONDS) ===
+            imagesPerso[4, 0] = LoadImage("Images/Entiter/image_rond_bleu.jpg");
+            imagesPerso[4, 1] = LoadImage("Images/Entiter/image_rond_rouge.jpg");
+            imagesPerso[4, 2] = LoadImage("Images/Entiter/image_rond_vert.jpg");
+            imagesPerso[4, 3] = LoadImage("Images/Entiter/image_rond_violet.jpg");
+            imagesPerso[4, 4] = LoadImage("Images/Entiter/image_rond_orange.jpg");
         }
-        
+
+        private BitmapImage LoadImage(string path)
+        {
+            return new BitmapImage(new Uri(path, UriKind.Relative));
+        }
+
+
         public int Vitesse
         {
             set

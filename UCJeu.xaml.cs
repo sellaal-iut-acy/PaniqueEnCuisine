@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+
 
 namespace PaniqueEnCuisine
 {
@@ -22,13 +24,34 @@ namespace PaniqueEnCuisine
     {
         private MainWindow main;
         public Image joueur = new Image();
+        private DispatcherTimer colorTimer;
+        bool up, down, left, right;
+
         public UCJeu(MainWindow mw)
         {
             InitializeComponent();
             main = mw;
+
             Ajout_Image_Player();
             Ajout_image_Fond();
+
+            colorTimer = new DispatcherTimer();
+            colorTimer.Interval = TimeSpan.FromMilliseconds(400); // vitesse changement couleur
+            colorTimer.Tick += ChangeColor;
+            colorTimer.Start();
         }
+        private void ChangeColor(object sender, EventArgs e)
+        {
+            var p = main.mapManager.playeur;
+
+            // Change la couleur (0 → 4)
+            p.Frame = (p.Frame + 1) % p.imagesPerso.GetLength(1);
+
+            // Met à jour l’image (idle ou mouvement)
+            joueur.Source = p.GetImageJoueur();
+        }
+
+
 
         private void Ajout_image_Fond()
         {
@@ -37,11 +60,14 @@ namespace PaniqueEnCuisine
 
         private void Ajout_Image_Player()
         {
-            joueur.Source = main.mapManager.playeur.current_Image.Source;
+            var p = main.mapManager.playeur;
+
+            joueur.Source = p.GetImageJoueur(); // NOUVEAU
             Set_Tail_Paler();
             Set_Coordoner_Player();
             grille.Children.Add(joueur);
         }
+
 
         private void Set_Coordoner_Player()
         {
@@ -58,40 +84,65 @@ namespace PaniqueEnCuisine
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.KeyDown += move_joueur;
-            Application.Current.MainWindow.KeyUp += move_joueur;
-            
+            Application.Current.MainWindow.KeyUp += stop_joueur;
+
+
         }
 
         public void move_joueur(object sender, KeyEventArgs e)
         {
-            if (e.Key.ToString() == ManagerSettings.KeyDroite.ToString()) 
+            var p = main.mapManager.playeur;
+
+            if (e.Key == ManagerSettings.KeyDroite)
             {
-                Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) + main.mapManager.playeur.Vitesse);
-                Console.WriteLine("Position Right joueur :" + Canvas.GetLeft(joueur));
-            }
-           
-            if (e.Key.ToString() == ManagerSettings.KeyGauche.ToString()) 
-            {
-                main.mapManager.playeur.Left();
-                Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) - main.mapManager.playeur.Vitesse);
-                Console.WriteLine("Position Right joueur :" + Canvas.GetLeft(joueur));
+                right = true;
+                p.Direction = 1;
+                Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) + p.Vitesse);
             }
 
-            if (e.Key.ToString() == ManagerSettings.KeyBas.ToString()) 
+            if (e.Key == ManagerSettings.KeyGauche)
             {
-                main.mapManager.playeur.Down();
-                Canvas.SetTop(joueur, Canvas.GetTop(joueur) + main.mapManager.playeur.Vitesse);
-                Console.WriteLine("Position Right joueur :" + Canvas.GetLeft(joueur));
+                left = true;
+                p.Direction = 3;
+                Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) - p.Vitesse);
             }
 
-            if (e.Key.ToString() == ManagerSettings.KeyHaut.ToString()) 
+            if (e.Key == ManagerSettings.KeyBas)
             {
-                main.mapManager.playeur.Right();
-                Canvas.SetTop(joueur, Canvas.GetTop(joueur) - main.mapManager.playeur.Vitesse);
-                Console.WriteLine("Position Right joueur :" + Canvas.GetLeft(joueur));
+                down = true;
+                p.Direction = 2;
+                Canvas.SetTop(joueur, Canvas.GetTop(joueur) + p.Vitesse);
             }
-            
+
+            if (e.Key == ManagerSettings.KeyHaut)
+            {
+                up = true;
+                p.Direction = 0;
+                Canvas.SetTop(joueur, Canvas.GetTop(joueur) - p.Vitesse);
+            }
+
+            joueur.Source = p.GetImageJoueur();
         }
+        public void stop_joueur(object sender, KeyEventArgs e)
+        {
+            var p = main.mapManager.playeur;
+
+            if (e.Key == ManagerSettings.KeyDroite) right = false;
+            if (e.Key == ManagerSettings.KeyGauche) left = false;
+            if (e.Key == ManagerSettings.KeyBas) down = false;
+            if (e.Key == ManagerSettings.KeyHaut) up = false;
+
+            // 👉 PLUS AUCUNE TOUCHE = IDLE
+            if (!up && !down && !left && !right)
+            {
+                p.Direction = 4; // idle
+                joueur.Source = p.GetImageJoueur();
+            }
+        }
+
+
+
+
     }
 
 }
