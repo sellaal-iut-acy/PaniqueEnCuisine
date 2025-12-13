@@ -27,22 +27,50 @@ namespace PaniqueEnCuisine
         private DispatcherTimer colorTimer;
         bool right , left , up , down ;
         public int dx = 0, dy = 0;
-
-
+        public Button page_suivante = new Button();
+        public Button Page_arriere = new Button();
 
         public UCJeu(MainWindow mw)
         {
+            
             InitializeComponent();
             main = mw;
-
             Ajout_Image_Player();
             Ajout_image_Fond();
-
+            afficher_client();
+            Rectangle rect = new Rectangle();
+            rect.Width = 100;
+            rect.Height = 50;
+            rect.Fill = Brushes.Red;
+            Canvas.SetTop(rect, 240);
+            Canvas.SetLeft(rect, 700);
+            grille.Children.Add(rect);
+            page_suivante.Click += Page_Suivante;
+            Page_arriere.Click += Page_Arriere;
             colorTimer = new DispatcherTimer();
             colorTimer.Interval = TimeSpan.FromMilliseconds(400); // vitesse changement couleur
             colorTimer.Tick += ChangeColor;
             colorTimer.Tick += direction;
             colorTimer.Start();
+        }
+        private void afficher_client()
+        {
+            Console.WriteLine("Affichage des clients");
+            main.mapManager.ManagerClients.AjouterClient(new PNJ("Client1", 50, 50, 2, 100, 1, 50, 100));
+            main.mapManager.ManagerClients.AjouterClient(new PNJ("Client1", 50, 50, 2, 100, 1, 50, 100));
+            main.mapManager.ManagerClients.AjouterClient(new PNJ("Client1", 50, 50, 2, 100, 1, 50, 100));
+            main.mapManager.ManagerClients.afficher_Clients(grille);
+           
+        }
+        private void Page_Arriere(object sender, RoutedEventArgs e)
+        {
+            main.mapManager.playeur.Inventaire.Current_page -= 1;
+            main.mapManager.playeur.Inventaire.afficher_objet_inventaire(main.mapManager.playeur.Inventaire, grille, main.mapManager.playeur.Inventaire.Current_page);
+        }
+
+        private void Page_Suivante(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void direction(object? sender, EventArgs e)
@@ -102,15 +130,15 @@ namespace PaniqueEnCuisine
         public void move_joueur(object sender, KeyEventArgs e)
         {
             var p = main.mapManager.playeur;
-            
 
-            if ((e.Key == ManagerSettings.KeyDroite || e.Key == Key.Right) )
+
+            if ((e.Key == ManagerSettings.KeyDroite || e.Key == Key.Right))
             {
                 Console.WriteLine("droite");
                 right = true;
                 dx += main.mapManager.playeur.Vitesse;
                 p.Direction = 1;
-                
+
             }
 
             if ((e.Key == ManagerSettings.KeyGauche || e.Key == Key.Left))
@@ -119,7 +147,7 @@ namespace PaniqueEnCuisine
                 left = true;
                 dx -= main.mapManager.playeur.Vitesse;
                 p.Direction = 3;
-               
+
             }
 
             if ((e.Key == ManagerSettings.KeyBas || e.Key == Key.Down))
@@ -128,7 +156,7 @@ namespace PaniqueEnCuisine
                 down = true;
                 dy += main.mapManager.playeur.Vitesse;
                 p.Direction = 2;
-                
+
             }
 
             if ((e.Key == ManagerSettings.KeyHaut || e.Key == Key.Up))
@@ -137,14 +165,14 @@ namespace PaniqueEnCuisine
                 up = true;
                 dy -= main.mapManager.playeur.Vitesse;
                 p.Direction = 0;
-                
+
             }
             if (e.Key == Key.E)
             {
                 if (main.mapManager.playeur.Inventaire.Ouvert == false)
-                { 
+                {
+                    main.mapManager.afficher_Inventaire_Player(main.mapManager.playeur, grille, ref page_suivante, ref Page_arriere);
                     main.mapManager.playeur.Inventaire.Ouvert = true;
-                    Inventaire_player();
                     Console.WriteLine("Inventaire ouvert");
                 }
                 else
@@ -152,14 +180,13 @@ namespace PaniqueEnCuisine
                     main.mapManager.playeur.Inventaire.Ouvert = false;
                     Console.WriteLine("Inventaire fermé");
                 }
-                
+
             }
             Canvas.SetTop(joueur, Canvas.GetTop(joueur) + dy);
             Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) + dx);
             joueur.Source = p.GetImageJoueur();
-            
-        }
 
+        }
 
         public void stop_joueur(object sender, KeyEventArgs e)
         {
@@ -179,111 +206,6 @@ namespace PaniqueEnCuisine
                 Console.WriteLine("idle");
                 dx = 0;
                 dy = 0;
-            }
-        }
-        public void teste_inventer_player()
-        {
-            Nouriture pizza = new Nouriture("pizza", "plat");
-            Nouriture burger = new Nouriture("burger", "plat");
-
-            main.mapManager.playeur.ajouter_objet_inventaire(pizza);
-            main.mapManager.playeur.ajouter_objet_inventaire(burger);
-        }
-
-        public void Inventaire_player()
-        {
-            Cree_inventaire();
-            cree_slot_inventaire();
-            teste_inventer_player();
-            afficher_objet_inventaire(main.mapManager.playeur.Inventaire, 1);
-        }
-        public void Cree_inventaire()
-        {
-            Rectangle inventaire = new Rectangle();
-            inventaire.Width = 460;
-            inventaire.Height = 250;
-            inventaire.Fill = Brushes.Gray;
-            Canvas.SetTop(inventaire, 237);
-            Canvas.SetLeft(inventaire, 165);
-            grille.Children.Add(inventaire);
-            Button page_suivante = new Button();
-            page_suivante.Content = ">";
-            page_suivante.Width = 30;
-            page_suivante.Height = 50;
-            page_suivante.Click += Page_suivante_Click;
-            Canvas.SetTop(page_suivante, 386);
-            Canvas.SetLeft(page_suivante, 586);
-            grille.Children.Add(page_suivante);
-            Button page_arriere = new Button();
-            page_arriere.Content = "<";
-            page_arriere.Width = 30;
-            page_arriere.Height = 50;
-            page_arriere.Click += Page_arriere_Click;
-            Canvas.SetTop(page_arriere,386);
-            Canvas.SetLeft(page_arriere, 176);
-            grille.Children.Add(page_arriere);
-        }
-
-        private void Page_suivante_Click(object sender, RoutedEventArgs e)
-        {
-            main.mapManager.playeur.Inventaire.Current_page += 1;
-            afficher_objet_inventaire(main.mapManager.playeur.Inventaire, main.mapManager.playeur.Inventaire.Current_page);
-        }
-
-        private void Page_arriere_Click(object sender, RoutedEventArgs e)
-        {
-            main.mapManager.playeur.Inventaire.Current_page -= 1;
-            afficher_objet_inventaire(main.mapManager.playeur.Inventaire, main.mapManager.playeur.Inventaire.Current_page);
-        }
-
-        public void afficher_objet_inventaire(Inventaire inventaire, int page)
-        {
-            Console.WriteLine($"Affichage de la page {page}");
-            Console.WriteLine($"Nombre d'objets dans l'inventaire : {inventaire.Liste_nourriture.Count}");
-
-            int nb_objet = 0;
-          
-            for (int c = 0; c < 6*(page-1)+6 && c <= inventaire.Liste_nourriture.Count-1; c++)
-            {
-                
-                while(nb_objet<6)
-                {
-                    if (nb_objet > inventaire.Liste_nourriture.Count-1)
-                        break;
-                    Image image = new Image();
-                    image.Source = inventaire.Liste_nourriture[nb_objet].Image.Source;
-                    Canvas.SetTop(image, 260 + (c* 63));
-                    Canvas.SetLeft(image, 213 + (nb_objet* 63));
-                    grille.Children.Add(image);
-                    Console.WriteLine($"Position de l'objet : Top {Canvas.GetTop(inventaire.Liste_nourriture[nb_objet].Image)} Left {Canvas.GetLeft(inventaire.Liste_nourriture[c].Image)}");
-                    nb_objet++;
-                }
-              
-            }            
-        }
-
-        public void cree_slot_inventaire()
-        {
-            for (int l=0; l < 3; l++)
-            {
-                for (int c=0; c < 6; c++)
-                {
-                    Rectangle slot = new Rectangle();
-                    slot.Width = 50;
-                    slot.Height = 50;
-                    Canvas.SetTop(slot, 260 +(l*63));
-                    Canvas.SetLeft(slot, 213 + (c*63));
-                    slot.Fill = Brushes.LightGray;
-                    grille.Children.Add(slot);
-                }
-            }
-        }
-        public void Fermer_inventaire()
-        {
-            foreach( UIElementCollection children in grille.Children )
-            {
-                if (children.GetType() == typeof(Rectangle))
-                    Console.WriteLine($"{children.GetType().IsVisible} type is {children.GetType()}");
             }
         }
 

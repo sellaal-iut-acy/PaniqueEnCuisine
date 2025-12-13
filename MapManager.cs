@@ -3,46 +3,78 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 
 namespace PaniqueEnCuisine
 {
     public class MapManager
     {
-       public Joueur playeur;
-        private List<PNJ> pnjs;
-        public ImageBrush fond ;
-        private ManagerSettings managerSettings;
-        
-       
-        
+        public Joueur playeur;
+        public ImageBrush fond = new ImageBrush();
+        private ManagerSettings managerSettings = new ManagerSettings();
+        private Canvas grille = new Canvas();
+        private ManagerClients managerClients = new ManagerClients (new List<PNJ>());
 
-        public MapManager(Joueur playeur, int nb_PNJs)
+        public MapManager(Joueur playeur)
         {
             this.playeur = playeur;
-            Liste_PNJs(nb_PNJs);
             this.fond = new ImageBrush(new BitmapImage(new Uri("D:\\SAE\\Images\\Image_Fond_MainMenu.png", UriKind.Relative)));
         }
 
-        private void Liste_PNJs( int nb_PNJs)
+        
+        public void afficher_Inventaire_Player(Joueur playeur,Canvas grille,ref Button page_suivante,ref Button Page_arriere)
         {
-            this.pnjs = new List<PNJ>();
-            for (int i = 0; i < nb_PNJs; i++)
-            {
-                PNJ pnj = new PNJ("PNJ" + i, 100 * i, 100, 2, 100, 1,50,100);
-                this.pnjs.Add(pnj);
-            }
+            this.playeur.Inventaire.Inventaire_player(playeur, grille,ref page_suivante,ref Page_arriere);
         }
+
         public void Run()
         {
 
         }
-        
- 
+        public Canvas Grille
+        {
+            get
+            {
+                return this.grille;
+            }
+
+            set
+            {
+                this.grille = value;
+            }
+        }
+
+        public ManagerSettings ManagerSettings
+        {
+            get
+            {
+                return this.managerSettings;
+            }
+
+            set
+            {
+                this.managerSettings = value;
+            }
+        }
+
+        internal ManagerClients ManagerClients
+        {
+            get
+            {
+                return this.managerClients;
+            }
+
+            set
+            {
+                this.managerClients = value;
+            }
+        }
     }
 }
 

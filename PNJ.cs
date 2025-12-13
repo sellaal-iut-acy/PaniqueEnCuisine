@@ -23,6 +23,37 @@ namespace PaniqueEnCuisine
             this.Nom = nom;
         }
 
+        public void Placer_PNJ(double x, double y)
+        {
+            Set_Position(x, y,this.Vitesse);
+        }
+        public void Afficher_PNJ( Canvas grille,int width, int height)
+        {
+            Placer_PNJ(this.X, this.Y);
+            Set_taile_Image(width, height);
+            grille.Children.Add(this.current_Image);
+        }
+        public void Afficher_PNJ(Canvas grille, int width, int height ,int x , int  y)
+        {
+            Set_taile_Image(width, height);
+            Set_Position(x, y);
+            grille.Children.Add(this.current_Image);
+        }
+        public void Set_taile_Image(int width, int height)
+        {
+            this.current_Image.Width = width ;
+            this.current_Image.Height = height ;
+        }
+
+        public void Set_Position(double x, double y, int vitesse =0 )
+        {
+            Image image = new Image();
+            this.X = x;
+            this.Y = y;
+            Canvas.SetLeft(this.current_Image, this.X + vitesse );
+            Canvas.SetTop(this.current_Image, this.Y + vitesse);
+        }
+
         public int Satisfaction
         {
             get

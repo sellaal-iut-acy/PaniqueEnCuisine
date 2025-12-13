@@ -15,7 +15,7 @@ namespace PaniqueEnCuisine
 {
     public partial class MainWindow : Window
     {
-        public MapManager mapManager = new MapManager(new Joueur("player", 100, 100, 2, 2,100,200), 3);
+        public MapManager mapManager = new MapManager(new Joueur("player", 100, 100, 2, 2,100,200));
         public MainWindow()
         {
             InitializeComponent();

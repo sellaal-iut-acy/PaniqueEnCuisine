@@ -109,7 +109,9 @@
     <Resource Include="Images\image_logo_settings_skin.png" />
     <Resource Include="Images\image_logo_settings_son.png" />
     <Resource Include="Images\image_logo_settings_touches.png" />
-    <Resource Include="player_Aucun_1.jpg" />
+    <Resource Include="player_Aucun_1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
