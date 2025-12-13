@@ -9,16 +9,15 @@ namespace PaniqueEnCuisine
 {
     public class Nouriture
     {
-        private string _nom;
-        private Image _image;
-        private int _temps_cuisson;
+        private string _nom = "";
+        private Image _image = new Image();
+        private int _temps_cuisson = 0;
       
 
-        public Nouriture(string nom, Image image, string type)
+        public Nouriture(string nom, string type)
         {
             this._nom = nom;
-            this._image = image;
-            this._image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"/Images/Nourriture/{nom}.png", UriKind.Relative));
+            this._image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"/Images/food/{nom}.png", UriKind.Relative));
   
         }
 

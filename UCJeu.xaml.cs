@@ -76,7 +76,7 @@ namespace PaniqueEnCuisine
             Set_Tail_Paler();
             Set_Coordoner_Player();
             grille.Children.Add(joueur);
-            Inventaire_player();
+            
 
         }
         private void Set_Coordoner_Player()
@@ -139,6 +139,21 @@ namespace PaniqueEnCuisine
                 p.Direction = 0;
                 
             }
+            if (e.Key == Key.E)
+            {
+                if (main.mapManager.playeur.Inventaire.Ouvert == false)
+                { 
+                    main.mapManager.playeur.Inventaire.Ouvert = true;
+                    Inventaire_player();
+                    Console.WriteLine("Inventaire ouvert");
+                }
+                else
+                {
+                    main.mapManager.playeur.Inventaire.Ouvert = false;
+                    Console.WriteLine("Inventaire fermé");
+                }
+                
+            }
             Canvas.SetTop(joueur, Canvas.GetTop(joueur) + dy);
             Canvas.SetLeft(joueur, Canvas.GetLeft(joueur) + dx);
             joueur.Source = p.GetImageJoueur();
@@ -166,12 +181,21 @@ namespace PaniqueEnCuisine
                 dy = 0;
             }
         }
+        public void teste_inventer_player()
+        {
+            Nouriture pizza = new Nouriture("pizza", "plat");
+            Nouriture burger = new Nouriture("burger", "plat");
+
+            main.mapManager.playeur.ajouter_objet_inventaire(pizza);
+            main.mapManager.playeur.ajouter_objet_inventaire(burger);
+        }
 
         public void Inventaire_player()
         {
             Cree_inventaire();
             cree_slot_inventaire();
-
+            teste_inventer_player();
+            afficher_objet_inventaire(main.mapManager.playeur.Inventaire, 1);
         }
         public void Cree_inventaire()
         {
@@ -214,17 +238,28 @@ namespace PaniqueEnCuisine
 
         public void afficher_objet_inventaire(Inventaire inventaire, int page)
         {
-            for (int l = 0; l < 3; l++)
+            Console.WriteLine($"Affichage de la page {page}");
+            Console.WriteLine($"Nombre d'objets dans l'inventaire : {inventaire.Liste_nourriture.Count}");
+
+            int nb_objet = 0;
+          
+            for (int c = 0; c < 6*(page-1)+6 && c <= inventaire.Liste_nourriture.Count-1; c++)
             {
-                for (int c = 6*page; c < 6*page+6; c++)
+                
+                while(nb_objet<6)
                 {
-                    if (c >= inventaire.Liste_nourriture.Count)
+                    if (nb_objet > inventaire.Liste_nourriture.Count-1)
                         break;
-                    grille.Children.Add(inventaire.Liste_nourriture[c].Image);
-                    Canvas.SetLeft(inventaire.Liste_nourriture[c].Image, 260 + (l * 63));
-                    Canvas.SetLeft(inventaire.Liste_nourriture[c].Image, 213 + ((c%6+1) * 63));
+                    Image image = new Image();
+                    image.Source = inventaire.Liste_nourriture[nb_objet].Image.Source;
+                    Canvas.SetTop(image, 260 + (c* 63));
+                    Canvas.SetLeft(image, 213 + (nb_objet* 63));
+                    grille.Children.Add(image);
+                    Console.WriteLine($"Position de l'objet : Top {Canvas.GetTop(inventaire.Liste_nourriture[nb_objet].Image)} Left {Canvas.GetLeft(inventaire.Liste_nourriture[c].Image)}");
+                    nb_objet++;
                 }
-            }
+              
+            }            
         }
 
         public void cree_slot_inventaire()
@@ -243,7 +278,14 @@ namespace PaniqueEnCuisine
                 }
             }
         }
-
+        public void Fermer_inventaire()
+        {
+            foreach( UIElementCollection children in grille.Children )
+            {
+                if (children.GetType() == typeof(Rectangle))
+                    Console.WriteLine($"{children.GetType().IsVisible} type is {children.GetType()}");
+            }
+        }
 
     }
 

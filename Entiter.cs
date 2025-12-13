@@ -20,16 +20,16 @@ namespace PaniqueEnCuisine
      */
     {
         /* Attributs */
-        private string nom;
-        private double x;
-        private double y;
-        private int vitesse;
-        private int vitesseCourse;
+        private string nom ="";
+        private double x=0 ;
+        private double y  =0 ;
+        private int vitesse=0 ;
+        private int vitesseCourse = 0 ;
         private string direction;
-        public Image current_Image;
-        private int height;
-        private int width;
-        BitmapImage[,] imagesPerso;
+        public Image current_Image = new Image();
+        private int height = 0 ;
+        private int width =0;
+        BitmapImage[,] imagesPerso = new BitmapImage[4,4];
 
 
 

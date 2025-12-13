@@ -35,6 +35,8 @@
     <None Remove="Images\Entiter\image_rond_vert.jpg" />
     <None Remove="Images\Entiter\image_rond_violet.jpg" />
     <None Remove="Images\Entiter\player_Aucun_1.jpg" />
+    <None Remove="Images\food\burger.png" />
+    <None Remove="Images\food\pizza.png" />
     <None Remove="Images\Image_Fond_MainMenu.png" />
     <None Remove="Images\image_fond_MenuRegles.png" />
     <None Remove="Images\image_fond_MenuSkin.png" />
@@ -91,6 +93,12 @@
     <Resource Include="Images\Entiter\player_Aucun_1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\food\burger.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\food\pizza.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Image_Fond_MainMenu.png" />
     <Resource Include="Images\image_fond_MenuRegles.png" />
     <Resource Include="Images\image_fond_MenuSkin1.png" />
@@ -102,6 +110,12 @@
     <Resource Include="Images\image_logo_settings_son.png" />
     <Resource Include="Images\image_logo_settings_touches.png" />
     <Resource Include="player_Aucun_1.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Nouriture.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
 </Project>

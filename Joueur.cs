@@ -10,10 +10,10 @@ namespace PaniqueEnCuisine
 {
     public class Joueur : EntiterMobile
     {
-        private int _score;
-        private Inventaire inventaire;
-        private int _main;
-        public BitmapImage[,] imagesPerso;
+        private int _score = 0;
+        private Inventaire inventaire = new Inventaire(new List<Nouriture>(),1);
+        private int _main = 0;
+        public BitmapImage[,] imagesPerso = new BitmapImage[4,4];
 
         public int Direction { get; set; } = 4; // 0=Haut,1=Droite,2=Bas,3=Gauche,4=Idle
         public int Frame { get; set; } = 0;     // 0..4 (bleu → orange)
@@ -53,7 +53,7 @@ namespace PaniqueEnCuisine
         }
         public void ajouter_objet_inventaire(Nouriture nouriture)
         {
-            this.inventaire.
+            this.inventaire.Liste_nourriture.Add(nouriture);
         }
         public int Score
         {
@@ -92,7 +92,6 @@ namespace PaniqueEnCuisine
                 this.inventaire = value;
             }
         }
-
         public void UP()
         {
             this.Y -= this.Vitesse;
