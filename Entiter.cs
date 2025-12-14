@@ -52,7 +52,7 @@ namespace PaniqueEnCuisine
         public void Set_image()
         {
             Console.WriteLine("Chemin de l'image par défaut définie pour l'entité mobile.");
-            this.current_Image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"D:/SAE/player_Aucun_1.jpg", UriKind.Absolute));
+            this.current_Image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("player_Aucun_1.jpg", UriKind.Relative));
         }
 
         private void Charger_images()

@@ -11,16 +11,16 @@ namespace PaniqueEnCuisine
     public class PNJ : EntiterMobile
     {
         private List<Nouriture> _Comande = new List<Nouriture>();
-        private int _satisfaction;
-        private int _exigence;
-        private bool _servi;
-        private string Nom;
+        private int _satisfaction =0;
+        private int _exigence = 0;
+        private bool _servi = false;
+        private string nom = "";
 
         public PNJ(string nom , int x  , int y , int vitesse, int satisfaction, int exigence, int Widht,int Height) : base( x, y,vitesse,nom, Height,Widht)
         {
             this._satisfaction = satisfaction;
             this._exigence = exigence;
-            this.Nom = nom;
+            this.nom = nom;
         }
 
         public void Placer_PNJ(double x, double y)
@@ -37,6 +37,7 @@ namespace PaniqueEnCuisine
         {
             Set_taile_Image(width, height);
             Set_Position(x, y);
+            this.current_Image.Tag = "PNJ";
             grille.Children.Add(this.current_Image);
         }
         public void Set_taile_Image(int width, int height)
@@ -111,10 +112,10 @@ namespace PaniqueEnCuisine
         //           this.Exigence == pNJ.Exigence &&
         //           EqualityComparer<List<Nouriture>>.Default.Equals(this.Comande, pNJ.Comande);
         //}
-        private bool Servi
+        public bool Servi
         {
             get 
-            { 
+            {
                 return _servi; 
             }
             set 
@@ -122,9 +123,23 @@ namespace PaniqueEnCuisine
                 _servi = value; 
             }
         }
-        private bool Est_Servi()
+
+        public string Nom
         {
-            return this._servi;
+            get
+            {
+                return this.nom;
+            }
+
+            set
+            {
+                this.nom = value;
+            }
+        }
+
+        public bool Est_Servi()
+        {
+            return this.Servi;
         }
     }
 }

@@ -47,5 +47,30 @@ namespace PaniqueEnCuisine
                 espace_entre_clients += (int)client.Curenent_Image.Width + 20 ;
             }
         }
+        public void move_PNJ(PNJ PNJ,Image img_pnj)
+        {
+            Console.WriteLine($"Déplacement du PNJ  de {PNJ.Vitesse} pixels vers le bas.");
+            Canvas.SetTop(img_pnj, Canvas.GetTop(img_pnj) + PNJ.Vitesse);
+        }
+
+        public void move_all_PNJ(Canvas grille)
+        {
+            ManagerColision colision = new ManagerColision();
+            foreach (PNJ client in this.clients)
+            {
+                if (client.Est_Servi()== true)
+                {
+                    Console.WriteLine("Client servi, il ne rentre plus en collision.");
+                    move_PNJ(client, client.Curenent_Image);
+                }
+                else 
+                {
+                    move_PNJ(client, client.Curenent_Image);
+                    colision.VerifierColision_PNJ_To_PNJ(grille, client.Curenent_Image, client);
+                    colision.VerifierColision(grille, client.Curenent_Image, client);
+                }
+                
+            }
+        }
     }
 }

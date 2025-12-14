@@ -38,13 +38,7 @@ namespace PaniqueEnCuisine
             Ajout_Image_Player();
             Ajout_image_Fond();
             afficher_client();
-            Rectangle rect = new Rectangle();
-            rect.Width = 100;
-            rect.Height = 50;
-            rect.Fill = Brushes.Red;
-            Canvas.SetTop(rect, 240);
-            Canvas.SetLeft(rect, 700);
-            grille.Children.Add(rect);
+            Rectangle_arret_Client();
             page_suivante.Click += Page_Suivante;
             Page_arriere.Click += Page_Arriere;
             colorTimer = new DispatcherTimer();
@@ -53,10 +47,34 @@ namespace PaniqueEnCuisine
             colorTimer.Tick += direction;
             colorTimer.Start();
         }
+        private void File_Client()
+        {
+            main.mapManager.ManagerClients.move_all_PNJ(grille) ;
+        }
+
+        private void Rectangle_arret_Client()
+        {
+            Rectangle rect = new Rectangle();
+            rect.Width = 100;
+            rect.Height = 50;
+            rect.Fill = Brushes.Red;
+            rect.Tag = "commande";
+            rect.MouseDown += servie;
+            Canvas.SetTop(rect, 240);
+            Canvas.SetLeft(rect, 700);
+            grille.Children.Add(rect);
+        }
+
+        private void servie(object sender, MouseButtonEventArgs e)
+        {
+            Console.WriteLine("Client servi");
+            main.mapManager.ManagerClients.Clients[0].Servi = true;
+        }
+
         private void afficher_client()
         {
             Console.WriteLine("Affichage des clients");
-            main.mapManager.ManagerClients.AjouterClient(new PNJ("Client1", 50, 50, 2, 100, 1, 50, 100));
+            main.mapManager.ManagerClients.AjouterClient(new PNJ("Client1", 50, 50, 10, 100, 1, 50, 100));
             main.mapManager.ManagerClients.AjouterClient(new PNJ("Client1", 50, 50, 2, 100, 1, 50, 100));
             main.mapManager.ManagerClients.AjouterClient(new PNJ("Client1", 50, 50, 2, 100, 1, 50, 100));
             main.mapManager.ManagerClients.afficher_Clients(grille);
@@ -75,7 +93,7 @@ namespace PaniqueEnCuisine
 
         private void direction(object? sender, EventArgs e)
         {
-            
+            File_Client();
         }
 
         private void ChangeColor(object sender, EventArgs e)
