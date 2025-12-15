@@ -68,15 +68,18 @@ namespace PaniqueEnCuisine
         private void servie(object sender, MouseButtonEventArgs e)
         {
             Console.WriteLine("Client servi");
-            main.mapManager.ManagerClients.Clients[0].Servi = true;
+            main.mapManager.ManagerClients.Clients[main.mapManager.ManagerClients.Clients.Count-1].Servi = true;
+            //main.mapManager.ManagerClients.Clients_servie.Add(main.mapManager.ManagerClients.Clients[main.mapManager.ManagerClients.Clients.Count-1 ]);
+            //main.mapManager.ManagerClients.Clients.Remove(main.mapManager.ManagerClients.Clients[main.mapManager.ManagerClients.Clients.Count-1]);
+
         }
 
         private void afficher_client()
         {
             Console.WriteLine("Affichage des clients");
-            main.mapManager.ManagerClients.AjouterClient(new PNJ("Client1", 50, 50, 10, 100, 1, 50, 100));
             main.mapManager.ManagerClients.AjouterClient(new PNJ("Client1", 50, 50, 2, 100, 1, 50, 100));
-            main.mapManager.ManagerClients.AjouterClient(new PNJ("Client1", 50, 50, 2, 100, 1, 50, 100));
+            main.mapManager.ManagerClients.AjouterClient(new PNJ("Client2", 50, 50, 2, 100, 1, 50, 100));
+            main.mapManager.ManagerClients.AjouterClient(new PNJ("Client3", 50, 50, 2, 100, 1, 50, 100));
             main.mapManager.ManagerClients.afficher_Clients(grille);
            
         }

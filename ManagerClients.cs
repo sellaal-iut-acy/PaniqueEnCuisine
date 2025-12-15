@@ -10,6 +10,7 @@ namespace PaniqueEnCuisine
     internal class ManagerClients
     {
         private List<PNJ> clients = new List<PNJ>();
+        private List<PNJ> clients_servie = new List<PNJ>();
 
         public List<PNJ> Clients
         {
@@ -24,13 +25,28 @@ namespace PaniqueEnCuisine
             }
         }
 
+        public List<PNJ> Clients_servie
+        {
+            get
+            {
+                return this.clients_servie;
+            }
+
+            set
+            {
+                this.clients_servie = value;
+            }
+        }
+
         public ManagerClients(List<PNJ> clients)
         {
             this.clients = clients;
         }
         public void AjouterClient(PNJ client)
         {
-           this.clients.Add(client);
+            client.current_Image.Tag = "PNJ";
+            client.current_Image.Name = client.Nom;
+            this.clients.Add(client);
         }
         public void RetirerClient(PNJ client)
         {
@@ -56,21 +72,32 @@ namespace PaniqueEnCuisine
         public void move_all_PNJ(Canvas grille)
         {
             ManagerColision colision = new ManagerColision();
-            foreach (PNJ client in this.clients)
+            /*
+            foreach (PNJ client in this.clients_servie)
             {
-                if (client.Est_Servi()== true)
-                {
-                    Console.WriteLine("Client servi, il ne rentre plus en collision.");
-                    move_PNJ(client, client.Curenent_Image);
-                }
-                else 
-                {
-                    move_PNJ(client, client.Curenent_Image);
-                    colision.VerifierColision_PNJ_To_PNJ(grille, client.Curenent_Image, client);
-                    colision.VerifierColision(grille, client.Curenent_Image, client);
-                }
-                
+
+                Console.WriteLine($"Le PNJ  {client.Nom}avance.");
+                move_PNJ(client, client.Curenent_Image);
+
+
             }
+            */
+            foreach (PNJ client in this.Clients)
+            {
+                Console.WriteLine($"Vérification de la collision pour le PNJ {client.Nom}.");
+                if (colision.VerifierColision(grille,client.Curenent_Image, client) || colision.VerifierColision_PNJ_To_PNJ(grille,client) || client.Est_Servi())
+                {
+                    Console.WriteLine($"Le PNJ  {client.Nom} avance .");
+                    move_PNJ(client, client.Curenent_Image);
+                }   
+                else
+                    Console.WriteLine("Le PNJ ne peut pas avancer en raison d'une collision.");
+
+            
+            }
+
+            
         }
+
     }
 }

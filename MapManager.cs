@@ -24,7 +24,7 @@ namespace PaniqueEnCuisine
         public MapManager(Joueur playeur)
         {
             this.playeur = playeur;
-            this.fond = new ImageBrush(new BitmapImage(new Uri("D:\\SAE\\Images\\Image_Fond_MainMenu.png", UriKind.Relative)));
+            this.fond = new ImageBrush(new BitmapImage(new Uri("P:\\Nouveau dossier\\Images\\Image_Fond_MainMenu.png", UriKind.Relative)));
         }
 
         
