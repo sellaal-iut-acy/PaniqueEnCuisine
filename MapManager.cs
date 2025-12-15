@@ -24,7 +24,7 @@ namespace PaniqueEnCuisine
         public MapManager(Joueur playeur)
         {
             this.playeur = playeur;
-            this.fond = new ImageBrush(new BitmapImage(new Uri("D:\\SAE\\Images\\Image_Fond_MainMenu.png", UriKind.Relative)));
+            this.fond = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/PaniqueEnCuisine;component/Images/Image_Fond_MainMenu.png", UriKind.Absolute)));
         }
 
         
@@ -77,5 +77,3 @@ namespace PaniqueEnCuisine
         }
     }
 }
-
-// benoit.dirad@univ-smb.fr
