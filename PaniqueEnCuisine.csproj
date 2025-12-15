@@ -53,6 +53,8 @@
     <None Remove="Images\Niveau\image_fond_niveau2.png" />
     <None Remove="Images\Niveau\image_fond_niveau3.png" />
     <None Remove="Images\Niveau\image_fond_niveau4.png" />
+    <None Remove="Images\Outils\four.png" />
+    <None Remove="Images\Outils\frigo.png" />
     <None Remove="player_Aucun_1.jpg" />
     <None Remove="Sons\Mouse Click 1.wav" />
     <None Remove="Sons\son_clic.mp3" />
@@ -117,10 +119,6 @@
     <Resource Include="Images\image_logo_settings_skin.png" />
     <Resource Include="Images\image_logo_settings_son.png" />
     <Resource Include="Images\image_logo_settings_touches.png" />
-    <Resource Include="Images\Niveau\image_fond_niveau1.png" />
-    <Resource Include="Images\Niveau\image_fond_niveau2.png" />
-    <Resource Include="Images\Niveau\image_fond_niveau3.png" />
-    <Resource Include="Images\Niveau\image_fond_niveau4.png" />
     <Resource Include="player_Aucun_1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

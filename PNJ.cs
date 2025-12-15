@@ -15,29 +15,31 @@ namespace PaniqueEnCuisine
         private int _exigence = 0;
         private bool _servi = false;
         private string nom = "";
+        private bool Rien_devant = false;
 
         public PNJ(string nom , int x  , int y , int vitesse, int satisfaction, int exigence, int Widht,int Height) : base( x, y,vitesse,nom, Height,Widht)
         {
             this._satisfaction = satisfaction;
             this._exigence = exigence;
             this.nom = nom;
+            this.current_Image.Tag = "PNJ";
+            Console.WriteLine($"PNJ {nom} créé aux coordonnées ({x}, {y}) avec une vitesse de {vitesse}, une satisfaction de {satisfaction} et une exigence de {exigence} tage est {this.Curenent_Image.Tag}.");
         }
 
         public void Placer_PNJ(double x, double y)
         {
             Set_Position(x, y,this.Vitesse);
         }
-        public void Afficher_PNJ( Canvas grille,int width, int height)
+        public void Afficher_PNJ( Canvas grille)
         {
             Placer_PNJ(this.X, this.Y);
-            Set_taile_Image(width, height);
+            Set_taile_Image(this.Width, this.Height);
             grille.Children.Add(this.current_Image);
         }
         public void Afficher_PNJ(Canvas grille, int width, int height ,int x , int  y)
         {
             Set_taile_Image(width, height);
             Set_Position(x, y);
-            this.current_Image.Tag = "PNJ";
             grille.Children.Add(this.current_Image);
         }
         public void Set_taile_Image(int width, int height)
@@ -134,6 +136,19 @@ namespace PaniqueEnCuisine
             set
             {
                 this.nom = value;
+            }
+        }
+
+        public bool Rien_devant1
+        {
+            get
+            {
+                return this.Rien_devant;
+            }
+
+            set
+            {
+                this.Rien_devant = value;
             }
         }
 

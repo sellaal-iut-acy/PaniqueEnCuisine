@@ -43,7 +43,7 @@ namespace PaniqueEnCuisine
             Ajout_Image_Player();
             afficher_client();
             Rectangle_arret_Client();
-
+            Ajouter_outlis_cuisine();
 
             page_suivante.Click += Page_Suivante;
             page_arriere.Click += Page_Arriere;
@@ -73,6 +73,8 @@ namespace PaniqueEnCuisine
 
             grille.Background = brush;
         }
+
+
 
         private void Ajout_Image_Player()
         {
@@ -250,7 +252,15 @@ namespace PaniqueEnCuisine
 
         private void servie(object sender, MouseButtonEventArgs e)
         {
-            main.mapManager.ManagerClients.Clients[0].Servi = true;
+            Console.WriteLine("Client servi !");
+            main.mapManager.ManagerClients.Clients[main.mapManager.ManagerClients.Clients.Count - 1].Servi = true;
+            foreach (PNJ pnj in main.mapManager.ManagerClients.Clients)
+            {
+               pnj.Rien_devant1 = true;
+            }
+            //main.mapManager.ManagerClients.Clients.Remove(main.mapManager.ManagerClients.Clients[main.mapManager.ManagerClients.Clients.Count - 1]);
+            //grille.Children.Remove(main.mapManager.ManagerClients.Clients[main.mapManager.ManagerClients.Clients.Count - 1].Curenent_Image);
+            //main.mapManager.ManagerClients.move_all_PNJ(grille);
         }
 
         private void afficher_client()
@@ -274,6 +284,25 @@ namespace PaniqueEnCuisine
         private void Page_Suivante(object sender, RoutedEventArgs e)
         {
             main.mapManager.playeur.Inventaire.Current_page++;
+        }
+
+        private void Ajouter_outlis_cuisine()
+        { 
+            main.mapManager.ManagerOutilsCuisine.AjouterOutil(new Frigo("Frigo", 300, 200, 100, 150, 0, 50));
+            main.mapManager.ManagerOutilsCuisine.AjouterOutil(new Foure("four", 500, 200, 100, 50, 0, 50));
+            main.mapManager.ManagerOutilsCuisine.Outils[0].Img_outi.MouseDown += ouvire_frigo;
+            main.mapManager.ManagerOutilsCuisine.Outils[1].Img_outi.MouseDown += ouvire_foure;
+            main.mapManager.ManagerOutilsCuisine.AfficherOutilsCuisine(grille);
+        }
+
+        private void ouvire_foure(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ouvire_frigo(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -21,6 +21,7 @@ namespace PaniqueEnCuisine
         private Canvas grille = new Canvas();
         private ManagerClients managerClients = new ManagerClients (new List<PNJ>());
         public int niveau_actuel = 1;
+        private ManagerOutilsCuisine managerOutilsCuisine = new ManagerOutilsCuisine (new List<OutilsCusine>());
 
         public MapManager(Joueur playeur)
         {
@@ -74,6 +75,19 @@ namespace PaniqueEnCuisine
             set
             {
                 this.managerClients = value;
+            }
+        }
+
+        internal ManagerOutilsCuisine ManagerOutilsCuisine
+        {
+            get
+            {
+                return this.managerOutilsCuisine;
+            }
+
+            set
+            {
+                this.managerOutilsCuisine = value;
             }
         }
     }
