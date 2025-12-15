@@ -20,14 +20,15 @@ namespace PaniqueEnCuisine
         private ManagerSettings managerSettings = new ManagerSettings();
         private Canvas grille = new Canvas();
         private ManagerClients managerClients = new ManagerClients (new List<PNJ>());
+        public int niveau_actuel = 1;
 
         public MapManager(Joueur playeur)
         {
             this.playeur = playeur;
-            this.fond = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/PaniqueEnCuisine;component/Images/Image_Fond_MainMenu.png", UriKind.Absolute)));
+
+            this.fond = new ImageBrush(new BitmapImage(new Uri($"Images/Niveau/image_fond_niveau{niveau_actuel}.png", UriKind.Relative)));
         }
 
-        
         public void afficher_Inventaire_Player(Joueur playeur,Canvas grille,ref Button page_suivante,ref Button Page_arriere)
         {
             this.playeur.Inventaire.Inventaire_player(playeur, grille,ref page_suivante,ref Page_arriere);

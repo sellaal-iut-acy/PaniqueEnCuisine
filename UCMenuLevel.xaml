@@ -7,7 +7,42 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Button x:Name="B_Retour" Content="Retour" HorizontalAlignment="Left" Margin="620,10,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Retour_Click"/>
+        <Image Source="/Images/image_fond_menu_level.png" Stretch="Fill"/>
+        <Button x:Name="B_Retour" Content="Retour" HorizontalAlignment="Left" Margin="84,71,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Retour_Click"/>
+
+        <Button x:Name="B_Niveaux1" Content="" HorizontalAlignment="Left" Margin="436,95,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.732,3.657" Height="60" Width="78" BorderThickness="1,1,1,1" Click="Button_Niveau1_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/image_logo_settings_niveau.png"/>
+            </Button.Background>
+
+        </Button>
+
+        <Button x:Name="B_Niveaux2" Content="" HorizontalAlignment="Left" Margin="530,95,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.732,3.657" Height="60" Width="78" BorderThickness="1,1,1,1" Click="Button_Niveau2_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/image_logo_settings_niveau.png"/>
+            </Button.Background>
+
+        </Button>
+
+        <Button x:Name="B_Niveaux3" Content="" HorizontalAlignment="Left" Margin="436,213,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.732,3.657" Height="60" Width="78" BorderThickness="1,1,1,1" Click="Button_Niveau3_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/image_logo_settings_niveau.png"/>
+            </Button.Background>
+
+        </Button>
+
+        <Button x:Name="B_Niveaux4" Content="" HorizontalAlignment="Left" Margin="530,213,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.732,3.657" Height="60" Width="78" BorderThickness="1,1,1,1" Click="Button_Niveau4_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/image_logo_settings_niveau.png"/>
+            </Button.Background>
+
+        </Button>
+
+        <Image x:Name="ImagePreviewNiveau" Stretch="Uniform" Margin="36,138,497,162" Width="266.666666666667" Height="150"/>
+
+        <Button x:Name="B_Select" Content="Selectionner" HorizontalAlignment="Left" Margin="84,326,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="Gray" BorderBrush="#FF444343" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Select_Click"/>
+
+
 
     </Grid>
 </UserControl>

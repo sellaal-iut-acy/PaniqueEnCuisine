@@ -19,14 +19,12 @@ using System.Windows.Shapes;
 
 namespace PaniqueEnCuisine
 {
-    /// <summary>
-    /// Logique d'interaction pour UCMenu.xaml
-    /// </summary>
-    public partial class UCMenu : UserControl
+    
+    public partial class UCMainMenu : UserControl
     {
         private MainWindow main;
 
-        public UCMenu(MainWindow mw)
+        public UCMainMenu(MainWindow mw)
         {
             InitializeComponent();
             main = mw;
@@ -65,7 +63,7 @@ namespace PaniqueEnCuisine
         {
             Audio.PlaySFX("Sons/son_clic.wav");
 
-            main.ChangeScreen(new UCParametres(main));
+            main.ChangeScreen(new UCMenuPlus(main));
         }
     }
 

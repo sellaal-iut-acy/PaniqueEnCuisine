@@ -19,7 +19,7 @@ namespace PaniqueEnCuisine
         public MainWindow()
         {
             InitializeComponent();
-            ChangeScreen(new UCMenu(this));
+            ChangeScreen(new UCMainMenu(this));
             Audio.PlayMusic("Sons/son_music_loop.wav", true);
         }
 
