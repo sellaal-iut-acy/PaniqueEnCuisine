@@ -99,7 +99,9 @@
     <Resource Include="Images\food\pizza.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\Image_Fond_MainMenu.png" />
+    <Resource Include="Images\Image_Fond_MainMenu.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\image_fond_MenuRegles.png" />
     <Resource Include="Images\image_fond_MenuSkin1.png" />
     <Resource Include="Images\image_fond_MenuSon.jpg" />
