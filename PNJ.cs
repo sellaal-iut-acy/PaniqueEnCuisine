@@ -15,6 +15,7 @@ namespace PaniqueEnCuisine
         private int _exigence = 0;
         private bool _servi = false;
         private string nom = "";
+        private bool Rien_devant = false;
 
         public PNJ(string nom , int x  , int y , int vitesse, int satisfaction, int exigence, int Widht,int Height) : base( x, y,vitesse,nom, Height,Widht)
         {
@@ -135,6 +136,19 @@ namespace PaniqueEnCuisine
             set
             {
                 this.nom = value;
+            }
+        }
+
+        public bool Rien_devant1
+        {
+            get
+            {
+                return this.Rien_devant;
+            }
+
+            set
+            {
+                this.Rien_devant = value;
             }
         }
 

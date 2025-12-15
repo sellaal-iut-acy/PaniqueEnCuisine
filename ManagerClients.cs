@@ -85,10 +85,10 @@ namespace PaniqueEnCuisine
             foreach (PNJ client in this.Clients)
             {
                 Console.WriteLine($"Vérification de la collision pour le PNJ {client.Nom}.");
-                if (colision.VerifierColision(grille,client.Curenent_Image, client) || colision.VerifierColision_PNJ_To_PNJ(grille,client) || client.Est_Servi())
+                if (!colision.VerifierColision(grille,client.Curenent_Image, client) || !colision.VerifierColision_PNJ_To_PNJ(grille,client)  || client.Est_Servi())
                 {
-                    Console.WriteLine($"Le PNJ  {client.Nom} avance .");
                     move_PNJ(client, client.Curenent_Image);
+                    Console.WriteLine($"Le PNJ  {client.Nom} avance  de {client.Vitesse}.");
                 }   
                 else
                     Console.WriteLine("Le PNJ ne peut pas avancer en raison d'une collision.");

@@ -19,6 +19,7 @@ namespace PaniqueEnCuisine
 
         public bool VerifierColision(Canvas grille,Joueur Player , Image image,string colision)
         {
+            bool Avancer = true;
             foreach (var x in grille.Children.OfType<Rectangle>())
             {
                 if ((string)x.Tag == colision)
@@ -32,7 +33,7 @@ namespace PaniqueEnCuisine
                         Player.Vitesse = 0;
                         Canvas.SetTop(image, Canvas.GetTop(x) - Player.Height);
                         Canvas.SetLeft(image, Canvas.GetLeft(x) - Player.Width);
-                        return true;
+                        Avancer= false;
                     }
                     else
                     { 
@@ -41,7 +42,7 @@ namespace PaniqueEnCuisine
 
                 }
             }
-            return false;
+            return Avancer;
         }
         public bool VerifierColision(Canvas grille,Image img_Client,PNJ Client)
         {
@@ -65,8 +66,7 @@ namespace PaniqueEnCuisine
                             Console.WriteLine($"Collision detectée entre le joueur {Client.Nom} et la commande !");
                             Client.Vitesse = 0;
                             Canvas.SetTop(img_Client, Canvas.GetTop(x) - img_Client.Height);
-                            Avancer = false;
-                            break;
+                            Avancer = false;    
                         }
                         else
                         {
@@ -84,9 +84,10 @@ namespace PaniqueEnCuisine
         {
             bool Avancer = true;
             foreach (var x in grille.Children.OfType<Image>())
-            {   
+            {
                 if ((string)x.Tag == "PNJ")
-                {   if (Client.Servi)
+                {
+                    if (Client.Servi || Client.Rien_devant1)
                     {
                         Console.WriteLine($"PNJ {Client.Nom} est servi, il ne vérifie pas les collisions avec les autres PNJ.");
                         Client.Vitesse = 2;
@@ -102,24 +103,22 @@ namespace PaniqueEnCuisine
                             Console.WriteLine($"Collision detectée entre le PNJ {x.Name}  et PNJ {Client.Nom} !");
                             Client.Vitesse = 0;
                             Avancer = false;
-                            break;
+
                         }
                         else
                         {
                             Console.WriteLine("Aucune collision entre les PNJ.");
-                            Client.Vitesse = 2;
+                            if (Avancer)
+                                Client.Vitesse = 2;
+                            
+
                         }
 
                     }
-                      
-                }
-                if (Avancer)
-                {
-                    Console.WriteLine($"Le PNJ {Client.Nom} ne peut pas avancer en raison d'une collision malger aucune colision entre les autre PNJ.");
-                    Client.Vitesse = 0;
-                }
-                    
+
+                }   
             }
+            
             return Avancer;
 
         }
