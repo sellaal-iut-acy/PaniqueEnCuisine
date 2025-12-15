@@ -39,7 +39,7 @@ namespace PaniqueEnCuisine
         public EntiterMobile(double x, double y,int vitesse, string nom, int Height, int Widht)
         {
             this.X = x;
-            this.nom = nom;
+            this.Nom = nom;
             this.Y = y;
             this.Vitesse = vitesse;
             this.VitesseCourse = vitesse * 2;
@@ -198,10 +198,23 @@ namespace PaniqueEnCuisine
             }
         }
 
+        public string Nom
+        {
+            get
+            {
+                return this.nom;
+            }
+
+            set
+            {
+                this.nom = value;
+            }
+        }
+
         public override bool Equals(object? obj)
         {
             return obj is EntiterMobile entiter &&
-                   this.nom == entiter.nom &&
+                   this.Nom == entiter.Nom &&
                    this.x == entiter.x &&
                    this.y == entiter.y &&
                    this.vitesse == entiter.vitesse &&

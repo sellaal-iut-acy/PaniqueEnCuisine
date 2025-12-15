@@ -32,7 +32,7 @@ namespace PaniqueEnCuisine
 
         int animDelay = 0;
         int animSpeed = 3;
-
+        private ManagerColision colision = new ManagerColision();
         public UCJeu(MainWindow mw)
         {
             InitializeComponent();
@@ -84,65 +84,68 @@ namespace PaniqueEnCuisine
            ========================= */
 
         private void UpdatePlayer(object? sender, EventArgs e)
-{
-        var p = main.mapManager.playeur;
-
-        double speed = sprint ? baseSpeed * sprintMultiplier : baseSpeed;
-        bool moving = false;
-
-        if (up)
         {
-            p.Y -= speed;
-            p.Direction = 0;
-            moving = true;
+            
+            
+            var p = main.mapManager.playeur;
+
+            double speed = sprint ? baseSpeed * sprintMultiplier : baseSpeed;
+            bool moving = false;
+
+            if (up)
+            {
+                p.Y -= speed;
+                p.Direction = 0;
+                moving = true;
+            }
+
+            if (right)
+            {
+                p.X += speed;
+                p.Direction = 1;
+                moving = true;
+            }
+
+            if (down)
+            {
+                p.Y += speed;
+                p.Direction = 2;
+                moving = true;
+            }
+
+            if (left)
+            {
+                p.X -= speed;
+                p.Direction = 3;
+                moving = true;
+            }
+
+                    animDelay++;
+
+                    if (animDelay >= animSpeed)
+                    {
+                        p.Frame = (p.Frame + 1) % 5;
+                        animDelay = 0;
+                    }
+
+                    if (moving)
+                    {
+                        // direction déjà définie
+                    }
+                    else
+                    {
+                        p.Direction = 4; // idle
+                    }
+
+
+                    Canvas.SetLeft(joueur, p.X);
+            Canvas.SetTop(joueur, p.Y);
+            joueur.Source = p.GetImageJoueur();
+
+            // PNJ
+            main.mapManager.ManagerClients.move_all_PNJ(grille);
+            colision.VeriferColision_PLAYER_FrIgo(grille, main.mapManager.playeur);
         }
-
-        if (right)
-        {
-            p.X += speed;
-            p.Direction = 1;
-            moving = true;
-        }
-
-        if (down)
-        {
-            p.Y += speed;
-            p.Direction = 2;
-            moving = true;
-        }
-
-        if (left)
-        {
-            p.X -= speed;
-            p.Direction = 3;
-            moving = true;
-        }
-
-                animDelay++;
-
-                if (animDelay >= animSpeed)
-                {
-                    p.Frame = (p.Frame + 1) % 5;
-                    animDelay = 0;
-                }
-
-                if (moving)
-                {
-                    // direction déjà définie
-                }
-                else
-                {
-                    p.Direction = 4; // idle
-                }
-
-
-                Canvas.SetLeft(joueur, p.X);
-        Canvas.SetTop(joueur, p.Y);
-        joueur.Source = p.GetImageJoueur();
-
-        // PNJ
-        main.mapManager.ManagerClients.move_all_PNJ(grille);
-    }
 
 
         /* =========================
@@ -261,12 +264,14 @@ namespace PaniqueEnCuisine
 
         private void ouvire_foure(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            if (colision.VeriferColision_PLAYER_FrIgo(grille, main.mapManager.playeur))
+                throw new NotImplementedException();
         }
 
         private void ouvire_frigo(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            if (colision.VeriferColision_PLAYER_FrIgo(grille,main.mapManager.playeur))
+                throw new NotImplementedException();
         }
     }
 }

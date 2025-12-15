@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace PaniqueEnCuisine
 { 
@@ -41,6 +42,12 @@ namespace PaniqueEnCuisine
             {
                 outil.afficher_outi(grille);
             }
+        }
+
+        public void veriffe_colision_palyer_outils(Canvas grille , Joueur playeur)
+        {
+            ManagerColision jeux = new ManagerColision();
+            jeux.VeriferColision_PLAYER_FrIgo(grille, playeur);
         }
 
        

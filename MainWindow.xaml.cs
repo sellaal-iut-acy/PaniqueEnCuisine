@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Policy;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,22 +17,30 @@ namespace PaniqueEnCuisine
     public partial class MainWindow : Window
     {
         public MapManager mapManager = new MapManager(new Joueur("player", 100, 100, 2, 2,100,200));
+
         public MainWindow()
         {
             InitializeComponent();
             ChangeScreen(new UCMenu(this));
             Audio.PlayMusic("Sons/son_music_loop.wav", true);
+           
+
         }
 
         public void ChangeScreen(UserControl newScreen)
         {
             ZoneJeu.Content = newScreen;
+          
         }
+       
 
 
         
 
-        
+
+
+
+
     }
 
 }

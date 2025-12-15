@@ -13,7 +13,7 @@ namespace PaniqueEnCuisine
 
         public Foure(string nom, int x, int y, int width, int height, int niveaux, int vitesse_utilisation) : base(nom, x, y, width, height, niveaux, vitesse_utilisation)
         {
-            this.Img_outi.Tag = "Foure";
+            this.Img_outi.Tag = "Four";
         }
 
         public void niveaux_suivant()

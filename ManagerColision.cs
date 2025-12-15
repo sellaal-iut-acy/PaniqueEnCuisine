@@ -63,7 +63,7 @@ namespace PaniqueEnCuisine
 
                         if (PlayerHitbox.IntersectsWith(PlateformeCommade))
                         {
-                            Console.WriteLine($"Collision detectée entre le joueur {Client.Nom} et la commande !");
+                            
                             Client.Vitesse = 0;
                             Canvas.SetTop(img_Client, Canvas.GetTop(x) - img_Client.Height);
                             Avancer = false;    
@@ -89,25 +89,25 @@ namespace PaniqueEnCuisine
                 {
                     if (Client.Servi || Client.Rien_devant1)
                     {
-                        Console.WriteLine($"PNJ {Client.Nom} est servi, il ne vérifie pas les collisions avec les autres PNJ.");
+                        
                         Client.Vitesse = 2;
                     }
                     else
                     {
-                        Console.WriteLine($"detectée des Avancer entre le PNJ {x.Name}  et PNJ {Client.Nom} !");
+                        
                         Rect PlayerHitbox = new Rect(Canvas.GetLeft(Client.Curenent_Image), Canvas.GetTop(Client.Curenent_Image), Client.Curenent_Image.Width, Client.Curenent_Image.Height);
                         Rect PlateformeCommade = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
                         if (PlayerHitbox.IntersectsWith(PlateformeCommade))
                         {
-                            Console.WriteLine($"Collision detectée entre le PNJ {x.Name}  et PNJ {Client.Nom} !");
+                            
                             Client.Vitesse = 0;
                             Avancer = false;
 
                         }
                         else
                         {
-                            Console.WriteLine("Aucune collision entre les PNJ.");
+                            
                             if (Avancer)
                                 Client.Vitesse = 2;
                             
@@ -123,9 +123,35 @@ namespace PaniqueEnCuisine
 
         }
 
-        public void VeriferColision(Canvas grile)
+        public bool VeriferColision_PLAYER_FrIgo(Canvas grille,Joueur playeur)
         {
+            bool colision = false;
+            foreach (var x in grille.Children.OfType<Image>())
+            {
+                if ((string)x.Tag == "Four" || (string)x.Tag == "Frigo")
+                {
+                    
+                    Console.WriteLine($"detectée des Avancer entre  {x.Name}  et  {playeur.Nom} !");
+                    Rect PlayerHitbox = new Rect(Canvas.GetLeft(playeur.Curenent_Image), Canvas.GetTop(playeur.Curenent_Image), playeur.Curenent_Image.Width, playeur.Curenent_Image.Height);
+                    Rect PlateformeCommade = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
+                    if (PlayerHitbox.IntersectsWith(PlateformeCommade))
+                    {
+                        Console.WriteLine($"Collision detectée entre le  {x.Name}  et  {playeur.Nom} !");
+                        playeur.Vitesse = 0;
+                       colision = true;
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Aucune collision entre playeur et les outils de cuisine.");
+                        playeur.Vitesse = 2;
+
+
+                    }
+                }
+            }
+            return colision;
         }
 
     }
