@@ -44,10 +44,10 @@ namespace PaniqueEnCuisine
             }
         }
 
-        public void veriffe_colision_palyer_outils(Canvas grille , Joueur playeur)
+        public void veriffe_colision_palyer_outils(Canvas grille , Image playeur,Joueur joueur)
         {
             ManagerColision jeux = new ManagerColision();
-            jeux.VeriferColision_PLAYER_FrIgo(grille, playeur);
+            jeux.VeriferColision_PLAYER_FrIgo(grille, playeur,joueur);
         }
 
        

@@ -33,7 +33,6 @@ namespace PaniqueEnCuisine
         }
         public void afficher_outi(Canvas grille)
         {
-            this.Img_outi.Tag = "Outil";
             this.Img_outi.Name = this.Nom;
             grille.Children.Add(this.Img_outi);
             Canvas.SetLeft(this.Img_outi, this.X);

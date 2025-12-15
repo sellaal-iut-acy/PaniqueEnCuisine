@@ -119,6 +119,24 @@
     <Resource Include="Images\image_logo_settings_skin.png" />
     <Resource Include="Images\image_logo_settings_son.png" />
     <Resource Include="Images\image_logo_settings_touches.png" />
+    <Resource Include="Images\Niveau\image_fond_niveau1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Niveau\image_fond_niveau2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Niveau\image_fond_niveau3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Niveau\image_fond_niveau4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Outils\four.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Outils\frigo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="player_Aucun_1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

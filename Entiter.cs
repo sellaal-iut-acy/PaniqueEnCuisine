@@ -224,6 +224,12 @@ namespace PaniqueEnCuisine
                    this.Y == entiter.Y &&
                    this.VitesseCourse == entiter.VitesseCourse;
         }
+
+        public override string? ToString()
+        {
+            return $"{this.Y.ToString()} ,{this.x.ToString()}";
+        }
+
         public static bool operator ==(EntiterMobile? left, EntiterMobile? right)
         {
             return EqualityComparer<EntiterMobile>.Default.Equals(left, right);

@@ -16,11 +16,24 @@ namespace PaniqueEnCuisine
         private List<Nouriture> _liste_nourriture = new List<Nouriture>();
         private int current_page = 0;
         private bool ouvert = false;
+        private int nb_page = 1;
+        private int old_page = 0;
+        private int max_page =0;
 
         public Inventaire(List<Nouriture> liste_nourriture,int current_page)
         {
             this.Liste_nourriture = liste_nourriture;
             this.Current_page = current_page;
+            this.old_page = this.current_page;
+            
+        }
+        public void set_page_max()
+        {
+            Console.WriteLine("mis a jour de page max");
+            if (this.Liste_nourriture.Count % 18 != 0)
+                this.Max_page += 1 + this.Liste_nourriture.Count / 18;
+            else
+                this.Max_page += this.Liste_nourriture.Count / 18;
         }
 
         public void Cree_inventaire(Canvas grille, ref Button page_suivante, ref Button page_arriere)
@@ -56,22 +69,35 @@ namespace PaniqueEnCuisine
             Console.WriteLine($"Affichage de la page {page}");
             Console.WriteLine($"Nombre d'objets dans l'inventaire : {inventaire.Liste_nourriture.Count}");
 
-            int nb_objet = 0;
+            int nb_objet_par_linge = 0;
+            int nb_objet_totale = 0;
 
-            for (int c = 0; c < 6 * (page - 1) + 6 && c <= inventaire.Liste_nourriture.Count - 1; c++)
-            {
-
-                while (nb_objet < 6)
+            for (int c = (page-1)*6; c < 6 * (page - 1) + 6 && c <= inventaire.Liste_nourriture.Count - 1; c++)
+            {   
+                nb_objet_par_linge = 0;
+                while (nb_objet_par_linge < 6 )
                 {
-                    if (nb_objet > inventaire.Liste_nourriture.Count - 1)
+                    //Console.WriteLine($"le nombre d'objet est {nb_objet_totale}");
+                    if (nb_objet_totale >= 18)
+                    {
+                        //Console.WriteLine("passer");
                         break;
+                    }
+                        
+                    
+                    if (nb_objet_totale > inventaire.Liste_nourriture.Count - 1 )
+                    {
+                        break;
+                    }
                     Image image = new Image();
-                    image.Source = inventaire.Liste_nourriture[nb_objet].Image.Source;
+                    image.Source = inventaire.Liste_nourriture[nb_objet_totale].Image.Source;
                     Canvas.SetTop(image, 260 + (c * 63));
-                    Canvas.SetLeft(image, 213 + (nb_objet * 63));
+                    Canvas.SetLeft(image, 213 + (nb_objet_par_linge * 63));
                     grille.Children.Add(image);
-                    Console.WriteLine($"Position de l'objet : Top {Canvas.GetTop(inventaire.Liste_nourriture[nb_objet].Image)} Left {Canvas.GetLeft(inventaire.Liste_nourriture[c].Image)}");
-                    nb_objet++;
+                    Console.WriteLine($"Position de l'objet : Top {Canvas.GetTop(inventaire.Liste_nourriture[nb_objet_totale].Image)} Left {Canvas.GetLeft(inventaire.Liste_nourriture[c].Image)}");
+                    nb_objet_par_linge++;
+                    nb_objet_totale++;
+                    this.max_page++;
                 }
 
             }
@@ -92,6 +118,26 @@ namespace PaniqueEnCuisine
                 }
             }
         }
+        public void page_suivante(Canvas canvas, Inventaire Liste_nourriture)
+        {
+            if (Liste_nourriture.current_page < Liste_nourriture.max_page)
+            {
+                this.current_page++;
+                afficher_objet_inventaire(Liste_nourriture, canvas, this.current_page);
+            }
+            
+        }
+        public void  page_precedent(Canvas canvas, Inventaire Liste_nourriture)
+        {
+            if (!(Liste_nourriture.current_page == 0))
+            {
+                this.current_page--;
+                afficher_objet_inventaire(Liste_nourriture, canvas, this.current_page);
+            }
+            
+
+        }
+
         public void teste_inventer_player(Joueur playeur)
         {
             Nouriture pizza = new Nouriture("pizza", "plat");
@@ -144,6 +190,58 @@ namespace PaniqueEnCuisine
             set
             {
                 this.ouvert = value;
+            }
+        }
+
+        public int Nb_page
+        {
+            get
+            {
+                return this.nb_page;
+            }
+
+            set
+            {
+                this.nb_page = value;
+            }
+        }
+
+        public int Old_page
+        {
+            get
+            {
+                return this.old_page;
+            }
+
+            set
+            {
+                this.old_page = value;
+            }
+        }
+
+        public int Max_page
+        {
+            get
+            {
+                return this.max_page;
+            }
+
+            set
+            {
+                this.max_page = value;
+            }
+        }
+
+        public int Max_page1
+        {
+            get
+            {
+                return this.max_page;
+            }
+
+            set
+            {
+                this.max_page = value;
             }
         }
     }

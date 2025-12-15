@@ -29,6 +29,7 @@ namespace PaniqueEnCuisine
         // UI inventaire
         public Button page_suivante = new Button();
         public Button page_arriere = new Button();
+        private UCFrigo frigo = new UCFrigo();
 
         int animDelay = 0;
         int animSpeed = 3;
@@ -96,13 +97,9 @@ namespace PaniqueEnCuisine
 
         private void UpdatePlayer(object? sender, EventArgs e)
         {
-            
-            
             var p = main.mapManager.playeur;
-
             double speed = sprint ? baseSpeed * sprintMultiplier : baseSpeed;
             bool moving = false;
-
             if (up)
             {
                 p.Y -= speed;
@@ -114,14 +111,14 @@ namespace PaniqueEnCuisine
             {
                 p.X += speed;
                 p.Direction = 1;
-                moving = true;
+                moving = true;   
             }
 
             if (down)
             {
                 p.Y += speed;
                 p.Direction = 2;
-                moving = true;
+                moving = true;                    
             }
 
             if (left)
@@ -131,31 +128,24 @@ namespace PaniqueEnCuisine
                 moving = true;
             }
 
-                    animDelay++;
+            animDelay++;
 
-                    if (animDelay >= animSpeed)
-                    {
-                        p.Frame = (p.Frame + 1) % 5;
-                        animDelay = 0;
-                    }
+            if (animDelay >= animSpeed)
+            {
+                p.Frame = (p.Frame + 1) % 5;
+                animDelay = 0;
+            }
 
-                    if (moving)
-                    {
-                        // direction déjà définie
-                    }
-                    else
-                    {
-                        p.Direction = 4; // idle
-                    }
-
-
-                    Canvas.SetLeft(joueur, p.X);
+            if (!moving)
+            {
+                p.Direction = 4; // idle
+            }
+            Canvas.SetLeft(joueur, p.X);
             Canvas.SetTop(joueur, p.Y);
             joueur.Source = p.GetImageJoueur();
-
             // PNJ
             main.mapManager.ManagerClients.move_all_PNJ(grille);
-            colision.VeriferColision_PLAYER_FrIgo(grille, main.mapManager.playeur);
+
         }
 
 
@@ -171,31 +161,30 @@ namespace PaniqueEnCuisine
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == ManagerSettings.KeyHaut) up = true;
-            if (e.Key == ManagerSettings.KeyBas) down = true;
-            if (e.Key == ManagerSettings.KeyGauche) left = true;
-            if (e.Key == ManagerSettings.KeyDroite) right = true;
-            if (e.Key == ManagerSettings.KeySprint) sprint = true;
+            if (e.Key == ManagerSettings.KeyHaut ||e.Key == Key.Down) up = true;
+            if (e.Key == ManagerSettings.KeyBas ||e.Key == Key.Up) down = true;
+            if (e.Key == ManagerSettings.KeyGauche ||e.Key == Key.Left) left = true;
+            if (e.Key == ManagerSettings.KeyDroite || e.Key == Key.Right) right = true;
+            if (e.Key == ManagerSettings.KeySprint ) sprint = true;
 
             // Action / inventaire
             if (e.Key == ManagerSettings.KeyAction)
             {
                 var inv = main.mapManager.playeur.Inventaire;
 
-                if (!inv.Ouvert)
-                {
-                    main.mapManager.afficher_Inventaire_Player(
-                        main.mapManager.playeur,
-                        grille,
-                        ref page_suivante,
-                        ref page_arriere
-                    );
-                    inv.Ouvert = true;
-                }
-                else
-                {
-                    inv.Ouvert = false;
-                }
+                if (colision.VeriferColision_PLAYER_FrIgo(grille, joueur, main.mapManager.playeur))
+                    if (frigo.Visibility == Visibility.Hidden)
+                    {
+                        frigo.Visibility = Visibility.Visible;
+                        Console.WriteLine("Overture du frigo");
+                    }
+     
+                    else
+                    {
+                        main.ChangeScreen(frigo);
+                    }
+
+
             }
         }
 
@@ -255,7 +244,7 @@ namespace PaniqueEnCuisine
 
         private void servie(object sender, MouseButtonEventArgs e)
         {
-            Console.WriteLine("Client servi !");
+            //Console.WriteLine("Client servi !");
             main.mapManager.ManagerClients.Clients[main.mapManager.ManagerClients.Clients.Count - 1].Servi = true;
             foreach (PNJ pnj in main.mapManager.ManagerClients.Clients)
             {
@@ -300,14 +289,17 @@ namespace PaniqueEnCuisine
 
         private void ouvire_foure(object sender, MouseButtonEventArgs e)
         {
-            if (colision.VeriferColision_PLAYER_FrIgo(grille, main.mapManager.playeur))
-                throw new NotImplementedException();
+            UCfour four = new UCfour();
+            
+
+
         }
 
         private void ouvire_frigo(object sender, MouseButtonEventArgs e)
         {
-            if (colision.VeriferColision_PLAYER_FrIgo(grille,main.mapManager.playeur))
-                throw new NotImplementedException();
+            UCFrigo frigo = new UCFrigo();
+            if (colision.VeriferColision_PLAYER_FrIgo(grille, joueur, main.mapManager.playeur))
+                main.ChangeScreen(frigo);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace PaniqueEnCuisine
 
                     if (PlayerHitbox.IntersectsWith(PlateformeCommade))
                     {
-                        Console.WriteLine($"Collision detectée entre le joueur et {colision} !");
+                        //SConsole.WriteLine($"Collision detectée entre le joueur et {colision} !");
                         Player.Vitesse = 0;
                         Canvas.SetTop(image, Canvas.GetTop(x) - Player.Height);
                         Canvas.SetLeft(image, Canvas.GetLeft(x) - Player.Width);
@@ -123,29 +123,33 @@ namespace PaniqueEnCuisine
 
         }
 
-        public bool VeriferColision_PLAYER_FrIgo(Canvas grille,Joueur playeur)
+        public bool VeriferColision_PLAYER_FrIgo(Canvas grille,Image playeur,Joueur joueur)
         {
+            //Console.WriteLine("début des colsision");
             bool colision = false;
             foreach (var x in grille.Children.OfType<Image>())
             {
-                if ((string)x.Tag == "Four" || (string)x.Tag == "Frigo")
+                //Console.WriteLine("entre dans la boucle des vérification");
+                if ((string)x.Tag == "Frigo" )
                 {
-                    
-                    Console.WriteLine($"detectée des Avancer entre  {x.Name}  et  {playeur.Nom} !");
-                    Rect PlayerHitbox = new Rect(Canvas.GetLeft(playeur.Curenent_Image), Canvas.GetTop(playeur.Curenent_Image), playeur.Curenent_Image.Width, playeur.Curenent_Image.Height);
+                    //Console.WriteLine($"detectée des Avancer entre  {x.Name}  et  {playeur.Name} !");
+                    Rect PlayerHitbox = new Rect(Canvas.GetLeft(playeur), Canvas.GetTop(playeur), playeur.Width, playeur.Height);
                     Rect PlateformeCommade = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
-                    if (PlayerHitbox.IntersectsWith(PlateformeCommade))
+                    //Console.WriteLine($"position palyeur  left{Canvas.GetLeft(playeur)},{Canvas.GetTop(playeur)}");
+                    //Console.WriteLine($"position palyeur  left {Canvas.GetLeft(x)},top  {Canvas.GetTop(x)}");
+
+                    if (PlateformeCommade.IntersectsWith(PlayerHitbox))
                     {
-                        Console.WriteLine($"Collision detectée entre le  {x.Name}  et  {playeur.Nom} !");
-                        playeur.Vitesse = 0;
-                       colision = true;
+                        //Console.WriteLine($"Collision detectée entre le  {x.Name}  et  {joueur.Nom} !");
+                        joueur.Vitesse = 0;
+                        colision = true;
 
                     }
                     else
                     {
-                        Console.WriteLine("Aucune collision entre playeur et les outils de cuisine.");
-                        playeur.Vitesse = 2;
+                        //Console.WriteLine("Aucune collision entre playeur et les outils de cuisine.");
+                        joueur.Vitesse = 2;
 
 
                     }

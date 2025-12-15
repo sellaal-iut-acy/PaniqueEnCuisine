@@ -56,7 +56,7 @@ namespace PaniqueEnCuisine
         public void afficher_Clients(Canvas grille )
         {
             int espace_entre_clients = 0;
-            Console.WriteLine($"Affichage de {this.clients.Count} clients.");
+            //Console.WriteLine($"Affichage de {this.clients.Count} clients.");
             foreach (PNJ client in this.clients)
             {
                 client.Afficher_PNJ(grille,50,100,750,0 + espace_entre_clients);
@@ -65,7 +65,7 @@ namespace PaniqueEnCuisine
         }
         public void move_PNJ(PNJ PNJ,Image img_pnj)
         {
-            Console.WriteLine($"Déplacement du PNJ  de {PNJ.Vitesse} pixels vers le bas.");
+            //Console.WriteLine($"Déplacement du PNJ  de {PNJ.Vitesse} pixels vers le bas.");
             Canvas.SetTop(img_pnj, Canvas.GetTop(img_pnj) + PNJ.Vitesse);
         }
 
@@ -84,16 +84,21 @@ namespace PaniqueEnCuisine
             */
             foreach (PNJ client in this.Clients)
             {
-                Console.WriteLine($"Vérification de la collision pour le PNJ {client.Nom}.");
+                //Console.WriteLine($"Vérification de la collision pour le PNJ {client.Nom}.");
                 if (!colision.VerifierColision(grille,client.Curenent_Image, client) || !colision.VerifierColision_PNJ_To_PNJ(grille,client)  || client.Est_Servi())
                 {
                     move_PNJ(client, client.Curenent_Image);
-                    Console.WriteLine($"Le PNJ  {client.Nom} avance  de {client.Vitesse}.");
+                    //Console.WriteLine($"Le PNJ  {client.Nom} avance  de {client.Vitesse}.");
                 }   
                 else
-                    Console.WriteLine("Le PNJ ne peut pas avancer en raison d'une collision.");
+                {
 
-            
+                    //Console.WriteLine("Le PNJ ne peut pas avancer en raison d'une collision.");
+
+                }
+
+
+
             }
 
             
