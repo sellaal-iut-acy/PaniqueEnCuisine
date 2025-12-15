@@ -31,7 +31,7 @@ namespace PaniqueEnCuisine
         private void B_Retour_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangeScreen(new UCParametres(main));
+            main.ChangeScreen(new UCMenuPlus(main));
         }
     }
 }

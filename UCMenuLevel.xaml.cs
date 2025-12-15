@@ -22,6 +22,8 @@ namespace PaniqueEnCuisine
     public partial class UCMenuLevel : UserControl
     {
         private MainWindow main;
+        int niveauSelectionne = 1;
+
 
         public UCMenuLevel(MainWindow mw)
         {
@@ -32,7 +34,47 @@ namespace PaniqueEnCuisine
         private void B_Retour_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangeScreen(new UCParametres(main));
+            main.ChangeScreen(new UCMenuPlus(main));
+        }
+
+        private void Button_Niveau1_Click(object sender, RoutedEventArgs e)
+        {
+            SelectionnerNiveau(1);
+        }
+
+        private void Button_Niveau2_Click(object sender, RoutedEventArgs e)
+        {
+            SelectionnerNiveau(2);
+        }
+
+        private void Button_Niveau3_Click(object sender, RoutedEventArgs e)
+        {
+            SelectionnerNiveau(3);
+        }
+
+        private void Button_Niveau4_Click(object sender, RoutedEventArgs e)
+        {
+            SelectionnerNiveau(4);
+        }
+
+        private void B_Select_Click(object sender, RoutedEventArgs e)
+        {
+            Audio.PlaySFX("Sons/son_clic.wav");
+
+            main.mapManager.niveau_actuel = niveauSelectionne;
+
+            main.ChangeScreen(new UCMenuPlus(main));
+        }
+        private void SelectionnerNiveau(int niveau)
+        {
+            Audio.PlaySFX("Sons/son_clic.wav");
+
+            niveauSelectionne = niveau;
+
+            string path = $"Images/Niveau/image_fond_niveau{niveau}.png";
+            ImagePreviewNiveau.Source = new BitmapImage(
+                new Uri(path, UriKind.Relative)
+            );
         }
     }
 }

@@ -38,7 +38,8 @@ namespace PaniqueEnCuisine
             InitializeComponent();
             main = mw;
 
-            Ajout_image_Fond();
+
+            DefinirFondNiveau();
             Ajout_Image_Player();
             afficher_client();
             Rectangle_arret_Client();
@@ -58,9 +59,19 @@ namespace PaniqueEnCuisine
            === INITIALISATION ===
            ========================= */
 
-        private void Ajout_image_Fond()
+        private void DefinirFondNiveau()
         {
-            grille.Background = main.mapManager.fond;
+            int niveau = main.mapManager.niveau_actuel;
+
+            string uri = $"pack://application:,,,/Images/Niveau/image_fond_niveau{niveau}.png";
+
+            ImageBrush brush = new ImageBrush
+            {
+                ImageSource = new BitmapImage(new Uri(uri)),
+                Stretch = Stretch.Fill
+            };
+
+            grille.Background = brush;
         }
 
 
@@ -215,6 +226,31 @@ namespace PaniqueEnCuisine
             Canvas.SetTop(rect, 240);
             Canvas.SetLeft(rect, 700);
             grille.Children.Add(rect);
+        }
+        private void NettoyerUCJeu()
+        {
+            // Stop timers
+            moveTimer?.Stop();
+
+            // Désinscription clavier
+            Application.Current.MainWindow.KeyDown -= OnKeyDown;
+            Application.Current.MainWindow.KeyUp -= OnKeyUp;
+
+            // Supprime tous les éléments visuels
+            grille.Children.Clear();
+            main.mapManager.ManagerClients.Clients.Clear();
+            main.mapManager.playeur.X = default;
+            main.mapManager.playeur.Y = default;
+        }
+
+
+        private void Button_RetourMenu_Click(object sender, RoutedEventArgs e)
+        {
+            Audio.PlaySFX("Sons/son_clic.wav");
+
+            NettoyerUCJeu(); 
+
+            main.ChangeScreen(new UCMainMenu(main));
         }
 
         private void servie(object sender, MouseButtonEventArgs e)

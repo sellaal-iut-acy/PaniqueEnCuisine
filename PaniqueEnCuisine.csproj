@@ -42,12 +42,17 @@
     <None Remove="Images\image_fond_MenuSkin.png" />
     <None Remove="Images\image_fond_MenuSkin1.png" />
     <None Remove="Images\image_fond_MenuSon.jpg" />
+    <None Remove="Images\image_fond_menu_level.png" />
     <None Remove="Images\Image_fond_parametres.png" />
     <None Remove="Images\image_logo_settings.png" />
     <None Remove="Images\image_logo_settings_niveau.png" />
     <None Remove="Images\image_logo_settings_skin.png" />
     <None Remove="Images\image_logo_settings_son.png" />
     <None Remove="Images\image_logo_settings_touches.png" />
+    <None Remove="Images\Niveau\image_fond_niveau1.png" />
+    <None Remove="Images\Niveau\image_fond_niveau2.png" />
+    <None Remove="Images\Niveau\image_fond_niveau3.png" />
+    <None Remove="Images\Niveau\image_fond_niveau4.png" />
     <None Remove="Images\Outils\four.png" />
     <None Remove="Images\Outils\frigo.png" />
     <None Remove="player_Aucun_1.jpg" />
@@ -107,18 +112,13 @@
     <Resource Include="Images\image_fond_MenuRegles.png" />
     <Resource Include="Images\image_fond_MenuSkin1.png" />
     <Resource Include="Images\image_fond_MenuSon.jpg" />
+    <Resource Include="Images\image_fond_menu_level.png" />
     <Resource Include="Images\Image_fond_parametres.png" />
     <Resource Include="Images\image_logo_settings.png" />
     <Resource Include="Images\image_logo_settings_niveau.png" />
     <Resource Include="Images\image_logo_settings_skin.png" />
     <Resource Include="Images\image_logo_settings_son.png" />
     <Resource Include="Images\image_logo_settings_touches.png" />
-    <Resource Include="Images\Outils\four.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Outils\frigo.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="player_Aucun_1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

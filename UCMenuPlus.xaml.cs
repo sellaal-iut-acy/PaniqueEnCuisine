@@ -18,14 +18,12 @@ using System.Windows.Shapes;
 
 namespace PaniqueEnCuisine
 {
-    /// <summary>
-    /// Logique d'interaction pour UCParametres.xaml
-    /// </summary>
-    public partial class UCParametres : UserControl
+ 
+    public partial class UCMenuPlus : UserControl
     {
         private MainWindow main;
 
-        public UCParametres(MainWindow mw)
+        public UCMenuPlus(MainWindow mw)
         {
             InitializeComponent();
             main = mw;
@@ -47,7 +45,7 @@ namespace PaniqueEnCuisine
         private void B_Retour_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangeScreen(new UCMenu(main));
+            main.ChangeScreen(new UCMainMenu(main));
         }
         private void ButtonSettingsLevel_Click(object sender, RoutedEventArgs e)
         {
