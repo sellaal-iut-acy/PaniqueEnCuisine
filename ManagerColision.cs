@@ -158,5 +158,40 @@ namespace PaniqueEnCuisine
             return colision;
         }
 
+        public bool VeriferColision_PLAYER_Four(Canvas grille, Image playeur, Joueur joueur)
+        {
+            //Console.WriteLine("début des colsision");
+            bool colision = false;
+            foreach (var x in grille.Children.OfType<Image>())
+            {
+                //Console.WriteLine("entre dans la boucle des vérification");
+                if ((string)x.Tag == "Four")
+                {
+                    //Console.WriteLine($"detectée des Avancer entre  {x.Name}  et  {playeur.Name} !");
+                    Rect PlayerHitbox = new Rect(Canvas.GetLeft(playeur), Canvas.GetTop(playeur), playeur.Width, playeur.Height);
+                    Rect PlateformeCommade = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+
+                    //Console.WriteLine($"position palyeur  left{Canvas.GetLeft(playeur)},{Canvas.GetTop(playeur)}");
+                    //Console.WriteLine($"position palyeur  left {Canvas.GetLeft(x)},top  {Canvas.GetTop(x)}");
+
+                    if (PlateformeCommade.IntersectsWith(PlayerHitbox))
+                    {
+                        //Console.WriteLine($"Collision detectée entre le  {x.Name}  et  {joueur.Nom} !");
+                        joueur.Vitesse = 0;
+                        colision = true;
+
+                    }
+                    else
+                    {
+                        //Console.WriteLine("Aucune collision entre playeur et les outils de cuisine.");
+                        joueur.Vitesse = 2;
+
+
+                    }
+                }
+            }
+            return colision;
+        }
+
     }
 }

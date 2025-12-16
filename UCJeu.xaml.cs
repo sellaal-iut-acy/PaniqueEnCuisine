@@ -14,7 +14,7 @@ namespace PaniqueEnCuisine
     /// </summary>
     public partial class UCJeu : UserControl
     {
-        private MainWindow main;
+        public MainWindow main;
 
         // Visuel joueur
         private Image joueur = new Image();
@@ -30,6 +30,7 @@ namespace PaniqueEnCuisine
         public Button page_suivante = new Button();
         public Button page_arriere = new Button();
         private UCFrigo frigo = new UCFrigo();
+        private UCfour four = new UCfour();
 
         int animDelay = 0;
         int animSpeed = 3;
@@ -184,6 +185,12 @@ namespace PaniqueEnCuisine
                         main.ChangeScreen(frigo);
                     }
 
+                if (colision.VeriferColision_PLAYER_Four(grille, joueur, main.mapManager.playeur))
+                    if (four.Visibility == Visibility.Hidden) 
+                        four.Visibility = Visibility.Visible;
+                    else 
+                        main.ChangeScreen(four);
+
 
             }
         }
@@ -226,7 +233,7 @@ namespace PaniqueEnCuisine
             Application.Current.MainWindow.KeyUp -= OnKeyUp;
 
             // Supprime tous les éléments visuels
-            grille.Children.Clear();
+            main.grille.Children.Clear();
             main.mapManager.ManagerClients.Clients.Clear();
             main.mapManager.playeur.X = default;
             main.mapManager.playeur.Y = default;
@@ -283,23 +290,21 @@ namespace PaniqueEnCuisine
             main.mapManager.ManagerOutilsCuisine.AjouterOutil(new Frigo("Frigo", 300, 200, 100, 150, 0, 50));
             main.mapManager.ManagerOutilsCuisine.AjouterOutil(new Foure("four", 500, 200, 100, 50, 0, 50));
             main.mapManager.ManagerOutilsCuisine.Outils[0].Img_outi.MouseDown += ouvire_frigo;
-            main.mapManager.ManagerOutilsCuisine.Outils[1].Img_outi.MouseDown += ouvire_foure;
+            main.mapManager.ManagerOutilsCuisine.Outils[1].Img_outi.MouseDown += ouvire_four;
             main.mapManager.ManagerOutilsCuisine.AfficherOutilsCuisine(grille);
         }
 
-        private void ouvire_foure(object sender, MouseButtonEventArgs e)
-        {
-            UCfour four = new UCfour();
-            
-
-
-        }
 
         private void ouvire_frigo(object sender, MouseButtonEventArgs e)
         {
-            UCFrigo frigo = new UCFrigo();
             if (colision.VeriferColision_PLAYER_FrIgo(grille, joueur, main.mapManager.playeur))
                 main.ChangeScreen(frigo);
+        }
+
+        private void ouvire_four(object sender, MouseButtonEventArgs e)
+        { 
+            if(colision.VeriferColision_PLAYER_FrIgo(grille,joueur, main.mapManager.playeur))
+                main.ChangeScreen(four);
         }
     }
 }
