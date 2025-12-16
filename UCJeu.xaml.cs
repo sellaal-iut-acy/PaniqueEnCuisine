@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -39,6 +41,10 @@ namespace PaniqueEnCuisine
             Rectangle_arret_Client();
             Ajouter_outlis_cuisine();
             Ajout_Image_Player();
+            JouerLaMusiqueDuNiveau();
+
+
+
 
 
             moveTimer = new DispatcherTimer
@@ -76,6 +82,13 @@ namespace PaniqueEnCuisine
             Canvas.SetTop(joueur, p.Y);
 
             grille.Children.Add(joueur);
+            
+        }
+        private void JouerLaMusiqueDuNiveau()
+        {
+            Audio.StopMusic();
+            Audio.PlayMusic($"Sons/son_music_loop_niveau{main.mapManager.niveau_actuel}.wav", true);
+
         }
 
         /* ================= GAME LOOP ================= */
@@ -107,7 +120,7 @@ namespace PaniqueEnCuisine
 
             main.mapManager.ManagerClients.move_all_PNJ(grille);
         }
-
+       
         /* ================= CLAVIER ================= */
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -184,9 +197,15 @@ namespace PaniqueEnCuisine
         {
             Audio.PlaySFX("Sons/son_clic.wav");
 
+            Audio.StopMusic();
+
+
             NettoyerUCJeu();
 
             main.ChangeScreen(new UCMainMenu(main));
+
+            Audio.PlayMusic("Sons/son_music_loop.wav", true);
+
         }
 
         private void NettoyerUCJeu()
