@@ -31,10 +31,6 @@ namespace PaniqueEnCuisine
             this.fond = new ImageBrush(new BitmapImage(new Uri($"Images/Niveau/image_fond_niveau{niveau_actuel}.png", UriKind.Relative)));
         }
 
-        public void afficher_Inventaire_Player(Joueur playeur,Canvas grille,ref Button page_suivante,ref Button Page_arriere)
-        {
-            this.playeur.Inventaire.Inventaire_player(playeur, grille,ref page_suivante,ref Page_arriere);
-        }
 
         public void Run()
         {

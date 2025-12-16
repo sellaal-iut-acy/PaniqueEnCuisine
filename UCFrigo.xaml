@@ -10,6 +10,11 @@
     <Canvas x:Name="canvas" Background="Transparent">
         <Image Height="450" Source="/Images/image_fond_frigo.png" Stretch="Fill" Width="800" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Button x:Name="B_Fermer" Content="Fermer" Height="35" Width="170" FontSize="20" Background="Gray" BorderBrush="#FF444343" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Fermer_Click" HorizontalAlignment="Center" Canvas.Left="315" Canvas.Top="10" VerticalAlignment="Top"/>
+        <Image Height="100" Canvas.Left="349" Canvas.Top="249" Width="100" Name="nouriture_Choix"/>
+        <Button x:Name="button_avancer" Content="avancer" Canvas.Left="494" Canvas.Top="289" Click="button_avancer_Click"/>
+        <Button x:Name="button_reculer" Content="reculer" Canvas.Left="271" Canvas.Top="289" Click="button_reculer_Click"/>
+        <Button Content="Selectioner" Canvas.Left="380" Canvas.Top="354" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox x:Name="NouritureAjouter" Canvas.Left="351" TextWrapping="Wrap" Text="" Canvas.Top="152" Width="120"/>
     </Canvas>
 
 </UserControl>
