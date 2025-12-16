@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace PaniqueEnCuisine
@@ -23,63 +24,101 @@ namespace PaniqueEnCuisine
         private const double Speed = 2;
         private const double PersonSpacing = 30;
         private const int InitialQueueCount = 8;
+        private Canvas _canvas;
+        private Rectangle _rect;
+
 
         // Liste des frames d'animation
         private readonly List<BitmapImage> _walkFrames = new()
         {
-            new BitmapImage(new System.Uri("Images/Person1.png", System.UriKind.Relative))
+            new BitmapImage(new System.Uri("Images/Person1.png", System.UriKind.Relative)),
             new BitmapImage(new System.Uri("Images/Person2.png", System.UriKind.Relative)),
             new BitmapImage(new System.Uri("Images/Person3.png", System.UriKind.Relative))
         };
-        private void CreateInitialPeople(Canvas Maincanvas)
+
+        public File( ref DispatcherTimer timer, ref Canvas canvas,ref Rectangle rect)
         {
-            for (int i = 0; i < InitialQueueCount; i++)
+            this._timer = timer;
+            this.Canvas = canvas;
+            this.Rect = rect;
+        }
+
+        public Canvas Canvas
+        {
+            get
             {
-                AddNewPerson(-i * PersonSpacing,Maincanvas);
+                return this._canvas;
+            }
+
+            set
+            {
+                this._canvas = value;
             }
         }
 
-        private void AddNewPerson(double offsetY = 0,Canvas MainCanvas)
+        public Rectangle Rect
+        {
+            get
+            {
+                return this._rect;
+            }
+
+            set
+            {
+                this._rect = value;
+            }
+        }
+
+        private void CreateInitialPeople()
+        {
+            for (int i = 0; i < InitialQueueCount; i++)
+            {
+                AddNewPerson(-i * PersonSpacing);
+            }
+        }
+
+        private void AddNewPerson(double offsetY = 0)
         {
             Image img = new Image
             {
                 Width = 20,
                 Height = 20,
-                Source = _walkFrames[0]
+                Source = _walkFrames[0],
+                Name = "Client"
             };
-
-            MainCanvas.Children.Add(img);
+            this.Canvas.Children.Add(img);
+            Console.WriteLine($"le personnage est ajouter {img.Name}");
             Canvas.SetLeft(img, 90);
             Canvas.SetTop(img, 20 + offsetY);
-
-            _queuePeople.Add(new Annimation_PNJ { Img = img });
+            _queuePeople.Add(new Annimation_PNJ(img,0));
         }
 
         private void StartMovement()
         {
-            _timer = new DispatcherTimer
-            {
-                Interval = System.TimeSpan.FromMilliseconds(30)
-            };
             _timer.Tick += MovePeople;
-            _timer.Start();
+        }
+
+        public void cree_File()
+        {
+            this.CreateInitialPeople();
+            this.StartMovement();
         }
 
         private void AnimatePerson(Annimation_PNJ person)
         {
             // Change la frame à chaque tick pour créer l'animation
-            person.FrameIndex = (person.FrameIndex + 1) % _walkFrames.Count;
-            person.Img.Source = _walkFrames[person.FrameIndex];
+            person.FrameIndex1 = (person.FrameIndex1 + 1) % _walkFrames.Count;
+            person.Img.Source = _walkFrames[person.FrameIndex1];
         }
 
         private void MovePeople(object sender, System.EventArgs e)
         {
-            double stopY = Canvas.GetTop(StopRect);
+            double stopY = System.Windows.Controls.Canvas.GetTop(this.Rect);
 
             // ---- FILE D’ATTENTE ----
             for (int i = 0; i < _queuePeople.Count; i++)
             {
-                AnimatedPerson current = _queuePeople[i];
+                Annimation_PNJ current = _queuePeople[i];
                 double y = Canvas.GetTop(current.Img);
 
                 AnimatePerson(current);
@@ -96,7 +135,7 @@ namespace PaniqueEnCuisine
                     {
                         _firstHasPassed = true;
                         _isGateClosed = true;
-                        StopRect.Fill = Brushes.Red;
+                        this.Rect.Fill = Brushes.Red;
 
                         _queuePeople.RemoveAt(0);
                         _passedPeople.Add(current);
@@ -106,26 +145,27 @@ namespace PaniqueEnCuisine
                 }
                 else
                 {
-                    AnimatedPerson front = _queuePeople[i - 1];
+                    Annimation_PNJ front = _queuePeople[i - 1];
                     double frontY = Canvas.GetTop(front.Img);
 
                     if (frontY - y > PersonSpacing)
                         Canvas.SetTop(current.Img, y + Speed);
                 }
+                
             }
 
             // ---- PERSONNES APRÈS LE STOP ----
             for (int i = _passedPeople.Count - 1; i >= 0; i--)
             {
-                AnimatedPerson person = _passedPeople[i];
+                Annimation_PNJ person = _passedPeople[i];
                 double y = Canvas.GetTop(person.Img);
 
                 AnimatePerson(person);
                 Canvas.SetTop(person.Img, y + Speed);
 
-                if (y > MainCanvas.ActualHeight)
+                if (y > this.Canvas.ActualHeight)
                 {
-                    MainCanvas.Children.Remove(person.Img);
+                   this.Canvas.Children.Remove(person.Img);
                     _passedPeople.RemoveAt(i);
                 }
             }
@@ -137,7 +177,7 @@ namespace PaniqueEnCuisine
             {
                 _isGateClosed = false;
                 _firstHasPassed = false;
-                StopRect.Fill = Brushes.Green;
+                this.Rect.Fill = Brushes.Green;
             }
         }
     }

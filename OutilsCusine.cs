@@ -34,11 +34,11 @@ namespace PaniqueEnCuisine
         public void afficher_outi(Canvas grille)
         {
             this.Img_outi.Name = this.Nom;
-            grille.Children.Add(this.Img_outi);
             Canvas.SetLeft(this.Img_outi, this.X);
             Canvas.SetTop(this.Img_outi, this.Y);
             this.Img_outi.Height = this.Height;
             this.Img_outi.Width = this.Width;
+            grille.Children.Add(this.Img_outi);
         }
         public string Nom
         {

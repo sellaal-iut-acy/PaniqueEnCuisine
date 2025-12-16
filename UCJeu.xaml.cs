@@ -31,16 +31,18 @@ namespace PaniqueEnCuisine
         public Button page_arriere = new Button();
         private UCFrigo frigo = new UCFrigo();
         private UCfour four = new UCfour();
+        private File File_Client;
 
         int animDelay = 0;
         int animSpeed = 3;
         private ManagerColision colision = new ManagerColision();
+        private Rectangle Rectangle = new Rectangle();
         public UCJeu(MainWindow mw)
         {
             InitializeComponent();
             main = mw;
 
-
+           
             DefinirFondNiveau();
             Ajout_Image_Player();
             afficher_client();
@@ -55,6 +57,8 @@ namespace PaniqueEnCuisine
             moveTimer.Interval = TimeSpan.FromMilliseconds(16); // ~60 FPS
             moveTimer.Tick += UpdatePlayer;
             moveTimer.Start();
+            File_Client = new File(ref moveTimer, ref grille, ref Rectangle);
+            File_Client.cree_File();
         }
 
         /* =========================
@@ -234,6 +238,7 @@ namespace PaniqueEnCuisine
 
             // Supprime tous les éléments visuels
             main.grille.Children.Clear();
+            main.mapManager.ManagerOutilsCuisine.Outils.Clear();
             main.mapManager.ManagerClients.Clients.Clear();
             main.mapManager.playeur.X = default;
             main.mapManager.playeur.Y = default;
