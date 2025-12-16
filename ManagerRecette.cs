@@ -8,7 +8,7 @@ namespace PaniqueEnCuisine
 {
     internal class ManagerRecette
     {
-        private List<Recette> ListeRecete = new List<Recette>();
+        private List<Recette> _ListeRecetes = new List<Recette>();
 
         public ManagerRecette()
         {
@@ -17,19 +17,19 @@ namespace PaniqueEnCuisine
 
         private void AjoutRecette(Recette newRecette)
         {
-            ListeRecete.Add(newRecette);
+            ListeRecetes.Add(newRecette);
         }
 
-        internal List<Recette> ListeRecete1
+        internal List<Recette> ListeRecetes
         {
             get
             {
-                return this.ListeRecete;
+                return this._ListeRecetes;
             }
 
             set
             {
-                this.ListeRecete = value;
+                this._ListeRecetes = value;
             }
         }
     }

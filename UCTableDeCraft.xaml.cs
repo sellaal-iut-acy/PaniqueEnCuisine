@@ -6,7 +6,7 @@ namespace PaniqueEnCuisine
 {
     public partial class UCTableDeCraft : UserControl
     {
-        private ManagerRecette  ManagerRecette = new ManagerRecette();
+        private ManagerRecette  ManagerRecettes = new ManagerRecette();
         public UCTableDeCraft()
         {
             InitializeComponent();
@@ -52,7 +52,7 @@ namespace PaniqueEnCuisine
 
         private void gener_recette()
         {
-            foreach ( Recette Recette in ManagerRecette)
+            foreach ( Recette Recette in ManagerRecettes.ListeRecetes)
             {
                 StackPanel stackPanel = new StackPanel();
                 StackPanel stackPanel1 = new StackPanel();
