@@ -4,26 +4,84 @@
              Width="800" Height="450">
 
     <Grid Background="#AA000000">
-        <Border Width="400" Height="250"
-                Background="#FFF5E6"
-                CornerRadius="10"
+
+        <Border Width="420"
+                Height="404"
+                Background="#FFF2E6D8"
+                CornerRadius="12"
+                BorderBrush="#FF3A2A1A"
+                BorderThickness="4"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
-            <StackPanel Margin="20">
-                <TextBlock Text="Caisse enregistreuse"
+
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Titre -->
+                <TextBlock Text="🧾 Caisse enregistreuse"
                            FontSize="22"
                            FontWeight="Bold"
-                           Margin="0,0,0,20"
-                           HorizontalAlignment="Center"/>
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,15"/>
 
-                <Button Content="Encaisser"
-                        Height="40"
-                        Margin="0,0,0,10"/>
+                <!-- Contenu -->
+                <StackPanel Grid.Row="1" >
 
-                <Button Content="Fermer"
-                        Height="40"
+                    <!-- Commande -->
+                    <TextBlock Text="Commande :"
+                               FontSize="16"
+                               FontWeight="SemiBold" TextAlignment="Center"/>
+
+                    <Border Background="#FFE8DCCB"
+                            CornerRadius="6"
+                            Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="• Burger" TextAlignment="Center"/>
+                            <TextBlock Text="• Frites" TextAlignment="Center"/>
+                            <TextBlock Text="• Soda" TextAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Temps -->
+                    <TextBlock Text="Temps restant :"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               Margin="0,10,0,0" TextAlignment="Center"/>
+
+                    <Border Background="#FF3A2A1A"
+                            CornerRadius="6"
+                            Padding="8"
+                            HorizontalAlignment="Center">
+                        <TextBlock Text="⏱ 01:30"
+                                   Foreground="White"
+                                   FontSize="16"
+                                   FontWeight="Bold"/>
+                    </Border>
+
+                    <!-- Bouton valider -->
+                    <Button Content="Valider la commande"
+                            Height="40"
+                            Margin="0,15,0,0"
+                            Background="#FF2E7D32"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            Click="ValiderCommande_Click"/>
+                </StackPanel>
+
+                <!-- Bouton fermer -->
+                <Button Grid.Row="2"
+                        Content="Fermer"
+                        Height="36"
+                        Margin="0,15,0,0"
+                        Background="#FF3A2A1A"
+                        Foreground="White"
+                        FontWeight="Bold"
                         Click="Fermer_Click"/>
-            </StackPanel>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>

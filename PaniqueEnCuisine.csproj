@@ -122,6 +122,7 @@
     <None Remove="Images\Niveau\image_fond_niveau2.png" />
     <None Remove="Images\Niveau\image_fond_niveau3.png" />
     <None Remove="Images\Niveau\image_fond_niveau4.png" />
+    <None Remove="Images\Outils\caisse.png" />
     <None Remove="Images\Outils\four.png" />
     <None Remove="Images\Outils\frigo.png" />
     <None Remove="Images\Outils\table_de_crafte.png" />
@@ -250,6 +251,7 @@
     <Resource Include="Images\Niveau\image_fond_niveau4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\Outils\caisse.png" />
     <Resource Include="Images\Outils\four.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

@@ -275,7 +275,7 @@ namespace PaniqueEnCuisine
             );
 
             main.mapManager.ManagerOutilsCuisine.AjouterOutil(
-                new Caisse("Caisse", 700, 240, 120, 80, 0, 50)
+                new Caisse("Caisse", 640, 300, 70, 50, 0, 50)
              );
 
             main.mapManager.ManagerOutilsCuisine.AfficherOutilsCuisine(grille);

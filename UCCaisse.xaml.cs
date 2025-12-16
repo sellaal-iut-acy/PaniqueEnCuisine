@@ -10,6 +10,16 @@ namespace PaniqueEnCuisine
             InitializeComponent();
         }
 
+        private void ValiderCommande_Click(object sender, RoutedEventArgs e)
+        {
+            // PLUS TARD :
+            // - vérifier inventaire
+            // - valider la commande
+            // - passer à la suivante
+
+            MessageBox.Show("Commande validée (logique à venir)");
+        }
+
         private void Fermer_Click(object sender, RoutedEventArgs e)
         {
             if (Parent is Panel panel)
