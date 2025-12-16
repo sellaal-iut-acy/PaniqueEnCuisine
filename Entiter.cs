@@ -97,7 +97,7 @@ namespace PaniqueEnCuisine
             imagesPerso[4, 4] = LoadImage("Images/Entiter/image_rond_orange.jpg");
         }
 
-        private BitmapImage LoadImage(string path)
+        public BitmapImage LoadImage(string path)
         {
             return new BitmapImage(new Uri(path, UriKind.Relative));
         }

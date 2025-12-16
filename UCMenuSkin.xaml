@@ -10,5 +10,35 @@
         <Image Source="/Images/image_fond_MenuSkin1.png" Stretch="Fill"/>
         <Button x:Name="B_Retour" Content="Retour" HorizontalAlignment="Left" Margin="620,10,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Retour_Click"/>
 
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Boutons skins -->
+            <StackPanel Grid.Column="0" Margin="20">
+                <Button Content="Prototype" Click="SkinPrototype_Click"/>
+                <Button Content="Chef" Click="SkinChef_Click"/>
+            </StackPanel>
+
+            <!-- Preview + Select -->
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <Image x:Name="ImagePreview"
+               Width="200"
+               Height="200"
+               Stretch="Uniform"/>
+
+                <Button Content="Sélectionner"
+                Margin="0,20,0,0"
+                Width="150"
+                Click="SelectSkin_Click"/>
+
+            </StackPanel>
+        </Grid>
+
+
+
     </Grid>
 </UserControl>

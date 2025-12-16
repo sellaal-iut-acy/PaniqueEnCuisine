@@ -22,16 +22,54 @@ namespace PaniqueEnCuisine
     public partial class UCMenuSkin : UserControl
     {
         private MainWindow main;
+        private int selectedSkin = 0;
+
         public UCMenuSkin(MainWindow mw)
         {
             InitializeComponent();
             main = mw;
+
+            UpdatePreview();
         }
 
         private void B_Retour_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
             main.ChangeScreen(new UCMenuPlus(main));
+        }
+        private void SkinPrototype_Click(object sender, RoutedEventArgs e)
+        {
+            selectedSkin = 0;
+            UpdatePreview();
+        }
+
+        private void SkinChef_Click(object sender, RoutedEventArgs e)
+        {
+            selectedSkin = 1;
+            UpdatePreview();
+        }
+
+        
+
+        private void UpdatePreview()
+        {
+            ImagePreview.Source = new BitmapImage(
+                new Uri($"pack://application:,,,/Images/Entiter/image_idle0_skin{selectedSkin}.png")
+            );
+        }
+
+        private void SelectSkin_Click(object sender, RoutedEventArgs e)
+        {
+            var p = main.mapManager.playeur;
+
+            p.CurrentSkin = selectedSkin;
+            p.Charger_images();
+
+            Audio.PlaySFX("Sons/son_clic.wav");
+            main.ChangeScreen(new UCMenuPlus(main));
+
+
+
         }
     }
 }

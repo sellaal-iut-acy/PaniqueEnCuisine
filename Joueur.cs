@@ -14,9 +14,11 @@ namespace PaniqueEnCuisine
         private Inventaire inventaire = new Inventaire(new List<Nouriture>(),1);
         private int _main = 0;
         public BitmapImage[,] imagesPerso = new BitmapImage[4,4];
+        public int CurrentSkin { get; set; } = 0;
+
 
         public int Direction { get; set; } = 4; // 0=Haut,1=Droite,2=Bas,3=Gauche,4=Idle
-        public int Frame { get; set; } = 0;     // 0..4 (bleu → orange)
+        public int Frame { get; set; } = 0;     // 0..4
 
         public Joueur(string nom, double x,double y, int vitesse, int score , int Height, int Widht) : base(x, y, vitesse,nom,Height,Widht)
         {
@@ -31,26 +33,20 @@ namespace PaniqueEnCuisine
         {
             imagesPerso = new BitmapImage[5, 5];
 
-            string[] directions = { "haut", "droite", "bas", "gauche" };
-            string[] couleurs = { "bleu", "rouge", "vert", "violet", "orange" };
+            string[] directions = { "haut", "droite", "bas", "gauche", "idle" };
 
-            // Mouvements
-            for (int dir = 0; dir < 4; dir++)
+            for (int dir = 0; dir < 5; dir++)
             {
                 for (int frame = 0; frame < 5; frame++)
                 {
-                    string path = $"Images/Entiter/image_fleche_{directions[dir]}_{couleurs[frame]}.png";
-                    imagesPerso[dir, frame] = new BitmapImage(new Uri(path, UriKind.Relative));
+                    string path =
+                        $"Images/Entiter/image_{directions[dir]}{frame}_skin{CurrentSkin}.png";
+
+                    imagesPerso[dir, frame] = LoadImage(path);
                 }
             }
-
-            // Idle (ronds)
-            imagesPerso[4, 0] = new BitmapImage(new Uri("Images/Entiter/image_rond_bleu.jpg", UriKind.Relative));
-            imagesPerso[4, 1] = new BitmapImage(new Uri("Images/Entiter/image_rond_rouge.jpg", UriKind.Relative));
-            imagesPerso[4, 2] = new BitmapImage(new Uri("Images/Entiter/image_rond_vert.jpg", UriKind.Relative));
-            imagesPerso[4, 3] = new BitmapImage(new Uri("Images/Entiter/image_rond_violet.jpg", UriKind.Relative));
-            imagesPerso[4, 4] = new BitmapImage(new Uri("Images/Entiter/image_rond_orange.jpg", UriKind.Relative));
         }
+
         public void ajouter_objet_inventaire(Nouriture nouriture)
         {
             this.inventaire.Liste_nourriture.Add(nouriture);
