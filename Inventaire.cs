@@ -42,6 +42,7 @@ namespace PaniqueEnCuisine
             inventaire.Width = 460;
             inventaire.Height = 250;
             inventaire.Fill = Brushes.Gray;
+            
             Canvas.SetTop(inventaire, 237);
             Canvas.SetLeft(inventaire, 165);
             grille.Children.Add(inventaire);

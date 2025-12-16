@@ -14,7 +14,7 @@ namespace PaniqueEnCuisine
         private Inventaire inventaire = new Inventaire(new List<Nouriture>(),1);
         private int _main = 0;
         public BitmapImage[,] imagesPerso = new BitmapImage[4,4];
-        public int CurrentSkin { get; set; } = 0;
+        public int CurrentSkin { get; set; } = 1;
 
 
         public int Direction { get; set; } = 4; // 0=Haut,1=Droite,2=Bas,3=Gauche,4=Idle

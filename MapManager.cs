@@ -22,6 +22,7 @@ namespace PaniqueEnCuisine
         private ManagerClients managerClients = new ManagerClients (new List<PNJ>());
         public int niveau_actuel = 1;
         private ManagerOutilsCuisine managerOutilsCuisine = new ManagerOutilsCuisine (new List<OutilsCusine>());
+        private ManagerColision managerColision = new ManagerColision();
 
         public MapManager(Joueur playeur)
         {
@@ -88,6 +89,19 @@ namespace PaniqueEnCuisine
             set
             {
                 this.managerOutilsCuisine = value;
+            }
+        }
+
+        internal ManagerColision ManagerColision
+        {
+            get
+            {
+                return this.managerColision;
+            }
+
+            set
+            {
+                this.managerColision = value;
             }
         }
     }
