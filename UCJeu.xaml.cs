@@ -28,6 +28,7 @@ namespace PaniqueEnCuisine
 
         private UCFrigo ucFrigo = null;
         private UCfour ucFour = null;
+        private UCTableDeCraft ucTableDeCraft = null;
 
         public UCJeu(MainWindow mw)
         {
@@ -216,6 +217,15 @@ namespace PaniqueEnCuisine
 
             main.mapManager.playeur.X = 0;
             main.mapManager.playeur.Y = 0;
+        }
+
+        private void Button_TableDeCraft_Click(object sender, RoutedEventArgs e)
+        {
+            if (ucTableDeCraft != null) return;
+
+            ucTableDeCraft = new UCTableDeCraft();
+            AjouterOverlay(ucTableDeCraft);
+            ucTableDeCraft.Unloaded += (s, e) => ucTableDeCraft = null;
         }
 
 

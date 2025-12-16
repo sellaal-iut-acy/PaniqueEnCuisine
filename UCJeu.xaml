@@ -7,10 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded"
              Background="Transparent">
-    
+
     <Canvas x:Name="grille">
 
-        <Button x:Name="B_Retour" Content="Quitter" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="Button_RetourMenu_Click" HorizontalAlignment="Left" Canvas.Left="620" Canvas.Top="10" VerticalAlignment="Top"/>
+        <Button x:Name="B_Retour" Content="Quitter" Height="31" Width="145" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="Button_RetourMenu_Click" HorizontalAlignment="Center" Canvas.Left="10" Canvas.Top="409" VerticalAlignment="Top"/>
+        <Button x:Name="B_TableDeCraft" Content="Cuisiner" Height="30" Width="117" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="Button_TableDeCraft_Click" Canvas.Left="10" Canvas.Top="374" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
     </Canvas>
 
