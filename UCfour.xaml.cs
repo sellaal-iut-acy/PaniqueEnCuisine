@@ -1,8 +1,10 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace PaniqueEnCuisine
 {
@@ -10,10 +12,21 @@ namespace PaniqueEnCuisine
     {
         private Nouriture Nouriture_a_cuire;
         private Nouriture Nouriture_cuit;
+        private int currentIndex = 0;
+        private Joueur Joueur;
+        private bool selectioner = false;
+        private Inventaire NouriturePersonange;
 
-        public UCfour()
+
+        public UCfour( Joueur joueur , Inventaire inventaire)
         {
             InitializeComponent();
+            Console.WriteLine("fait");
+            Joueur = joueur;
+            NouriturePersonange = inventaire;
+            joueur.Inventaire.Liste_nourriture.Add(new Nouriture("burger", "plat"));
+            joueur.Inventaire.Liste_nourriture.Add(new Nouriture("pizza", "plat"));
+
             this.Focusable = true;
             this.Focus();
         }
@@ -28,33 +41,48 @@ namespace PaniqueEnCuisine
             if (this.Parent is Panel parent)
                 parent.Children.Remove(this);
         }
-        private void ajouter_Nouriture_a_cuirre(Nouriture nouriture)
-        {
-            ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(
-                new Uri($"{nouriture.Image.Source.ToString()}")
-            );
-            imageBrush.Stretch = Stretch.UniformToFill;
-            objet_a_cuirre.Fill = imageBrush;
-            Nouriture_a_cuire = nouriture;
-        }
-        private void cuirre_Nouriture()
-        {
-            if (Nouriture_a_cuire.Temps_cuisson!=0)
-            {
-                Nouriture_cuit = Nouriture_a_cuire;
-            }
-        }
-        private Nouriture Recuperre_Nouriture_cuite()
-        {
-            return Nouriture_cuit;
-        }
 
         private void B_cuirre(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("cuirre");
-            cuirre_Nouriture();
+            if (selectioner)
+            {
+                 
+                NouritureCuit.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"pack://application:,,,/Images/food/{NouriturePersonange.Liste_nourriture[currentIndex].Nom}_cuit.png"));
+                Nouriture_cuit = new Nouriture($"{NouriturePersonange.Liste_nourriture[currentIndex].Nom}_cuit", "cuit");
+                NouriturePersonange.Liste_nourriture.Remove(Nouriture_a_cuire);
+                NouriturePersonange.Liste_nourriture.Add(Nouriture_cuit);
+            }
             
+        }
+
+        private void button_reculer_Click(object sender, RoutedEventArgs e)
+        {
+            if (NouriturePersonange.Liste_nourriture.Count == 0) return;
+
+            currentIndex--;
+            if (currentIndex < 0) 
+                currentIndex = NouriturePersonange.Liste_nourriture.Count - 1;
+
+            nouriture_Choix.Source = NouriturePersonange.Liste_nourriture[currentIndex].Image.Source;
+        }
+
+        private void button_avancer_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (NouriturePersonange.Liste_nourriture.Count == 0) return;
+
+            currentIndex++;
+            if (currentIndex >= NouriturePersonange.Liste_nourriture.Count) currentIndex = 0;
+
+            nouriture_Choix.Source = NouriturePersonange.Liste_nourriture[currentIndex].Image.Source;
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NouritureACuirre.Source = NouriturePersonange.Liste_nourriture[currentIndex].Image.Source;
+            Nouriture_a_cuire = NouriturePersonange.Liste_nourriture[currentIndex];
+            selectioner = true;
         }
     }
 }

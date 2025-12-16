@@ -10,7 +10,6 @@
     <Canvas x:Name="canvas" Background="Transparent">
         <Image Height="450" Source="/Images/image_fond_frigo.png" Stretch="Fill" Width="800" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Button x:Name="B_Fermer" Content="Fermer" Height="35" Width="170" FontSize="20" Background="Gray" BorderBrush="#FF444343" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Fermer_Click" HorizontalAlignment="Center" Canvas.Left="315" Canvas.Top="10" VerticalAlignment="Top"/>
-
     </Canvas>
 
 </UserControl>

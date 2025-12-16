@@ -52,8 +52,6 @@ namespace PaniqueEnCuisine
             }
         }
 
-        
-
         private void cree_frigo()
         {
             inventaire_frigo.Cree_inventaire(canvas, ref Page_suivante, ref  Page_arrierre);

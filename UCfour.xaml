@@ -7,15 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Canvas x:Name="canvas" RenderTransformOrigin="0.5,0.5" >
-        <Image Height="450" Source="/Images/image_fond_four.png" Stretch="Fill" Width="800" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Rectangle Height="100" Canvas.Left="230" Stroke="Black" Canvas.Top="175" Width="340" Fill="#BF808080" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-
-
-
-        <Button x:Name="B_Retour" Content="Cuirre" Height="35" Width="170" FontSize="20" Background="Gray" BorderBrush="#FF444343" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_cuirre" HorizontalAlignment="Center" Canvas.Left="315" Canvas.Top="311" VerticalAlignment="Top" />
-        <Button x:Name="B_Fermer" Content="Fermer" Height="35" Width="170" FontSize="20" Background="Gray" BorderBrush="#FF444343" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Fermer_Click" Canvas.Left="315" Canvas.Top="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Rectangle x:Name="objet_cuit" Height="50" Canvas.Left="496" Stroke="Black" Canvas.Top="200" Width="50" Fill="#BF3A3A3A" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Rectangle x:Name="objet_a_cuirre" Height="50" Canvas.Left="255" Stroke="Black" Canvas.Top="200" Width="50" Fill="#BF3A3A3A" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.7,0.52"/>
-        <Image Height="130" Canvas.Left="316" Source="/Images/image_fleche.png" Stretch="Fill" Canvas.Top="164" Width="168"/>
+        <Image Height="450" Source="/Images/image_fond_four.png" Stretch="Fill" Width="800" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Rectangle Height="100" Canvas.Left="230" Stroke="Black" Canvas.Top="60" Width="340" Fill="#BF808080" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button x:Name="B_Retour" Content="Cuirre" Height="35" Width="170" FontSize="20" Background="Gray" BorderBrush="#FF444343" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_cuirre" HorizontalAlignment="Center" Canvas.Left="314" Canvas.Top="190" VerticalAlignment="Top" />
+        <Button x:Name="B_Fermer" Content="Fermer" Height="35" Width="170" FontSize="20" Background="Gray" BorderBrush="#FF444343" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Fermer_Click" Canvas.Left="314" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Image Height="130" Canvas.Left="316" Source="/Images/image_fleche.png" Stretch="Fill" Canvas.Top="45" Width="168" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Image Height="100" Canvas.Left="349" Canvas.Top="249" Width="100" Name="nouriture_Choix"/>
+        <Button x:Name="button_avancer" Content="avancer" Canvas.Left="494" Canvas.Top="289" Click="button_avancer_Click"/>
+        <Button x:Name="button_reculer" Content="reculer" Canvas.Left="271" Canvas.Top="289" Click="button_reculer_Click"/>
+        <Button Content="Selectioner" Canvas.Left="380" Canvas.Top="354" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click"/>
+        <Image x:Name="NouritureCuit" Height="48" Canvas.Left="491" Canvas.Top="86" Width="51"/>
+        <Image x:Name="NouritureACuirre" Height="48" Canvas.Left="271" Canvas.Top="85" Width="51" HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Canvas>
 </UserControl>

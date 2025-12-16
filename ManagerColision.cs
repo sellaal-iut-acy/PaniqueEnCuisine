@@ -70,6 +70,8 @@ namespace PaniqueEnCuisine
                         }
                         else
                         {
+
+                            Console.WriteLine("avancer");
                             Client.Vitesse = 2;
                         }
                     }

@@ -17,7 +17,7 @@ namespace PaniqueEnCuisine
         public Nouriture(string nom, string type)
         {
             this._nom = nom;
-            this._image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"/Images/food/{nom}.png", UriKind.Relative));
+            this._image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"pack://application:,,,/Images/food/{nom}.png"));
   
         }
 

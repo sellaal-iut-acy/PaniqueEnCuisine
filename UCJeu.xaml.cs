@@ -131,8 +131,6 @@ namespace PaniqueEnCuisine
 
                 if (colision.VeriferColision_PLAYER_Four(grille, joueur, main.mapManager.playeur))
                     OuvrirFour();
-                if (colision.VeriferColision_PLAYER_table(grille, joueur, main.mapManager.playeur))
-                    Console.WriteLine("table de crafte ouvert");
             }
         }
 
@@ -161,8 +159,7 @@ namespace PaniqueEnCuisine
         private void OuvrirFour()
         {
             if (ucFour != null) return;
-
-            ucFour = new UCfour();
+            ucFour = new UCfour(main.mapManager.playeur,main.mapManager.playeur.Inventaire);
             AjouterOverlay(ucFour);
             ucFour.Unloaded += (s, e) => ucFour = null;
         }
@@ -175,7 +172,6 @@ namespace PaniqueEnCuisine
             Canvas.SetLeft(uc, 0);
             Canvas.SetTop(uc, 0);
             Panel.SetZIndex(uc, 999);
-
             grille.Children.Add(uc);
             uc.Focus();
         }

@@ -100,6 +100,7 @@
     <None Remove="Images\Entiter\PNJ\image_pnj2_idle1.png" />
     <None Remove="Images\food\burger.png" />
     <None Remove="Images\food\pizza.png" />
+    <None Remove="Images\food\pizza_cuit.png" />
     <None Remove="Images\image_fleche.png" />
     <None Remove="Images\image_fond_four.png" />
     <None Remove="Images\image_fond_frigo.png" />
@@ -206,6 +207,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\food\pizza.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\food\pizza_cuit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\image_fleche.png" />

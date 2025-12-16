@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace PaniqueEnCuisine
@@ -19,14 +20,19 @@ namespace PaniqueEnCuisine
         private int nb_page = 1;
         private int old_page = 0;
         private int max_page ;
-
+        private List<Button> _liste_nourriture_Button = new List<Button>();
         public Inventaire(List<Nouriture> liste_nourriture,int current_page)
         {
+            
+            liste_buttun_Nouriture(); 
+            Console.WriteLine("fait");
             this.Liste_nourriture = liste_nourriture;
             this.Current_page = current_page;
             this.old_page = this.current_page;
             set_page_max();
             
+
+
         }
         public void set_page_max()
         {
@@ -69,12 +75,12 @@ namespace PaniqueEnCuisine
         public void afficher_objet_inventaire(Inventaire inventaire,Canvas grille , int page)
         {
             Console.WriteLine($"Affichage de la page {page}");
-            Console.WriteLine($"Nombre d'objets dans l'inventaire : {inventaire.Liste_nourriture.Count}");
+            Console.WriteLine($"Nombre d'objets dans l'inventaire : {inventaire.Liste_nourriture_Button.Count}");
 
             int nb_objet_par_linge = 0;
             int nb_objet_totale = 0;
 
-            for (int c = (page-1)*6; c < 6 * (page - 1) + 6 && c <= inventaire.Liste_nourriture.Count - 1; c++)
+            for (int c = (page-1)*6; c < 6 * (page - 1) + 6 && c <= inventaire.Liste_nourriture_Button.Count - 1; c++)
             {   
                 nb_objet_par_linge = 0;
                 while (nb_objet_par_linge < 6 )
@@ -87,15 +93,13 @@ namespace PaniqueEnCuisine
                     }
                         
                     
-                    if (nb_objet_totale > inventaire.Liste_nourriture.Count - 1 )
+                    if (nb_objet_totale > inventaire.Liste_nourriture_Button.Count - 1 )
                     {
                         break;
                     }
-                    Image image = new Image();
-                    image.Source = inventaire.Liste_nourriture[nb_objet_totale].Image.Source;
-                    Canvas.SetTop(image, 260 + (c * 63));
-                    Canvas.SetLeft(image, 213 + (nb_objet_par_linge * 63));
-                    grille.Children.Add(image);
+                    Canvas.SetTop(inventaire.Liste_nourriture_Button[nb_objet_totale], 260 + (c * 63));
+                    Canvas.SetLeft(inventaire.Liste_nourriture_Button[nb_objet_totale], 213 + (nb_objet_par_linge * 63));
+                    grille.Children.Add(inventaire.Liste_nourriture_Button[nb_objet_totale]);
                     Console.WriteLine($"Position de l'objet : Top {Canvas.GetTop(inventaire.Liste_nourriture[nb_objet_totale].Image)} Left {Canvas.GetLeft(inventaire.Liste_nourriture[c].Image)}");
                     nb_objet_par_linge++;
                     nb_objet_totale++;
@@ -139,6 +143,21 @@ namespace PaniqueEnCuisine
             
 
         }
+        public void liste_buttun_Nouriture()
+        {
+            foreach(var item in Liste_nourriture)
+            {
+                Button item_bouton = new Button();
+                item_bouton.Background = new ImageBrush( new BitmapImage( new Uri($"pack://application:,,,/Images/food/{item.Nom}.png")));
+                item_bouton.Width = item.Image.Width;
+                item_bouton.Height = item.Image.Height;
+                Console.WriteLine("passer ajout");
+                this.Liste_nourriture_Button.Add(item_bouton);
+            }
+        }
+
+
+
 
         public void teste_inventer_player(Joueur playeur)
         {
@@ -244,6 +263,19 @@ namespace PaniqueEnCuisine
             set
             {
                 this.max_page = value;
+            }
+        }
+
+        public List<Button> Liste_nourriture_Button
+        {
+            get
+            {
+                return this._liste_nourriture_Button;
+            }
+
+            set
+            {
+                this._liste_nourriture_Button = value;
             }
         }
     }
