@@ -164,7 +164,7 @@ namespace PaniqueEnCuisine
         {
             if (ucFrigo != null) return;
 
-            ucFrigo = new UCFrigo();
+            ucFrigo = new UCFrigo(main.mapManager.playeur.Inventaire);
             AjouterOverlay(ucFrigo);
             ucFrigo.Unloaded += (s, e) => ucFrigo = null;
         }
