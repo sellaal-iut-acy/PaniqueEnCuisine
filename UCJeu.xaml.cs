@@ -256,8 +256,9 @@ namespace PaniqueEnCuisine
             main.mapManager.ManagerOutilsCuisine.AjouterOutil(
                 new Foure("Four", 500, 200, 100, 50, 0, 50)
             );
-
             main.mapManager.ManagerOutilsCuisine.AfficherOutilsCuisine(grille);
+
+            main.mapManager.Table_De_Crafte.Afficher_image(grille, 0, 0);
         }
     }
 }

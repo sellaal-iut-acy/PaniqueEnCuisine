@@ -9,21 +9,22 @@ using System.Windows.Media.Imaging;
 
 namespace PaniqueEnCuisine
 {
-    internal class Table_de_Crafte
+    internal class Table_de_Craft
     {
         private Image img_table_craft = new Image();
         private int x =0, y=0,height=0,width=0;
-        public Table_de_Crafte()
+        public Table_de_Craft()
         {
             Set_mimage();
         }
-        private void Afficher_image(Canvas canvas,int x , int y)
+        public void Afficher_image(Canvas canvas, int x, int y)
         {
+            
             Canvas.SetLeft(this.img_table_craft,x);
             Canvas.SetTop(this.img_table_craft,y);
             canvas.Children.Add(this.img_table_craft);
         }
-        private void craft(List<Nouriture> ingrediant, List<Nouriture> Recettes,Nouriture nouriture,Inventaire inventaire)
+        public void craft(List<Nouriture> ingrediant, List<Nouriture> Recettes,Nouriture nouriture,Inventaire inventaire)
         {
             Recette recete = new Recette(Recettes,nouriture);
             bool fait = recete.Rectte_fait(ingrediant);
@@ -99,7 +100,7 @@ namespace PaniqueEnCuisine
 
         private void Set_mimage()
         {
-            this.img_table_craft.Source = new BitmapImage(new Uri($"Images/Outils/table_de_crafte"));
+            this.img_table_craft.Source = new BitmapImage(new Uri($"P:/SAE/Nouveau dossier (5)/Images/Outils/table_de_crafte.png"));
         }
     }
 }
