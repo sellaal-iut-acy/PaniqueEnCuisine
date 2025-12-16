@@ -29,5 +29,24 @@ namespace PaniqueEnCuisine
             if (this.Parent is Panel parent)
                 parent.Children.Remove(this);
         }
+
+        private void Button_Cuisiner_Burger_Click(object sender, RoutedEventArgs e)
+        {
+            cuisiner("burger");
+        }
+        
+        
+        
+        
+        private void cuisiner(string plat)
+        {
+            Console.WriteLine("Cuisiner un " + plat + " !");
+        }
+
+        private void Button_Cuisiner_Pizza_Click(object sender, RoutedEventArgs e)
+        {
+
+            cuisiner("pizza");
+        }
     }
 }

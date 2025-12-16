@@ -37,8 +37,6 @@ namespace PaniqueEnCuisine
             InitializeComponent();
             main = mw;
             DefinirFondNiveau();
-            afficher_client();
-            Rectangle_arret_Client();
             Ajouter_outlis_cuisine();
             Ajout_Image_Player();
             JouerLaMusiqueDuNiveau();
@@ -118,7 +116,6 @@ namespace PaniqueEnCuisine
             Canvas.SetTop(joueur, p.Y);
             joueur.Source = p.GetImageJoueur();
 
-            main.mapManager.ManagerClients.move_all_PNJ(grille);
         }
        
         /* ================= CLAVIER ================= */
@@ -144,6 +141,11 @@ namespace PaniqueEnCuisine
 
                 if (colision.VeriferColision_PLAYER_Four(grille, joueur, main.mapManager.playeur))
                     OuvrirFour();
+                if (e.Key == ManagerSettings.KeyAction)
+                {
+                    if (colision.VeriferColision_PLAYER_Caisse(grille, joueur, main.mapManager.playeur))
+                        OuvrirCaisse();
+                }
             }
         }
 
@@ -176,6 +178,17 @@ namespace PaniqueEnCuisine
             AjouterOverlay(ucFour);
             ucFour.Unloaded += (s, e) => ucFour = null;
         }
+        private UCCaisse ucCaisse = null;
+
+        private void OuvrirCaisse()
+        {
+            if (ucCaisse != null) return;
+
+            ucCaisse = new UCCaisse();
+            AjouterOverlay(ucCaisse);
+            ucCaisse.Unloaded += (s, e) => ucCaisse = null;
+        }
+
 
         private void AjouterOverlay(UserControl uc)
         {
@@ -187,6 +200,11 @@ namespace PaniqueEnCuisine
             Panel.SetZIndex(uc, 999);
             grille.Children.Add(uc);
             uc.Focus();
+        }
+
+        private void Button_Inventaire_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Ouverture de l'inventaire");
         }
 
         private void Button_RetourMenu_Click(object sender, RoutedEventArgs e)
@@ -227,7 +245,6 @@ namespace PaniqueEnCuisine
             grille.Children.Clear();
 
             // Reset données gameplay (à adapter si besoin)
-            main.mapManager.ManagerClients.Clients.Clear();
             main.mapManager.ManagerOutilsCuisine.Outils.Clear();
 
             main.mapManager.playeur.X = 0;
@@ -244,37 +261,8 @@ namespace PaniqueEnCuisine
         }
 
 
-        /* ================= CLIENTS ================= */
+      
 
-        private void Rectangle_arret_Client()
-        {
-            Rectangle rect = new Rectangle
-            {
-                Width = 100,
-                Height = 50,
-                Fill = Brushes.Red
-            };
-
-            rect.MouseDown += servie;
-            Canvas.SetTop(rect, 240);
-            Canvas.SetLeft(rect, 700);
-            grille.Children.Add(rect);
-        }
-
-        private void servie(object sender, MouseButtonEventArgs e)
-        {
-            var clients = main.mapManager.ManagerClients.Clients;
-            clients[^1].Servi = true;
-        }
-
-        private void afficher_client()
-        {
-            main.mapManager.ManagerClients.AjouterClient(
-                new PNJ("Client", 50, 0, 2, 100, 1, 50, 100)
-            );
-
-            main.mapManager.ManagerClients.afficher_Clients(grille);
-        }
 
         private void Ajouter_outlis_cuisine()
         {
@@ -285,6 +273,11 @@ namespace PaniqueEnCuisine
             main.mapManager.ManagerOutilsCuisine.AjouterOutil(
                 new Foure("Four", 400, 50, 200, 100, 0, 50)
             );
+
+            main.mapManager.ManagerOutilsCuisine.AjouterOutil(
+                new Caisse("Caisse", 700, 240, 120, 80, 0, 50)
+             );
+
             main.mapManager.ManagerOutilsCuisine.AfficherOutilsCuisine(grille);
 
 

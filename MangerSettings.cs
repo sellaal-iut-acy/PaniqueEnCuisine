@@ -10,8 +10,8 @@ public class ManagerSettings
     public static Key KeyAction = Key.E;
 
 
-    public static double VolumeGeneral = 1.0;   // 0.0 → 1.0
-    public static double VolumeMusique = 1.0;
+    public static double VolumeGeneral = 1.0;   
+    public static double VolumeMusique = 0.25;
     public static double VolumeEffets = 1.0;
     
     public static bool KeyAlreadyUsed(Key key)

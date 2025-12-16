@@ -11,7 +11,8 @@
     <Canvas x:Name="grille">
 
         <Button x:Name="B_Retour" Content="Quitter" Height="31" Width="145" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="Button_RetourMenu_Click" HorizontalAlignment="Center" Canvas.Left="10" Canvas.Top="409" VerticalAlignment="Top"/>
-        <Button x:Name="B_TableDeCraft" Content="Cuisiner" Height="30" Width="117" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="Button_TableDeCraft_Click" Canvas.Left="10" Canvas.Top="374" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button x:Name="B_TableDeCraft" Content="Cuisiner" Height="30" Width="116" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="Button_TableDeCraft_Click" Canvas.Left="10" Canvas.Top="339" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button x:Name="B_Inventaire" Content="Inventaire" Height="30" Width="135" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="Button_Inventaire_Click" Canvas.Left="10" Canvas.Top="374" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
     </Canvas>
 

@@ -19,7 +19,6 @@ namespace PaniqueEnCuisine
         public ImageBrush fond = new ImageBrush();
         private ManagerSettings managerSettings = new ManagerSettings();
         private Canvas grille = new Canvas();
-        private ManagerClients managerClients = new ManagerClients (new List<PNJ>());
         public int niveau_actuel = 1;
         private ManagerOutilsCuisine managerOutilsCuisine = new ManagerOutilsCuisine (new List<OutilsCusine>());
         private ManagerColision managerColision = new ManagerColision();
@@ -67,18 +66,6 @@ namespace PaniqueEnCuisine
             }
         }
 
-        internal ManagerClients ManagerClients
-        {
-            get
-            {
-                return this.managerClients;
-            }
-
-            set
-            {
-                this.managerClients = value;
-            }
-        }
 
         internal ManagerOutilsCuisine ManagerOutilsCuisine
         {

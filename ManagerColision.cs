@@ -44,86 +44,9 @@ namespace PaniqueEnCuisine
             }
             return Avancer;
         }
-        public bool VerifierColision(Canvas grille,Image img_Client,PNJ Client)
-        {
-            bool Avancer = true;
-            foreach (var x in grille.Children.OfType<Rectangle>())
-            {
-                if((string)x.Tag == "commande")
-                {
-                    if (Client.Servi)
-                    {
-                        Client.Vitesse = 2;
-                    }
-                    else 
-                    {
-                        Rect PlayerHitbox = new Rect(Canvas.GetLeft(img_Client), Canvas.GetTop(img_Client), img_Client.Width, img_Client.Height);
-                        Rect PlateformeCommade = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+        
 
-
-                        if (PlayerHitbox.IntersectsWith(PlateformeCommade))
-                        {
-                            
-                            Client.Vitesse = 0;
-                            Canvas.SetTop(img_Client, Canvas.GetTop(x) - img_Client.Height);
-                            Avancer = false;    
-                        }
-                        else
-                        {
-
-                            Console.WriteLine("avancer");
-                            Client.Vitesse = 2;
-                        }
-                    }
-                    
-                }
-                
-            }
-            return Avancer;
-
-        }
-        public bool VerifierColision_PNJ_To_PNJ(Canvas grille,PNJ Client)
-        {
-            bool Avancer = true;
-            foreach (var x in grille.Children.OfType<Image>())
-            {
-                if ((string)x.Tag == "PNJ")
-                {
-                    if (Client.Servi || Client.Rien_devant1)
-                    {
-                        
-                        Client.Vitesse = 2;
-                    }
-                    else
-                    {
-                        
-                        Rect PlayerHitbox = new Rect(Canvas.GetLeft(Client.Curenent_Image), Canvas.GetTop(Client.Curenent_Image), Client.Curenent_Image.Width, Client.Curenent_Image.Height);
-                        Rect PlateformeCommade = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
-
-                        if (PlayerHitbox.IntersectsWith(PlateformeCommade))
-                        {
-                            
-                            Client.Vitesse = 0;
-                            Avancer = false;
-
-                        }
-                        else
-                        {
-                            
-                            if (Avancer)
-                                Client.Vitesse = 2;
-                            
-
-                        }
-
-                    }
-
-                }   
-            }
-            
-            return Avancer;
-
-        }
+        
 
         public bool VeriferColision_PLAYER_FrIgo(Canvas grille,Image playeur,Joueur joueur)
         {
@@ -195,6 +118,7 @@ namespace PaniqueEnCuisine
             return colision;
         }
 
+
         public bool VeriferColision_PLAYER_table(Canvas grille, Image playeur, Joueur joueur)
         {
             Console.WriteLine("début des colsision");
@@ -229,6 +153,43 @@ namespace PaniqueEnCuisine
             }
             return colision;
         }
+        public bool VeriferColision_PLAYER_Caisse(Canvas grille, Image playeur, Joueur joueur)
+        {
+            bool colision = false;
+
+            foreach (var x in grille.Children.OfType<Image>())
+            {
+                if ((string)x.Tag == "Caisse")
+                {
+                    Rect PlayerHitbox = new Rect(
+                        Canvas.GetLeft(playeur),
+                        Canvas.GetTop(playeur),
+                        playeur.Width,
+                        playeur.Height
+                    );
+
+                    Rect CaisseHitbox = new Rect(
+                        Canvas.GetLeft(x),
+                        Canvas.GetTop(x),
+                        x.Width,
+                        x.Height
+                    );
+
+                    if (CaisseHitbox.IntersectsWith(PlayerHitbox))
+                    {
+                        joueur.Vitesse = 0;
+                        colision = true;
+                    }
+                    else
+                    {
+                        joueur.Vitesse = 2;
+                    }
+                }
+            }
+
+            return colision;
+        }
+
 
     }
 }
