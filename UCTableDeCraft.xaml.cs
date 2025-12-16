@@ -6,6 +6,7 @@ namespace PaniqueEnCuisine
 {
     public partial class UCTableDeCraft : UserControl
     {
+        private ManagerRecette  ManagerRecette = new ManagerRecette();
         public UCTableDeCraft()
         {
             InitializeComponent();
@@ -47,6 +48,25 @@ namespace PaniqueEnCuisine
         {
 
             cuisiner("pizza");
+        }
+
+        private void gener_recette()
+        {
+            foreach ( Recette Recette in ManagerRecette)
+            {
+                StackPanel stackPanel = new StackPanel();
+                StackPanel stackPanel1 = new StackPanel();
+                Image image = new Image();
+                TextBox textBox = new TextBox();
+                TextBox textBox1 = new TextBox();
+                TextBox textBox2 = new TextBox();
+                TextBox textBox3 = new TextBox();
+                TextBox textBox4 = new TextBox();
+
+                stackPanel.Children.Add(stackPanel1);
+
+
+            }
         }
     }
 }

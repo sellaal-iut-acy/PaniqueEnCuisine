@@ -62,6 +62,7 @@ namespace PaniqueEnCuisine
                 currentIndex = inventaire_frigo.Liste_nourriture.Count - 1;
 
             nouriture_Choix.Source = inventaire_frigo.Liste_nourriture[currentIndex].Image.Source;
+            NouritureAjouter.Text = ""; 
         }
 
         private void button_avancer_Click(object sender, RoutedEventArgs e)
@@ -73,11 +74,13 @@ namespace PaniqueEnCuisine
             if (currentIndex >= inventaire_frigo.Liste_nourriture.Count) currentIndex = 0;
 
             nouriture_Choix.Source = inventaire_frigo.Liste_nourriture[currentIndex].Image.Source;
+            NouritureAjouter.Text = "";
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            NouritureAjouter.Text = "";
             NouriturePersonange.Liste_nourriture.Add(inventaire_frigo.Liste_nourriture[currentIndex]);
             NouritureAjouter.Text = $"{inventaire_frigo.Liste_nourriture[currentIndex].Nom} a été ajouter a votre inventaire";
         }
