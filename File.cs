@@ -86,11 +86,20 @@ namespace PaniqueEnCuisine
                 Source = _walkFrames[0],
                 Name = "Client"
             };
-            this.Canvas.Children.Add(img);
-            Console.WriteLine($"le personnage est ajouter {img.Name}");
-            Canvas.SetLeft(img, 90);
-            Canvas.SetTop(img, 20 + offsetY);
+            
+            
+            Canvas.SetLeft(img, 100);
+            Canvas.SetTop(img, 300 + offsetY);
             _queuePeople.Add(new Annimation_PNJ(img,0));
+            this.Canvas.Children.Add(img);
+            Console.WriteLine($"le personnage est ajouter {img.Name} x :{Canvas.GetLeft(img)}, y:{Canvas.GetTop(img)}");
+        }
+        private void set_rectangel(Rectangle rect,Canvas Canvas)
+        {
+            Rect.Fill = Brushes.Red;
+            Canvas.SetLeft(Rect, 0);
+            Canvas.SetTop(Rect, 0);
+            Canvas.Children.Add(Rect);
         }
 
         private void StartMovement()
@@ -98,10 +107,11 @@ namespace PaniqueEnCuisine
             _timer.Tick += MovePeople;
         }
 
-        public void cree_File()
+        public void cree_File(Rectangle rect,Canvas ca)
         {
             this.CreateInitialPeople();
             this.StartMovement();
+            set_rectangel(rect,Canvas);
         }
 
         private void AnimatePerson(Annimation_PNJ person)

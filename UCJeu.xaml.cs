@@ -32,6 +32,7 @@ namespace PaniqueEnCuisine
         private UCFrigo frigo = new UCFrigo();
         private UCfour four = new UCfour();
         private File File_Client;
+        private Table
 
         int animDelay = 0;
         int animSpeed = 3;
@@ -58,7 +59,7 @@ namespace PaniqueEnCuisine
             moveTimer.Tick += UpdatePlayer;
             moveTimer.Start();
             File_Client = new File(ref moveTimer, ref grille, ref Rectangle);
-            File_Client.cree_File();
+            File_Client.cree_File(Rectangle,grille);
         }
 
         /* =========================
