@@ -46,8 +46,7 @@ namespace PaniqueEnCuisine
             };
             moveTimer.Tick += UpdatePlayer;
             moveTimer.Start();
-            File_Client = new File(ref moveTimer, ref grille, ref Rectangle);
-            File_Client.cree_File(Rectangle,grille);
+           
         }
 
         /* ================= INIT ================= */
