@@ -13,7 +13,6 @@ namespace PaniqueEnCuisine
         private Nouriture Nouriture_a_cuire;
         private Nouriture Nouriture_cuit;
         private int currentIndex = 0;
-        private Joueur Joueur;
         private bool selectioner = false;
         private Inventaire NouriturePersonange;
 
@@ -22,7 +21,6 @@ namespace PaniqueEnCuisine
         {
             InitializeComponent();
             Console.WriteLine("fait");
-            Joueur = joueur;
             NouriturePersonange = inventaire;
             joueur.Inventaire.Liste_nourriture.Add(new Nouriture("burger", "plat"));
             joueur.Inventaire.Liste_nourriture.Add(new Nouriture("pizza", "plat"));
@@ -49,6 +47,7 @@ namespace PaniqueEnCuisine
                  
                 NouritureCuit.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"pack://application:,,,/Images/food/{NouriturePersonange.Liste_nourriture[currentIndex].Nom}_cuit.png"));
                 Nouriture_cuit = new Nouriture($"{NouriturePersonange.Liste_nourriture[currentIndex].Nom}_cuit", "cuit");
+                NouriturePersonange.Liste_nourriture.RemoveAt(currentIndex);
                 NouriturePersonange.Liste_nourriture.Remove(Nouriture_a_cuire);
                 NouriturePersonange.Liste_nourriture.Add(Nouriture_cuit);
             }

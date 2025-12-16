@@ -27,38 +27,9 @@ namespace PaniqueEnCuisine
         public UCFrigo()
         {
             InitializeComponent();
-            cree_frigo();
-            ajout_nouriture();
-            afficher_Frigo();
-            Page_suivante.Click += page_suivante;
-            Page_arrierre.Click += page_presedente;
            
         }
 
-        private void page_presedente(object sender, RoutedEventArgs e)
-        {
-            if (inventaire_frigo.Current_page > inventaire_frigo.Old_page)
-            {
-                inventaire_frigo.page_precedent(canvas, inventaire_frigo);
-            }
-        }
-
-        private void page_suivante(object sender, RoutedEventArgs e)
-        {
-            if(inventaire_frigo.Current_page < inventaire_frigo.Max_page)
-            {
-                inventaire_frigo.Old_page = inventaire_frigo.Current_page;
-                inventaire_frigo.page_suivante(canvas, inventaire_frigo); 
-            }
-        }
-
-        private void cree_frigo()
-        {
-            inventaire_frigo.Cree_inventaire(canvas, ref Page_suivante, ref  Page_arrierre);
-            inventaire_frigo.cree_slot_inventaire(canvas);
-            inventaire_frigo.set_page_max();
-            Console.WriteLine($"page max = {inventaire_frigo.Max_page}");
-        }
         private void FermerFrigo()
         {
             if (this.Parent is Panel parent)
@@ -95,10 +66,6 @@ namespace PaniqueEnCuisine
             inventaire_frigo.Liste_nourriture.Add(new Nouriture("burger", "plat"));
             inventaire_frigo.Liste_nourriture.Add(new Nouriture("burger", "plat"));
 
-        }
-        private void afficher_Frigo()
-        {
-           inventaire_frigo.afficher_objet_inventaire(inventaire_frigo,canvas, 1);
         }
 
         private void B_Fermer_Click(object sender, RoutedEventArgs e)
