@@ -23,7 +23,7 @@ namespace PaniqueEnCuisine
         public int niveau_actuel = 1;
         private ManagerOutilsCuisine managerOutilsCuisine = new ManagerOutilsCuisine (new List<OutilsCusine>());
         private ManagerColision managerColision = new ManagerColision();
-        private Table_de_Craft table_De_Crafte = new Table_de_Craft ();
+
 
         public MapManager(Joueur playeur)
         {
@@ -103,19 +103,6 @@ namespace PaniqueEnCuisine
             set
             {
                 this.managerColision = value;
-            }
-        }
-
-        internal Table_de_Craft Table_De_Crafte
-        {
-            get
-            {
-                return this.table_De_Crafte;
-            }
-
-            set
-            {
-                this.table_De_Crafte = value;
             }
         }
     }

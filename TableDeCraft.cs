@@ -9,11 +9,11 @@ using System.Windows.Media.Imaging;
 
 namespace PaniqueEnCuisine
 {
-    internal class Table_de_Craft
+    internal class TableDeCraft
     {
         private Image img_table_craft = new Image();
         private int x =0, y=0,height=0,width=0;
-        public Table_de_Craft()
+        public TableDeCraft()
         {
             Set_mimage();
         }
@@ -101,6 +101,7 @@ namespace PaniqueEnCuisine
         private void Set_mimage()
         {
             this.img_table_craft.Source = new BitmapImage(new Uri($"P:/SAE/Nouveau dossier (5)/Images/Outils/table_de_crafte.png"));
+            this.img_table_craft.Tag = "table_de_craft";
         }
     }
 }

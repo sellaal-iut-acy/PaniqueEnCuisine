@@ -130,8 +130,12 @@ namespace PaniqueEnCuisine
 
                 if (colision.VeriferColision_PLAYER_Four(grille, joueur, main.mapManager.playeur))
                     OuvrirFour();
+                if (colision.VeriferColision_PLAYER_table(grille, joueur, main.mapManager.playeur))
+                    Console.WriteLine("table de crafte ouvert");
             }
         }
+
+
 
         private void OnKeyUp(object sender, KeyEventArgs e)
         {
@@ -258,7 +262,7 @@ namespace PaniqueEnCuisine
             );
             main.mapManager.ManagerOutilsCuisine.AfficherOutilsCuisine(grille);
 
-            main.mapManager.Table_De_Crafte.Afficher_image(grille, 0, 0);
+
         }
     }
 }

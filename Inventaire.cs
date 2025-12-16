@@ -18,13 +18,14 @@ namespace PaniqueEnCuisine
         private bool ouvert = false;
         private int nb_page = 1;
         private int old_page = 0;
-        private int max_page =0;
+        private int max_page ;
 
         public Inventaire(List<Nouriture> liste_nourriture,int current_page)
         {
             this.Liste_nourriture = liste_nourriture;
             this.Current_page = current_page;
             this.old_page = this.current_page;
+            set_page_max();
             
         }
         public void set_page_max()
