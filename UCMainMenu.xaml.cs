@@ -46,9 +46,7 @@ namespace PaniqueEnCuisine
             Audio.PlaySFX("Sons/son_clic.wav");
             main.ChangeScreen(new UCJeu(main));
             Audio.StopMusic();
-
-
-
+            
         }
 
         private void B_Quitter_Click(object sender, RoutedEventArgs e)

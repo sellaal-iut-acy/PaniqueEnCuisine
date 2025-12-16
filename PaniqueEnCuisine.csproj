@@ -130,6 +130,8 @@
     <None Remove="Sons\son_clic.mp3" />
     <None Remove="Sons\son_clic.wav" />
     <None Remove="Sons\son_music_loop.wav" />
+    <None Remove="Sons\son_music_loop_niveau1.wav" />
+    <None Remove="Sons\son_music_loop_niveau2.wav" />
   </ItemGroup>
 
   <ItemGroup>
@@ -137,6 +139,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sons\son_music_loop.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sons\son_music_loop_niveau1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sons\son_music_loop_niveau2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -246,9 +254,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Outils\frigo.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Outils\table_de_crafte.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="player_Aucun_1.jpg">
