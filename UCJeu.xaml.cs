@@ -34,12 +34,12 @@ namespace PaniqueEnCuisine
         {
             InitializeComponent();
             main = mw;
-
             DefinirFondNiveau();
-            Ajout_Image_Player();
             afficher_client();
             Rectangle_arret_Client();
             Ajouter_outlis_cuisine();
+            Ajout_Image_Player();
+
 
             moveTimer = new DispatcherTimer
             {
@@ -264,11 +264,11 @@ namespace PaniqueEnCuisine
         private void Ajouter_outlis_cuisine()
         {
             main.mapManager.ManagerOutilsCuisine.AjouterOutil(
-                new Frigo("Frigo", 300, 200, 100, 150, 0, 50)
+                new Frigo("Frigo", 100, 5, 100, 150, 0, 50)
             );
 
             main.mapManager.ManagerOutilsCuisine.AjouterOutil(
-                new Foure("Four", 500, 200, 100, 50, 0, 50)
+                new Foure("Four", 400, 50, 200, 100, 0, 50)
             );
             main.mapManager.ManagerOutilsCuisine.AfficherOutilsCuisine(grille);
 
