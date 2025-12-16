@@ -30,7 +30,6 @@ namespace PaniqueEnCuisine
             cree_frigo();
             ajout_nouriture();
             afficher_Frigo();
-            canvas.KeyDown += fermer_inventaire;
             Page_suivante.Click += page_suivante;
             Page_arrierre.Click += page_presedente;
            
@@ -53,11 +52,7 @@ namespace PaniqueEnCuisine
             }
         }
 
-        private void fermer_inventaire(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.E)
-                this.Visibility = Visibility.Hidden;
-        }
+        
 
         private void cree_frigo()
         {
@@ -66,6 +61,15 @@ namespace PaniqueEnCuisine
             inventaire_frigo.set_page_max();
             Console.WriteLine($"page max = {inventaire_frigo.Max_page}");
         }
+        private void FermerFrigo()
+        {
+            if (this.Parent is Panel parent)
+            {
+                parent.Children.Remove(this);
+            }
+        }
+
+
         private void ajout_nouriture()
         {
             inventaire_frigo.Liste_nourriture.Add(new Nouriture("burger","plat"));
@@ -92,12 +96,16 @@ namespace PaniqueEnCuisine
             inventaire_frigo.Liste_nourriture.Add(new Nouriture("burger", "plat"));
             inventaire_frigo.Liste_nourriture.Add(new Nouriture("burger", "plat"));
             inventaire_frigo.Liste_nourriture.Add(new Nouriture("burger", "plat"));
-            
+
         }
         private void afficher_Frigo()
         {
            inventaire_frigo.afficher_objet_inventaire(inventaire_frigo,canvas, 1);
         }
-         
+
+        private void B_Fermer_Click(object sender, RoutedEventArgs e)
+        {
+            FermerFrigo();
+        }
     }
 }

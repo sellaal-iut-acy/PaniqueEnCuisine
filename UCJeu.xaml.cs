@@ -9,79 +9,60 @@ using System.Windows.Threading;
 
 namespace PaniqueEnCuisine
 {
-    /// <summary>
-    /// Logique d'interaction pour UCJeu.xaml
-    /// </summary>
     public partial class UCJeu : UserControl
     {
         public MainWindow main;
 
-        // Visuel joueur
         private Image joueur = new Image();
 
-        // Déplacement
         private bool up, down, left, right, sprint;
         private DispatcherTimer moveTimer;
 
         private double baseSpeed = 3;
         private double sprintMultiplier = 1.8;
 
-        // UI inventaire
-        public Button page_suivante = new Button();
-        public Button page_arriere = new Button();
-        private UCFrigo frigo = new UCFrigo();
-        private UCfour four = new UCfour();
-        private File File_Client;
-        private Table
+        private int animDelay = 0;
+        private int animSpeed = 3;
 
-        int animDelay = 0;
-        int animSpeed = 3;
         private ManagerColision colision = new ManagerColision();
-        private Rectangle Rectangle = new Rectangle();
+
+        private UCFrigo ucFrigo = null;
+        private UCfour ucFour = null;
+
         public UCJeu(MainWindow mw)
         {
             InitializeComponent();
             main = mw;
 
-           
             DefinirFondNiveau();
             Ajout_Image_Player();
             afficher_client();
             Rectangle_arret_Client();
             Ajouter_outlis_cuisine();
 
-            page_suivante.Click += Page_Suivante;
-            page_arriere.Click += Page_Arriere;
-
-            // Timer principal (game loop)
-            moveTimer = new DispatcherTimer();
-            moveTimer.Interval = TimeSpan.FromMilliseconds(16); // ~60 FPS
+            moveTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(16)
+            };
             moveTimer.Tick += UpdatePlayer;
             moveTimer.Start();
             File_Client = new File(ref moveTimer, ref grille, ref Rectangle);
             File_Client.cree_File(Rectangle,grille);
         }
 
-        /* =========================
-           === INITIALISATION ===
-           ========================= */
+        /* ================= INIT ================= */
 
         private void DefinirFondNiveau()
         {
             int niveau = main.mapManager.niveau_actuel;
-
-            string uri = $"pack://application:,,,/Images/Niveau/image_fond_niveau{niveau}.png";
-
-            ImageBrush brush = new ImageBrush
+            grille.Background = new ImageBrush
             {
-                ImageSource = new BitmapImage(new Uri(uri)),
+                ImageSource = new BitmapImage(
+                    new Uri($"pack://application:,,,/Images/Niveau/image_fond_niveau{niveau}.png")
+                ),
                 Stretch = Stretch.Fill
             };
-
-            grille.Background = brush;
         }
-
-
 
         private void Ajout_Image_Player()
         {
@@ -97,67 +78,37 @@ namespace PaniqueEnCuisine
             grille.Children.Add(joueur);
         }
 
-        /* =========================
-           === GAME LOOP ===
-           ========================= */
+        /* ================= GAME LOOP ================= */
 
-        private void UpdatePlayer(object? sender, EventArgs e)
+        private void UpdatePlayer(object sender, EventArgs e)
         {
             var p = main.mapManager.playeur;
+
             double speed = sprint ? baseSpeed * sprintMultiplier : baseSpeed;
             bool moving = false;
-            if (up)
-            {
-                p.Y -= speed;
-                p.Direction = 0;
-                moving = true;
-            }
 
-            if (right)
-            {
-                p.X += speed;
-                p.Direction = 1;
-                moving = true;   
-            }
-
-            if (down)
-            {
-                p.Y += speed;
-                p.Direction = 2;
-                moving = true;                    
-            }
-
-            if (left)
-            {
-                p.X -= speed;
-                p.Direction = 3;
-                moving = true;
-            }
+            if (up) { p.Y -= speed; p.Direction = 0; moving = true; }
+            if (right) { p.X += speed; p.Direction = 1; moving = true; }
+            if (down) { p.Y += speed; p.Direction = 2; moving = true; }
+            if (left) { p.X -= speed; p.Direction = 3; moving = true; }
 
             animDelay++;
-
             if (animDelay >= animSpeed)
             {
                 p.Frame = (p.Frame + 1) % 5;
                 animDelay = 0;
             }
 
-            if (!moving)
-            {
-                p.Direction = 4; // idle
-            }
+            if (!moving) p.Direction = 4;
+
             Canvas.SetLeft(joueur, p.X);
             Canvas.SetTop(joueur, p.Y);
             joueur.Source = p.GetImageJoueur();
-            // PNJ
-            main.mapManager.ManagerClients.move_all_PNJ(grille);
 
+            main.mapManager.ManagerClients.move_all_PNJ(grille);
         }
 
-
-        /* =========================
-           === CLAVIER ===
-           ========================= */
+        /* ================= CLAVIER ================= */
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -167,36 +118,19 @@ namespace PaniqueEnCuisine
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == ManagerSettings.KeyHaut ||e.Key == Key.Down) up = true;
-            if (e.Key == ManagerSettings.KeyBas ||e.Key == Key.Up) down = true;
-            if (e.Key == ManagerSettings.KeyGauche ||e.Key == Key.Left) left = true;
-            if (e.Key == ManagerSettings.KeyDroite || e.Key == Key.Right) right = true;
-            if (e.Key == ManagerSettings.KeySprint ) sprint = true;
+            if (e.Key == ManagerSettings.KeyHaut) up = true;
+            if (e.Key == ManagerSettings.KeyBas) down = true;
+            if (e.Key == ManagerSettings.KeyGauche) left = true;
+            if (e.Key == ManagerSettings.KeyDroite) right = true;
+            if (e.Key == ManagerSettings.KeySprint) sprint = true;
 
-            // Action / inventaire
             if (e.Key == ManagerSettings.KeyAction)
             {
-                var inv = main.mapManager.playeur.Inventaire;
-
                 if (colision.VeriferColision_PLAYER_FrIgo(grille, joueur, main.mapManager.playeur))
-                    if (frigo.Visibility == Visibility.Hidden)
-                    {
-                        frigo.Visibility = Visibility.Visible;
-                        Console.WriteLine("Overture du frigo");
-                    }
-     
-                    else
-                    {
-                        main.ChangeScreen(frigo);
-                    }
+                    OuvrirFrigo();
 
                 if (colision.VeriferColision_PLAYER_Four(grille, joueur, main.mapManager.playeur))
-                    if (four.Visibility == Visibility.Hidden) 
-                        four.Visibility = Visibility.Visible;
-                    else 
-                        main.ChangeScreen(four);
-
-
+                    OuvrirFour();
             }
         }
 
@@ -209,9 +143,80 @@ namespace PaniqueEnCuisine
             if (e.Key == ManagerSettings.KeySprint) sprint = false;
         }
 
-        /* =========================
-           === CLIENTS / UI ===
-           ========================= */
+        /* ================= OVERLAYS ================= */
+
+        private void OuvrirFrigo()
+        {
+            if (ucFrigo != null) return;
+
+            ucFrigo = new UCFrigo();
+            AjouterOverlay(ucFrigo);
+            ucFrigo.Unloaded += (s, e) => ucFrigo = null;
+        }
+
+        private void OuvrirFour()
+        {
+            if (ucFour != null) return;
+
+            ucFour = new UCfour();
+            AjouterOverlay(ucFour);
+            ucFour.Unloaded += (s, e) => ucFour = null;
+        }
+
+        private void AjouterOverlay(UserControl uc)
+        {
+            uc.Width = grille.ActualWidth;
+            uc.Height = grille.ActualHeight;
+
+            Canvas.SetLeft(uc, 0);
+            Canvas.SetTop(uc, 0);
+            Panel.SetZIndex(uc, 999);
+
+            grille.Children.Add(uc);
+            uc.Focus();
+        }
+
+        private void Button_RetourMenu_Click(object sender, RoutedEventArgs e)
+        {
+            Audio.PlaySFX("Sons/son_clic.wav");
+
+            NettoyerUCJeu();
+
+            main.ChangeScreen(new UCMainMenu(main));
+        }
+
+        private void NettoyerUCJeu()
+        {
+            // Stop la boucle de jeu
+            moveTimer?.Stop();
+
+            // Désinscription clavier
+            Application.Current.MainWindow.KeyDown -= OnKeyDown;
+            Application.Current.MainWindow.KeyUp -= OnKeyUp;
+
+            // Fermer overlays s’ils sont ouverts
+            if (ucFrigo != null && ucFrigo.Parent is Panel parentFrigo)
+                parentFrigo.Children.Remove(ucFrigo);
+
+            if (ucFour != null && ucFour.Parent is Panel parentFour)
+                parentFour.Children.Remove(ucFour);
+
+            ucFrigo = null;
+            ucFour = null;
+
+            // Nettoyage du canvas du jeu
+            grille.Children.Clear();
+
+            // Reset données gameplay (à adapter si besoin)
+            main.mapManager.ManagerClients.Clients.Clear();
+            main.mapManager.ManagerOutilsCuisine.Outils.Clear();
+
+            main.mapManager.playeur.X = 0;
+            main.mapManager.playeur.Y = 0;
+        }
+
+
+        /* ================= CLIENTS ================= */
 
         private void Rectangle_arret_Client()
         {
@@ -219,8 +224,7 @@ namespace PaniqueEnCuisine
             {
                 Width = 100,
                 Height = 50,
-                Fill = Brushes.Red,
-                Tag = "commande"
+                Fill = Brushes.Red
             };
 
             rect.MouseDown += servie;
@@ -228,89 +232,33 @@ namespace PaniqueEnCuisine
             Canvas.SetLeft(rect, 700);
             grille.Children.Add(rect);
         }
-        private void NettoyerUCJeu()
-        {
-            // Stop timers
-            moveTimer?.Stop();
-
-            // Désinscription clavier
-            Application.Current.MainWindow.KeyDown -= OnKeyDown;
-            Application.Current.MainWindow.KeyUp -= OnKeyUp;
-
-            // Supprime tous les éléments visuels
-            main.grille.Children.Clear();
-            main.mapManager.ManagerOutilsCuisine.Outils.Clear();
-            main.mapManager.ManagerClients.Clients.Clear();
-            main.mapManager.playeur.X = default;
-            main.mapManager.playeur.Y = default;
-        }
-
-
-        private void Button_RetourMenu_Click(object sender, RoutedEventArgs e)
-        {
-            Audio.PlaySFX("Sons/son_clic.wav");
-
-            NettoyerUCJeu(); 
-
-            main.ChangeScreen(new UCMainMenu(main));
-        }
 
         private void servie(object sender, MouseButtonEventArgs e)
         {
-            //Console.WriteLine("Client servi !");
-            main.mapManager.ManagerClients.Clients[main.mapManager.ManagerClients.Clients.Count - 1].Servi = true;
-            foreach (PNJ pnj in main.mapManager.ManagerClients.Clients)
-            {
-               pnj.Rien_devant1 = true;
-            }
-            //main.mapManager.ManagerClients.Clients.Remove(main.mapManager.ManagerClients.Clients[main.mapManager.ManagerClients.Clients.Count - 1]);
-            //grille.Children.Remove(main.mapManager.ManagerClients.Clients[main.mapManager.ManagerClients.Clients.Count - 1].Curenent_Image);
-            //main.mapManager.ManagerClients.move_all_PNJ(grille);
+            var clients = main.mapManager.ManagerClients.Clients;
+            clients[^1].Servi = true;
         }
 
         private void afficher_client()
         {
-            main.mapManager.ManagerClients.AjouterClient(new PNJ("Client1", 50, 50, 10, 100, 1, 50, 100));
-            main.mapManager.ManagerClients.AjouterClient(new PNJ("Client2", 50, 50, 2, 100, 1, 50, 100));
-            main.mapManager.ManagerClients.AjouterClient(new PNJ("Client3", 50, 50, 2, 100, 1, 50, 100));
+            main.mapManager.ManagerClients.AjouterClient(
+                new PNJ("Client", 50, 0, 2, 100, 1, 50, 100)
+            );
+
             main.mapManager.ManagerClients.afficher_Clients(grille);
         }
 
-        private void Page_Arriere(object sender, RoutedEventArgs e)
-        {
-            main.mapManager.playeur.Inventaire.Current_page--;
-            main.mapManager.playeur.Inventaire.afficher_objet_inventaire(
-                main.mapManager.playeur.Inventaire,
-                grille,
-                main.mapManager.playeur.Inventaire.Current_page
-            );
-        }
-
-        private void Page_Suivante(object sender, RoutedEventArgs e)
-        {
-            main.mapManager.playeur.Inventaire.Current_page++;
-        }
-
         private void Ajouter_outlis_cuisine()
-        { 
-            main.mapManager.ManagerOutilsCuisine.AjouterOutil(new Frigo("Frigo", 300, 200, 100, 150, 0, 50));
-            main.mapManager.ManagerOutilsCuisine.AjouterOutil(new Foure("four", 500, 200, 100, 50, 0, 50));
-            main.mapManager.ManagerOutilsCuisine.Outils[0].Img_outi.MouseDown += ouvire_frigo;
-            main.mapManager.ManagerOutilsCuisine.Outils[1].Img_outi.MouseDown += ouvire_four;
-            main.mapManager.ManagerOutilsCuisine.AfficherOutilsCuisine(grille);
-        }
-
-
-        private void ouvire_frigo(object sender, MouseButtonEventArgs e)
         {
-            if (colision.VeriferColision_PLAYER_FrIgo(grille, joueur, main.mapManager.playeur))
-                main.ChangeScreen(frigo);
-        }
+            main.mapManager.ManagerOutilsCuisine.AjouterOutil(
+                new Frigo("Frigo", 300, 200, 100, 150, 0, 50)
+            );
 
-        private void ouvire_four(object sender, MouseButtonEventArgs e)
-        { 
-            if(colision.VeriferColision_PLAYER_FrIgo(grille,joueur, main.mapManager.playeur))
-                main.ChangeScreen(four);
+            main.mapManager.ManagerOutilsCuisine.AjouterOutil(
+                new Foure("Four", 500, 200, 100, 50, 0, 50)
+            );
+
+            main.mapManager.ManagerOutilsCuisine.AfficherOutilsCuisine(grille);
         }
     }
 }
