@@ -123,6 +123,7 @@
     <None Remove="Images\Niveau\image_fond_niveau4.png" />
     <None Remove="Images\Outils\four.png" />
     <None Remove="Images\Outils\frigo.png" />
+    <None Remove="Images\Outils\table_de_crafte.png" />
     <None Remove="player_Aucun_1.jpg" />
     <None Remove="Sons\Mouse Click 1.wav" />
     <None Remove="Sons\son_clic.mp3" />
@@ -241,6 +242,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Outils\frigo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Outils\table_de_crafte.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="player_Aucun_1.jpg">
