@@ -46,7 +46,7 @@ namespace PaniqueEnCuisine
         {
             fini = false;
             CommandeEnCours = managerRecette.GetRecetteAleatoire();
-            TempsRestant = 10; // RESET DU TIMER
+            TempsRestant = 90; // RESET DU TIMER
             timer.Start();
 
         }

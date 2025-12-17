@@ -18,7 +18,7 @@ namespace PaniqueEnCuisine
             Nouriture fromage_cuit = new Nouriture("fromage_cuit", "cuit");
             Nouriture steak = new Nouriture("steak", "cru");
             Nouriture steak_cuit = new Nouriture("steak_cuit", "cuit");
-            Nouriture pate = new Nouriture("pate", "ingrediant");
+            Nouriture pate = new Nouriture("pate", "cru");
             Nouriture pate_cuit = new Nouriture("pate_cuit", "cuit");
             Nouriture pain = new Nouriture("pain", "ingrediant");
             Nouriture saucisse = new Nouriture("saucisse", "cru");
