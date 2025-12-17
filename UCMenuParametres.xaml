@@ -10,19 +10,16 @@
         <Image Source="/Images/image_fond_MenuSon.jpg" Stretch="Fill"/>
 
 
-        <Rectangle HorizontalAlignment="Center" Height="67" Margin="0,118,0,0" Stroke="#FF39150B" VerticalAlignment="Top" Width="473" Fill="#FF894218" StrokeThickness="5"/>
-        <Image Margin="164,122,545,269" Source="/Images/image_logo_settings_touches.png" Stretch="Fill"/>
+        <Rectangle HorizontalAlignment="Center" Height="67" Margin="0,142,0,0" Stroke="#FF39150B" VerticalAlignment="Top" Width="473" Fill="#FF894218" StrokeThickness="5"/>
+        <Image Margin="164,146,544,245" Source="/Images/image_logo_settings_touches.png" Stretch="Fill"/>
 
-        <Rectangle HorizontalAlignment="Center" Height="67" Margin="0,194,0,0" Stroke="#FF39150B" VerticalAlignment="Top" Width="472" Fill="#FF894218" StrokeThickness="5"/>
-        <Image Margin="172,203,578,197" Source="/Images/image_logo_settings_son.png" Stretch="Fill" Width="50" Height="50"/>
+        <Rectangle HorizontalAlignment="Center" Height="67" Margin="0,242,0,0" Stroke="#FF39150B" VerticalAlignment="Top" Width="472" Fill="#FF894218" StrokeThickness="5"/>
+        <Image Margin="172,251,578,149" Source="/Images/image_logo_settings_son.png" Stretch="Fill" Width="50" Height="50"/>
 
-        <Rectangle HorizontalAlignment="Center" Height="67" Margin="0,269,0,0" Stroke="#FF39150B" VerticalAlignment="Top" Width="473" Fill="#FF894218" StrokeThickness="5"/>
-        <Image Margin="172,278,578,122" Source="/Images/image_logo_settings.png" Stretch="Fill" Width="50" Height="50" RenderTransformOrigin="1.383,0.567"/>
 
         <Button x:Name="B_Retour" Content="Retour" HorizontalAlignment="Center" Margin="0,343,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Retour_Click"/>
-        <Button x:Name="B_Settings_Touches" Content="Clavier" HorizontalAlignment="Center" Margin="0,134,0,0" VerticalAlignment="Top" Height="35" Width="300" FontSize="20" Background="Gray" BorderBrush="#FF3A373E" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Touches_Click"/>
-        <Button x:Name="B_Settings_Son" Content="Audio" HorizontalAlignment="Center" Margin="0,210,0,0" VerticalAlignment="Top" Height="35" Width="300" FontSize="20" Background="Gray" BorderBrush="#FF3A373E" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Son_Click"/>
-        <Button x:Name="B_Retour_Copy" Content="rien pour l'instant" HorizontalAlignment="Center" Margin="0,285,0,0" VerticalAlignment="Top" Height="35" Width="300" FontSize="20" Background="Gray" BorderBrush="#FF3A373E" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Retour_Click"/>
+        <Button x:Name="B_Settings_Touches" Content="Clavier" HorizontalAlignment="Center" Margin="0,158,0,0" VerticalAlignment="Top" Height="35" Width="300" FontSize="20" Background="Gray" BorderBrush="#FF3A373E" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Touches_Click"/>
+        <Button x:Name="B_Settings_Son" Content="Audio" HorizontalAlignment="Center" Margin="0,258,0,0" VerticalAlignment="Top" Height="35" Width="300" FontSize="20" Background="Gray" BorderBrush="#FF3A373E" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Son_Click"/>
 
 
     </Grid>

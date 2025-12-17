@@ -24,20 +24,6 @@
 
         </Button>
 
-        <Button x:Name="B_Niveaux3" Content="" HorizontalAlignment="Left" Margin="436,213,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.732,3.657" Height="60" Width="78" BorderThickness="1,1,1,1" Click="Button_Niveau3_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/image_logo_settings_niveau.png"/>
-            </Button.Background>
-
-        </Button>
-
-        <Button x:Name="B_Niveaux4" Content="" HorizontalAlignment="Left" Margin="530,213,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.732,3.657" Height="60" Width="78" BorderThickness="1,1,1,1" Click="Button_Niveau4_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/image_logo_settings_niveau.png"/>
-            </Button.Background>
-
-        </Button>
-
         <Image x:Name="ImagePreviewNiveau" Stretch="Uniform" Margin="36,138,497,162" Width="266.666666666667" Height="150"/>
 
         <Button x:Name="B_Select" Content="Selectionner" HorizontalAlignment="Left" Margin="84,326,0,0" VerticalAlignment="Top" Height="35" Width="170" FontSize="20" Background="Gray" BorderBrush="#FF444343" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Select_Click"/>
