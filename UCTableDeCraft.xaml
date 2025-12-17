@@ -9,23 +9,27 @@
     <Grid>
         <Rectangle HorizontalAlignment="Center" Height="450" Stroke="#FF39150B" VerticalAlignment="Center" Width="800" Fill="#FF894218" StrokeThickness="5"/>
 
-        <Rectangle Height="350"
+        <Rectangle
            Fill="#BF524D4B"
            Stroke="#FF2F2B2A"
-           StrokeThickness="5" Margin="400,50,50,50"/>
+           StrokeThickness="5" Margin="400,148,50,113"/>
 
-        <ScrollViewer Height="350" VerticalScrollBarVisibility="Auto" Margin="400,50,50,50">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="400,148,50,113">
             <StackPanel x:Name="listeRecette" Margin="15">
 
-                
+
 
 
             </StackPanel>
-                
+            
+
 
 
 
         </ScrollViewer>
         <Button x:Name="B_Fermer" Content="Fermer" FontSize="20" Background="Gray" BorderBrush="#FF444343" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Fermer_Click" Margin="315,10,315,405"/>
+        <Button Content="reculer" HorizontalAlignment="Left" Margin="400,377,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="slectioner" HorizontalAlignment="Left" Margin="555,377,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Button Content="avancer" HorizontalAlignment="Left" Margin="710,377,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
     </Grid>
 </UserControl>

@@ -255,7 +255,7 @@ namespace PaniqueEnCuisine
         {
             if (ucTableDeCraft != null) return;
 
-            ucTableDeCraft = new UCTableDeCraft();
+            ucTableDeCraft = new UCTableDeCraft(main.mapManager.playeur);
             AjouterOverlay(ucTableDeCraft);
             ucTableDeCraft.Unloaded += (s, e) => ucTableDeCraft = null;
         }

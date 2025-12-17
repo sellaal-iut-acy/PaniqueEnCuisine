@@ -8,12 +8,19 @@ namespace PaniqueEnCuisine
     public partial class UCTableDeCraft : UserControl
     {
         private ManagerRecette  ManagerRecettes = new ManagerRecette();
-        public UCTableDeCraft()
+        private Inventaire InventaireJoueur;
+        private Recette RecetteSelectionner;
+        private List<Nouriture>  nouritureAEnlever = new List<Nouriture>();
+        private int currentIndex = 0;
+        private List<StackPanel> StackPanels = new List<StackPanel>();
+        public UCTableDeCraft(Joueur  joueur)
         {
+
             InitializeComponent();
             this.Focusable = true;
             this.Focus();
             gener_recette();
+            InventaireJoueur = joueur.Inventaire;
         }
 
         private void B_Fermer_Click(object sender, RoutedEventArgs e)
@@ -33,27 +40,10 @@ namespace PaniqueEnCuisine
                 parent.Children.Remove(this);
         }
 
-        private void Button_Cuisiner_Burger_Click(object sender, RoutedEventArgs e)
-        {
-            cuisiner("burger");
-        }
-        
-        
-        
-        
-        private void cuisiner(string plat)
-        {
-            Console.WriteLine("Cuisiner un " + plat + " !");
-        }
-
-        private void Button_Cuisiner_Pizza_Click(object sender, RoutedEventArgs e)
-        {
-
-            cuisiner("pizza");
-        }
 
         private void gener_recette()
         {
+            int i = 0;
             foreach (Recette Recette in ManagerRecettes.ListeRecetes)
             {
                 StackPanel stackPanel = new StackPanel
@@ -135,19 +125,51 @@ namespace PaniqueEnCuisine
                     BorderThickness = new Thickness(5)
                 };
 
-                Color maCouleur = (Color)ColorConverter.ConvertFromString("#FF444343");
-                button.BorderBrush = new SolidColorBrush(maCouleur);
-                button.Click += ButtonAClick;
-
-                listeRecette.Children.Add(stackPanel);
-                listeRecette.Children.Add(button);
+                StackPanels.Add(stackPanel);
+      
             }
         }
 
 
-        private void ButtonAClick(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Bouton Cuisiner cliqué !");
+            listeRecette.Children.Remove(StackPanels[currentIndex]);
+            if (StackPanels.Count == 0) return;
+
+            currentIndex--;
+            if (currentIndex < 0)
+                currentIndex = StackPanels.Count - 1;
+
+            listeRecette.Children.Add(StackPanels[currentIndex]);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            listeRecette.Children.Remove(StackPanels[currentIndex]);
+            if (StackPanels.Count == 0) return;
+
+            currentIndex++;
+            if (currentIndex >= StackPanels.Count) currentIndex = 0;
+
+            listeRecette.Children.Add(StackPanels[currentIndex]);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            foreach(Nouriture ingerdiantdemander in ManagerRecettes.ListeRecetes[currentIndex].NouritureList)
+            {
+                foreach (Nouriture ingrediant in InventaireJoueur.Liste_nourriture)
+                {
+                    if (ingerdiantdemander == ingrediant)
+                        nouritureAEnlever.Add(ingrediant);
+                    else
+                        break;
+                }
+            }
+
+            foreach (Nouriture ingrediantAEnlever in nouritureAEnlever)
+                InventaireJoueur.Liste_nourriture.Remove(ingrediantAEnlever);
+            
         }
     }
 }
