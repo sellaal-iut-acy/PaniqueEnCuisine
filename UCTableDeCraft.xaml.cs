@@ -42,7 +42,7 @@ namespace PaniqueEnCuisine
             {
                 parent.Children.Remove(this);
                 InventairePlayer.Children.Clear();
-
+                Console.WriteLine(InventairePlayer.Children.Count);
             }
                 
 
@@ -143,11 +143,11 @@ namespace PaniqueEnCuisine
 
             foreach (Nouriture Ingerdiant in _InventaireJoueur.Liste_nourriture )
             {
-                Ingerdiant.Image.Width = 50;
-                Ingerdiant.Image.Height = 50;
-                Ingerdiant.Image.Tag = $"{Ingerdiant.Nom}";
-                InventairePlayer.Children.Add(Ingerdiant.Image);
-                Console.WriteLine($"{Ingerdiant.Nom}");
+                Image imageNouriture = new Image();
+                imageNouriture.Source = Ingerdiant.Image.Source;
+                imageNouriture.Width = 50;
+                imageNouriture.Height = 50;
+                InventairePlayer.Children.Add(imageNouriture);
             }
         }
 
