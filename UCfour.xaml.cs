@@ -41,14 +41,16 @@ namespace PaniqueEnCuisine
 
         private void B_cuirre(object sender, RoutedEventArgs e)
         {
-            if (selectioner)
+            if (selectioner && !NouriturePersonange.Liste_nourriture[currentIndex].EstCuit)
             {
                  
                 NouritureCuit.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"pack://application:,,,/Images/food/{NouriturePersonange.Liste_nourriture[currentIndex].Nom}_cuit.png"));
                 Nouriture_cuit = new Nouriture($"{NouriturePersonange.Liste_nourriture[currentIndex].Nom}_cuit", "cuit");
                 NouriturePersonange.Liste_nourriture.RemoveAt(currentIndex);
                 NouriturePersonange.Liste_nourriture.Remove(Nouriture_a_cuire);
+                Nouriture_cuit.EstCuit = true;
                 NouriturePersonange.Liste_nourriture.Add(Nouriture_cuit);
+               
             }
             
         }

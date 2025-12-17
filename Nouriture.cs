@@ -11,7 +11,7 @@ namespace PaniqueEnCuisine
     {
         private string _nom = "";
         private Image _image = new Image();
-        private int _temps_cuisson = 0;
+        private bool _EstCuit = false;
       
 
         public Nouriture(string nom, string type)
@@ -35,31 +35,17 @@ namespace PaniqueEnCuisine
 
     
 
-        public int Temps_cuisson
+        public bool EstCuit
         {
             get
             {
-                return this._temps_cuisson;
+                return this._EstCuit;
             }
 
             set
             {
-                this._temps_cuisson = value;
+                this._EstCuit = value;
             }
         }
-
-       public bool Est_cuit()
-        {
-            if (this._temps_cuisson <= 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        
-
     }
 }
