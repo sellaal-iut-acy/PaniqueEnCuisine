@@ -210,10 +210,6 @@ namespace PaniqueEnCuisine
             uc.Focus();
         }
 
-        private void Button_Inventaire_Click(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("Ouverture de l'_Inventaire");
-        }
 
         private void Button_RetourMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -261,6 +257,7 @@ namespace PaniqueEnCuisine
 
             // Reset gameplay
             _Main.MapManager.ManagerOutilsCuisine.OutilsCuisine.Clear();
+            
 
             _Main.MapManager.Playeur.X = 0;
             _Main.MapManager.Playeur.Y = 0;
