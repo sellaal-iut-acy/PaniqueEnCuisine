@@ -1,2 +1,236 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Audio" Collapsed="true">
+    <Position X="10.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAEAAAAkAAAAAAAAAAACAAQAAAAAAACACAAEAAQAA=</HashCode>
+      <FileName>Audio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.Caisse" Collapsed="true">
+    <Position X="12" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAIAAhCAAAIAgAAAAABCAAAAAQAAAACAEAAA=</HashCode>
+      <FileName>Caisse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.EntiterMobile" Collapsed="true">
+    <Position X="10.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAIAAFAEEFgIAIAAACBaQAQAAAAAIAGAAIYiA=</HashCode>
+      <FileName>Entiter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.Foure" Collapsed="true">
+    <Position X="13.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAEAAAAAAAAAEAACAAAAECABAAAAAAAAAIAAA=</HashCode>
+      <FileName>Foure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.Frigo" Collapsed="true">
+    <Position X="10.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAQAAIAAIAAAAAAAAAA=</HashCode>
+      <FileName>Frigo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.Inventaire" Collapsed="true">
+    <Position X="13.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAQAAEAAAAAAAAAAABAAQAIAAAAAAAgkAEAAAwEAAA=</HashCode>
+      <FileName>Inventaire.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.Joueur" Collapsed="true">
+    <Position X="8.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAILAEAGAAgAACIoACAAAIIAAgQACACCAAAAAgE=</HashCode>
+      <FileName>Joueur.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.ManagerColision" Collapsed="true">
+    <Position X="8.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAQEAAAAAAAAAAEAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>ManagerColision.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.MainWindow" Collapsed="true">
+    <Position X="8.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaniqueEnCuisine.ManagerOutilsCuisine" Collapsed="true">
+    <Position X="8.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAACAAQAEAAAAAAIAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>ManagerOutilsCuisine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.ManagerRecette" Collapsed="true">
+    <Position X="8.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAIAAAAAAAAAAAAAAACAAAAAAAAAIQAAAAAAAAAAgAA=</HashCode>
+      <FileName>ManagerRecette.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManagerSettings" Collapsed="true">
+    <Position X="8.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEgAAABABAAACAAAEAAgAAAAAAgAACQAA=</HashCode>
+      <FileName>MangerSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.MapManager" Collapsed="true">
+    <Position X="8.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAABAACAAAgiEQAAIAAAAgAABAgCAAAAAIAgAAAAA=</HashCode>
+      <FileName>MapManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.Nouriture" Collapsed="true">
+    <Position X="13.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QEAAAAAAAAAAAAAAgAAAAAAAACBAABQAAQAAAAAABAA=</HashCode>
+      <FileName>Nouriture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.OutilsCusine" Collapsed="true">
+    <Position X="8.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAALAAAAIAAAAACAEABACQAQAAAAAAAAIAgYBA=</HashCode>
+      <FileName>OutilsCusine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.Recette" Collapsed="true">
+    <Position X="13.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAIAAAAAAAAAAAAQAAIAAAAAIA=</HashCode>
+      <FileName>Recette.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.TableDeCraft" Collapsed="true">
+    <Position X="13.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAJAAAAAAAAIAAAUACAAQAgCAAAAAAIAAAYAA=</HashCode>
+      <FileName>TableDeCraft.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PaniqueEnCuisine.FenetreConfigTouches" Collapsed="true">
+    <Position X="17.5" Y="12.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAgAAAAAIAIAAACAAAAAAAAAAACAEAAAAA=</HashCode>
+      <FileName>FenetreConfigTouches.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaniqueEnCuisine.FenetreParametreSon" Collapsed="true">
+    <Position X="15.5" Y="12.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAFAAAAACAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>FenetreParametreSon.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaniqueEnCuisine.UCCaisse" Collapsed="true">
+    <Position X="15.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAiAgEAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UCCaisse.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaniqueEnCuisine.UCfour" Collapsed="true">
+    <Position X="13.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAQAEAAEAACAgBAAgAEAIAAACQAAEAAAABBAABA=</HashCode>
+      <FileName>UCfour.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaniqueEnCuisine.UCFrigo" Collapsed="true">
+    <Position X="12" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SAAAAAAAEAAAAACAAAgAAAEAIAAAAQAAAAgAChAAAAA=</HashCode>
+      <FileName>UCFrigo.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaniqueEnCuisine.UCGameOver" Collapsed="true">
+    <Position X="17.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAIAABAAAAEA=</HashCode>
+      <FileName>UCGameOver.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaniqueEnCuisine.UCJeu" Collapsed="true">
+    <Position X="8.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAAAAQADAMCAAggAAJEQAMBAAAIBDBAhAIoIGCIAAAA=</HashCode>
+      <FileName>UCJeu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaniqueEnCuisine.UCMainMenu" Collapsed="true">
+    <Position X="8.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAQIAAAQAAAEA=</HashCode>
+      <FileName>UCMainMenu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaniqueEnCuisine.UCMenuLevel" Collapsed="true">
+    <Position X="13.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAQQAQAAAAAAAAAEAQCAIAAAACAAAA=</HashCode>
+      <FileName>UCMenuLevel.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaniqueEnCuisine.UCMenuSon" Collapsed="true">
+    <Position X="10.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAgAAAAAABAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>UCMenuParametres.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaniqueEnCuisine.UCMenuPlus" Collapsed="true">
+    <Position X="8.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAgAAAAAAAAAAAAAACAAAIAAAIAAAAAAAAA=</HashCode>
+      <FileName>UCMenuPlus.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaniqueEnCuisine.UCMenuRegles" Collapsed="true">
+    <Position X="8.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>UCMenuRegles.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaniqueEnCuisine.UCMenuSkin" Collapsed="true">
+    <Position X="12" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAIAAAAAAAAAAAAAAAAUAAAAAAIAAAAAAAAI=</HashCode>
+      <FileName>UCMenuSkin.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PaniqueEnCuisine.UCTableDeCraft" Collapsed="true">
+    <Position X="10.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAhAAAAAAgAAAOAEAgAAQAAAAAACAAAAAQ=</HashCode>
+      <FileName>UCTableDeCraft.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
