@@ -44,8 +44,21 @@ namespace PaniqueEnCuisine
 
         private void ajout_nouriture()
         {
-            inventaire_frigo.Liste_nourriture.Add(new Nouriture("burger","plat"));
-            inventaire_frigo.Liste_nourriture.Add(new Nouriture("pizza", "plat"));
+            Nouriture tomate = new Nouriture("tomate", "ingrediant");
+            Nouriture fromage = new Nouriture("fromage", "cru");
+            Nouriture steak = new Nouriture("steak", "cru");
+            Nouriture pate = new Nouriture("pate", "ingrediant");
+            Nouriture pain = new Nouriture("pain", "ingrediant");
+            Nouriture saucisse = new Nouriture("saucisse", "cru");
+            Nouriture patate = new Nouriture("patate", "cru");
+
+            inventaire_frigo.Liste_nourriture.Add(tomate);
+            inventaire_frigo.Liste_nourriture.Add(fromage);
+            inventaire_frigo.Liste_nourriture.Add(steak);
+            inventaire_frigo.Liste_nourriture.Add(pate);
+            inventaire_frigo.Liste_nourriture.Add(pain);
+            inventaire_frigo.Liste_nourriture.Add(saucisse);
+            inventaire_frigo.Liste_nourriture.Add(patate);
         }
 
         private void B_Fermer_Click(object sender, RoutedEventArgs e)

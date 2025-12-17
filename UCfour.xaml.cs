@@ -22,8 +22,7 @@ namespace PaniqueEnCuisine
             InitializeComponent();
             Console.WriteLine("fait");
             NouriturePersonange = inventaire;
-            joueur.Inventaire.Liste_nourriture.Add(new Nouriture("burger", "plat"));
-            joueur.Inventaire.Liste_nourriture.Add(new Nouriture("pizza", "plat"));
+            
 
             this.Focusable = true;
             this.Focus();
