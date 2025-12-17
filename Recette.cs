@@ -34,12 +34,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.NouritureList;
+                return this._NouritureList;
             }
 
             set
             {
-                this.NouritureList = value;
+                this._NouritureList = value;
             }
         }
 

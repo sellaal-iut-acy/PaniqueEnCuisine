@@ -13,6 +13,7 @@ namespace PaniqueEnCuisine
             InitializeComponent();
             this.Focusable = true;
             this.Focus();
+            gener_recette();
         }
 
         private void B_Fermer_Click(object sender, RoutedEventArgs e)
@@ -53,65 +54,89 @@ namespace PaniqueEnCuisine
 
         private void gener_recette()
         {
-            foreach ( Recette Recette in ManagerRecettes.ListeRecetes)
+            foreach (Recette Recette in ManagerRecettes.ListeRecetes)
             {
-                StackPanel stackPanel = new StackPanel();
-                stackPanel.Orientation = Orientation.Horizontal;
-                stackPanel.Height = 137;
-                stackPanel.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF444343"));
+                StackPanel stackPanel = new StackPanel
+                {
+                    Orientation = Orientation.Horizontal,
+                    Height = 137,
+                    Background = new SolidColorBrush(
+                        (Color)ColorConverter.ConvertFromString("#FF444343"))
+                };
+
                 StackPanel stackPanel1 = new StackPanel();
 
-                Image image = new Image();
-                image.Source = Recette.Nouriture.Image.Source;
-                image.Margin = new Thickness(0, 0, 20, 0); 
-                image.Width = 73;
-                image.Height = 61;
+                Image image = new Image
+                {
+                    Source = Recette.Nouriture.Image.Source,
+                    Margin = new Thickness(0, 0, 20, 0),
+                    Width = 73,
+                    Height = 61
+                };
 
-                TextBox textBox = new TextBox();
-                textBox.FontSize = 24;
-                textBox.Foreground = Brushes.White;
-                textBox.Text = $"{Recette.Nouriture.Nom}";
+                TextBlock titre = new TextBlock
+                {
+                    FontSize = 24,
+                    Foreground = Brushes.White,
+                    Text = Recette.Nouriture.Nom
+                };
 
-                TextBox textBox1 = new TextBox();
-                textBox1.FontSize = 18;
-                textBox1.Foreground = Brushes.White;
-                textBox1.Margin = new Thickness(0, 10, 0, 0);
-                textBox1.Text = "Ingrédients nécessaires :";
+                TextBlock sousTitre = new TextBlock
+                {
+                    FontSize = 18,
+                    Foreground = Brushes.White,
+                    Margin = new Thickness(0, 10, 0, 0),
+                    Text = "Ingrédients nécessaires :"
+                };
 
-                TextBox textBox2 = new TextBox();
-                textBox2.FontSize = 16;
-                textBox2.Foreground = Brushes.White;
-                textBox2.Text = $"{Recette.NouritureList[0]}";
+                TextBlock ingredient1 = new TextBlock
+                {
+                    FontSize = 16,
+                    Foreground = Brushes.White,
+                    Text = Recette.NouritureList.Count > 0
+                        ? Recette.NouritureList[0].Nom
+                        : ""
+                };
 
-                TextBox textBox3 = new TextBox();
-                textBox3.FontSize = 16;
-                textBox3.Foreground = Brushes.White;
-                textBox3.Text = $"{Recette.NouritureList[0]}";
+                TextBlock ingredient2 = new TextBlock
+                {
+                    FontSize = 16,
+                    Foreground = Brushes.White,
+                    Text = Recette.NouritureList.Count > 1
+                        ? Recette.NouritureList[1].Nom
+                        : ""
+                };
 
-                TextBox textBox4 = new TextBox();
-                textBox4.FontSize = 16;
-                textBox4.Foreground = Brushes.White;
-                textBox4.Text = "";
+                TextBlock ingredient3 = new TextBlock
+                {
+                    FontSize = 16,
+                    Foreground = Brushes.White,
+                    Text = Recette.NouritureList.Count > 2
+                        ? Recette.NouritureList[2].Nom
+                        : ""
+                };
 
+                stackPanel1.Children.Add(titre);
+                stackPanel1.Children.Add(sousTitre);
+                stackPanel1.Children.Add(ingredient1);
+                stackPanel1.Children.Add(ingredient2);
+                stackPanel1.Children.Add(ingredient3);
 
-                stackPanel1.Children.Add(textBox);
-                stackPanel1.Children.Add(textBox1);
-                stackPanel1.Children.Add(textBox2);
-                stackPanel1.Children.Add(textBox3);
-                stackPanel1.Children.Add(textBox4);
                 stackPanel.Children.Add(image);
                 stackPanel.Children.Add(stackPanel1);
 
-                Button button = new Button();
-                button.Content = "Cuisiner";
-                button.FontSize = 20; 
-                button.Foreground = Brushes.Gray;
-                button.BorderBrush = Brushes.Black;
-                button.Margin = new Thickness(0, 0, 0, 20);
-                button.FontWeight = FontWeights.Bold;
+                Button button = new Button
+                {
+                    Content = "Cuisiner",
+                    FontSize = 20,
+                    Foreground = Brushes.Gray,
+                    FontWeight = FontWeights.Bold,
+                    Margin = new Thickness(0, 0, 0, 20),
+                    BorderThickness = new Thickness(5)
+                };
+
                 Color maCouleur = (Color)ColorConverter.ConvertFromString("#FF444343");
                 button.BorderBrush = new SolidColorBrush(maCouleur);
-                button.BorderThickness = new Thickness(5, 5, 5, 5);
                 button.Click += ButtonAClick;
 
                 listeRecette.Children.Add(stackPanel);
@@ -119,9 +144,10 @@ namespace PaniqueEnCuisine
             }
         }
 
+
         private void ButtonAClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Bouton Cuisiner cliqué !");
         }
     }
 }

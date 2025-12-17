@@ -17,44 +17,7 @@
         <ScrollViewer Height="350" VerticalScrollBarVisibility="Auto" Margin="400,50,50,50">
             <StackPanel x:Name="listeRecette" Margin="15">
 
-                <StackPanel Orientation="Horizontal" Height="137" Background="#FF444343">
-                    <Image Source="/Images/food/burger.png" Height="61" Width="73" Margin="0,0,20,0"/>
-                    <StackPanel>
-                        <TextBlock Text="Burger" FontSize="24" FontWeight="Bold" Foreground="White"/>
-                        <TextBlock Text="Ingrédients nécessaires :" FontSize="18" Foreground="White" Margin="0,10,0,0"/>
-                        <TextBlock Text="- Pain (1)" FontSize="16" Foreground="White"/>
-                        <TextBlock Text="- Viande (1)" FontSize="16" Foreground="White"/>
-                        <TextBlock Text="- Fromage (1)" FontSize="16" Foreground="White"/>
-                    </StackPanel>
-                </StackPanel>
-                <Button Content="Cuisiner" FontSize="20" Background="Gray" BorderBrush="#FF444343" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="Button_Cuisiner_Burger_Click" Margin="0,0,0,20"/>
-
-
-                <StackPanel Orientation="Horizontal" Height="137" Background="#FF444343">
-                    <Image Source="/Images/food/burger.png" Height="61" Width="73" Margin="0,0,20,0"/>
-                    <StackPanel>
-                        <TextBlock Text="Burger" FontSize="24" FontWeight="Bold" Foreground="White"/>
-                        <TextBlock Text="Ingrédients nécessaires :" FontSize="18" Foreground="White" Margin="0,10,0,0"/>
-                        <TextBlock Text="- Pain (1)" FontSize="16" Foreground="White"/>
-                        <TextBlock Text="- Viande (1)" FontSize="16" Foreground="White"/>
-                        <TextBlock Text="- Fromage (1)" FontSize="16" Foreground="White"/>
-                    </StackPanel>
-                </StackPanel>
-                <Button Content="Cuisiner" FontSize="20" Background="Gray" BorderBrush="#FF444343" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="Button_Cuisiner_Pizza_Click" Margin="0,0,0,20"/>
-
-
-                <StackPanel Orientation="Horizontal" Height="137" Background="#FF444343">
-                    <Image Source="/Images/food/burger.png" Height="61" Width="73" Margin="0,0,20,0"/>
-                    <StackPanel>
-                        <TextBlock Text="Burger" FontSize="24" FontWeight="Bold" Foreground="White"/>
-                        <TextBlock Text="Ingrédients nécessaires :" FontSize="18" Foreground="White" Margin="0,10,0,0"/>
-                        <TextBlock Text="- Pain (1)" FontSize="16" Foreground="White"/>
-                        <TextBlock Text="- Viande (1)" FontSize="16" Foreground="White"/>
-                        <TextBlock Text="- Fromage (1)" FontSize="16" Foreground="White"/>
-                    </StackPanel>
-                </StackPanel>
-                <Button Content="Cuisiner" FontSize="20" Background="Gray" BorderBrush="#FF444343" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="Button_Cuisiner_Burger_Click" Margin="0,0,0,20"/>
-
+                
 
 
             </StackPanel>

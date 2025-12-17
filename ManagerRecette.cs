@@ -28,7 +28,7 @@ namespace PaniqueEnCuisine
 
 
             // création des plat 
-            Nouriture pizzaCuite = new Nouriture("pizzaCuite", "plat");
+            Nouriture pizza_cuit = new Nouriture("pizza_cuit", "plat");
             Nouriture burgerTomate = new Nouriture("burgerTomate", "plat");
             Nouriture burgerFromage = new Nouriture("burgerFromage", "plat");
             Nouriture hotDog = new Nouriture("hotDog", "plat");
@@ -38,11 +38,11 @@ namespace PaniqueEnCuisine
 
 
             // création des Recettes 
-            CreeRecette(pizza,tomate,fromage);
+            CreeRecette(pizza,pate,tomate,fromage);
             CreeRecette(burgerFromage,pain,steak,fromage);
             CreeRecette(burgerTomate,pain,steak,tomate);
             CreeRecette(hotDog,pain,saucisse);
-            CreeRecette(frite,patate);
+            CreeRecette(frite, patate);
             CreeRecette(fondue,pain,fromageCuit);
 
         }

@@ -99,10 +99,8 @@
     <None Remove="Images\Entiter\PNJ\image_pnj2_bas3.png" />
     <None Remove="Images\Entiter\PNJ\image_pnj2_idle1.png" />
     <None Remove="Images\food\burger.png" />
-    <None Remove="Images\food\burgertFromage.png" />
     <None Remove="Images\food\burgerTomate.png" />
     <None Remove="Images\food\fondue.png" />
-    <None Remove="Images\food\frites.png" />
     <None Remove="Images\food\fromage.png" />
     <None Remove="Images\food\fromage_cuit.png" />
     <None Remove="Images\food\hotdog.png" />
@@ -228,10 +226,10 @@
     <Resource Include="Images\Entiter\PNJ\image_pnj2_bas2.png" />
     <Resource Include="Images\Entiter\PNJ\image_pnj2_bas3.png" />
     <Resource Include="Images\Entiter\PNJ\image_pnj2_idle1.png" />
-    <Resource Include="Images\food\burgertFromage.png" />
+    <Resource Include="Images\food\burgerFromage.png" />
     <Resource Include="Images\food\burgerTomate.png" />
     <Resource Include="Images\food\fondue.png" />
-    <Resource Include="Images\food\frites.png" />
+    <Resource Include="Images\food\frite.png" />
     <Resource Include="Images\food\fromage.png" />
     <Resource Include="Images\food\fromage_cuit.png" />
     <Resource Include="Images\food\hotdog.png" />
