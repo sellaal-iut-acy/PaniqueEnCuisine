@@ -21,36 +21,36 @@ namespace PaniqueEnCuisine
  
     public partial class UCMenuPlus : UserControl
     {
-        private MainWindow main;
+        private MainWindow _Main;
 
         public UCMenuPlus(MainWindow mw)
         {
             InitializeComponent();
-            main = mw;
+            _Main = mw;
         }
         private void ButtonSettingsSon_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav"); ;
             Console.WriteLine("Réglages son");
-            main.ChangerEcran(new UCMenuSon(main));
+            _Main.ChangerEcran(new UCMenuSon(_Main));
         }
 
         private void ButtonSettingsSkin_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
             Console.WriteLine("Réglages skins");
-            main.ChangerEcran(new UCMenuSkin(main));
+            _Main.ChangerEcran(new UCMenuSkin(_Main));
         }
 
         private void B_Retour_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangerEcran(new UCMainMenu(main));
+            _Main.ChangerEcran(new UCMainMenu(_Main));
         }
         private void ButtonSettingsLevel_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangerEcran(new UCMenuLevel(main));
+            _Main.ChangerEcran(new UCMenuLevel(_Main));
         }
     }
 

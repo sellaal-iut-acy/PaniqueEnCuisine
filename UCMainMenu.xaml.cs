@@ -22,12 +22,12 @@ namespace PaniqueEnCuisine
     
     public partial class UCMainMenu : UserControl
     {
-        private MainWindow main;
+        private MainWindow _Main;
 
         public UCMainMenu(MainWindow mw)
         {
             InitializeComponent();
-            main = mw;
+            _Main = mw;
 
         }
 
@@ -36,7 +36,7 @@ namespace PaniqueEnCuisine
             Audio.PlaySFX("Sons/son_clic.wav");
             
 
-            main.ChangerEcran(new UCMenuRegles(main));
+            _Main.ChangerEcran(new UCMenuRegles(_Main));
 
         }
 
@@ -44,7 +44,7 @@ namespace PaniqueEnCuisine
         private void B_Jouer_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangerEcran(new UCJeu(main));
+            _Main.ChangerEcran(new UCJeu(_Main));
             Audio.ArretMusique();
             
         }
@@ -61,7 +61,7 @@ namespace PaniqueEnCuisine
         {
             Audio.PlaySFX("Sons/son_clic.wav");
 
-            main.ChangerEcran(new UCMenuPlus(main));
+            _Main.ChangerEcran(new UCMenuPlus(_Main));
         }
     }
 

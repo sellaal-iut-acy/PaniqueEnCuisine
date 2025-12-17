@@ -21,9 +21,48 @@ namespace PaniqueEnCuisine
     public partial class UCFrigo : UserControl
     {
 
-        private int currentIndex = 0;
-        private Inventaire NouriturePersonange;
-        private Inventaire inventaire_frigo = new Inventaire(new List<Nouriture>(), 1);
+        private int _IndexActuel = 0;
+        private Inventaire _NouriturePersonange;
+        private Inventaire _InventaireFrigo = new Inventaire(new List<Nouriture>(), 1);
+
+        public Inventaire NouriturePersonange
+        {
+            get
+            {
+                return this._NouriturePersonange;
+            }
+
+            set
+            {
+                this._NouriturePersonange = value;
+            }
+        }
+
+        public Inventaire InventaireFrigo
+        {
+            get
+            {
+                return this._InventaireFrigo;
+            }
+
+            set
+            {
+                this._InventaireFrigo = value;
+            }
+        }
+
+        public int IndexActuel
+        {
+            get
+            {
+                return this._IndexActuel;
+            }
+
+            set
+            {
+                this._IndexActuel = value;
+            }
+        }
 
         public UCFrigo(Inventaire inventaire)
         {
@@ -52,13 +91,13 @@ namespace PaniqueEnCuisine
             Nouriture saucisse = new Nouriture("saucisse", "cru");
             Nouriture patate = new Nouriture("patate", "cru");
 
-            inventaire_frigo.Liste_nourriture.Add(tomate);
-            inventaire_frigo.Liste_nourriture.Add(fromage);
-            inventaire_frigo.Liste_nourriture.Add(steak);
-            inventaire_frigo.Liste_nourriture.Add(pate);
-            inventaire_frigo.Liste_nourriture.Add(pain);
-            inventaire_frigo.Liste_nourriture.Add(saucisse);
-            inventaire_frigo.Liste_nourriture.Add(patate);
+            InventaireFrigo.Liste_nourriture.Add(tomate);
+            InventaireFrigo.Liste_nourriture.Add(fromage);
+            InventaireFrigo.Liste_nourriture.Add(steak);
+            InventaireFrigo.Liste_nourriture.Add(pate);
+            InventaireFrigo.Liste_nourriture.Add(pain);
+            InventaireFrigo.Liste_nourriture.Add(saucisse);
+            InventaireFrigo.Liste_nourriture.Add(patate);
         }
 
         private void B_Fermer_Click(object sender, RoutedEventArgs e)
@@ -68,25 +107,25 @@ namespace PaniqueEnCuisine
 
         private void button_reculer_Click(object sender, RoutedEventArgs e)
         {
-            if (inventaire_frigo.Liste_nourriture.Count == 0) return;
+            if (InventaireFrigo.Liste_nourriture.Count == 0) return;
 
-            currentIndex--;
-            if (currentIndex < 0)
-                currentIndex = inventaire_frigo.Liste_nourriture.Count - 1;
+            IndexActuel--;
+            if (IndexActuel < 0)
+                IndexActuel = InventaireFrigo.Liste_nourriture.Count - 1;
 
-            nouriture_Choix.Source = inventaire_frigo.Liste_nourriture[currentIndex].Image.Source;
+            nouriture_Choix.Source = InventaireFrigo.Liste_nourriture[IndexActuel].Image.Source;
             NouritureAjouter.Text = ""; 
         }
 
         private void button_avancer_Click(object sender, RoutedEventArgs e)
         {
 
-            if (inventaire_frigo.Liste_nourriture.Count == 0) return;
+            if (InventaireFrigo.Liste_nourriture.Count == 0) return;
 
-            currentIndex++;
-            if (currentIndex >= inventaire_frigo.Liste_nourriture.Count) currentIndex = 0;
+            IndexActuel++;
+            if (_IndexActuel >= InventaireFrigo.Liste_nourriture.Count) IndexActuel = 0;
 
-            nouriture_Choix.Source = inventaire_frigo.Liste_nourriture[currentIndex].Image.Source;
+            nouriture_Choix.Source = InventaireFrigo.Liste_nourriture[IndexActuel].Image.Source;
             NouritureAjouter.Text = "";
 
         }
@@ -94,8 +133,8 @@ namespace PaniqueEnCuisine
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NouritureAjouter.Text = "";
-            NouriturePersonange.Liste_nourriture.Add(inventaire_frigo.Liste_nourriture[currentIndex]);
-            NouritureAjouter.Text = $"{inventaire_frigo.Liste_nourriture[currentIndex].Nom} a été ajouter a votre _Inventaire";
+            NouriturePersonange.Liste_nourriture.Add(InventaireFrigo.Liste_nourriture[IndexActuel]);
+            NouritureAjouter.Text = $"{_InventaireFrigo.Liste_nourriture[_IndexActuel].Nom} a été ajouter a votre _Inventaire";
         }
     }
 }

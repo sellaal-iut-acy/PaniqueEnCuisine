@@ -20,13 +20,25 @@ namespace PaniqueEnCuisine
     /// </summary>
     public partial class UCGameOver : UserControl
     {
-        private MainWindow main;
+        private MainWindow _Main = new MainWindow();
         public UCGameOver(MainWindow mw)
         {
             InitializeComponent();
-            main = mw;
+            Main = mw;
         }
 
+        public MainWindow Main
+        {
+            get
+            {
+                return this._Main;
+            }
+
+            set
+            {
+                this._Main = value;
+            }
+        }
 
         private void B_Quitter_Click(object sender, RoutedEventArgs e)
         {
@@ -37,8 +49,8 @@ namespace PaniqueEnCuisine
         private void B_RetourMenu_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangeScreen(new UCMainMenu(main));
-            Audio.PlayMusic("Sons/son_music_loop.wav", true);
+            Main.ChangerEcran(new UCMainMenu(_Main));
+            Audio.JouerMusique("Sons/son_music_loop.wav", true);
         }
     }
 }

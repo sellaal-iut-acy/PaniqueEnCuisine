@@ -7,45 +7,45 @@ namespace PaniqueEnCuisine
 {
     public partial class UCTableDeCraft : UserControl
     {
-        private ManagerRecette  ManagerRecettes = new ManagerRecette();
-        private Inventaire InventaireJoueur;
-        private Recette RecetteSelectionner;
-        private List<Nouriture>  nouritureAEnlever = new List<Nouriture>();
-        private int currentIndex = 0;
-        private List<StackPanel> StackPanels = new List<StackPanel>();
+        private ManagerRecette  _ManagerRecettes = new ManagerRecette();
+        private Inventaire _InventaireJoueur;
+        private Recette _RecetteSelectionner;
+        private List<Nouriture>  _NouritureAEnlever = new List<Nouriture>();
+        private int _IndexActuel = 0;
+        private List<StackPanel> _StackPanels = new List<StackPanel>();
         public UCTableDeCraft(Joueur  joueur)
         {
 
             InitializeComponent();
             this.Focusable = true;
             this.Focus();
-            gener_recette();
-            InventaireJoueur = joueur.Inventaire;
-            AfficherInventaireJouer();
+            _Gener_Recette();
+            _InventaireJoueur = joueur.Inventaire;
+            _AfficherInventaireJoueur();
         }
 
         private void B_Fermer_Click(object sender, RoutedEventArgs e)
         {
-            FermerTableDeCraft();
+            _FermerTableDeCraft();
         }
 
         private void UserControl_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.E)
-                FermerTableDeCraft();
+                _FermerTableDeCraft();
         }
 
-        private void FermerTableDeCraft()
+        private void _FermerTableDeCraft()
         {
             if (this.Parent is Panel parent)
                 parent.Children.Remove(this);
         }
 
 
-        private void gener_recette()
+        private void _Gener_Recette()
         {
             int i = 0;
-            foreach (Recette Recette in ManagerRecettes.ListeRecetes)
+            foreach (Recette Recette in _ManagerRecettes.ListeRecetes)
             {
                 StackPanel stackPanel = new StackPanel
                 {
@@ -126,14 +126,14 @@ namespace PaniqueEnCuisine
                     BorderThickness = new Thickness(5)
                 };
 
-                StackPanels.Add(stackPanel);
+                _StackPanels.Add(stackPanel);
       
             }
         }
 
-        private void AfficherInventaireJouer()
+        private void _AfficherInventaireJoueur()
         {
-            foreach(Nouriture Ingerdiqnt in InventaireJoueur.Liste_nourriture )
+            foreach(Nouriture Ingerdiqnt in _InventaireJoueur.Liste_nourriture )
             {
                 Ingerdiqnt.Image.Width = 50;
                 Ingerdiqnt.Image.Height = 50;
@@ -141,58 +141,58 @@ namespace PaniqueEnCuisine
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Buotton_Click(object sender, RoutedEventArgs e)
         {
-            listeRecette.Children.Remove(StackPanels[currentIndex]);
-            if (StackPanels.Count == 0) return;
+            listeRecette.Children.Remove(_StackPanels[_IndexActuel]);
+            if (_StackPanels.Count == 0) return;
 
-            currentIndex--;
-            if (currentIndex < 0)
-                currentIndex = StackPanels.Count - 1;
+            _IndexActuel--;
+            if (_IndexActuel < 0)
+                _IndexActuel = _StackPanels.Count - 1;
 
-            listeRecette.Children.Add(StackPanels[currentIndex]);
+            listeRecette.Children.Add(_StackPanels[_IndexActuel]);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            listeRecette.Children.Remove(StackPanels[currentIndex]);
-            if (StackPanels.Count == 0) return;
+            listeRecette.Children.Remove(_StackPanels[_IndexActuel]);
+            if (_StackPanels.Count == 0) return;
 
-            currentIndex++;
-            if (currentIndex >= StackPanels.Count) currentIndex = 0;
+            _IndexActuel++;
+            if (_IndexActuel >= _StackPanels.Count) _IndexActuel = 0;
 
-            listeRecette.Children.Add(StackPanels[currentIndex]);
+            listeRecette.Children.Add(_StackPanels[_IndexActuel]);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             bool crafte = false;
             Console.WriteLine("début du test");
-            for (int i = 0; i < ManagerRecettes.ListeRecetes[currentIndex].NouritureList.Count; i++)
+            for (int i = 0; i < _ManagerRecettes.ListeRecetes[_IndexActuel].NouritureList.Count; i++)
             {
-                for (int j = i; j < InventaireJoueur.Liste_nourriture.Count; j++)
+                for (int j = i; j < _InventaireJoueur.Liste_nourriture.Count; j++)
                 {
-                    Console.WriteLine($"{ManagerRecettes.ListeRecetes[currentIndex].NouritureList[i].Nom} {InventaireJoueur.Liste_nourriture[j].Nom}");
-                    if (ManagerRecettes.ListeRecetes[currentIndex].NouritureList[i].Nom == InventaireJoueur.Liste_nourriture[j].Nom)
-                        nouritureAEnlever.Add(InventaireJoueur.Liste_nourriture[j]);
+                    Console.WriteLine($"{_ManagerRecettes.ListeRecetes[_IndexActuel].NouritureList[i].Nom} {_InventaireJoueur.Liste_nourriture[j].Nom}");
+                    if (_ManagerRecettes.ListeRecetes[_IndexActuel].NouritureList[i].Nom == _InventaireJoueur.Liste_nourriture[j].Nom)
+                        _NouritureAEnlever.Add(_InventaireJoueur.Liste_nourriture[j]);
                     else
                     { Console.WriteLine("tu n'apas touts les ingrédient"); }
 
                 }
             }
-            if (nouritureAEnlever.Count == ManagerRecettes.ListeRecetes[currentIndex].NouritureList.Count)
+            if (_NouritureAEnlever.Count == _ManagerRecettes.ListeRecetes[_IndexActuel].NouritureList.Count)
             {
-                foreach (Nouriture ingrediantAEnlever in nouritureAEnlever)
+                foreach (Nouriture ingrediantAEnlever in _NouritureAEnlever)
                 {
-                    InventaireJoueur.Liste_nourriture.Remove(ingrediantAEnlever);
-                    InventaireJoueur.Liste_nourriture.Add(ManagerRecettes.ListeRecetes[currentIndex].Nouriture);
+                    _InventaireJoueur.Liste_nourriture.Remove(ingrediantAEnlever);
+                    _InventaireJoueur.Liste_nourriture.Add(_ManagerRecettes.ListeRecetes[_IndexActuel].Nouriture);
                 }
-                craft.Text = $"vous avez cusiner {ManagerRecettes.ListeRecetes[currentIndex].Nouriture.Nom} ";
+                craft.Text = $"vous avez cusiner {_ManagerRecettes.ListeRecetes[_IndexActuel].Nouriture.Nom} ";
 
             }
             else
             {
-                craft.Text = $"vous avez cusiner {ManagerRecettes.ListeRecetes[currentIndex].Nouriture.Nom} il vaus manque des ingrédiants ";
+                craft.Text = $"vous avez cusiner {_ManagerRecettes.ListeRecetes[_IndexActuel].Nouriture.Nom} il vaus manque des ingrédiants ";
             }
                 
 

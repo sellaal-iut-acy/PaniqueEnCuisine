@@ -10,18 +10,82 @@ namespace PaniqueEnCuisine
 {
     public partial class UCfour : UserControl
     {
-        private Nouriture Nouriture_a_cuire;
-        private Nouriture Nouriture_cuit;
-        private int currentIndex = 0;
-        private bool selectioner = false;
-        private Inventaire NouriturePersonange;
+        private Nouriture _NouritureACuire;
+        private Nouriture _NouritureCuit;
+        private int _CurrentIndex = 0;
+        private bool _Selectioner = false;
+        private Inventaire _NouriturePersonange;
 
+        public Inventaire NouriturePersonange
+        {
+            get
+            {
+                return this._NouriturePersonange;
+            }
+
+            set
+            {
+                this._NouriturePersonange = value;
+            }
+        }
+
+        public Nouriture NouritureACuire
+        {
+            get
+            {
+                return this._NouritureACuire;
+            }
+
+            set
+            {
+                this._NouritureACuire = value;
+            }
+        }
+
+        public int CurrentIndex
+        {
+            get
+            {
+                return this._CurrentIndex;
+            }
+
+            set
+            {
+                this._CurrentIndex = value;
+            }
+        }
+
+        public bool Selectioner
+        {
+            get
+            {
+                return this._Selectioner;
+            }
+
+            set
+            {
+                this._Selectioner = value;
+            }
+        }
+
+        public Nouriture NouritureCuit1
+        {
+            get
+            {
+                return this._NouritureCuit;
+            }
+
+            set
+            {
+                this._NouritureCuit = value;
+            }
+        }
 
         public UCfour( Joueur joueur , Inventaire inventaire)
         {
             InitializeComponent();
             Console.WriteLine("fait");
-            NouriturePersonange = inventaire;
+            _NouriturePersonange = inventaire;
             
 
             this.Focusable = true;
@@ -41,16 +105,16 @@ namespace PaniqueEnCuisine
 
         private void B_cuirre(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine($"{NouriturePersonange.Liste_nourriture[currentIndex].Type}");
-            if (selectioner && !NouriturePersonange.Liste_nourriture[currentIndex].EstCuit && (NouriturePersonange.Liste_nourriture[currentIndex].Type == "cru"))
+            Console.WriteLine($"{NouriturePersonange.Liste_nourriture[CurrentIndex].Type}");
+            if (_Selectioner && !NouriturePersonange.Liste_nourriture[CurrentIndex].EstCuit && (NouriturePersonange.Liste_nourriture[CurrentIndex].Type == "cru"))
             {
                  
-                NouritureCuit.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"pack://application:,,,/Images/food/{NouriturePersonange.Liste_nourriture[currentIndex].Nom}_cuit.png"));
-                Nouriture_cuit = new Nouriture($"{NouriturePersonange.Liste_nourriture[currentIndex].Nom}_cuit", "cuit");
-                NouriturePersonange.Liste_nourriture.RemoveAt(currentIndex);
-                NouriturePersonange.Liste_nourriture.Remove(Nouriture_a_cuire);
-                Nouriture_cuit.EstCuit = true;
-                NouriturePersonange.Liste_nourriture.Add(Nouriture_cuit);
+                NouritureCuit.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"pack://application:,,,/Images/food/{NouriturePersonange.Liste_nourriture[CurrentIndex].Nom}_cuit.png"));
+                NouritureCuit1 = new Nouriture($"{NouriturePersonange.Liste_nourriture[CurrentIndex].Nom}_cuit", "cuit");
+                NouriturePersonange.Liste_nourriture.RemoveAt(CurrentIndex);
+                NouriturePersonange.Liste_nourriture.Remove(NouritureACuire);
+                NouritureCuit1.EstCuit = true;
+                NouriturePersonange.Liste_nourriture.Add(NouritureCuit1);
                
             }
             
@@ -60,11 +124,11 @@ namespace PaniqueEnCuisine
         {
             if (NouriturePersonange.Liste_nourriture.Count == 0) return;
 
-            currentIndex--;
-            if (currentIndex < 0) 
-                currentIndex = NouriturePersonange.Liste_nourriture.Count - 1;
+            CurrentIndex--;
+            if (CurrentIndex < 0) 
+                CurrentIndex = NouriturePersonange.Liste_nourriture.Count - 1;
 
-            nouriture_Choix.Source = NouriturePersonange.Liste_nourriture[currentIndex].Image.Source;
+            nouriture_Choix.Source = NouriturePersonange.Liste_nourriture[CurrentIndex].Image.Source;
         }
 
         private void button_avancer_Click(object sender, RoutedEventArgs e)
@@ -72,18 +136,18 @@ namespace PaniqueEnCuisine
 
             if (NouriturePersonange.Liste_nourriture.Count == 0) return;
 
-            currentIndex++;
-            if (currentIndex >= NouriturePersonange.Liste_nourriture.Count) currentIndex = 0;
+            _CurrentIndex++;
+            if (_CurrentIndex >= NouriturePersonange.Liste_nourriture.Count) CurrentIndex = 0;
 
-            nouriture_Choix.Source = NouriturePersonange.Liste_nourriture[currentIndex].Image.Source;
+            nouriture_Choix.Source = NouriturePersonange.Liste_nourriture[CurrentIndex].Image.Source;
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NouritureACuirre.Source = NouriturePersonange.Liste_nourriture[currentIndex].Image.Source;
-            Nouriture_a_cuire = NouriturePersonange.Liste_nourriture[currentIndex];
-            selectioner = true;
+            NouritureACuirre.Source = NouriturePersonange.Liste_nourriture[CurrentIndex].Image.Source;
+            NouritureACuire = NouriturePersonange.Liste_nourriture[CurrentIndex];
+            Selectioner = true;
         }
     }
 }

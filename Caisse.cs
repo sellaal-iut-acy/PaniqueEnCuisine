@@ -6,9 +6,21 @@ namespace PaniqueEnCuisine
     internal class Caisse : OutilsCusine
     {
         private static Recette commandeEnCours;
-        private static int tempsRestant;
+        private static int tempsRestant = 0;
         private static DispatcherTimer _Timer = new DispatcherTimer();
         private static ManagerRecette _ManagerRecette = new ManagerRecette();
+        public static bool fini = false;
+
+        public Caisse(string nom, int x, int y, int width, int height, int niveaux, int vitesse_utilisation) : base(nom, x, y, width, height, niveaux, vitesse_utilisation)
+        {
+            this.Img_outi.Tag = "Caisse";
+
+            if (Timer == null)
+                InitialiserTimer();
+
+            if (CommandeEnCours == null)
+                NouvelleCommande();
+        }
 
         internal static Recette CommandeEnCours
         {
@@ -56,26 +68,13 @@ namespace PaniqueEnCuisine
                 return tempsRestant;
             }
 
-        private static DispatcherTimer timer;
-        private static ManagerRecette managerRecette = new ManagerRecette();
-        public static bool fini = false;
             set
             {
                 tempsRestant = value;
             }
         }
 
-        public Caisse(string nom, int x, int y, int width, int height, int niveaux, int vitesse_utilisation)
-            : base(nom, x, y, width, height, niveaux, vitesse_utilisation)
-        {
-            this.Img_outi.Tag = "Caisse";
-
-            if (_Timer == null)
-                InitialiserTimer();
-
-            if (CommandeEnCours == null)
-                NouvelleCommande();
-        }
+        
 
         private static void InitialiserTimer()
         {
@@ -87,7 +86,7 @@ namespace PaniqueEnCuisine
 
                 if (TempsRestant <= 0)
                 {
-                    timer.Stop();
+                    _Timer.Stop();
                     Console.WriteLine("GAME OVER");
                 }
             };
@@ -96,9 +95,9 @@ namespace PaniqueEnCuisine
 
         public static void NouvelleCommande()
         {
-            CommandeEnCours = managerRecette.GetRecetteAleatoire();
+            CommandeEnCours = ManagerRecette.GetRecetteAleatoire();
             TempsRestant = 90; // RESET DU TIMER
-            timer.Start();
+            _Timer.Start();
         }
         public static void Reset()
         {

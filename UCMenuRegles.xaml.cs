@@ -21,17 +21,17 @@ namespace PaniqueEnCuisine
     /// </summary>
     public partial class UCMenuRegles : UserControl
     {
-        private MainWindow main;
+        private MainWindow _Main;
         public UCMenuRegles(MainWindow mw)
         {
             InitializeComponent();
-            main = mw;
+            _Main = mw;
         }
 
         private void B_Retour_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangerEcran(new UCMainMenu(main));
+            _Main.ChangerEcran(new UCMainMenu(_Main));
         }
     }
 }

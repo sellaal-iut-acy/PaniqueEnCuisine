@@ -21,13 +21,13 @@ namespace PaniqueEnCuisine
     /// </summary>
     public partial class UCMenuSkin : UserControl
     {
-        private MainWindow main;
-        private int selectedSkin = 0;
+        private MainWindow _Main;
+        private int _SelectionSkin = 0;
 
         public UCMenuSkin(MainWindow mw)
         {
             InitializeComponent();
-            main = mw;
+            _Main = mw;
 
             UpdatePreview();
         }
@@ -35,17 +35,17 @@ namespace PaniqueEnCuisine
         private void B_Retour_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangerEcran(new UCMenuPlus(main));
+            _Main.ChangerEcran(new UCMenuPlus(_Main));
         }
         private void SkinPrototype_Click(object sender, RoutedEventArgs e)
         {
-            selectedSkin = 0;
+            _SelectionSkin = 0;
             UpdatePreview();
         }
 
         private void SkinChef_Click(object sender, RoutedEventArgs e)
         {
-            selectedSkin = 1;
+            _SelectionSkin = 1;
             UpdatePreview();
         }
 
@@ -54,19 +54,19 @@ namespace PaniqueEnCuisine
         private void UpdatePreview()
         {
             ImagePreview.Source = new BitmapImage(
-                new Uri($"pack://application:,,,/Images/Entiter/image_idle0_skin{selectedSkin}.png")
+                new Uri($"pack://application:,,,/Images/Entiter/image_idle0_skin{_SelectionSkin}.png")
             );
         }
 
         private void SelectSkin_Click(object sender, RoutedEventArgs e)
         {
-            var p = main.MapManager._Playeur;
+            var Joueur = _Main.MapManager.Playeur;
 
-            p._IndexSkinActuel = selectedSkin;
-            p.Charger_images();
+            Joueur.IndexSkinActuel = _SelectionSkin;
+            Joueur.Charger_images();
 
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangerEcran(new UCMenuPlus(main));
+            _Main.ChangerEcran(new UCMenuPlus(_Main));
 
 
 
