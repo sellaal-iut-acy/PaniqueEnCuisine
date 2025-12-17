@@ -19,8 +19,8 @@ namespace PaniqueEnCuisine
             Nouriture steak = new Nouriture("steak", "cru");
             Nouriture steak_cuit = new Nouriture("steak_cuit", "cuit");
             Nouriture pate = new Nouriture("pate", "ingrediant");
+            Nouriture pate_cuit = new Nouriture("pate_cuit", "cuit");
             Nouriture pain = new Nouriture("pain", "ingrediant");
-            Nouriture pizza = new Nouriture("pizza", "cru"); //a fabriquer
             Nouriture saucisse = new Nouriture("saucisse", "cru");
             Nouriture saucisse_cuit = new Nouriture("saucisse_cuit", "cuit");
             Nouriture patate = new Nouriture("patate", "cru");
@@ -38,7 +38,7 @@ namespace PaniqueEnCuisine
 
 
             // création des Recettes 
-            CreeRecette(pizza_cuit, pate,tomate, fromage_cuit);
+            CreeRecette(pizza_cuit, pate_cuit,tomate, fromage_cuit);
             CreeRecette(burgerFromage,pain, steak_cuit, fromage_cuit);
             CreeRecette(burgerTomate,pain, steak_cuit, tomate);
             CreeRecette(hotDog,pain, saucisse_cuit);
