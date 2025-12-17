@@ -21,16 +21,21 @@
 
 
             </StackPanel>
-
-
-
-
-
         </ScrollViewer>
         <Button x:Name="B_Fermer" Content="Fermer" FontSize="20" Background="Gray" BorderBrush="#FF444343" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Fermer_Click" Margin="315,10,315,405"/>
         <Button Content="reculer" HorizontalAlignment="Left" Margin="400,377,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <Button Content="slectioner" HorizontalAlignment="Left" Margin="555,377,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
         <Button Content="avancer" HorizontalAlignment="Left" Margin="710,377,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
-        <TextBlock x:Name="craft" HorizontalAlignment="Left" Margin="60,85,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="114" Width="198" FontSize="18"/>
+        <TextBlock x:Name="craft" HorizontalAlignment="Left" Margin="60,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="114" Width="198" FontSize="18"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="45,148,405,113">
+            <StackPanel x:Name="InventairePlayer" Margin="15">
+
+
+
+
+            </StackPanel>
+        </ScrollViewer>
+
     </Grid>
+    
 </UserControl>

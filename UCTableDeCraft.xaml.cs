@@ -21,6 +21,7 @@ namespace PaniqueEnCuisine
             this.Focus();
             gener_recette();
             InventaireJoueur = joueur.Inventaire;
+            AfficherInventaireJouer();
         }
 
         private void B_Fermer_Click(object sender, RoutedEventArgs e)
@@ -130,6 +131,15 @@ namespace PaniqueEnCuisine
             }
         }
 
+        private void AfficherInventaireJouer()
+        {
+            foreach(Nouriture Ingerdiqnt in InventaireJoueur.Liste_nourriture )
+            {
+                Ingerdiqnt.Image.Width = 50;
+                Ingerdiqnt.Image.Height = 50;
+                InventairePlayer.Children.Add(Ingerdiqnt.Image);
+            }
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
