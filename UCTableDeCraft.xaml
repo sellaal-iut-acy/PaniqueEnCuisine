@@ -15,7 +15,7 @@
            StrokeThickness="5" Margin="400,50,50,50"/>
 
         <ScrollViewer Height="350" VerticalScrollBarVisibility="Auto" Margin="400,50,50,50">
-            <StackPanel Margin="15">
+            <StackPanel x:Name="listeRecette" Margin="15">
 
                 <StackPanel Orientation="Horizontal" Height="137" Background="#FF444343">
                     <Image Source="/Images/food/burger.png" Height="61" Width="73" Margin="0,0,20,0"/>

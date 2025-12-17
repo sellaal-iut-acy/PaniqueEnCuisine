@@ -8,7 +8,7 @@ namespace PaniqueEnCuisine
 {
     internal class Recette
     {
-        private List<Nouriture> NouritureList = new List<Nouriture>();
+        private List<Nouriture> _NouritureList = new List<Nouriture>();
         private Nouriture nouriture;
 
         public Recette(List<Nouriture> nouritureList, Nouriture nouriture)
@@ -27,6 +27,19 @@ namespace PaniqueEnCuisine
             set
             {
                 this.nouriture = value;
+            }
+        }
+
+        public List<Nouriture> NouritureList
+        {
+            get
+            {
+                return this.NouritureList;
+            }
+
+            set
+            {
+                this.NouritureList = value;
             }
         }
 
