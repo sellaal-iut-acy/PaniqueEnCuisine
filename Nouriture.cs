@@ -9,30 +9,30 @@ namespace PaniqueEnCuisine
 {
     public class Nouriture
     {
-        private string _nom = "";
-        private Image _image = new Image();
+        private string _Nom = "";
+        private Image _Image = new Image();
         private bool _EstCuit = false;
-        private string _type = "";
+        private string _Type = "";
       
 
         public Nouriture(string nom, string type)
         {
-            this._nom = nom;
+            this.Nom = nom;
             this.Type = type;
-            this._image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"pack://application:,,,/Images/food/{nom}.png"));
+            this.Image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"pack://application:,,,/Images/food/{nom}.png"));
   
         }
 
         public string Nom
         {
-            get { return _nom; }
-            set { _nom = value; }
+            get { return _Nom; }
+            set { _Nom = value; }
         }
 
         public Image Image
         {
-            get { return _image; }
-            set { _image = value; }
+            get { return _Image; }
+            set { _Image = value; }
         }
 
     
@@ -54,20 +54,20 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this._type;
+                return this._Type;
             }
 
             set
             {
-                this._type = value;
+                this._Type = value;
             }
         }
 
         public override bool Equals(object? obj)
         {
             return obj is Nouriture nouriture &&
-                   this._nom == nouriture._nom &&
-                   EqualityComparer<Image>.Default.Equals(this._image, nouriture._image) &&
+                   this.Nom == nouriture.Nom &&
+                   EqualityComparer<Image>.Default.Equals(this._Image, nouriture._Image) &&
                    this._EstCuit == nouriture._EstCuit &&
                    this.Nom == nouriture.Nom &&
                    EqualityComparer<Image>.Default.Equals(this.Image, nouriture.Image) &&

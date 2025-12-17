@@ -17,25 +17,25 @@ namespace PaniqueEnCuisine
         private void Sl_General_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             ManagerSettings.VolumeGeneral = Sl_General.Value;
-            Audio.RefreshVolumes();
+            Audio.MiseAjourVolume();
         }
 
         private void Sl_Music_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             ManagerSettings.VolumeMusique = Sl_Music.Value;
-            Audio.RefreshVolumes();
+            Audio.MiseAjourVolume();
         }
 
         private void Sl_SFX_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             ManagerSettings.VolumeEffets = Sl_SFX.Value;
-            Audio.RefreshVolumes();
+            Audio.MiseAjourVolume();
         }
 
         private void ButtonFermer_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            Audio.RefreshVolumes();
+            Audio.MiseAjourVolume();
         }
     }
 }

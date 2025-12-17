@@ -36,7 +36,7 @@ namespace PaniqueEnCuisine
             Audio.PlaySFX("Sons/son_clic.wav");
             
 
-            main.ChangeScreen(new UCMenuRegles(main));
+            main.ChangerEcran(new UCMenuRegles(main));
 
         }
 
@@ -44,8 +44,8 @@ namespace PaniqueEnCuisine
         private void B_Jouer_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangeScreen(new UCJeu(main));
-            Audio.StopMusic();
+            main.ChangerEcran(new UCJeu(main));
+            Audio.ArretMusique();
             
         }
 
@@ -61,7 +61,7 @@ namespace PaniqueEnCuisine
         {
             Audio.PlaySFX("Sons/son_clic.wav");
 
-            main.ChangeScreen(new UCMenuPlus(main));
+            main.ChangerEcran(new UCMenuPlus(main));
         }
     }
 

@@ -14,33 +14,33 @@ namespace PaniqueEnCuisine
 {
     internal class File
     {
-        private List<Annimation_PNJ> _queuePeople = new();
-        private List<Annimation_PNJ> _passedPeople = new();
+        private List<AnnimationPNJ> _FileClient= new();
+        private List<AnnimationPNJ> _ClientsPasser = new();
         private DispatcherTimer _timer;
 
-        private bool _isGateClosed = true;
-        private bool _firstHasPassed = false;
+        private bool _PorteFermer = true;
+        private bool _PremierPasser = false;
 
-        private const double Speed = 2;
-        private const double PersonSpacing = 30;
-        private const int InitialQueueCount = 8;
+        private const double _Vitesse = 2;
+        private const double _EspaceEntreCleint = 30;
+        private const int _NombreMaxClient = 8;
         private Canvas _canvas;
-        private Rectangle _rect;
+        private Rectangle _RectStop;
 
 
         // Liste des frames d'animation
-        private readonly List<BitmapImage> _walkFrames = new()
+        private readonly List<BitmapImage> _FrameDeplacement = new()
         {
             new BitmapImage(new System.Uri("Images/Person1.png", System.UriKind.Relative)),
             new BitmapImage(new System.Uri("Images/Person2.png", System.UriKind.Relative)),
             new BitmapImage(new System.Uri("Images/Person3.png", System.UriKind.Relative))
         };
 
-        public File( ref DispatcherTimer timer, ref Canvas canvas,ref Rectangle rect)
+        public File( ref DispatcherTimer timer, ref Canvas canvas,ref Rectangle RectStop)
         {
             this._timer = timer;
             this.Canvas = canvas;
-            this.Rect = rect;
+            this.Rect = RectStop;
         }
 
         public Canvas Canvas
@@ -60,20 +60,125 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this._rect;
+                return this._RectStop;
             }
 
             set
             {
-                this._rect = value;
+                this._RectStop = value;
             }
         }
 
-        private void CreateInitialPeople()
+        public static double Vitesse
         {
-            for (int i = 0; i < InitialQueueCount; i++)
+            get
             {
-                AddNewPerson(-i * PersonSpacing);
+                return _Vitesse;
+            }
+        }
+
+        internal List<AnnimationPNJ> FilClient
+        {
+            get
+            {
+                return this._FileClient;
+            }
+
+            set
+            {
+                this._FileClient = value;
+            }
+        }
+
+        internal List<AnnimationPNJ> ClientsPasser
+        {
+            get
+            {
+                return this._ClientsPasser;
+            }
+
+            set
+            {
+                this._ClientsPasser = value;
+            }
+        }
+
+        public static int NombreMaxClient
+        {
+            get
+            {
+                return _NombreMaxClient;
+            }
+        }
+
+        public bool PorteFermer
+        {
+            get
+            {
+                return this._PorteFermer;
+            }
+
+            set
+            {
+                this._PorteFermer = value;
+            }
+        }
+
+        public bool PremierPasser
+        {
+            get
+            {
+                return this._PremierPasser;
+            }
+
+            set
+            {
+                this._PremierPasser = value;
+            }
+        }
+
+        public static double EspaceEntreCleint
+        {
+            get
+            {
+                return _EspaceEntreCleint;
+            }
+        }
+
+        public static double EspaceEntreCleint1
+        {
+            get
+            {
+                return _EspaceEntreCleint;
+            }
+        }
+
+        public Rectangle RectStop
+        {
+            get
+            {
+                return this._RectStop;
+            }
+
+            set
+            {
+                this._RectStop = value;
+            }
+        }
+
+        public List<BitmapImage> FrameDeplacement
+        {
+            get
+            {
+                return this._FrameDeplacement;
+            }
+        }
+
+        private void CreePremierClient()
+        {
+            for (int i = 0; i < NombreMaxClient; i++)
+            {
+                AddNewPerson(-i * EspaceEntreCleint);
             }
         }
 
@@ -83,16 +188,16 @@ namespace PaniqueEnCuisine
             {
                 Width = 20,
                 Height = 20,
-                Source = _walkFrames[0],
+                Source = FrameDeplacement[0],
                 Name = "Client"
             };
             
             
             Canvas.SetLeft(img, 100);
             Canvas.SetTop(img, 300 + offsetY);
-            _queuePeople.Add(new Annimation_PNJ(img,0));
+            _FileClient.Add(new AnnimationPNJ(img,0));
             this.Canvas.Children.Add(img);
-            Console.WriteLine($"le personnage est ajouter {img.Name} x :{Canvas.GetLeft(img)}, y:{Canvas.GetTop(img)}");
+            Console.WriteLine($"le personnage est ajouter {img.Name} _X :{Canvas.GetLeft(img)}, _Y:{Canvas.GetTop(img)}");
         }
         private void set_rectangel(Rectangle rect,Canvas Canvas)
         {
@@ -104,89 +209,89 @@ namespace PaniqueEnCuisine
 
         private void StartMovement()
         {
-            _timer.Tick += MovePeople;
+            _timer.Tick += DeplacementClients;
         }
 
-        public void cree_File(Rectangle rect,Canvas ca)
+        public void CreeFileClients(Rectangle RectStop)
         {
-            this.CreateInitialPeople();
+            this.CreePremierClient();
             this.StartMovement();
-            set_rectangel(rect,Canvas);
+            set_rectangel(RectStop,Canvas);
         }
 
-        private void AnimatePerson(Annimation_PNJ person)
+        private void AnimationClient(AnnimationPNJ Client)
         {
             // Change la frame à chaque tick pour créer l'animation
-            person.FrameIndex1 = (person.FrameIndex1 + 1) % _walkFrames.Count;
-            person.Img.Source = _walkFrames[person.FrameIndex1];
+            Client.NumerosFrame = (Client.NumerosFrame + 1) % FrameDeplacement.Count;
+            Client.ImgFrame.Source = FrameDeplacement[Client.NumerosFrame];
         }
 
-        private void MovePeople(object sender, System.EventArgs e)
+        private void DeplacementClients(object sender, System.EventArgs e)
         {
             double stopY = System.Windows.Controls.Canvas.GetTop(this.Rect);
 
             // ---- FILE D’ATTENTE ----
-            for (int i = 0; i < _queuePeople.Count; i++)
+            for (int i = 0; i < _FileClient.Count; i++)
             {
-                Annimation_PNJ current = _queuePeople[i];
-                double y = Canvas.GetTop(current.Img);
+                AnnimationPNJ FileActuelClient = _FileClient[i];
+                double y = Canvas.GetTop(FileActuelClient.ImgFrame);
 
-                AnimatePerson(current);
+                AnimationClient(FileActuelClient);
 
                 if (i == 0)
                 {
-                    if (_isGateClosed && y + current.Img.Height + Speed >= stopY)
+                    if (_PorteFermer && y + FileActuelClient.ImgFrame.Height + Vitesse >= stopY)
                         continue;
 
-                    Canvas.SetTop(current.Img, y + Speed);
+                    Canvas.SetTop(FileActuelClient.ImgFrame, y + Vitesse);
 
-                    if (!_isGateClosed && !_firstHasPassed &&
-                        y < stopY && y + Speed >= stopY)
+                    if (!_PorteFermer && !_PremierPasser &&
+                        y < stopY && y + _Vitesse >= stopY)
                     {
-                        _firstHasPassed = true;
-                        _isGateClosed = true;
-                        this.Rect.Fill = Brushes.Red;
+                        _PremierPasser = true;
+                        _PorteFermer = true;
+                        this.RectStop.Fill = Brushes.Red;
 
-                        _queuePeople.RemoveAt(0);
-                        _passedPeople.Add(current);
+                        _FileClient.RemoveAt(0);
+                        ClientsPasser.Add(FileActuelClient);
 
-                        AddNewPerson(-PersonSpacing);
+                        AddNewPerson(-EspaceEntreCleint);
                     }
                 }
                 else
                 {
-                    Annimation_PNJ front = _queuePeople[i - 1];
-                    double frontY = Canvas.GetTop(front.Img);
+                    AnnimationPNJ front = _FileClient[i - 1];
+                    double frontY = Canvas.GetTop(front.ImgFrame);
 
-                    if (frontY - y > PersonSpacing)
-                        Canvas.SetTop(current.Img, y + Speed);
+                    if (frontY - y > EspaceEntreCleint)
+                        Canvas.SetTop(FileActuelClient.ImgFrame, y + Vitesse);
                 }
                 
             }
 
             // ---- PERSONNES APRÈS LE STOP ----
-            for (int i = _passedPeople.Count - 1; i >= 0; i--)
+            for (int i = ClientsPasser.Count - 1; i >= 0; i--)
             {
-                Annimation_PNJ person = _passedPeople[i];
-                double y = Canvas.GetTop(person.Img);
+                AnnimationPNJ ClientsPassees = ClientsPasser[i];
+                double y = Canvas.GetTop(ClientsPassees.ImgFrame);
 
-                AnimatePerson(person);
-                Canvas.SetTop(person.Img, y + Speed);
+                AnimationClient(ClientsPassees);
+                Canvas.SetTop(ClientsPassees.ImgFrame, y + Vitesse);
 
                 if (y > this.Canvas.ActualHeight)
                 {
-                   this.Canvas.Children.Remove(person.Img);
-                    _passedPeople.RemoveAt(i);
+                   this.Canvas.Children.Remove(ClientsPassees.ImgFrame);
+                    this.ClientsPasser.RemoveAt(i);
                 }
             }
         }
 
         private void StopRect_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (_isGateClosed && _queuePeople.Count > 0)
+            if (PorteFermer && FilClient.Count > 0)
             {
-                _isGateClosed = false;
-                _firstHasPassed = false;
+                PorteFermer = false;
+                PremierPasser = false;
                 this.Rect.Fill = Brushes.Green;
             }
         }

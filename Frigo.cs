@@ -8,7 +8,7 @@ namespace PaniqueEnCuisine
 {
     internal class Frigo : OutilsCusine
     {
-        private List<Nouriture> ingredients = new List<Nouriture>();
+        private List<Nouriture> _Ingrediants = new List<Nouriture>();
 
         public Frigo(string nom, int x, int y, int width, int height, int niveaux, int vitesse_utilisation) : base(nom, x, y, width, height, niveaux, vitesse_utilisation)
         {
@@ -19,11 +19,11 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.ingredients;
+                return this._Ingrediants;
             }
             set
             {
-                this.ingredients = value;
+                this._Ingrediants = value;
             }
         }
         public void Ajouter_Nouriture(Nouriture nouriture)

@@ -9,40 +9,39 @@ using System.Windows.Threading;
 
 namespace PaniqueEnCuisine
 {
-    internal class Annimation_PNJ
+    internal class AnnimationPNJ
     {
 
-        private Image img = new Image();
-        private int FrameIndex = 0;
-        public Annimation_PNJ(Image img, int frameIndex)
+        private Image _ImgFrame = new Image();
+        private int _NumersoFrame = 0;
+        public AnnimationPNJ(Image ImageFrame, int Numeros_Frame)
         {
-            Img = img;
-            FrameIndex1 = frameIndex;
+            ImgFrame = ImageFrame;
+            NumerosFrame = Numeros_Frame;
         }
-
-        public Image Img
+        public int NumerosFrame
         {
             get
             {
-                return this.img;
+                return this._NumersoFrame;
             }
 
             set
             {
-                this.img = value;
+                this._NumersoFrame = value;
             }
         }
 
-        public int FrameIndex1
+        public Image ImgFrame
         {
             get
             {
-                return this.FrameIndex;
+                return this._ImgFrame;
             }
 
             set
             {
-                this.FrameIndex = value;
+                this._ImgFrame = value;
             }
         }
     }

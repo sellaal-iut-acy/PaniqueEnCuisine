@@ -8,25 +8,25 @@ namespace PaniqueEnCuisine
 {
     internal class Recette
     {
-        private List<Nouriture> _NouritureList = new List<Nouriture>();
-        private Nouriture nouriture;
+        private List<Nouriture> _NourituresList = new List<Nouriture>();
+        private Nouriture _Nouriture;
 
         public Recette(List<Nouriture> nouritureList, Nouriture nouriture)
         {
             this.NouritureList = nouritureList;
-            this.nouriture = nouriture;
+            this.Nouriture = nouriture;
         }
 
         public Nouriture Nouriture
         {
             get
             {
-                return this.nouriture;
+                return this._Nouriture;
             }
 
             set
             {
-                this.nouriture = value;
+                this._Nouriture = value;
             }
         }
 
@@ -34,16 +34,16 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this._NouritureList;
+                return this._NourituresList;
             }
 
             set
             {
-                this._NouritureList = value;
+                this._NourituresList = value;
             }
         }
 
-        public bool Rectte_fait(List<Nouriture> Ingredient)
+        public bool Rectte_Fait(List<Nouriture> Ingredient)
         {
             foreach (Nouriture Nourriture in this.NouritureList) 
             {

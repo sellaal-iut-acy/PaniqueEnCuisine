@@ -14,12 +14,12 @@ namespace PaniqueEnCuisine
 {
     public  class Inventaire
     {
-        private List<Nouriture> _liste_nourriture = new List<Nouriture>();
-        private int current_page = 0;
-        private bool ouvert = false;
-        private int nb_page = 1;
-        private int old_page = 0;
-        private int max_page ;
+        private List<Nouriture> _ListeNouritures = new List<Nouriture>();
+        private int _PageActuel = 0;
+        private bool _Ouvert = false;
+        private int _Nb_Page = 1;
+        private int _AnciennePage = 0;
+        private int _MaxPage ;
 
         public Inventaire(List<Nouriture> liste_nourriture,int current_page)
         {
@@ -27,19 +27,19 @@ namespace PaniqueEnCuisine
             Console.WriteLine("fait");
             this.Liste_nourriture = liste_nourriture;
             this.Current_page = current_page;
-            this.old_page = this.current_page;
+            this.AnciennePage = this.PageActuel;
         }
 
         public List<Nouriture> Liste_nourriture
         {
             get
             {
-                return this._liste_nourriture;
+                return this._ListeNouritures;
             }
 
             set
             {
-                this._liste_nourriture = value;
+                this._ListeNouritures = value;
             }
         }
 
@@ -47,12 +47,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.current_page;
+                return this._PageActuel;
             }
 
             set
             {
-                this.current_page = value;
+                this._PageActuel = value;
             }
         }
 
@@ -60,64 +60,63 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.ouvert;
+                return this._Ouvert;
             }
 
             set
             {
-                this.ouvert = value;
+                this._Ouvert = value;
             }
         }
-
-        public int Nb_page
+        public int Nb_Page
         {
             get
             {
-                return this.nb_page;
+                return this._Nb_Page;
             }
 
             set
             {
-                this.nb_page = value;
+                this._Nb_Page = value;
             }
         }
 
-        public int Old_page
+        public int PageActuel
         {
             get
             {
-                return this.old_page;
+                return this._PageActuel;
             }
 
             set
             {
-                this.old_page = value;
+                this._PageActuel = value;
             }
         }
 
-        public int Max_page
+        public int MaxPage
         {
             get
             {
-                return this.max_page;
+                return this._MaxPage;
             }
 
             set
             {
-                this.max_page = value;
+                this._MaxPage = value;
             }
         }
 
-        public int Max_page1
+        public int AnciennePage
         {
             get
             {
-                return this.max_page;
+                return this._AnciennePage;
             }
 
             set
             {
-                this.max_page = value;
+                this._AnciennePage = value;
             }
         }
     }

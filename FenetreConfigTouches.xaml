@@ -33,7 +33,7 @@
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Sprint :" Width="150" FontSize="18"/>
             <TextBox x:Name="TB_Sprint" Width="150"
-                     PreviewKeyDown="TB_Sprint_KeyDown"/>
+                     PreviewKeyDown="TB_Courir_KeyDown"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">

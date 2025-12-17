@@ -95,7 +95,7 @@ namespace PaniqueEnCuisine
         {
             NouritureAjouter.Text = "";
             NouriturePersonange.Liste_nourriture.Add(inventaire_frigo.Liste_nourriture[currentIndex]);
-            NouritureAjouter.Text = $"{inventaire_frigo.Liste_nourriture[currentIndex].Nom} a été ajouter a votre inventaire";
+            NouritureAjouter.Text = $"{inventaire_frigo.Liste_nourriture[currentIndex].Nom} a été ajouter a votre _Inventaire";
         }
     }
 }

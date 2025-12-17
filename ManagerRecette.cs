@@ -81,12 +81,12 @@ namespace PaniqueEnCuisine
         }
         public Recette GetRecetteAleatoire()
         {
-            if (_ListeRecetes.Count == 0)
+            if (ListeRecetes.Count == 0)
                 return null;
 
             Random rnd = new Random();
-            int index = rnd.Next(_ListeRecetes.Count);
-            return _ListeRecetes[index];
+            int index = rnd.Next(ListeRecetes.Count);
+            return ListeRecetes[index];
         }
 
 
@@ -94,6 +94,19 @@ namespace PaniqueEnCuisine
 
 
         internal List<Recette> ListeRecetes
+        {
+            get
+            {
+                return this._ListeRecetes;
+            }
+
+            set
+            {
+                this._ListeRecetes = value;
+            }
+        }
+
+        internal List<Recette> ListeRecetes1
         {
             get
             {

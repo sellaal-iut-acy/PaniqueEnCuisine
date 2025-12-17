@@ -56,7 +56,7 @@ namespace PaniqueEnCuisine
 
         private void DefinirFondNiveau()
         {
-            int niveau = main.mapManager.niveau_actuel;
+            int niveau = main.MapManager._NiveauActuel;
             grille.Background = new ImageBrush
             {
                 ImageSource = new BitmapImage(
@@ -68,7 +68,7 @@ namespace PaniqueEnCuisine
 
         private void Ajout_Image_Player()
         {
-            var p = main.mapManager.playeur;
+            var p = main.MapManager._Playeur;
 
             joueur.Width = p.Width;
             joueur.Height = p.Height;
@@ -82,8 +82,8 @@ namespace PaniqueEnCuisine
         }
         private void JouerLaMusiqueDuNiveau()
         {
-            Audio.StopMusic();
-            Audio.PlayMusic($"Sons/son_music_loop_niveau{main.mapManager.niveau_actuel}.wav", true);
+            Audio.ArretMusique();
+            Audio.JouerMusique($"Sons/son_music_loop_niveau{main.MapManager._NiveauActuel}.wav", true);
 
         }
 
@@ -91,24 +91,24 @@ namespace PaniqueEnCuisine
 
         private void UpdatePlayer(object sender, EventArgs e)
         {
-            var p = main.mapManager.playeur;
+            var p = main.MapManager._Playeur;
 
             double speed = sprint ? baseSpeed * sprintMultiplier : baseSpeed;
             bool moving = false;
 
-            if (up) { p.Y -= speed; p.Direction = 0; moving = true; }
-            if (right) { p.X += speed; p.Direction = 1; moving = true; }
-            if (down) { p.Y += speed; p.Direction = 2; moving = true; }
-            if (left) { p.X -= speed; p.Direction = 3; moving = true; }
+            if (up) { p.Y -= speed; p._Direction = 0; moving = true; }
+            if (right) { p.X += speed; p._Direction = 1; moving = true; }
+            if (down) { p.Y += speed; p._Direction = 2; moving = true; }
+            if (left) { p.X -= speed; p._Direction = 3; moving = true; }
 
             animDelay++;
             if (animDelay >= animSpeed)
             {
-                p.Frame = (p.Frame + 1) % 5;
+                p._IndexImage = (p._IndexImage + 1) % 5;
                 animDelay = 0;
             }
 
-            if (!moving) p.Direction = 4;
+            if (!moving) p._Direction = 4;
 
             Canvas.SetLeft(joueur, p.X);
             Canvas.SetTop(joueur, p.Y);
@@ -143,14 +143,14 @@ namespace PaniqueEnCuisine
 
             if (e.Key == ManagerSettings.KeyAction)
             {
-                if (colision.VeriferColision_PLAYER_FrIgo(grille, joueur, main.mapManager.playeur))
+                if (colision.VeriferColision_PLAYER_FrIgo(grille, joueur, main.MapManager._Playeur))
                     OuvrirFrigo();
 
-                if (colision.VeriferColision_PLAYER_Four(grille, joueur, main.mapManager.playeur))
+                if (colision.VeriferColision_PLAYER_Four(grille, joueur, main.MapManager._Playeur))
                     OuvrirFour();
                 if (e.Key == ManagerSettings.KeyAction)
                 {
-                    if (colision.VeriferColision_PLAYER_Caisse(grille, joueur, main.mapManager.playeur))
+                    if (colision.VeriferColision_PLAYER_Caisse(grille, joueur, main.MapManager._Playeur))
                         OuvrirCaisse();
                 }
             }
@@ -173,7 +173,7 @@ namespace PaniqueEnCuisine
         {
             if (ucFrigo != null) return;
 
-            ucFrigo = new UCFrigo(main.mapManager.playeur.Inventaire);
+            ucFrigo = new UCFrigo(main.MapManager._Playeur.Inventaire);
             AjouterOverlay(ucFrigo);
             ucFrigo.Unloaded += (s, e) => ucFrigo = null;
         }
@@ -181,7 +181,7 @@ namespace PaniqueEnCuisine
         private void OuvrirFour()
         {
             if (ucFour != null) return;
-            ucFour = new UCfour(main.mapManager.playeur,main.mapManager.playeur.Inventaire);
+            ucFour = new UCfour(main.MapManager._Playeur,main.MapManager._Playeur.Inventaire);
             AjouterOverlay(ucFour);
             ucFour.Unloaded += (s, e) => ucFour = null;
         }
@@ -191,7 +191,7 @@ namespace PaniqueEnCuisine
         {
             if (ucCaisse != null) return;
 
-            ucCaisse = new UCCaisse(main.mapManager.playeur);
+            ucCaisse = new UCCaisse(main.MapManager._Playeur);
             AjouterOverlay(ucCaisse);
             ucCaisse.Unloaded += (s, e) => ucCaisse = null;
         }
@@ -212,21 +212,21 @@ namespace PaniqueEnCuisine
 
         private void Button_Inventaire_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Ouverture de l'inventaire");
+            Console.WriteLine("Ouverture de l'_Inventaire");
         }
 
         private void Button_RetourMenu_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
 
-            Audio.StopMusic();
+            Audio.ArretMusique();
 
 
             NettoyerUCJeu();
 
-            main.ChangeScreen(new UCMainMenu(main));
+            main.ChangerEcran(new UCMainMenu(main));
 
-            Audio.PlayMusic("Sons/son_music_loop.wav", true);
+            Audio.JouerMusique("Sons/son_music_loop.wav", true);
 
         }
 
@@ -260,10 +260,10 @@ namespace PaniqueEnCuisine
             grille.Children.Clear();
 
             // Reset gameplay
-            main.mapManager.ManagerOutilsCuisine.Outils.Clear();
+            main.MapManager.ManagerOutilsCuisine.Outils.Clear();
 
-            main.mapManager.playeur.X = 0;
-            main.mapManager.playeur.Y = 0;
+            main.MapManager._Playeur.X = 0;
+            main.MapManager._Playeur.Y = 0;
         }
 
 
@@ -271,7 +271,7 @@ namespace PaniqueEnCuisine
         {
             if (ucTableDeCraft != null) return;
 
-            ucTableDeCraft = new UCTableDeCraft(main.mapManager.playeur);
+            ucTableDeCraft = new UCTableDeCraft(main.MapManager._Playeur);
             AjouterOverlay(ucTableDeCraft);
             ucTableDeCraft.Unloaded += (s, e) => ucTableDeCraft = null;
         }
@@ -282,19 +282,19 @@ namespace PaniqueEnCuisine
 
         private void Ajouter_outlis_cuisine()
         {
-            main.mapManager.ManagerOutilsCuisine.AjouterOutil(
+            main.MapManager.ManagerOutilsCuisine.AjouterOutil(
                 new Frigo("Frigo", 100, 5, 100, 150, 0, 50)
             );
 
-            main.mapManager.ManagerOutilsCuisine.AjouterOutil(
+            main.MapManager.ManagerOutilsCuisine.AjouterOutil(
                 new Foure("Four", 400, 50, 200, 100, 0, 50)
             );
 
-            main.mapManager.ManagerOutilsCuisine.AjouterOutil(
+            main.MapManager.ManagerOutilsCuisine.AjouterOutil(
                 new Caisse("Caisse", 640, 300, 70, 50, 0, 50)
              );
 
-            main.mapManager.ManagerOutilsCuisine.AfficherOutilsCuisine(grille);
+            main.MapManager.ManagerOutilsCuisine.AfficherOutilsCuisine(grille);
 
 
         }

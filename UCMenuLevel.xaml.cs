@@ -34,7 +34,7 @@ namespace PaniqueEnCuisine
         private void B_Retour_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangeScreen(new UCMenuPlus(main));
+            main.ChangerEcran(new UCMenuPlus(main));
         }
 
         private void Button_Niveau1_Click(object sender, RoutedEventArgs e)
@@ -61,9 +61,9 @@ namespace PaniqueEnCuisine
         {
             Audio.PlaySFX("Sons/son_clic.wav");
 
-            main.mapManager.niveau_actuel = niveauSelectionne;
+            main.MapManager._NiveauActuel = niveauSelectionne;
 
-            main.ChangeScreen(new UCMenuPlus(main));
+            main.ChangerEcran(new UCMenuPlus(main));
         }
         private void SelectionnerNiveau(int niveau)
         {

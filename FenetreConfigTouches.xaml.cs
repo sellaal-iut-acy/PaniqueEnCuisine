@@ -78,7 +78,7 @@ namespace PaniqueEnCuisine
         }
 
 
-        private void TB_Sprint_KeyDown(object sender, KeyEventArgs e)
+        private void TB_Courir_KeyDown(object sender, KeyEventArgs e)
         {
             if (ManagerSettings.KeyAlreadyUsed(e.Key) && ManagerSettings.KeySprint != e.Key)
             {

@@ -5,29 +5,50 @@ using System.Windows.Media;
 public static class Audio
 {
     // === MUSIQUE ===
-    private static readonly MediaPlayer musicPlayer = new MediaPlayer();
-    private static bool isLooping = false;
+    private static readonly MediaPlayer _MusiqueJoueur = new MediaPlayer();
+    private static bool _EstJouee = false;
 
     // === EFFETS ===
     private static readonly MediaPlayer sfxPlayer = new MediaPlayer();
+
+    public static MediaPlayer MusiqueJoueur
+    {
+        get
+        {
+            return _MusiqueJoueur;
+        }
+    }
+
+    public static bool EstJouee
+    {
+        get
+        {
+            return _EstJouee;
+        }
+
+        set
+        {
+            _EstJouee = value;
+        }
+    }
 
     // ---- CONSTRUCTEUR STATIC ----
     static Audio()
     {
         // MUSIQUE
-        musicPlayer.MediaOpened += (s, e) =>
+        MusiqueJoueur.MediaOpened += (s, e) =>
         {
-            musicPlayer.Volume = ManagerSettings.VolumeMusique * ManagerSettings.VolumeGeneral;
-            musicPlayer.Position = TimeSpan.Zero;
-            musicPlayer.Play();
+            MusiqueJoueur.Volume = ManagerSettings.VolumeMusique * ManagerSettings.VolumeGeneral;
+            MusiqueJoueur.Position = TimeSpan.Zero;
+            MusiqueJoueur.Play();
         };
 
-        musicPlayer.MediaEnded += (s, e) =>
+        _MusiqueJoueur.MediaEnded += (s, e) =>
         {
-            if (!isLooping) return;
+            if (!_EstJouee) return;
 
-            musicPlayer.Position = TimeSpan.Zero;
-            musicPlayer.Play();
+            MusiqueJoueur.Position = TimeSpan.Zero;
+            MusiqueJoueur.Play();
         };
 
         // SFX
@@ -40,49 +61,49 @@ public static class Audio
     }
 
     // ---- LECTURE MUSIQUE ----
-    public static void PlayMusic(string relativePath, bool loop = true)
+    public static void JouerMusique(string CheminRelatif, bool EstJouee = true)
     {
-        isLooping = loop;
+        _EstJouee = EstJouee;
 
-        var fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
+        var CheminAbsolu = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CheminRelatif);
 
-        if (!File.Exists(fullPath))
+        if (!File.Exists(CheminAbsolu))
         {
-            Console.WriteLine("[Audio] MUSIQUE INTROUVABLE > " + fullPath);
+            Console.WriteLine("[Audio] MUSIQUE INTROUVABLE > " + CheminAbsolu);
             return;
         }
 
-        musicPlayer.Stop();
-        musicPlayer.Open(new Uri(fullPath, UriKind.Absolute));
+        MusiqueJoueur.Stop();
+        MusiqueJoueur.Open(new Uri(CheminAbsolu, UriKind.Absolute));
     }
 
-    public static void StopMusic()
+    public static void ArretMusique()
     {
-        isLooping = false;
-        musicPlayer.Stop();
+        EstJouee = false;
+        MusiqueJoueur.Stop();
     }
 
-    public static void RefreshMusicVolume()
+    public static void MiseAjourVolumeMusique()
     {
-        musicPlayer.Volume = ManagerSettings.VolumeMusique * ManagerSettings.VolumeGeneral;
+        MusiqueJoueur.Volume = ManagerSettings.VolumeMusique * ManagerSettings.VolumeGeneral;
     }
 
     // ---- LECTURE SFX ----
-    public static void PlaySFX(string relativePath)
+    public static void PlaySFX(string CheminRelatif)
     {
-        var fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
+        var CheminAbsolu = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CheminRelatif);
 
-        if (!File.Exists(fullPath))
+        if (!File.Exists(CheminAbsolu))
         {
-            Console.WriteLine("[Audio] SFX INTROUVABLE > " + fullPath);
+            Console.WriteLine("[Audio] SFX INTROUVABLE > " + CheminAbsolu);
             return;
         }
 
-        sfxPlayer.Open(new Uri(fullPath, UriKind.Absolute));
+        sfxPlayer.Open(new Uri(CheminAbsolu, UriKind.Absolute));
     }
-    public static void RefreshVolumes()
+    public static void MiseAjourVolume()
     {
-        musicPlayer.Volume = ManagerSettings.VolumeMusique * ManagerSettings.VolumeGeneral;
+        MusiqueJoueur.Volume = ManagerSettings.VolumeMusique * ManagerSettings.VolumeGeneral;
         sfxPlayer.Volume = ManagerSettings.VolumeEffets * ManagerSettings.VolumeGeneral;
     }
 }

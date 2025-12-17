@@ -8,8 +8,8 @@ namespace PaniqueEnCuisine
 {
     internal class Foure : OutilsCusine
     {
-        private int nb_plats_cuits_possible = 1;
-        private List<Nouriture> plats_a_cuire = new List<Nouriture>();
+        private int _NbPlatMaxCuitPosible = 1;
+        private List<Nouriture> _PlatACuirre = new List<Nouriture>();
 
         public Foure(string nom, int x, int y, int width, int height, int niveaux, int vitesse_utilisation) : base(nom, x, y, width, height, niveaux, vitesse_utilisation)
         {
@@ -37,12 +37,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.plats_a_cuire;
+                return this._PlatACuirre;
             }
 
             set
             {
-                this.plats_a_cuire = value;
+                this._PlatACuirre = value;
             }
         }
 
@@ -50,12 +50,25 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.nb_plats_cuits_possible;
+                return this._NbPlatMaxCuitPosible;
             }
 
             set
             {
-                this.nb_plats_cuits_possible = value;
+                this._NbPlatMaxCuitPosible = value;
+            }
+        }
+
+        public int NbPlatMaxCuitPosible
+        {
+            get
+            {
+                return this._NbPlatMaxCuitPosible;
+            }
+
+            set
+            {
+                this._NbPlatMaxCuitPosible = value;
             }
         }
     }

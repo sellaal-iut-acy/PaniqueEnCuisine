@@ -11,23 +11,23 @@ namespace PaniqueEnCuisine
 {
     internal class TableDeCraft
     {
-        private Image img_table_craft = new Image();
-        private int x =0, y=0,height=0,width=0;
+        private Image _ImageTableCraft = new Image();
+        private int _X =0, _Y=0,_Hauteur=0,_Largeur=0;
         public TableDeCraft()
         {
             Set_mimage();
         }
-        public void Afficher_image(Canvas canvas, int x, int y)
+        public void Afficher_Image(Canvas canvas, int x, int y)
         {
             
-            Canvas.SetLeft(this.img_table_craft,x);
-            Canvas.SetTop(this.img_table_craft,y);
-            canvas.Children.Add(this.img_table_craft);
+            Canvas.SetLeft(this._ImageTableCraft,x);
+            Canvas.SetTop(this._ImageTableCraft,y);
+            canvas.Children.Add(this._ImageTableCraft);
         }
-        public void craft(List<Nouriture> ingrediant, List<Nouriture> Recettes,Nouriture nouriture,Inventaire inventaire)
+        public void Craft(List<Nouriture> ingrediant, List<Nouriture> Recettes,Nouriture nouriture,Inventaire inventaire)
         {
             Recette recete = new Recette(Recettes,nouriture);
-            bool fait = recete.Rectte_fait(ingrediant);
+            bool fait = recete.Rectte_Fait(ingrediant);
             if (fait)
             {
                 inventaire.Liste_nourriture.Add(recete.Nouriture);
@@ -37,12 +37,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.img_table_craft;
+                return this._ImageTableCraft;
             }
 
             set
             {
-                this.img_table_craft = value;
+                this._ImageTableCraft = value;
             }
         }
 
@@ -50,12 +50,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.x;
+                return this._X;
             }
 
             set
             {
-                this.x = value;
+                this._X = value;
             }
         }
 
@@ -63,12 +63,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.y;
+                return this._Y;
             }
 
             set
             {
-                this.y = value;
+                this._Y = value;
             }
         }
 
@@ -76,12 +76,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.height;
+                return this._Hauteur;
             }
 
             set
             {
-                this.height = value;
+                this._Hauteur = value;
             }
         }
 
@@ -89,19 +89,19 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.width;
+                return this._Largeur;
             }
 
             set
             {
-                this.width = value;
+                this._Largeur = value;
             }
         }
 
         private void Set_mimage()
         {
-            this.img_table_craft.Source = new BitmapImage(new Uri($"P:/SAE/Nouveau dossier (5)/Images/Outils/table_de_crafte.png"));
-            this.img_table_craft.Tag = "table_de_craft";
+            this._ImageTableCraft.Source = new BitmapImage(new Uri($"P:/SAE/Nouveau dossier (5)/Images/Outils/table_de_crafte.png"));
+            this._ImageTableCraft.Tag = "table_de_craft";
         }
     }
 }

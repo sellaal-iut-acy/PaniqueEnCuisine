@@ -5,19 +5,72 @@ namespace PaniqueEnCuisine
 {
     internal class Caisse : OutilsCusine
     {
-        public static Recette CommandeEnCours;
-        public static int TempsRestant;
+        private static Recette commandeEnCours;
+        private static int tempsRestant;
+        private static DispatcherTimer _Timer = new DispatcherTimer();
+        private static ManagerRecette _ManagerRecette = new ManagerRecette();
+
+        internal static Recette CommandeEnCours
+        {
+            get
+            {
+                return commandeEnCours;
+            }
+
+            set
+            {
+                commandeEnCours = value;
+            }
+        }
+
+        public static DispatcherTimer Timer
+        {
+            get
+            {
+                return _Timer;
+            }
+
+            set
+            {
+                _Timer = value;
+            }
+        }
+
+        internal static ManagerRecette ManagerRecette
+        {
+            get
+            {
+                return _ManagerRecette;
+            }
+
+            set
+            {
+                _ManagerRecette = value;
+            }
+        }
+
+        public static int TempsRestant
+        {
+            get
+            {
+                return tempsRestant;
+            }
 
         private static DispatcherTimer timer;
         private static ManagerRecette managerRecette = new ManagerRecette();
         public static bool fini = false;
+            set
+            {
+                tempsRestant = value;
+            }
+        }
 
         public Caisse(string nom, int x, int y, int width, int height, int niveaux, int vitesse_utilisation)
             : base(nom, x, y, width, height, niveaux, vitesse_utilisation)
         {
             this.Img_outi.Tag = "Caisse";
 
-            if (timer == null)
+            if (_Timer == null)
                 InitialiserTimer();
 
             if (CommandeEnCours == null)
@@ -26,17 +79,16 @@ namespace PaniqueEnCuisine
 
         private static void InitialiserTimer()
         {
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += (s, e) =>
+            Timer = new DispatcherTimer();
+            Timer.Interval = TimeSpan.FromSeconds(1);
+            Timer.Tick += (s, e) =>
             {
                 TempsRestant--;
 
                 if (TempsRestant <= 0)
                 {
                     timer.Stop();
-                    fini = true;
-
+                    Console.WriteLine("GAME OVER");
                 }
             };
         }
@@ -44,21 +96,19 @@ namespace PaniqueEnCuisine
 
         public static void NouvelleCommande()
         {
-            fini = false;
             CommandeEnCours = managerRecette.GetRecetteAleatoire();
             TempsRestant = 90; // RESET DU TIMER
             timer.Start();
-
         }
         public static void Reset()
         {
             CommandeEnCours = null;
             TempsRestant = 0;
 
-            if (timer != null)
+            if (Timer != null)
             {
-                timer.Stop();
-                timer = null;
+                Timer.Stop();
+                Timer = null;
             }
         }
 
