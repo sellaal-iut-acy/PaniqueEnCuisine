@@ -56,6 +56,9 @@ namespace PaniqueEnCuisine
                 return tempsRestant;
             }
 
+        private static DispatcherTimer timer;
+        private static ManagerRecette managerRecette = new ManagerRecette();
+        public static bool fini = false;
             set
             {
                 tempsRestant = value;
@@ -84,7 +87,7 @@ namespace PaniqueEnCuisine
 
                 if (TempsRestant <= 0)
                 {
-                    _Timer.Stop();
+                    timer.Stop();
                     Console.WriteLine("GAME OVER");
                 }
             };
@@ -93,9 +96,9 @@ namespace PaniqueEnCuisine
 
         public static void NouvelleCommande()
         {
-            CommandeEnCours = _ManagerRecette.GetRecetteAleatoire();
+            CommandeEnCours = managerRecette.GetRecetteAleatoire();
             TempsRestant = 90; // RESET DU TIMER
-            Timer.Start();
+            timer.Start();
         }
         public static void Reset()
         {

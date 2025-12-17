@@ -43,9 +43,6 @@ namespace PaniqueEnCuisine
             JouerLaMusiqueDuNiveau();
 
 
-
-
-
             moveTimer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMilliseconds(16)
@@ -116,6 +113,15 @@ namespace PaniqueEnCuisine
             Canvas.SetLeft(joueur, p.X);
             Canvas.SetTop(joueur, p.Y);
             joueur.Source = p.GetImageJoueur();
+            if(Caisse.fini)
+            {
+                Console.WriteLine("GAME OVER !!!");
+                Audio.PlaySFX("Sons/son_gameover.wav");
+                Audio.StopMusic();
+                NettoyerUCJeu();
+                main.ChangeScreen(new UCGameOver(main));
+
+            }
 
         }
        

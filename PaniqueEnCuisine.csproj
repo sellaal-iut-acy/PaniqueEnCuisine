@@ -145,6 +145,7 @@
     <None Remove="Sons\Mouse Click 1.wav" />
     <None Remove="Sons\son_clic.mp3" />
     <None Remove="Sons\son_clic.wav" />
+    <None Remove="Sons\son_gameover.wav" />
     <None Remove="Sons\son_music_loop.wav" />
     <None Remove="Sons\son_music_loop_niveau1.wav" />
     <None Remove="Sons\son_music_loop_niveau2.wav" />
@@ -152,6 +153,9 @@
 
   <ItemGroup>
     <Content Include="Sons\son_clic.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sons\son_gameover.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sons\son_music_loop.wav">
