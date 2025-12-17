@@ -141,7 +141,7 @@ namespace PaniqueEnCuisine
             }
         }
 
-        private void Buotton_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             listeRecette.Children.Remove(_StackPanels[_IndexActuel]);
             if (_StackPanels.Count == 0) return;
