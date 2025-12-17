@@ -156,19 +156,32 @@ namespace PaniqueEnCuisine
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            foreach(Nouriture ingerdiantdemander in ManagerRecettes.ListeRecetes[currentIndex].NouritureList)
+            bool crafte = false;
+            Console.WriteLine("début du test");
+            for (int i = 0; i < ManagerRecettes.ListeRecetes[currentIndex].NouritureList.Count; i++)
             {
-                foreach (Nouriture ingrediant in InventaireJoueur.Liste_nourriture)
+                for (int j = i; j < InventaireJoueur.Liste_nourriture.Count; j++)
                 {
-                    if (ingerdiantdemander == ingrediant)
-                        nouritureAEnlever.Add(ingrediant);
+                    Console.WriteLine($"{ManagerRecettes.ListeRecetes[currentIndex].NouritureList[i].Nom} {InventaireJoueur.Liste_nourriture[j].Nom}");
+                    if (ManagerRecettes.ListeRecetes[currentIndex].NouritureList[i].Nom == InventaireJoueur.Liste_nourriture[j].Nom)
+                        nouritureAEnlever.Add(InventaireJoueur.Liste_nourriture[j]);
                     else
-                        break;
+                    { Console.WriteLine("tu n'apas touts les ingrédient"); }
+
                 }
             }
+            if (nouritureAEnlever.Count == ManagerRecettes.ListeRecetes[currentIndex].NouritureList.Count)
+            {
+                foreach (Nouriture ingrediantAEnlever in nouritureAEnlever)
+                {
+                    InventaireJoueur.Liste_nourriture.Remove(ingrediantAEnlever);
+                    InventaireJoueur.Liste_nourriture.Add(ManagerRecettes.ListeRecetes[currentIndex].Nouriture);
+                }
+                    
 
-            foreach (Nouriture ingrediantAEnlever in nouritureAEnlever)
-                InventaireJoueur.Liste_nourriture.Remove(ingrediantAEnlever);
+            }
+            
+            Console.WriteLine("fin de des teste");
             
         }
     }

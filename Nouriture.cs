@@ -47,5 +47,16 @@ namespace PaniqueEnCuisine
                 this._EstCuit = value;
             }
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Nouriture nouriture &&
+                   this._nom == nouriture._nom &&
+                   EqualityComparer<Image>.Default.Equals(this._image, nouriture._image) &&
+                   this._EstCuit == nouriture._EstCuit &&
+                   this.Nom == nouriture.Nom &&
+                   EqualityComparer<Image>.Default.Equals(this.Image, nouriture.Image) &&
+                   this.EstCuit == nouriture.EstCuit;
+        }
     }
 }
