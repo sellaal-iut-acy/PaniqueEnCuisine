@@ -261,6 +261,7 @@ namespace PaniqueEnCuisine
 
             // Reset gameplay
             _Main.MapManager.ManagerOutilsCuisine.OutilsCuisine.Clear();
+            
 
             _Main.MapManager.Playeur.X = 0;
             _Main.MapManager.Playeur.Y = 0;

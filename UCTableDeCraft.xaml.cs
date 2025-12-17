@@ -22,6 +22,7 @@ namespace PaniqueEnCuisine
             _Gener_Recette();
             _InventaireJoueur = joueur.Inventaire;
             _AfficherInventaireJoueur();
+            
         }
 
         private void B_Fermer_Click(object sender, RoutedEventArgs e)
@@ -38,7 +39,13 @@ namespace PaniqueEnCuisine
         private void _FermerTableDeCraft()
         {
             if (this.Parent is Panel parent)
+            {
                 parent.Children.Remove(this);
+                InventairePlayer.Children.Clear();
+
+            }
+                
+
         }
 
 
@@ -133,11 +140,14 @@ namespace PaniqueEnCuisine
 
         private void _AfficherInventaireJoueur()
         {
-            foreach(Nouriture Ingerdiqnt in _InventaireJoueur.Liste_nourriture )
+
+            foreach (Nouriture Ingerdiant in _InventaireJoueur.Liste_nourriture )
             {
-                Ingerdiqnt.Image.Width = 50;
-                Ingerdiqnt.Image.Height = 50;
-                InventairePlayer.Children.Add(Ingerdiqnt.Image);
+                Ingerdiant.Image.Width = 50;
+                Ingerdiant.Image.Height = 50;
+                Ingerdiant.Image.Tag = $"{Ingerdiant.Nom}";
+                InventairePlayer.Children.Add(Ingerdiant.Image);
+                Console.WriteLine($"{Ingerdiant.Nom}");
             }
         }
 
@@ -160,7 +170,6 @@ namespace PaniqueEnCuisine
 
             _IndexActuel++;
             if (_IndexActuel >= _StackPanels.Count) _IndexActuel = 0;
-
             listeRecette.Children.Add(_StackPanels[_IndexActuel]);
         }
 
