@@ -7,9 +7,9 @@ namespace PaniqueEnCuisine
     {
         private static Recette commandeEnCours;
         private static int tempsRestant = 0;
-        private static DispatcherTimer _Timer = new DispatcherTimer();
+        private static DispatcherTimer _Timer ;
         private static ManagerRecette _ManagerRecette = new ManagerRecette();
-        public static bool fini = false;
+        private static bool fini = false;
 
         public Caisse(string nom, int x, int y, int width, int height, int niveaux, int vitesse_utilisation) : base(nom, x, y, width, height, niveaux, vitesse_utilisation)
         {
@@ -74,7 +74,18 @@ namespace PaniqueEnCuisine
             }
         }
 
-        
+        public static bool Fini
+        {
+            get
+            {
+                return fini;
+            }
+
+            set
+            {
+                fini = value;
+            }
+        }
 
         private static void InitialiserTimer()
         {
@@ -87,7 +98,8 @@ namespace PaniqueEnCuisine
                 if (TempsRestant <= 0)
                 {
                     _Timer.Stop();
-                    Console.WriteLine("GAME OVER");
+                    Fini = true;
+                    //Console.WriteLine("GAME OVER");
                 }
             };
         }

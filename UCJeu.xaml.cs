@@ -113,15 +113,16 @@ namespace PaniqueEnCuisine
             Canvas.SetLeft(_Joueur, p.X);
             Canvas.SetTop(_Joueur, p.Y);
             _Joueur.Source = p.GetImageJoueur();
-            if(Caisse.fini)
+            if(Caisse.Fini)
             {
-                Console.WriteLine("GAME OVER !!!");
+                //Console.WriteLine("GAME OVER !!!");
                 Audio.PlaySFX("Sons/son_gameover.wav");
                 Audio.ArretMusique();
                 NettoyerUCJeu();
                 _Main.ChangerEcran(new UCGameOver(_Main));
 
             }
+
 
         }
        

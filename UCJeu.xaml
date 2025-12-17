@@ -12,6 +12,7 @@
 
         <Button x:Name="B_Retour" Content="Quitter" Height="31" Width="145" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="Button_RetourMenu_Click" HorizontalAlignment="Center" Canvas.Left="10" Canvas.Top="409" VerticalAlignment="Top"/>
         <Button x:Name="B_TableDeCraft" Content="Cuisiner" Height="30" Width="116" FontSize="20" Background="#FF894218" BorderBrush="#FF39150B" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="Button_TableDeCraft_Click" Canvas.Left="10" Canvas.Top="374" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Rectangle x:Name="bordure" Height="381" Canvas.Left="10" Stroke="Black" Canvas.Top="69" Width="661" Tag="bordure"/>
 
     </Canvas>
 
