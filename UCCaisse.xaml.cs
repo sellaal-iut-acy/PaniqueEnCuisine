@@ -86,37 +86,26 @@ namespace PaniqueEnCuisine
             var recette = Caisse.CommandeEnCours;
             var inventaire = joueur.Inventaire;
 
-            // 1️⃣ Vérification ingrédients
-            foreach (var ingredient in recette.NouritureList)
-            {
-                bool present = inventaire.Liste_nourriture
-                    .Any(n => n.Nom == ingredient.Nom);
+            //On cherche le PLAT dans l'inventaire
+            var plat = inventaire.Liste_nourriture
+                .FirstOrDefault(n => n.Nom == recette.Nouriture.Nom);
 
-                if (!present)
-                {
-                    Console.WriteLine("Commande refusée : ingrédient manquant");
-                    return;
-                }
+            if (plat == null)
+            {
+                Console.WriteLine("Commande refusée : plat non présent");
+                return;
             }
 
-            // 2️⃣ Retrait ingrédients
-            foreach (var ingredient in recette.NouritureList)
-            {
-                var item = inventaire.Liste_nourriture
-                    .First(n => n.Nom == ingredient.Nom);
-
-                inventaire.Liste_nourriture.Remove(item);
-            }
-
-            // 3️⃣ Ajout du plat final
-            inventaire.Liste_nourriture.Add(recette.Nouriture);
+            //Retirer le plat
+            inventaire.Liste_nourriture.Remove(plat);
 
             Console.WriteLine($"Commande validée : {recette.Nouriture.Nom}");
 
-            // 4️⃣ Nouvelle commande
+            //Nouvelle commande
             Caisse.NouvelleCommande();
             ConstruireCommande();
         }
+
 
         private void Fermer_Click(object sender, RoutedEventArgs e)
         {

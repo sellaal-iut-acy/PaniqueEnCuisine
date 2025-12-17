@@ -108,6 +108,7 @@
     <None Remove="Images\food\patate.png" />
     <None Remove="Images\food\patate_cuit.png" />
     <None Remove="Images\food\pate.png" />
+    <None Remove="Images\food\pate_cuit.png" />
     <None Remove="Images\food\pizza.png" />
     <None Remove="Images\food\pizza_cuit.png" />
     <None Remove="Images\food\saucisse.png" />
@@ -237,9 +238,7 @@
     <Resource Include="Images\food\patate.png" />
     <Resource Include="Images\food\patate_cuit.png" />
     <Resource Include="Images\food\pate.png" />
-    <Resource Include="Images\food\pizza.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Images\food\pate_cuit.png" />
     <Resource Include="Images\food\pizza_cuit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
