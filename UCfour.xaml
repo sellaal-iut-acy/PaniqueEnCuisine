@@ -13,9 +13,9 @@
         <Button x:Name="B_Fermer" Content="Fermer" Height="35" Width="170" FontSize="20" Background="Gray" BorderBrush="#FF444343" BorderThickness="5,5,5,5" FontFamily="OCR A Extended" FontWeight="Bold" Click="B_Fermer_Click" Canvas.Left="314" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Image Height="130" Canvas.Left="316" Source="/Images/image_fleche.png" Stretch="Fill" Canvas.Top="45" Width="168" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Image Height="100" Canvas.Left="349" Canvas.Top="249" Width="100" Name="nouriture_Choix"/>
-        <Button x:Name="button_avancer" Content="avancer" Canvas.Left="494" Canvas.Top="289" Click="button_avancer_Click"/>
-        <Button x:Name="button_reculer" Content="reculer" Canvas.Left="271" Canvas.Top="289" Click="button_reculer_Click"/>
-        <Button Content="Selectioner" Canvas.Left="380" Canvas.Top="354" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button x:Name="button_avancer" Content="&gt;" Canvas.Left="490" Canvas.Top="289" Click="button_avancer_Click" Background="Gray" BorderBrush="#FF444343" BorderThickness="3,3,3,3" Width="20" Height="20" RenderTransformOrigin="1.2,0.4"/>
+        <Button x:Name="button_reculer" Content="&lt;" Canvas.Left="292" Canvas.Top="289" Click="button_reculer_Click" Background="Gray" BorderBrush="#FF444343" BorderThickness="3,3,3,3" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button Content="Selectioner" Canvas.Left="366" Canvas.Top="354" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_Click" Background="Gray" BorderBrush="#FF444343" BorderThickness="3,3,3,3"/>
         <Image x:Name="NouritureCuit" Height="48" Canvas.Left="491" Canvas.Top="86" Width="51"/>
         <Image x:Name="NouritureACuirre" Height="48" Canvas.Left="271" Canvas.Top="85" Width="51" HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Canvas>

@@ -7,17 +7,17 @@
              d:DesignWidth="800"
              d:DesignHeight="450">
 
-
     <Grid>
         <!-- Fond -->
         <Image Source="/Images/image_fond_MenuRegles.png" Stretch="Fill"/>
 
         <!-- Rectangle + Contenu des règles -->
         <Grid HorizontalAlignment="Center" Margin="0,60,0,0">
+
             <!-- Fond du panneau -->
             <Rectangle Height="350"
                        Width="700"
-                       Fill="#BF894218"
+                       Fill="#D8894218"
                        Stroke="#FF39150B"
                        StrokeThickness="5"/>
 
@@ -28,81 +28,104 @@
 
                 <StackPanel Margin="15">
 
+                    <!-- Titre -->
                     <TextBlock Text="Règles du jeu"
                                FontSize="32"
                                FontWeight="Bold"
-                               Foreground="#FF39150B"
+                               Foreground="Black"
                                FontFamily="OCR A Extended"
                                Margin="0 0 0 20"/>
 
-                    <TextBlock Text="But du jeu"
+                    <!-- Objectif -->
+                    <TextBlock Text="Objectif"
                                FontSize="24"
                                FontWeight="SemiBold"
-                               Foreground="#FF39150B"
+                               Foreground="Black"
                                FontFamily="OCR A Extended"
                                Margin="0 0 0 10"/>
 
-                    <TextBlock Text="Servir un maximum de clients sans te faire dépasser..."
+                    <TextBlock Text="Préparer et livrer les plats demandés avant la fin du temps imparti."
                                FontSize="16"
                                TextWrapping="Wrap"
-                               Foreground="#FF39150B"
+                               Foreground="Black"
                                FontFamily="OCR A Extended"
                                Margin="0 0 0 20"/>
 
+                    <!-- Comment jouer -->
                     <TextBlock Text="Comment jouer"
                                FontSize="24"
                                FontWeight="SemiBold"
-                               Foreground="#FF39150B"
+                               Foreground="Black"
                                FontFamily="OCR A Extended"
                                Margin="0 0 0 10"/>
 
-                    <TextBlock Text="• Prends un ingrédient, prépare-le..."
-                               FontSize="16"
-                               TextWrapping="Wrap"
-                               Foreground="#FF39150B"
+                    <TextBlock Text="1️ Ouvre la caisse"
+                               FontSize="18"
+                               Foreground="Black"
                                FontFamily="OCR A Extended"
                                Margin="0 5"/>
 
-                    <TextBlock Text="• Assemble la commande et sers le client."
+                    <TextBlock Text="• Consulte la commande à préparer et le temps restant."
                                FontSize="16"
                                TextWrapping="Wrap"
-                               Foreground="#FF39150B"
+                               Foreground="Black"
+                               FontFamily="OCR A Extended"
+                               Margin="20 0 0 10"/>
+
+                    <TextBlock Text="2 Récupère les aliments"
+                               FontSize="18"
+                               Foreground="Black"
                                FontFamily="OCR A Extended"
                                Margin="0 5"/>
 
-                    <TextBlock Text="• Un seul objet dans la main."
+                    <TextBlock Text="• Prends les ingrédients nécessaires dans le frigo."
                                FontSize="16"
                                TextWrapping="Wrap"
-                               Foreground="#FF39150B"
+                               Foreground="Black"
+                               FontFamily="OCR A Extended"
+                               Margin="20 0 0 10"/>
+
+                    <TextBlock Text="3️ Prépare le plat"
+                               FontSize="18"
+                               Foreground="Black"
                                FontFamily="OCR A Extended"
                                Margin="0 5"/>
 
+                    <TextBlock Text="• Fais cuire les aliments si besoin, puis cuisine le plat."
+                               FontSize="16"
+                               TextWrapping="Wrap"
+                               Foreground="Black"
+                               FontFamily="OCR A Extended"
+                               Margin="20 0 0 10"/>
+
+                    <TextBlock Text="4️ Livre la commande"
+                               FontSize="18"
+                               Foreground="Black"
+                               FontFamily="OCR A Extended"
+                               Margin="0 5"/>
+
+                    <TextBlock Text="• Retourne à la caisse et valide la commande avant la fin du temps."
+                               FontSize="16"
+                               TextWrapping="Wrap"
+                               Foreground="Black"
+                               FontFamily="OCR A Extended"
+                               Margin="20 0 0 20"/>
+
+                    <!-- Attention -->
                     <TextBlock Text="Attention"
                                FontSize="24"
                                FontWeight="SemiBold"
-                               Foreground="#FF39150B"
+                               Foreground="Black"
                                FontFamily="OCR A Extended"
                                Margin="0 10 0 10"/>
 
-                    <TextBlock Text="Incendies, vols, clients impatients : GAME OVER."
+                    <TextBlock Text="Si le temps atteint zéro avant la validation de la commande : GAME OVER."
                                FontSize="16"
                                TextWrapping="Wrap"
-                               Foreground="#C0392B"
+                               Foreground="Red"
                                FontFamily="OCR A Extended"
                                Margin="0 0 0 20"/>
 
-                    <TextBlock Text="Progresser"
-                               FontSize="24"
-                               FontWeight="SemiBold"
-                               Foreground="#FF39150B"
-                               FontFamily="OCR A Extended"
-                               Margin="0 0 0 10"/>
-
-                    <TextBlock Text="Gagne de l'argent, améliore ton restaurant, débloque des niveaux."
-                               FontSize="16"
-                               TextWrapping="Wrap"
-                               Foreground="#FF39150B"
-                               FontFamily="OCR A Extended"/>
                 </StackPanel>
 
             </ScrollViewer>
