@@ -3,84 +3,63 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Width="800" Height="450">
 
-    <Grid Background="#AA000000">
+    <Grid Background="#CC000000">
 
-        <Border Width="420"
-                Height="404"
-                Background="#FFF2E6D8"
+        <Border Width="600"
+                Height="380"
+                Background="#222222"
                 CornerRadius="12"
-                BorderBrush="#FF3A2A1A"
-                BorderThickness="4"
+                Padding="20"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
 
-            <Grid Margin="20">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Titre -->
-                <TextBlock Text="🧾 Caisse enregistreuse"
-                           FontSize="22"
+                <!-- ================= TITRE ================= -->
+                <TextBlock Text="🧾 Commande en cours"
+                           FontSize="26"
+                           Foreground="White"
                            FontWeight="Bold"
                            HorizontalAlignment="Center"
-                           Margin="0,0,0,15"/>
+                           Margin="0,0,0,20"/>
 
-                <!-- Contenu -->
-                <StackPanel Grid.Row="1" >
+                <!-- ================= COMMANDE ================= -->
+                <StackPanel x:Name="CommandePanel"
+                            Grid.Row="1"/>
 
-                    <!-- Commande -->
-                    <TextBlock Text="Commande :"
-                               FontSize="16"
-                               FontWeight="SemiBold" TextAlignment="Center"/>
+                <!-- ================= FOOTER ================= -->
+                <Grid Grid.Row="2" Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                    <Border Background="#FFE8DCCB"
-                            CornerRadius="6"
-                            Padding="10">
-                        <StackPanel>
-                            <TextBlock Text="• Burger" TextAlignment="Center"/>
-                            <TextBlock Text="• Frites" TextAlignment="Center"/>
-                            <TextBlock Text="• Soda" TextAlignment="Center"/>
-                        </StackPanel>
-                    </Border>
+                    <!-- TIMER -->
+                    <TextBlock x:Name="TxtTimer"
+                               Grid.Column="0"
+                               FontSize="20"
+                               Foreground="White"
+                               VerticalAlignment="Center"/>
 
-                    <!-- Temps -->
-                    <TextBlock Text="Temps restant :"
-                               FontSize="16"
-                               FontWeight="SemiBold"
-                               Margin="0,10,0,0" TextAlignment="Center"/>
+                    <!-- BOUTONS -->
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal">
+                        <Button Content="Valider"
+                                Width="120"
+                                Margin="0,0,10,0"
+                                Click="Valider_Click"/>
 
-                    <Border Background="#FF3A2A1A"
-                            CornerRadius="6"
-                            Padding="8"
-                            HorizontalAlignment="Center">
-                        <TextBlock Text="⏱ 01:30"
-                                   Foreground="White"
-                                   FontSize="16"
-                                   FontWeight="Bold"/>
-                    </Border>
+                        <Button Content="Fermer"
+                                Width="120"
+                                Click="Fermer_Click"/>
+                    </StackPanel>
+                </Grid>
 
-                    <!-- Bouton valider -->
-                    <Button Content="Valider la commande"
-                            Height="40"
-                            Margin="0,15,0,0"
-                            Background="#FF2E7D32"
-                            Foreground="White"
-                            FontWeight="Bold"
-                            Click="ValiderCommande_Click"/>
-                </StackPanel>
-
-                <!-- Bouton fermer -->
-                <Button Grid.Row="2"
-                        Content="Fermer"
-                        Height="36"
-                        Margin="0,15,0,0"
-                        Background="#FF3A2A1A"
-                        Foreground="White"
-                        FontWeight="Bold"
-                        Click="Fermer_Click"/>
             </Grid>
         </Border>
     </Grid>

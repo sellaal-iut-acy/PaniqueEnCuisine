@@ -32,6 +32,7 @@ namespace PaniqueEnCuisine
         private UCfour ucFour = null;
         private UCTableDeCraft ucTableDeCraft = null;
 
+
         public UCJeu(MainWindow mw)
         {
             InitializeComponent();
@@ -184,10 +185,11 @@ namespace PaniqueEnCuisine
         {
             if (ucCaisse != null) return;
 
-            ucCaisse = new UCCaisse();
+            ucCaisse = new UCCaisse(main.mapManager.playeur);
             AjouterOverlay(ucCaisse);
             ucCaisse.Unloaded += (s, e) => ucCaisse = null;
         }
+
 
 
         private void AjouterOverlay(UserControl uc)
@@ -231,25 +233,33 @@ namespace PaniqueEnCuisine
             Application.Current.MainWindow.KeyDown -= OnKeyDown;
             Application.Current.MainWindow.KeyUp -= OnKeyUp;
 
-            // Fermer overlays s’ils sont ouverts
+            // Fermer overlays
             if (ucFrigo != null && ucFrigo.Parent is Panel parentFrigo)
                 parentFrigo.Children.Remove(ucFrigo);
 
             if (ucFour != null && ucFour.Parent is Panel parentFour)
                 parentFour.Children.Remove(ucFour);
 
+            if (ucCaisse != null && ucCaisse.Parent is Panel parentCaisse)
+                parentCaisse.Children.Remove(ucCaisse);
+
             ucFrigo = null;
             ucFour = null;
+            ucCaisse = null;
 
-            // Nettoyage du canvas du jeu
+            // 🔥 RESET CAISSE (IMPORTANT)
+            Caisse.Reset();
+
+            // Nettoyage du canvas
             grille.Children.Clear();
 
-            // Reset données gameplay (à adapter si besoin)
+            // Reset gameplay
             main.mapManager.ManagerOutilsCuisine.Outils.Clear();
 
             main.mapManager.playeur.X = 0;
             main.mapManager.playeur.Y = 0;
         }
+
 
         private void Button_TableDeCraft_Click(object sender, RoutedEventArgs e)
         {

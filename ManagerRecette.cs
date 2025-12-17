@@ -15,16 +15,16 @@ namespace PaniqueEnCuisine
             // création des ingrédiant 
             Nouriture tomate = new Nouriture("tomate", "ingrediant");
             Nouriture fromage = new Nouriture("fromage", "cru"); 
-            Nouriture fromageCuit = new Nouriture("fromage_cuit", "cuit");
+            Nouriture fromage_cuit = new Nouriture("fromage_cuit", "cuit");
             Nouriture steak = new Nouriture("steak", "cru");
-            Nouriture steakCuit = new Nouriture("steak_cuit", "cuit");
+            Nouriture steak_cuit = new Nouriture("steak_cuit", "cuit");
             Nouriture pate = new Nouriture("pate", "ingrediant");
             Nouriture pain = new Nouriture("pain", "ingrediant");
             Nouriture pizza = new Nouriture("pizza", "cru"); //a fabriquer
             Nouriture saucisse = new Nouriture("saucisse", "cru");
-            Nouriture saucisseCuit = new Nouriture("saucisse_cuit", "cuit");
+            Nouriture saucisse_cuit = new Nouriture("saucisse_cuit", "cuit");
             Nouriture patate = new Nouriture("patate", "cru");
-            Nouriture patateCuit = new Nouriture("patate_cuit", "cuit");
+            Nouriture patate_cuit = new Nouriture("patate_cuit", "cuit");
 
 
             // création des plat 
@@ -38,12 +38,12 @@ namespace PaniqueEnCuisine
 
 
             // création des Recettes 
-            CreeRecette(pizza,pate,tomate,fromage);
-            CreeRecette(burgerFromage,pain,steak,fromage);
-            CreeRecette(burgerTomate,pain,steak,tomate);
-            CreeRecette(hotDog,pain,saucisse);
-            CreeRecette(frite, patate);
-            CreeRecette(fondue,pain,fromageCuit);
+            CreeRecette(pizza_cuit, pate,tomate, fromage_cuit);
+            CreeRecette(burgerFromage,pain, steak_cuit, fromage_cuit);
+            CreeRecette(burgerTomate,pain, steak_cuit, tomate);
+            CreeRecette(hotDog,pain, saucisse_cuit);
+            CreeRecette(frite, patate_cuit);
+            CreeRecette(fondue,pain, fromage_cuit);
 
         }
 
@@ -78,6 +78,15 @@ namespace PaniqueEnCuisine
             ingrediant.Add(ingrédiant3);
             Recette RecettePizza = new Recette(ingrediant, plat);
             AjoutRecette(RecettePizza);
+        }
+        public Recette GetRecetteAleatoire()
+        {
+            if (_ListeRecetes.Count == 0)
+                return null;
+
+            Random rnd = new Random();
+            int index = rnd.Next(_ListeRecetes.Count);
+            return _ListeRecetes[index];
         }
 
 
