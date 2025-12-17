@@ -8,46 +8,46 @@ namespace PaniqueEnCuisine
 {
     public partial class UCCaisse : UserControl
     {
-        private Joueur joueur;
-        private DispatcherTimer uiTimer;
+        private Joueur _Joueur;
+        private DispatcherTimer _uiTimer;
 
-        public UCCaisse(Joueur joueur)
+        public UCCaisse(Joueur Joueur)
         {
             InitializeComponent();
 
-            this.joueur = joueur;
+            this._Joueur = Joueur;
 
             ConstruireCommande();
 
-            // Timer UI (lecture du timer global de la caisse)
-            uiTimer = new DispatcherTimer();
-            uiTimer.Interval = TimeSpan.FromMilliseconds(300);
-            uiTimer.Tick += (s, e) => MettreAJourTimer();
-            uiTimer.Start();
+            // Timer UI (lecture du _Timer global de la caisse)
+            _uiTimer = new DispatcherTimer();
+            _uiTimer.Interval = TimeSpan.FromMilliseconds(300);
+            _uiTimer.Tick += (s, e) => MettreAJourTimer();
+            _uiTimer.Start();
         }
 
         private void ConstruireCommande()
         {
-            var recette = Caisse.CommandeEnCours;
-            if (recette == null) return;
+            var Recette = Caisse.CommandeEnCours;
+            if (Recette == null) return;
 
             CommandePanel.Children.Clear();
 
             StackPanel stackPanel = new StackPanel();
 
-            Image image = new Image
+            Image Image = new Image
             {
-                Source = recette.Nouriture.Image.Source,
+                Source = Recette.Nouriture.Image.Source,
                 Width = 73,
                 Height = 61,
                 Margin = new Thickness(0, 0, 0, 15)
             };
 
-            stackPanel.Children.Add(image);
+            stackPanel.Children.Add(Image);
 
             stackPanel.Children.Add(new TextBlock
             {
-                Text = recette.Nouriture.Nom,
+                Text = Recette.Nouriture.Nom,
                 FontSize = 24,
                 Foreground = Brushes.White
             });
@@ -60,7 +60,7 @@ namespace PaniqueEnCuisine
                 Margin = new Thickness(0, 10, 0, 5)
             });
 
-            foreach (var ing in recette.NouritureList)
+            foreach (var ing in Recette.NouritureList)
             {
                 stackPanel.Children.Add(new TextBlock
                 {
@@ -83,12 +83,12 @@ namespace PaniqueEnCuisine
 
         private void Valider_Click(object sender, RoutedEventArgs e)
         {
-            var recette = Caisse.CommandeEnCours;
-            var inventaire = joueur.Inventaire;
+            var Recette = Caisse.CommandeEnCours;
+            var Inventaire = _Joueur.Inventaire;
 
-            //On cherche le PLAT dans l'inventaire
-            var plat = inventaire.Liste_nourriture
-                .FirstOrDefault(n => n.Nom == recette.Nouriture.Nom);
+            //On cherche le PLAT dans l'_Inventaire
+            var plat = Inventaire.Liste_nourriture
+                .FirstOrDefault(n => n.Nom == Recette.Nouriture.Nom);
 
             if (plat == null)
             {
@@ -97,9 +97,9 @@ namespace PaniqueEnCuisine
             }
 
             //Retirer le plat
-            inventaire.Liste_nourriture.Remove(plat);
+            Inventaire.Liste_nourriture.Remove(plat);
 
-            Console.WriteLine($"Commande validée : {recette.Nouriture.Nom}");
+            Console.WriteLine($"Commande validée : {Recette.Nouriture.Nom}");
 
             //Nouvelle commande
             Caisse.NouvelleCommande();
@@ -109,7 +109,7 @@ namespace PaniqueEnCuisine
 
         private void Fermer_Click(object sender, RoutedEventArgs e)
         {
-            uiTimer.Stop();
+            _uiTimer.Stop();
 
             if (Parent is Panel panel)
                 panel.Children.Remove(this);

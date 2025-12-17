@@ -15,22 +15,22 @@ namespace PaniqueEnCuisine
     public class EntiterMobile
     /*  
      * Classe Entiter
-     * _nom : string -> _nom de l'entité
+     * _Nom : string -> _Nom de l'entité
      * X : int -> position X de l'entité
      * Y : int -> position Y de l'entité
      */
     {
         /* Attributs */
-        private string nom ="";
-        private double x=0 ;
-        private double y  =0 ;
-        private int vitesse=0 ;
-        private int vitesseCourse = 0 ;
-        private string direction;
-        public Image current_Image = new Image();
-        private int height = 0 ;
-        private int width =0;
-        BitmapImage[,] imagesPerso = new BitmapImage[4,4];
+        private string _Nom ="";
+        private double _X=0 ;
+        private double _Y  =0 ;
+        private int _vitesse=0 ;
+        private int _VitesesCourse = 0 ;
+        private string _Direction;
+        private Image _ImageActuel = new Image();
+        private int _Hauteur = 0 ;
+        private int _Largeur =0;
+        BitmapImage[,] _ImagesPerso = new BitmapImage[4,4];
 
 
 
@@ -43,61 +43,60 @@ namespace PaniqueEnCuisine
             this.Y = y;
             this.Vitesse = vitesse;
             this.VitesseCourse = vitesse * 2;
-            this.direction = "Aucun";
-            this.Charger_images();
-            this.height = Height ;
-            this.width = Widht ;
-            Set_image();
+            this.Charger_Images();
+            this._Hauteur = Height ;
+            this._Largeur = Widht ;
+            Set_Image();
         }
-        public void Set_image()
+        public void Set_Image()
         {
             Console.WriteLine($"Chemin de l'image par défaut définie pour l'entité mobile.");
-            this.current_Image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("player_Aucun_1.jpg", UriKind.Relative));
-            this.current_Image.Height = this.height;
-            this.current_Image.Width = this.width;
+            this.ImageActuel.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("player_Aucun_1.jpg", UriKind.Relative));
+            this.ImageActuel.Height = this._Hauteur;
+            this.ImageActuel.Width = this._Largeur;
         }
 
-        private void Charger_images()
+        private void Charger_Images()
         {
-            imagesPerso = new BitmapImage[5, 5];
+            _ImagesPerso = new BitmapImage[5, 5];
 
             // ===== HAUT =====
-            imagesPerso[0, 0] = LoadImage("Images/Entiter/image_fleche_haut_bleu.png");
-            imagesPerso[0, 1] = LoadImage("Images/Entiter/image_fleche_haut_rouge.png");
-            imagesPerso[0, 2] = LoadImage("Images/Entiter/image_fleche_haut_vert.png");
-            imagesPerso[0, 3] = LoadImage("Images/Entiter/image_fleche_haut_violet.png");
-            imagesPerso[0, 4] = LoadImage("Images/Entiter/image_fleche_haut_orange.png");
+            _ImagesPerso[0, 0] = ChargerImages("Images/Entiter/image_fleche_haut_bleu.png");
+            _ImagesPerso[0, 1] = ChargerImages("Images/Entiter/image_fleche_haut_rouge.png");
+            _ImagesPerso[0, 2] = ChargerImages("Images/Entiter/image_fleche_haut_vert.png");
+            _ImagesPerso[0, 3] = ChargerImages("Images/Entiter/image_fleche_haut_violet.png");
+            _ImagesPerso[0, 4] = ChargerImages("Images/Entiter/image_fleche_haut_orange.png");
 
             // ===== DROITE =====
-            imagesPerso[1, 0] = LoadImage("Images/Entiter/image_fleche_droite_bleu.png");
-            imagesPerso[1, 1] = LoadImage("Images/Entiter/image_fleche_droite_rouge.png");
-            imagesPerso[1, 2] = LoadImage("Images/Entiter/image_fleche_droite_vert.png");
-            imagesPerso[1, 3] = LoadImage("Images/Entiter/image_fleche_droite_violet.png");
-            imagesPerso[1, 4] = LoadImage("Images/Entiter/image_fleche_droite_orange.png");
+            _ImagesPerso[1, 0] = ChargerImages("Images/Entiter/image_fleche_droite_bleu.png");
+            _ImagesPerso[1, 1] = ChargerImages("Images/Entiter/image_fleche_droite_rouge.png");
+            _ImagesPerso[1, 2] = ChargerImages("Images/Entiter/image_fleche_droite_vert.png");
+            _ImagesPerso[1, 3] = ChargerImages("Images/Entiter/image_fleche_droite_violet.png");
+            _ImagesPerso[1, 4] = ChargerImages("Images/Entiter/image_fleche_droite_orange.png");
 
             // ===== BAS =====
-            imagesPerso[2, 0] = LoadImage("Images/Entiter/image_fleche_bas_bleu.png");
-            imagesPerso[2, 1] = LoadImage("Images/Entiter/image_fleche_bas_rouge.png");
-            imagesPerso[2, 2] = LoadImage("Images/Entiter/image_fleche_bas_vert.png");
-            imagesPerso[2, 3] = LoadImage("Images/Entiter/image_fleche_bas_violet.png");
-            imagesPerso[2, 4] = LoadImage("Images/Entiter/image_fleche_bas_orange.png");
+            _ImagesPerso[2, 0] = ChargerImages("Images/Entiter/image_fleche_bas_bleu.png");
+            _ImagesPerso[2, 1] = ChargerImages("Images/Entiter/image_fleche_bas_rouge.png");
+            _ImagesPerso[2, 2] = ChargerImages("Images/Entiter/image_fleche_bas_vert.png");
+            _ImagesPerso[2, 3] = ChargerImages("Images/Entiter/image_fleche_bas_violet.png");
+            _ImagesPerso[2, 4] = ChargerImages("Images/Entiter/image_fleche_bas_orange.png");
 
             // ===== GAUCHE =====
-            imagesPerso[3, 0] = LoadImage("Images/Entiter/image_fleche_gauche_bleu.png");
-            imagesPerso[3, 1] = LoadImage("Images/Entiter/image_fleche_gauche_rouge.png");
-            imagesPerso[3, 2] = LoadImage("Images/Entiter/image_fleche_gauche_vert.png");
-            imagesPerso[3, 3] = LoadImage("Images/Entiter/image_fleche_gauche_violet.png");
-            imagesPerso[3, 4] = LoadImage("Images/Entiter/image_fleche_gauche_orange.png");
+            _ImagesPerso[3, 0] = ChargerImages("Images/Entiter/image_fleche_gauche_bleu.png");
+            _ImagesPerso[3, 1] = ChargerImages("Images/Entiter/image_fleche_gauche_rouge.png");
+            _ImagesPerso[3, 2] = ChargerImages("Images/Entiter/image_fleche_gauche_vert.png");
+            _ImagesPerso[3, 3] = ChargerImages("Images/Entiter/image_fleche_gauche_violet.png");
+            _ImagesPerso[3, 4] = ChargerImages("Images/Entiter/image_fleche_gauche_orange.png");
 
             // === IDLE (RONDS) ===
-            imagesPerso[4, 0] = LoadImage("Images/Entiter/image_rond_bleu.jpg");
-            imagesPerso[4, 1] = LoadImage("Images/Entiter/image_rond_rouge.jpg");
-            imagesPerso[4, 2] = LoadImage("Images/Entiter/image_rond_vert.jpg");
-            imagesPerso[4, 3] = LoadImage("Images/Entiter/image_rond_violet.jpg");
-            imagesPerso[4, 4] = LoadImage("Images/Entiter/image_rond_orange.jpg");
+            _ImagesPerso[4, 0] = ChargerImages("Images/Entiter/image_rond_bleu.jpg");
+            _ImagesPerso[4, 1] = ChargerImages("Images/Entiter/image_rond_rouge.jpg");
+            _ImagesPerso[4, 2] = ChargerImages("Images/Entiter/image_rond_vert.jpg");
+            _ImagesPerso[4, 3] = ChargerImages("Images/Entiter/image_rond_violet.jpg");
+            _ImagesPerso[4, 4] = ChargerImages("Images/Entiter/image_rond_orange.jpg");
         }
 
-        public BitmapImage LoadImage(string path)
+        public BitmapImage ChargerImages(string path)
         {
             return new BitmapImage(new Uri(path, UriKind.Relative));
         }
@@ -109,13 +108,13 @@ namespace PaniqueEnCuisine
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("La vitesse ne peut pas être négative.");
+                    throw new ArgumentException("La _vitesse ne peut pas être négative.");
                 }
-                this.vitesse = value;
+                this._vitesse = value;
             }
             get
             {
-                return this.vitesse;
+                return this._vitesse;
             }
         }
       
@@ -124,22 +123,22 @@ namespace PaniqueEnCuisine
             set
             {
 
-                this.x= value;
+                this._X= value;
             }
             get
             {
-                return this.x;
+                return this._X;
             }
         }
         public double Y
         {
             set
             {
-                this.y = value;
+                this._Y = value;
             }
             get
             {
-                return this.y;
+                return this._Y;
             }
         }
 
@@ -149,52 +148,13 @@ namespace PaniqueEnCuisine
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("La vitesse de course ne peut pas être négative.");
+                    throw new ArgumentException("La _vitesse de course ne peut pas être négative.");
                 }
-                this.vitesseCourse = value;
+                this._VitesesCourse = value;
             }
             get
             {
-                return this.vitesseCourse;
-            }
-        }
-
-        public Image Curenent_Image
-        {
-            get
-            {
-                return this.current_Image;
-            }
-
-            set
-            {
-                this.current_Image = value;
-            }
-        }
-
-        public int Height
-        {
-            get
-            {
-                return this.height;
-            }
-
-            set
-            {
-                this.height = value;
-            }
-        }
-
-        public int Width
-        {
-            get
-            {
-                return this.width;
-            }
-
-            set
-            {
-                this.width = value;
+                return this._VitesesCourse;
             }
         }
 
@@ -202,12 +162,79 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.nom;
+                return this._Nom;
             }
 
             set
             {
-                this.nom = value;
+                this._Nom = value;
+            }
+        }
+
+
+        public int VitesesCourse
+        {
+            get
+            {
+                return this._VitesesCourse;
+            }
+
+            set
+            {
+                this._VitesesCourse = value;
+            }
+        }
+
+
+        public Image ImageActuel
+        {
+            get
+            {
+                return this._ImageActuel;
+            }
+
+            set
+            {
+                this._ImageActuel = value;
+            }
+        }
+
+        public int Hauteur
+        {
+            get
+            {
+                return this._Hauteur;
+            }
+
+            set
+            {
+                this._Hauteur = value;
+            }
+        }
+
+        public int Largeur
+        {
+            get
+            {
+                return this._Largeur;
+            }
+
+            set
+            {
+                this._Largeur = value;
+            }
+        }
+
+        public BitmapImage[,] ImagesPerso
+        {
+            get
+            {
+                return this._ImagesPerso;
+            }
+
+            set
+            {
+                this._ImagesPerso = value;
             }
         }
 
@@ -215,19 +242,15 @@ namespace PaniqueEnCuisine
         {
             return obj is EntiterMobile entiter &&
                    this.Nom == entiter.Nom &&
-                   this.x == entiter.x &&
-                   this.y == entiter.y &&
-                   this.vitesse == entiter.vitesse &&
-                   this.vitesseCourse == entiter.vitesseCourse &&
-                   this.Vitesse == entiter.Vitesse &&
                    this.X == entiter.X &&
                    this.Y == entiter.Y &&
-                   this.VitesseCourse == entiter.VitesseCourse;
+                   this.Vitesse == entiter.Vitesse &&
+                   this.VitesesCourse == entiter.VitesesCourse;
         }
 
         public override string? ToString()
         {
-            return $"{this.Y.ToString()} ,{this.x.ToString()}";
+            return $"{this.Y.ToString()} ,{this._X.ToString()}";
         }
 
         public static bool operator ==(EntiterMobile? left, EntiterMobile? right)

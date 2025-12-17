@@ -15,37 +15,31 @@ namespace PaniqueEnCuisine
 {
     public class MapManager
     {
-        public Joueur playeur;
-        public ImageBrush fond = new ImageBrush();
-        private ManagerSettings managerSettings = new ManagerSettings();
-        private Canvas grille = new Canvas();
-        public int niveau_actuel = 1;
-        private ManagerOutilsCuisine managerOutilsCuisine = new ManagerOutilsCuisine (new List<OutilsCusine>());
-        private ManagerColision managerColision = new ManagerColision();
+        private Joueur _Playeur;
+        private ImageBrush _ImageFond = new ImageBrush();
+        private ManagerSettings _ManagerSettings = new ManagerSettings();
+        private Canvas _Canvas = new Canvas();
+        private int niveauActuel = 1;
+        private ManagerOutilsCuisine _ManagerOutilsCuisine = new ManagerOutilsCuisine (new List<OutilsCusine>());
+        private ManagerColision _ManagerColision = new ManagerColision();
 
 
         public MapManager(Joueur playeur)
         {
-            this.playeur = playeur;
-
-            this.fond = new ImageBrush(new BitmapImage(new Uri($"Images/Niveau/image_fond_niveau{niveau_actuel}.png", UriKind.Relative)));
+            this._Playeur = playeur;
+            this._ImageFond = new ImageBrush(new BitmapImage(new Uri($"Images/Niveau/image_fond_niveau{NiveauActuel}.png", UriKind.Relative)));
         }
 
-
-        public void Run()
-        {
-
-        }
         public Canvas Grille
         {
             get
             {
-                return this.grille;
+                return this._Canvas;
             }
 
             set
             {
-                this.grille = value;
+                this._Canvas = value;
             }
         }
 
@@ -53,12 +47,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.managerSettings;
+                return this._ManagerSettings;
             }
 
             set
             {
-                this.managerSettings = value;
+                this._ManagerSettings = value;
             }
         }
 
@@ -67,12 +61,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.managerOutilsCuisine;
+                return this._ManagerOutilsCuisine;
             }
 
             set
             {
-                this.managerOutilsCuisine = value;
+                this._ManagerOutilsCuisine = value;
             }
         }
 
@@ -80,12 +74,77 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.managerColision;
+                return this._ManagerColision;
             }
 
             set
             {
-                this.managerColision = value;
+                this._ManagerColision = value;
+            }
+        }
+
+        internal ManagerOutilsCuisine ManagerOutilsCuisine1
+        {
+            get
+            {
+                return this._ManagerOutilsCuisine;
+            }
+
+            set
+            {
+                this._ManagerOutilsCuisine = value;
+            }
+        }
+
+        public int NiveauActuel
+        {
+            get
+            {
+                return this.niveauActuel;
+            }
+
+            set
+            {
+                this.niveauActuel = value;
+            }
+        }
+
+        public Canvas Canvas
+        {
+            get
+            {
+                return this._Canvas;
+            }
+
+            set
+            {
+                this._Canvas = value;
+            }
+        }
+
+        public ImageBrush ImageFond
+        {
+            get
+            {
+                return this._ImageFond;
+            }
+
+            set
+            {
+                this._ImageFond = value;
+            }
+        }
+
+        public Joueur Playeur
+        {
+            get
+            {
+                return this._Playeur;
+            }
+
+            set
+            {
+                this._Playeur = value;
             }
         }
     }

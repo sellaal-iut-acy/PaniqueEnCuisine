@@ -35,7 +35,7 @@ namespace PaniqueEnCuisine
         private void B_Retour_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangeScreen(new UCMenuPlus(main));
+            main.ChangerEcran(new UCMenuPlus(main));
         }
         private void SkinPrototype_Click(object sender, RoutedEventArgs e)
         {
@@ -60,13 +60,13 @@ namespace PaniqueEnCuisine
 
         private void SelectSkin_Click(object sender, RoutedEventArgs e)
         {
-            var p = main.mapManager.playeur;
+            var p = main.MapManager._Playeur;
 
-            p.CurrentSkin = selectedSkin;
+            p._IndexSkinActuel = selectedSkin;
             p.Charger_images();
 
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangeScreen(new UCMenuPlus(main));
+            main.ChangerEcran(new UCMenuPlus(main));
 
 
 

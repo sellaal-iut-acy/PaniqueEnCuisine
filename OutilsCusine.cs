@@ -9,29 +9,27 @@ namespace PaniqueEnCuisine
 {
     internal class OutilsCusine
     {
-        private string nom = "";
-        private Image img_outi = new Image();
-        private int x = 0;
-        private int y = 0;
-        private int width = 0;
-        private int height = 0;
-        private int niveaux = 0;
-        private int vitesse_utilisation = 0;
+        private string _Nom = "";
+        private Image _ImageOutil = new Image();
+        private int _X = 0;
+        private int _Y = 0;
+        private int _Width = 0;
+        private int _Height = 0;
+        private int _Niveaux = 0;
+        private int _VitesseUtilisation = 0;
         
-       
-
         public OutilsCusine(string nom, int x, int y, int width, int height, int niveaux , int vitesse_utilisation)
         {
             this.Nom = nom;
             this.X = x;
             this.Y = y;
-            this.width = width;
-            this.height = height;
-            this.niveaux = niveaux;
-            this.vitesse_utilisation = vitesse_utilisation;
-            Set_image();
+            this.Width = width;
+            this.Height = height;
+            this.Niveaux = niveaux;
+            this.VitesseUtilisation = vitesse_utilisation;
+            Set_Image();
         }
-        public void afficher_outi(Canvas grille)
+        public void AfficherOutil(Canvas grille)
         {
             this.Img_outi.Name = this.Nom;
             Canvas.SetLeft(this.Img_outi, this.X);
@@ -44,12 +42,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.nom;
+                return this._Nom;
             }
 
             set
             {
-                this.nom = value;
+                this._Nom = value;
             }
         }
 
@@ -57,12 +55,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.img_outi;
+                return this._ImageOutil;
             }
 
             set
             {
-                this.img_outi = value;
+                this._ImageOutil = value;
             }
         }
 
@@ -70,12 +68,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.x;
+                return this._X;
             }
 
             set
             {
-                this.x = value;
+                this._X = value;
             }
         }
 
@@ -83,12 +81,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.y;
+                return this._Y;
             }
 
             set
             {
-                this.y = value;
+                this._Y = value;
             }
         }
 
@@ -96,12 +94,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.width;
+                return this._Width;
             }
 
             set
             {
-                this.width = value;
+                this._Width = value;
             }
         }
 
@@ -109,12 +107,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.height;
+                return this._Height;
             }
 
             set
             {
-                this.height = value;
+                this._Height = value;
             }
         }
 
@@ -122,12 +120,12 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.niveaux;
+                return this._Niveaux;
             }
 
             set
             {
-                this.niveaux = value;
+                this._Niveaux = value;
             }
         }
 
@@ -135,16 +133,29 @@ namespace PaniqueEnCuisine
         {
             get
             {
-                return this.vitesse_utilisation;
+                return this._VitesseUtilisation;
             }
 
             set
             {
-                this.vitesse_utilisation = value;
+                this._VitesseUtilisation = value;
             }
         }
 
-        private void Set_image()
+        public int VitesseUtilisation
+        {
+            get
+            {
+                return this._VitesseUtilisation;
+            }
+
+            set
+            {
+                this._VitesseUtilisation = value;
+            }
+        }
+
+        private void Set_Image()
         {
             this.Img_outi.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"Images/Outils/{this.Nom}.png", UriKind.Relative));
         }

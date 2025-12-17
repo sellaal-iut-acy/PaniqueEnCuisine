@@ -32,25 +32,25 @@ namespace PaniqueEnCuisine
         {
             Audio.PlaySFX("Sons/son_clic.wav"); ;
             Console.WriteLine("Réglages son");
-            main.ChangeScreen(new UCMenuSon(main));
+            main.ChangerEcran(new UCMenuSon(main));
         }
 
         private void ButtonSettingsSkin_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
             Console.WriteLine("Réglages skins");
-            main.ChangeScreen(new UCMenuSkin(main));
+            main.ChangerEcran(new UCMenuSkin(main));
         }
 
         private void B_Retour_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangeScreen(new UCMainMenu(main));
+            main.ChangerEcran(new UCMainMenu(main));
         }
         private void ButtonSettingsLevel_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            main.ChangeScreen(new UCMenuLevel(main));
+            main.ChangerEcran(new UCMenuLevel(main));
         }
     }
 
