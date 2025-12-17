@@ -12,11 +12,13 @@ namespace PaniqueEnCuisine
         private string _nom = "";
         private Image _image = new Image();
         private bool _EstCuit = false;
+        private string _type = "";
       
 
         public Nouriture(string nom, string type)
         {
             this._nom = nom;
+            this.Type = type;
             this._image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"pack://application:,,,/Images/food/{nom}.png"));
   
         }
@@ -45,6 +47,19 @@ namespace PaniqueEnCuisine
             set
             {
                 this._EstCuit = value;
+            }
+        }
+
+        public string Type
+        {
+            get
+            {
+                return this._type;
+            }
+
+            set
+            {
+                this._type = value;
             }
         }
 

@@ -41,7 +41,8 @@ namespace PaniqueEnCuisine
 
         private void B_cuirre(object sender, RoutedEventArgs e)
         {
-            if (selectioner && !NouriturePersonange.Liste_nourriture[currentIndex].EstCuit)
+            Console.WriteLine($"{NouriturePersonange.Liste_nourriture[currentIndex].Type}");
+            if (selectioner && !NouriturePersonange.Liste_nourriture[currentIndex].EstCuit && (NouriturePersonange.Liste_nourriture[currentIndex].Type == "cru"))
             {
                  
                 NouritureCuit.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"pack://application:,,,/Images/food/{NouriturePersonange.Liste_nourriture[currentIndex].Nom}_cuit.png"));

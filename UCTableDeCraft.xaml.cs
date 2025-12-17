@@ -177,10 +177,16 @@ namespace PaniqueEnCuisine
                     InventaireJoueur.Liste_nourriture.Remove(ingrediantAEnlever);
                     InventaireJoueur.Liste_nourriture.Add(ManagerRecettes.ListeRecetes[currentIndex].Nouriture);
                 }
-                    
+                craft.Text = $"vous avez cusiner {ManagerRecettes.ListeRecetes[currentIndex].Nouriture.Nom} ";
 
             }
-            
+            else
+            {
+                craft.Text = $"vous avez cusiner {ManagerRecettes.ListeRecetes[currentIndex].Nouriture.Nom} il vaus manque des ingrédiants ";
+            }
+                
+
+
             Console.WriteLine("fin de des teste");
             
         }
