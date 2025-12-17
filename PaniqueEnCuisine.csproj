@@ -99,8 +99,24 @@
     <None Remove="Images\Entiter\PNJ\image_pnj2_bas3.png" />
     <None Remove="Images\Entiter\PNJ\image_pnj2_idle1.png" />
     <None Remove="Images\food\burger.png" />
+    <None Remove="Images\food\burgertFromage.png" />
+    <None Remove="Images\food\burgerTomate.png" />
+    <None Remove="Images\food\fondue.png" />
+    <None Remove="Images\food\frites.png" />
+    <None Remove="Images\food\fromage.png" />
+    <None Remove="Images\food\fromage_cuit.png" />
+    <None Remove="Images\food\hotdog.png" />
+    <None Remove="Images\food\pain.png" />
+    <None Remove="Images\food\patate.png" />
+    <None Remove="Images\food\patate_cuit.png" />
+    <None Remove="Images\food\pate.png" />
     <None Remove="Images\food\pizza.png" />
     <None Remove="Images\food\pizza_cuit.png" />
+    <None Remove="Images\food\saucisse.png" />
+    <None Remove="Images\food\saucisse_cuit.png" />
+    <None Remove="Images\food\steak.png" />
+    <None Remove="Images\food\steak_cuit.png" />
+    <None Remove="Images\food\tomate.png" />
     <None Remove="Images\image_fleche.png" />
     <None Remove="Images\image_fond_four.png" />
     <None Remove="Images\image_fond_frigo.png" />
@@ -212,15 +228,28 @@
     <Resource Include="Images\Entiter\PNJ\image_pnj2_bas2.png" />
     <Resource Include="Images\Entiter\PNJ\image_pnj2_bas3.png" />
     <Resource Include="Images\Entiter\PNJ\image_pnj2_idle1.png" />
-    <Resource Include="Images\food\burger.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Images\food\burgertFromage.png" />
+    <Resource Include="Images\food\burgerTomate.png" />
+    <Resource Include="Images\food\fondue.png" />
+    <Resource Include="Images\food\frites.png" />
+    <Resource Include="Images\food\fromage.png" />
+    <Resource Include="Images\food\fromage_cuit.png" />
+    <Resource Include="Images\food\hotdog.png" />
+    <Resource Include="Images\food\pain.png" />
+    <Resource Include="Images\food\patate.png" />
+    <Resource Include="Images\food\patate_cuit.png" />
+    <Resource Include="Images\food\pate.png" />
     <Resource Include="Images\food\pizza.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\food\pizza_cuit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\food\saucisse.png" />
+    <Resource Include="Images\food\saucisse_cuit.png" />
+    <Resource Include="Images\food\steak.png" />
+    <Resource Include="Images\food\steak_cuit.png" />
+    <Resource Include="Images\food\tomate.png" />
     <Resource Include="Images\image_fleche.png" />
     <Resource Include="Images\image_fond_four.png" />
     <Resource Include="Images\image_fond_frigo.png" />
