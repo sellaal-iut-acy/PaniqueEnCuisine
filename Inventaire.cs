@@ -24,7 +24,7 @@ namespace PaniqueEnCuisine
         public Inventaire(List<Nouriture> liste_nourriture,int current_page)
         {
             
-            Console.WriteLine("fait");
+            //Console.WriteLine("fait");
             this.Liste_nourriture = liste_nourriture;
             this.Current_page = current_page;
             this.AnciennePage = this.PageActuel;

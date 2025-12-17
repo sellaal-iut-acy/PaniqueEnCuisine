@@ -42,7 +42,7 @@ namespace PaniqueEnCuisine
             {
                 parent.Children.Remove(this);
                 InventairePlayer.Children.Clear();
-                Console.WriteLine(InventairePlayer.Children.Count);
+                //Console.WriteLine(InventairePlayer.Children.Count);
             }
                 
 
@@ -176,16 +176,17 @@ namespace PaniqueEnCuisine
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             bool crafte = false;
-            Console.WriteLine("début du test");
+            //Console.WriteLine("début du test");
             for (int i = 0; i < _ManagerRecettes.ListeRecetes[_IndexActuel].NouritureList.Count; i++)
             {
                 for (int j = i; j < _InventaireJoueur.Liste_nourriture.Count; j++)
                 {
-                    Console.WriteLine($"{_ManagerRecettes.ListeRecetes[_IndexActuel].NouritureList[i].Nom} {_InventaireJoueur.Liste_nourriture[j].Nom}");
+                    //Console.WriteLine($"{_ManagerRecettes.ListeRecetes[_IndexActuel].NouritureList[i].Nom} {_InventaireJoueur.Liste_nourriture[j].Nom}");
                     if (_ManagerRecettes.ListeRecetes[_IndexActuel].NouritureList[i].Nom == _InventaireJoueur.Liste_nourriture[j].Nom)
                         _NouritureAEnlever.Add(_InventaireJoueur.Liste_nourriture[j]);
                     else
-                    { Console.WriteLine("tu n'apas touts les ingrédient"); }
+                    { //Console.WriteLine("tu n'apas touts les ingrédient");
+                    }
 
                 }
             }
@@ -206,7 +207,7 @@ namespace PaniqueEnCuisine
                 
 
 
-            Console.WriteLine("fin de des teste");
+            //Console.WriteLine("fin de des teste");
             
         }
     }

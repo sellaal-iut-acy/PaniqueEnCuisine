@@ -84,7 +84,7 @@ namespace PaniqueEnCuisine
         public UCfour( Joueur joueur , Inventaire inventaire)
         {
             InitializeComponent();
-            Console.WriteLine("fait");
+            //Console.WriteLine("fait");
             _NouriturePersonange = inventaire;
             
 
@@ -105,7 +105,7 @@ namespace PaniqueEnCuisine
 
         private void B_cuirre(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine($"{NouriturePersonange.Liste_nourriture[CurrentIndex].Type}");
+            //Console.WriteLine($"{NouriturePersonange.Liste_nourriture[CurrentIndex].Type}");
             if (_Selectioner && !NouriturePersonange.Liste_nourriture[CurrentIndex].EstCuit && (NouriturePersonange.Liste_nourriture[CurrentIndex].Type == "cru"))
             {
                  

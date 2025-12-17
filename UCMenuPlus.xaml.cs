@@ -31,14 +31,14 @@ namespace PaniqueEnCuisine
         private void ButtonSettingsSon_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav"); ;
-            Console.WriteLine("Réglages son");
+            //Console.WriteLine("Réglages son");
             _Main.ChangerEcran(new UCMenuSon(_Main));
         }
 
         private void ButtonSettingsSkin_Click(object sender, RoutedEventArgs e)
         {
             Audio.PlaySFX("Sons/son_clic.wav");
-            Console.WriteLine("Réglages skins");
+            //Console.WriteLine("Réglages skins");
             _Main.ChangerEcran(new UCMenuSkin(_Main));
         }
 

@@ -121,30 +121,30 @@ namespace PaniqueEnCuisine
 
         public bool VeriferColision_PLAYER_table(Canvas Canvas, Image ImageJoueur, Joueur Joueur)
         {
-            Console.WriteLine("début des colsision");
+            //Console.WriteLine("début des colsision");
             bool colision = false;
             foreach (var x in Canvas.Children.OfType<Image>())
             {
-                Console.WriteLine("entre dans la boucle des vérification");
+                //Console.WriteLine("entre dans la boucle des vérification");
                 if ((string)x.Tag == "TableDeCraft")
                 {
-                    Console.WriteLine($"detectée des Avancer entre  {x.Name}  et  {ImageJoueur.Name} !");
+                    //Console.WriteLine($"detectée des Avancer entre  {x.Name}  et  {ImageJoueur.Name} !");
                     Rect PlayerHitbox = new Rect(Canvas.GetLeft(ImageJoueur), Canvas.GetTop(ImageJoueur), ImageJoueur.Width, ImageJoueur.Height);
                     Rect PlateformeCommade = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
-                    Console.WriteLine($"position palyeur  left{Canvas.GetLeft(ImageJoueur)},{Canvas.GetTop(ImageJoueur)}");
-                    Console.WriteLine($"position palyeur  left {Canvas.GetLeft(x)},top  {Canvas.GetTop(x)}");
+                    //Console.WriteLine($"position palyeur  left{Canvas.GetLeft(ImageJoueur)},{Canvas.GetTop(ImageJoueur)}");
+                    //Console.WriteLine($"position palyeur  left {Canvas.GetLeft(x)},top  {Canvas.GetTop(x)}");
 
                     if (PlateformeCommade.IntersectsWith(PlayerHitbox))
                     {
-                        Console.WriteLine($"Collision detectée entre le  {x.Name}  et  {Joueur.Nom} !");
+                        //Console.WriteLine($"Collision detectée entre le  {x.Name}  et  {Joueur.Nom} !");
                         Joueur.Vitesse = 0;
                         colision = true;
 
                     }
                     else
                     {
-                        Console.WriteLine("Aucune collision entre ImageJoueur et les _OutilsCuisine de cuisine.");
+                        //Console.WriteLine("Aucune collision entre ImageJoueur et les _OutilsCuisine de cuisine.");
                         Joueur.Vitesse = 2;
 
 

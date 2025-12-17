@@ -92,14 +92,14 @@ namespace PaniqueEnCuisine
 
             if (plat == null)
             {
-                Console.WriteLine("Commande refusée : plat non présent");
+                //Console.WriteLine("Commande refusée : plat non présent");
                 return;
             }
 
             //Retirer le plat
             Inventaire.Liste_nourriture.Remove(plat);
 
-            Console.WriteLine($"Commande validée : {Recette.Nouriture.Nom}");
+            //Console.WriteLine($"Commande validée : {Recette.Nouriture.Nom}");
 
             //Nouvelle commande
             Caisse.NouvelleCommande();

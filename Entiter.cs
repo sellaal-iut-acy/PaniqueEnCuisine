@@ -50,7 +50,7 @@ namespace PaniqueEnCuisine
         }
         public void Set_Image()
         {
-            Console.WriteLine($"Chemin de l'image par défaut définie pour l'entité mobile.");
+            //Console.WriteLine($"Chemin de l'image par défaut définie pour l'entité mobile.");
             this.ImageActuel.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("player_Aucun_1.jpg", UriKind.Relative));
             this.ImageActuel.Height = this._Hauteur;
             this.ImageActuel.Width = this._Largeur;
